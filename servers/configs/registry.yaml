@@ -1,0 +1,39 @@
+# servers/registry.yaml
+# Canonical list of MCP servers relevant to Cloud FinOps.
+# One list item per server. Keep entries alphabetically sorted by `name`.
+
+- name: aws-pricing-mcp
+  provider: AWS
+  repo: https://github.com/awslabs/mcp
+  homepage: https://awslabs.github.io/mcp/
+  category: pricing
+  description: "Query AWS pricing data and simulate costs for scenarios."
+  capabilities:
+    - list-offerings
+    - price-lookup
+    - simulate-cost
+  auth:
+    - "AWS credentials (env/SSO)"
+  maturity: beta
+  security_notes: "Read-only; no resource mutations; validate data sources before decisions."
+  demo: tutorials/01-aws-pricing-mcp-quickstart.md
+  example_config: servers/configs/aws-pricing-mcp.json
+  tags:
+    - finops
+    - aws
+    - pricing
+
+# Add new entries below using the same keys.
+# - name: <kebab-case>
+#   provider: <AWS|Azure|GCP|Other>
+#   repo: <https URL to upstream repository>
+#   homepage: <optional project/product page>
+#   category: <pricing|tagging|governance|anomaly|allocation|reporting|other>
+#   description: "<1-2 line human description>"
+#   capabilities: [<verb-noun>, <verb-noun>, ...]
+#   auth: ["<how to auth>"]
+#   maturity: <alpha|beta|ga|archived>
+#   security_notes: "<risks, blast radius, permissions>"
+#   demo: tutorials/<doc>.md
+#   example_config: servers/configs/<file>.json
+#   tags: [<keyword>, <keyword>]
