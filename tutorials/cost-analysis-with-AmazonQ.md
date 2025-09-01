@@ -10,6 +10,9 @@ Learn how to combine Amazon Q CLI with MCP for intelligent cost analysis.
 - Natural language querying of cost data
 - Best practices for AI-driven FinOps
 
+
+
+
 ### Sample CFM Tips MCP
 **Repository**: [aws-samples/sample-cfm-tips-mcp](https://github.com/aws-samples/sample-cfm-tips-mcp)  
 **Status**: ✅ AWS Samples
