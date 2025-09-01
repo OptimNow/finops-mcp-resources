@@ -11,10 +11,19 @@ A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for Fi
 
 The official AWS Labs MCP server collection provides comprehensive AWS service integration:
 
-#### Core Modules most relevant for Cloud FinOps:
-- **Cost & Operations**: AWS pricing, cost analysis, and operational tools
-- **CloudWatch**: Monitoring, metrics, and log analysis
-- **Pricing**: Real-time AWS pricing data and cost estimation
+## 🔧 AWS MCP Server Directory
+
+Monitor, optimize, and manage your AWS infrastructure and costs.
+
+| Server Name | Description | Install |
+|-------------|-------------|---------|
+| [AWS Pricing MCP Server](https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server/) | AWS service pricing and cost estimates | <kbd>Install</kbd> [Cursor](https://marketplace.cursorapi.com/aws-pricing-mcp) <br><kbd>Install</kbd> [VS Code](https://marketplace.visualstudio.com/items?itemName=aws.aws-pricing-mcp) |
+| [AWS Cost Explorer MCP Server](https://awslabs.github.io/mcp/servers/aws-cost-explorer-mcp-server/) | Detailed cost analysis and reporting | <kbd>Install</kbd> [Cursor](https://marketplace.cursorapi.com/aws-cost-explorer-mcp) <br><kbd>Install</kbd> [VS Code](https://marketplace.visualstudio.com/items?itemName=aws.aws-cost-explorer-mcp) |
+| [Amazon CloudWatch MCP Server](https://awslabs.github.io/mcp/servers/aws-cloudwatch-mcp-server/) | Metrics, Alarms, and Logs analysis and operational troubleshooting | <kbd>Install</kbd> [Cursor](https://marketplace.cursorapi.com/aws-cloudwatch-mcp) <br><kbd>Install</kbd> [VS Code](https://marketplace.visualstudio.com/items?itemName=aws.aws-cloudwatch-mcp) |
+| [AWS Billing and Cost Management MCP Server](https://awslabs.github.io/mcp/servers/aws-billing-mcp-server/) | Comprehensive billing and cost management with optimization recommendations | <kbd>Install</kbd> [Cursor](https://marketplace.cursorapi.com/aws-billing-mcp) <br><kbd>Install</kbd> [VS Code](https://marketplace.visualstudio.com/items?itemName=aws.aws-billing-mcp) |
+| [CFM Tips - Cloud Optimization MCP Server](https://github.com/aws-samples/sample-cfm-tips-mcp) | AWS cost optimization playbooks and actionable savings recommendations | <kbd>Install</kbd> [Manual Setup](https://github.com/aws-samples/sample-cfm-tips-mcp#installation) <br><kbd>Install</kbd> [Amazon Q CLI](https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html) |
+
+---
 
 #### Installation:
 ```bash
