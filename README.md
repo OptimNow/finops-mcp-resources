@@ -1,17 +1,70 @@
 # FinOps MCP Resources
 
-A curated collection of Model Context Protocol (MCP) servers and tools for Cloud Financial Operations.
+> Practical **Model Context Protocol (MCP)** resources for **Cloud FinOps**: pricing, budgets, anomaly checks, automation — with security guardrails.
 
-## Quick Start
-- [What is MCP?](docs/what-is-mcp.md)
-- [Getting Started](docs/getting-started.md)
-- [Use Cases for FinOps](docs/finops-use-cases.md)
+[![Build](https://img.shields.io/github/actions/workflow/status/OptimNow/finops-mcp-resources/ci.yml?branch=main)]()
+[![Links](https://img.shields.io/badge/links-checked-brightgreen)]()
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)]()
+[![Good First Issues](https://img.shields.io/github/issues/OptimNow/finops-mcp-resources/good%20first%20issue)]()
 
-## Directory
-- 🖥️ [Clients](clients/) - MCP client applications
-- 🔧 [Servers](servers/) - MCP servers by cloud provider
-- 📚 [Tutorials](tutorials/) - Step-by-step guides
-- 💡 [FinOpsUseCases](FinOpsUseCases/) - Real implementation examples
+---
 
-## Contributing
-Contributions welcome! Please read our contribution guidelines.
+## 🚀 Start Here
+- ✅ [Run your first MCP](tutorials/01-aws-pricing-mcp-quickstart.md)  
+- ✅ [Explore a FinOps use case](finops-use-cases/cost-breakdown-by-tag/)  
+- ✅ [Review enterprise guardrails](tooling-governance/enterprise-checklist.md)  
+
+---
+
+## 📂 Repo Structure
+/docs → background notes, whitepapers, blog summaries
+/servers → registry of available MCP servers (pricing, tagging, governance)
+/clients → tested MCP clients (Claude, Cursor, VS Code, Q, etc.)
+/tutorials → runnable guides (step by step)
+/finops-use-cases → applied scenarios (budgeting, anomaly detection, tagging compliance)
+/tooling-governance → security checklists, threat models, deployment guidance
+/presentations → slides, abstracts, LinkedIn drafts
+/resources → external links (FinOps WG docs, repos, talks, videos)
+
+
+---
+
+## 🧩 What is MCP?
+MCP is a protocol that lets **LLMs act as agents** by safely connecting to external tools (servers) like AWS Pricing, Cloudability, or tagging checkers.  
+In FinOps, MCP unlocks:
+- Faster cost simulations
+- Real-time tagging compliance
+- Automated anomaly checks
+- Cost optimization recommendations  
+
+But also raises **governance and security** challenges — this repo addresses both sides.
+
+---
+
+## 🛠️ Contributing
+We welcome contributions:
+1. Fork the repo and create a branch
+2. Add your MCP server, tutorial, or use case
+3. Open a PR with a clear description  
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.  
+New to MCP or FinOps? Start with issues labeled **good first issue**.
+
+---
+
+## 🔐 Governance
+- [Code of Conduct](CODE_OF_CONDUCT.md)  
+- [Security Policy](SECURITY.md)  
+- [License](LICENSE)  
+
+---
+
+## 🌍 Community
+- Join discussions in the [FinOps Foundation Slack](https://www.finops.org/slack/)  
+- Follow updates on [LinkedIn](https://linkedin.com/in/jeanlatiere)  
+- Share your use cases, raise issues, propose servers  
+
+---
+
+## 📜 License
+This project is licensed under the [Apache 2.0 License](LICENSE).
