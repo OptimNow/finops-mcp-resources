@@ -138,19 +138,6 @@ brew install vantage-sh/tap/vantage-mcp-server
 - **5 requests/5 seconds** for cost reports
 - Consider AI client token limits
 
-## Why Choose Vantage MCP? 🌟
-
-### **vs. Native Cloud Cost Tools**
-- ✅ **Multi-cloud unified view** vs single-provider silos
-- ✅ **Natural language queries** vs complex dashboard navigation
-- ✅ **AI-powered insights** vs manual analysis
-- ✅ **Consistent interface** across all providers
-
-### **vs. Other MCP Cost Tools**
-- ✅ **Production-grade platform** - Not just API wrapper
-- ✅ **Advanced cost intelligence** - Anomalies, forecasts, budgets
-- ✅ **Enterprise features** - Workspaces, RBAC, integrations
-- ✅ **Both hosted/self-hosted** options
 
 ## Enterprise Considerations 🏢
 
