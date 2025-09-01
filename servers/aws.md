@@ -46,22 +46,24 @@ Specialised MCP server focused specifically on AWS financial operations and cost
 
 ---
 
+## ⚙️ Configuration Requirements
 
+### ✅ Prerequisites
+- **MCP Client**: one of [Cursor](https://cursor.com), [Claude Desktop](https://modelcontextprotocol.io/clients/claude), [VS Code MCP Extension](https://marketplace.visualstudio.com/items?itemName=aws), or another MCP-compatible client.  
+- **MCP Server Configs**: install the [AWS MCP servers](#-aws-mcp-servers) of your choice (Pricing, Cost Explorer, CloudWatch, Billing, or CFM Tips).  
+- **Local Setup**:
+  - [Node.js 18+](https://nodejs.org) (needed to run the `uvx` commands in configs)  
+  - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured with profiles  
+  - A configured `~/.aws/credentials` file or environment variables (`AWS_PROFILE`, `AWS_REGION`)  
 
+### 🔐 Required AWS Permissions
+All AWS MCP servers run in **read-only mode**.  
+For least privilege, create a **dedicated IAM user or role** and attach a minimal policy that grants only the actions needed (Pricing, Cost Explorer, CloudWatch, Billing, and CFM Tips services).  
 
+👉 Full JSON policy is provided here:  
+[**AWS MCP Servers — Least-Privilege IAM Policy**](../tooling-governance/security-privileges-aws.md)  
 
-## 🚀  Configuration Requirements
-
-**Prerequisites:**
-- AWS CLI configured with appropriate permissions
-- Node.js 18+ installed
-- MCP client (Claude, VS Code, etc.)
-
-**Required AWS Permissions:**
-- `cost-explorer:*` (for cost analysis)
-- `ce:*` (for Cost Explorer API)
-- `pricing:*` (for pricing data)
-- `cloudwatch:*` (for monitoring)
+> In short: Pricing requires `pricing:GetProducts`, Cost Explorer requires `ce:Get*` actions, CloudWatch uses `cloudwatch:Get*` and `logs:Get*`, Billing relies on Cost Explorer/CUR reads, and CFM Tips also needs `Describe*` access for EC2, RDS, Lambda, and optimization APIs.
 
 ---
 
