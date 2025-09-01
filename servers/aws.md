@@ -47,36 +47,10 @@ Specialised MCP server focused specifically on AWS financial operations and cost
 ---
 
 
-## 🚀 Quick Start Guide
 
-### 1. Choose Your MCP Server
 
-| Server | Best For | Complexity | Maintenance |
-|--------|----------|------------|-------------|
-| **AWS Labs Official** | Comprehensive AWS integration | Medium | AWS-maintained |
-| **AWS FinOps Community** | Specialized FinOps workflows | Low | Community-maintained |
-| **AWS Samples CFM** | Learning and prototyping | Low | Sample code |
 
-### 2. Installation Steps
-
-#### For AWS Labs MCP:
-```bash
-# Install the main package
-npm install @aws/mcp-server-aws
-
-# Configure AWS credentials
-aws configure
-```
-
-#### For Community FinOps Server:
-```bash
-# Clone and install
-git clone https://github.com/ravikiranvm/aws-finops-mcp-server
-cd aws-finops-mcp-server
-npm install
-```
-
-### 3. Configuration Requirements
+## 🚀  Configuration Requirements
 
 **Prerequisites:**
 - AWS CLI configured with appropriate permissions
@@ -93,9 +67,11 @@ npm install
 
 
 
-## 🔧 Integration Examples
+### 🔧 Integration Examples
 
-### With Claude Desktop
+#### With Claude Desktop
+Example of json: 
+
 ```json
 {
   "mcpServers": {
@@ -115,24 +91,13 @@ Install the MCP extension and configure the AWS server in your workspace setting
 
 ---
 
-## 📊 Server Comparison Matrix
 
-| Feature | AWS Labs Official | Community FinOps | AWS Samples CFM |
-|---------|-------------------|------------------|-----------------|
-| **Cost Analysis** | ✅ Comprehensive | ✅ Specialized | ✅ Basic |
-| **Pricing Data** | ✅ Real-time | ✅ Limited | ❌ |
-| **Documentation** | ✅ Extensive | ⚠️ Community | ⚠️ Sample-focused |
-| **Maintenance** | ✅ AWS-backed | ⚠️ Community | ⚠️ Sample code |
-| **Learning Curve** | Medium | Low | Low |
-| **Production Ready** | ✅ | ⚠️ Evaluate | ❌ |
-
----
 
 ## 🛠️ Testing & Validation
 
 ### Before Production Use:
 1. **Test with small datasets** first
-2. **Validate cost calculations** against AWS console
+2. **Validate cost calculations** against AWS console Cost Explorer
 3. **Check API rate limits** for your use case
 4. **Verify permissions** are correctly configured
 5. **Test error handling** scenarios
