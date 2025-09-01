@@ -21,10 +21,10 @@ The client is responsible for:
 
 ## Clients Compared
 For Cloud FinOps professionals, especially in multi-cloud or enterprise settings:
-- VS Code – Best primary cockpit: all-in-one environment, extensible, familiar for engineers, integrates MCPs cleanly.
-- Claude – Excellent companion for demos, quick explorations, and making FinOps data accessible to non-technical stakeholders.
-- Amazon Q – Great for AWS-native teams; handy in-console assistant, but limited to single-cloud and adds lock-in.
-- Cursor – Interesting for experimentation, but feels too dev-oriented and immature for FinOps production needs.
+- **VS Code** – Best primary cockpit: all-in-one environment, extensible, familiar for engineers, integrates MCPs cleanly.
+- **Claude** – Excellent companion for demos, quick explorations, and making FinOps data accessible to non-technical stakeholders.
+- **Amazon Q** – Great for AWS-native teams; handy in-console assistant, but limited to single-cloud and adds lock-in.
+- **Cursor** – Interesting for experimentation, but feels too dev-oriented and immature for FinOps production needs.
 
 ---
 
