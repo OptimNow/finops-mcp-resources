@@ -81,39 +81,35 @@ Scope access only to the accounts/roles you truly need. All actions are **read-o
   ]
 }
 
-📝 Notes
+## 📝 Notes
 
-Billing & Cost Management MCP: this policy uses read APIs (Cost Explorer, CUR, etc.) rather than console-only aws-portal:* actions, which are less portable and only work for IAM users in the payer account.
+- **Billing & Cost Management MCP**: this policy uses **read APIs** (Cost Explorer, CUR, etc.) rather than console-only `aws-portal:*` actions, which are less portable and only work for IAM users in the payer account.  
+- **CFM Tips MCP**: requires additional service `Describe*` calls (EC2, RDS, Lambda, DynamoDB, etc.) to fetch optimization data.  
+- **CUR files**:  
+  If your workflows need to **read** CUR objects from S3, add:  
+  ```json
+  {
+    "Effect": "Allow",
+    "Action": [ "s3:GetObject" ],
+    "Resource": "arn:aws:s3:::<your-cur-bucket>/*"
+  }
 
-CFM Tips MCP: requires additional service Describe* calls (EC2, RDS, Lambda, DynamoDB, etc.) to fetch optimization data.
+- For **multi-account setups**, prefer assuming a **read-only IAM role** in each linked account rather than widening permissions in a single account.
 
-CUR files: CFM Tips lists s3:List* permissions. If your runbooks actually read CUR objects, add:📝 Notes
+## 🚀 How to use
 
-Billing & Cost Management MCP: this policy uses read APIs (Cost Explorer, CUR, etc.) rather than console-only aws-portal:* actions, which are less portable and only work for IAM users in the payer account.
+1. Go to **IAM Console → Policies → Create policy**.  
+2. Choose **JSON**, paste the policy above.  
+3. Name it **`AWS-MCP-ReadOnly`** and save.  
+4. Attach the policy to a **dedicated IAM user or role** used by your MCP client (e.g. for `AWS_PROFILE` in your `mcp.json`).  
+5. If you use **Cost and Usage Reports (CUR)** stored in S3, extend the policy with:  
+   ```json
+   {
+     "Effect": "Allow",
+     "Action": [ "s3:GetObject" ],
+     "Resource": "arn:aws:s3:::<your-cur-bucket>/*"
+   }
 
-CFM Tips MCP: requires additional service Describe* calls (EC2, RDS, Lambda, DynamoDB, etc.) to fetch optimization data.
-
-CUR files: CFM Tips lists s3:List* permissions. If your runbooks actually read CUR objects, add:
-
-{
-  "Effect": "Allow",
-  "Action": [ "s3:GetObject" ],
-  "Resource": "arn:aws:s3:::<your-cur-bucket>/*"
-}
-
-For multi-account setups, prefer assuming a read-only IAM role in each linked account rather than widening permissions in a single account.
-
-🚀 How to use
-
-Go to IAM Console → Policies → Create policy.
-
-Choose JSON, paste the policy above.
-
-Name it AWS-MCP-ReadOnly and save.
-
-Attach the policy to a dedicated IAM user or role used by your MCP client (e.g. for AWS_PROFILE in your mcp.json).
-
-If you use Cost and Usage Reports (CUR) stored in S3, don’t forget to extend the policy with s3:GetObject on the CUR bucket.
 
 
 ---
