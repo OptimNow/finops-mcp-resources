@@ -1,4 +1,4 @@
-*** Installing Amazon Q: https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html
+** Installing Amazon Q **: https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-installing.html
 
 Amazon Q is AWS’s generative AI assistant that integrates with MCP servers in the background, letting you query AWS data, get recommendations, and automate tasks directly in the AWS Console, IDEs, or chat.
 
