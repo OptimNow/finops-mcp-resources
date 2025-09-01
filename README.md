@@ -10,9 +10,9 @@
 ---
 
 ## 🚀 Start Here
-- ✅ [Download a CLient](clients/enterprise-checklist.md) 
+- ✅ [Download a cLient](clients/comparison.md) 
 - ✅ [Run your first MCP](tutorials/01-aws-pricing-mcp-quickstart.md)  
-- ✅ [Explore a FinOps use case](finops-use-cases/cost-breakdown-by-tag/)  
+- ✅ [Explore a FinOps use case](finops-use-cases/UseCase1/)  
  
 
 ---
