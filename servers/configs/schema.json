@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://optimnow.io/finops-mcp-resources/servers/schema.json",
+  "title": "MCP Server Registry Schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "name",
+      "provider",
+      "repo",
+      "category",
+      "description",
+      "capabilities",
+      "auth",
+      "maturity",
+      "security_notes"
+    ],
+    "properties": {
+      "name": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+        "description": "kebab-case unique name"
+      },
+      "provider": {
+        "type": "string",
+        "enum": ["AWS", "Azure", "GCP", "Other"]
+      },
+      "repo": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https?://"
+      },
+      "homepage": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https?://"
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "pricing",
+          "tagging",
+          "governance",
+          "anomaly",
+          "allocation",
+          "reporting",
+          "other"
+        ]
+      },
+      "description": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 400
+      },
+      "capabilities": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z]+(?:-[a-z]+)*$",
+          "description": "verb-noun (kebab-case), e.g. price-lookup"
+        }
+      },
+      "auth": {
+        "type": "array",
+        "minItems": 1,
+        "items": { "type": "string" }
+      },
+      "maturity": {
+        "type": "string",
+        "enum": ["alpha", "beta", "ga", "archived"]
+      },
+      "security_notes": {
+        "type": "string",
+        "minLength": 5
+      },
+      "demo": {
+        "type": "string",
+        "pattern": "^tutorials\\/.+\\.md$",
+        "description": "relative path to a runnable tutorial"
+      },
+      "example_config": {
+        "type": "string",
+        "pattern": "^servers\\/configs\\/.+\\.json$",
+        "description": "relative path to an example MCP client/server JSON"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]{2,}$"
+        },
+        "uniqueItems": true
+      }
+    }
+  },
+  "uniqueItems": true
+}
