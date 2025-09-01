@@ -11,7 +11,7 @@ A curated collection of Model Context Protocol (MCP) servers and tools for Cloud
 - 🖥️ [Clients](clients/) - MCP client applications
 - 🔧 [Servers](servers/) - MCP servers by cloud provider
 - 📚 [Tutorials](tutorials/) - Step-by-step guides
-- 💡 [Examples](examples/) - Real implementation examples
+- 💡 [FinOpsUseCases](FinOpsUseCases/) - Real implementation examples
 
 ## Contributing
 Contributions welcome! Please read our contribution guidelines.
