@@ -14,8 +14,6 @@ The official AWS Labs MCP server collection provides comprehensive AWS service i
 #### Core Modules most relevant for Cloud FinOps:
 - **Cost & Operations**: AWS pricing, cost analysis, and operational tools
 - **CloudWatch**: Monitoring, metrics, and log analysis
-- **Documentation**: Direct access to AWS documentation
-- **HealthOmics**: Genomics workflow management
 - **Pricing**: Real-time AWS pricing data and cost estimation
 
 #### Installation:
@@ -25,6 +23,16 @@ npm install @aws/mcp-server-aws
 
 # Or use the individual servers from the src directory
 ```
+
+### Sample CFM Tips MCP
+**Repository**: [aws-samples/sample-cfm-tips-mcp](https://github.com/aws-samples/sample-cfm-tips-mcp)  
+**Status**: ✅ AWS Samples
+
+Official AWS sample demonstrating Cloud Financial Management (CFM) tips and best practices through MCP.
+
+---
+
+
 
 #### Key Features:
 - ✅ Official AWS support
@@ -57,13 +65,6 @@ Specialized MCP server focused specifically on AWS financial operations and cost
 
 ---
 
-### Sample CFM Tips MCP
-**Repository**: [aws-samples/sample-cfm-tips-mcp](https://github.com/aws-samples/sample-cfm-tips-mcp)  
-**Status**: ✅ AWS Samples
-
-Official AWS sample demonstrating Cloud Financial Management (CFM) tips and best practices through MCP.
-
----
 
 ## 🚀 Quick Start Guide
 
