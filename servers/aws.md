@@ -11,7 +11,7 @@ A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for Fi
 
 The official AWS Labs MCP server collection provides comprehensive AWS service integration:
 
-#### Core Modules Available:
+#### Core Modules most relevant for Cloud FinOps:
 - **Cost & Operations**: AWS pricing, cost analysis, and operational tools
 - **CloudWatch**: Monitoring, metrics, and log analysis
 - **Documentation**: Direct access to AWS documentation
@@ -56,20 +56,6 @@ Specialized MCP server focused specifically on AWS financial operations and cost
 - Reserved Instance optimization
 
 ---
-
-## 📚 Educational Resources
-
-### AWS Cost Analysis with Amazon Q
-**Blog Post**: [AWS Costs Estimation using Amazon Q CLI and AWS Cost Analysis MCP](https://aws.amazon.com/fr/blogs/machine-learning/aws-costs-estimation-using-amazon-q-cli-and-aws-cost-analysis-mcp/)  
-**Status**: ✅ Official AWS Blog
-
-Learn how to combine Amazon Q CLI with MCP for intelligent cost analysis.
-
-#### Key Learnings:
-- Integration patterns between Amazon Q and MCP
-- Automated cost estimation workflows
-- Natural language querying of cost data
-- Best practices for AI-driven FinOps
 
 ### Sample CFM Tips MCP
 **Repository**: [aws-samples/sample-cfm-tips-mcp](https://github.com/aws-samples/sample-cfm-tips-mcp)  
