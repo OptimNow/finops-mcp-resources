@@ -11,7 +11,7 @@
 
 Instead of logging into multiple dashboards:
 ```
-❌ Before: "Let me check AWS console, then Azure portal, then GCP console..."
+❌ Before: "Let me check AWS console..."
 ✅ After:  "How much did we spend on S3 in us-east-1 last month?"
 ```
 
