@@ -3,7 +3,7 @@
 **Sources**: 
 - [Vantage MCP Documentation](https://docs.vantage.sh/vantage_mcp#mcp-clients)
 - [GitHub Repository](https://github.com/vantage-sh/vantage-mcp-server)  
-**Status**: ✅ Production Ready
+
 
 ## What is Vantage MCP? 💡
 
