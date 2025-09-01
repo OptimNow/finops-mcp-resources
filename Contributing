@@ -1,0 +1,13 @@
+# Contributing to FinOps MCP Resources
+
+## How to Contribute
+1. Fork or create a branch
+2. Make your changes
+3. Test any MCP servers you add
+4. Submit a pull request with description
+
+## What We're Looking For
+- New MCP servers for FinOps
+- Installation guides
+- Real-world use cases
+- Bug fixes or improvements
