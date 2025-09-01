@@ -2,7 +2,7 @@
 
 A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for FinOps and cloud management.
 
-# ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Official AWS MCP Servers# ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Official AWS MCP Servers
+# ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Official AWS MCP Servers
 
 ### AWS Labs MCP Collection
 **Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)  
