@@ -27,8 +27,7 @@ Before installing, ensure:
 - **Billing data**: `roles/billing.viewer`  
 - **BigQuery dataset (Billing Export)**: `roles/bigquery.dataViewer`  
 
-👉 Full list of permissions is documented here:  
-[**GCP MCP Required IAM Permissions**](../tooling-governance/security-privileges-gcp.md)  
+ 
 
 ---
 
