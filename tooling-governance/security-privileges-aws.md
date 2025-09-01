@@ -80,7 +80,7 @@ Scope access only to the accounts/roles you truly need. All actions are **read-o
     }
   ]
 }
-
+```
 ## 📝 Notes
 
 - **Billing & Cost Management MCP**: this policy uses **read APIs** (Cost Explorer, CUR, etc.) rather than console-only `aws-portal:*` actions, which are less portable and only work for IAM users in the payer account.  
