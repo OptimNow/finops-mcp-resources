@@ -12,7 +12,7 @@
 ## 🚀 Start Here
 - ✅ [Download a client](clients/Comparison.md) 
 - ✅ [Run your first MCP](tutorials/01-aws-pricing-mcp-quickstart.md)  
-- ✅ [Explore a FinOps use case](finops-use-cases/UseCase1/)  
+- ✅ [Explore the FinOps MCPs and pick the one that best fits your use case](servers/)  
  
 
 ---
