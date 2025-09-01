@@ -163,15 +163,7 @@ Install the MCP extension and configure the AWS server in your workspace setting
 
 ---
 
-## 📈 Next Steps
 
-1. **Start with AWS Labs official server** for comprehensive features
-2. **Experiment with community FinOps server** for specialized workflows  
-3. **Review AWS blog examples** for implementation patterns
-4. **Build custom workflows** based on your organization's needs
-5. **Share learnings** with the community
-
----
 
 ## 🤝 Community & Support
 
@@ -180,8 +172,4 @@ Install the MCP extension and configure the AWS server in your workspace setting
 - **AWS FinOps Community**: Join discussions and share experiences
 - **MCP Discord**: General MCP support and discussions
 
----
 
-**Last Updated**: January 2025  
-**Maintainer**: [Your Name/Organization]  
-**Status**: Active maintenance and updates
