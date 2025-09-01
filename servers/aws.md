@@ -2,7 +2,7 @@
 
 A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for FinOps and cloud management.
 
-# ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Official AWS MCP Servers
+## ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Official AWS MCP Servers
 
 ### AWS Labs MCP Collection
 **Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)  
@@ -10,9 +10,6 @@ A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for Fi
 Below is the list of AWS-maintained MCP servers you can run today.  
 Each entry links to the GitHub repo and includes quick-install buttons for Cursor and VS Code.
 
----
-
-## 📋 AWS MCP Servers
 
 | Server | Description | Repo | Quick Install |
 |:------|:------------|:-----|:--------------|
