@@ -2,9 +2,8 @@
 
 A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for FinOps and cloud management.
 
-## ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Official AWS MCP Servers
+## ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Official Labs MCP Collection
 
-### AWS Labs MCP Collection
 **Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)  
 **Documentation**: [awslabs.github.io/mcp](https://awslabs.github.io/mcp/)  
 Below is the list of AWS-maintained MCP servers you can run today.  
@@ -15,7 +14,7 @@ Each entry links to the GitHub repo and includes quick-install buttons for Curso
 |:------|:------------|:-----|:--------------|
 | **AWS Pricing MCP** | Query AWS price lists and simulate costs | [🔗 GitHub](https://github.com/awslabs/mcp/tree/main/src/aws-pricing-mcp-server) | [![Cursor](https://img.shields.io/badge/Install-Cursor-blue?logo=cursor&logoColor=white)](https://cursor.sh/mcp?source=https://github.com/awslabs/mcp/tree/main/src/aws-pricing-mcp-server) <br> [![VS Code](https://img.shields.io/badge/Install-VS%20Code-green?logo=visualstudiocode&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=AWS.aws-pricing-mcp) |
 | **AWS Cost Explorer MCP** | Retrieve AWS Cost Explorer data for FinOps use cases | [🔗 GitHub](https://github.com/awslabs/mcp/tree/main/src/aws-ce-mcp-server) | [![Cursor](https://img.shields.io/badge/Install-Cursor-blue?logo=cursor&logoColor=white)](https://cursor.sh/mcp?source=https://github.com/awslabs/mcp/tree/main/src/aws-ce-mcp-server) <br> [![VS Code](https://img.shields.io/badge/Install-VS%20Code-green?logo=visualstudiocode&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=AWS.aws-ce-mcp) |
-| **AWS Health MCP** | Access AWS Health events (incidents, advisories) | [🔗 GitHub](https://github.com/awslabs/mcp/tree/main/src/aws-health-mcp-server) | [![Cursor](https://img.shields.io/badge/Install-Cursor-blue?logo=cursor&logoColor=white)](https://cursor.sh/mcp?source=https://github.com/awslabs/mcp/tree/main/src/aws-health-mcp-server) <br> [![VS Code](https://img.shields.io/badge/Install-VS%20Code-green?logo=visualstudiocode&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=AWS.aws-health-mcp) |
+
 
 ---
 
@@ -25,19 +24,13 @@ Each entry links to the GitHub repo and includes quick-install buttons for Curso
 - Contributions are welcome via PRs to [AWS Labs MCP repo](https://github.com/awslabs/mcp). 
 ---
 
-## 💰 Specialized FinOps Servers
+## 💰 AWS FinOps MCP Server (Community)
 
-### AWS FinOps MCP Server (Community)
 **Repository**: [ravikiranvm/aws-finops-mcp-server](https://github.com/ravikiranvm/aws-finops-mcp-server)  
 **Status**: 🧪 Community Project
 
-Specialized MCP server focused specifically on AWS financial operations and cost management.
+Specialised MCP server focused specifically on AWS financial operations and cost management.
 
-#### Why Use This Server?
-- **FinOps-First Design**: Built specifically for cloud financial management
-- **Cost Optimization Focus**: Tools designed for cost analysis and optimization
-- **Simplified Interface**: Streamlined for financial operations teams
-- **Custom Workflows**: Pre-built workflows for common FinOps tasks
 
 #### Use Cases:
 - Cost anomaly detection
