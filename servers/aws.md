@@ -56,18 +56,6 @@ Specialised MCP server focused specifically on AWS financial operations and cost
   - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured with profiles  
   - A configured `~/.aws/credentials` file or environment variables (`AWS_PROFILE`, `AWS_REGION`)  
 
-### 🔐 Required AWS Permissions
-All AWS MCP servers run in **read-only mode**.  
-For least privilege, create a **dedicated IAM user or role** and attach a minimal policy that grants only the actions needed (Pricing, Cost Explorer, CloudWatch, Billing, and CFM Tips services).  
-
-👉 Full JSON policy is provided here:  
-[**AWS MCP Servers — Least-Privilege IAM Policy**](../tooling-governance/security-privileges-aws.md)  
-
-> In short: Pricing requires `pricing:GetProducts`, Cost Explorer requires `ce:Get*` actions, CloudWatch uses `cloudwatch:Get*` and `logs:Get*`, Billing relies on Cost Explorer/CUR reads, and CFM Tips also needs `Describe*` access for EC2, RDS, Lambda, and optimization APIs.
-
----
-
-
 
 ### 🔧 Integration Examples
 
@@ -93,6 +81,16 @@ Install the MCP extension and configure the AWS server in your workspace setting
 
 ---
 
+### 🔐 Required AWS Permissions
+All AWS MCP servers run in **read-only mode**.  
+For least privilege, create a **dedicated IAM user or role** and attach a minimal policy that grants only the actions needed (Pricing, Cost Explorer, CloudWatch, Billing, and CFM Tips services).  
+
+👉 Full JSON policy is provided here:  
+[**AWS MCP Servers — Least-Privilege IAM Policy**](../tooling-governance/security-privileges-aws.md)  
+
+> In short: Pricing requires `pricing:GetProducts`, Cost Explorer requires `ce:Get*` actions, CloudWatch uses `cloudwatch:Get*` and `logs:Get*`, Billing relies on Cost Explorer/CUR reads, and CFM Tips also needs `Describe*` access for EC2, RDS, Lambda, and optimization APIs.
+
+---
 
 
 ## 🛠️ Testing & Validation
