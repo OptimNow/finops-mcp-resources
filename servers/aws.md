@@ -11,14 +11,19 @@ A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for Fi
 
 The official AWS Labs MCP server collection provides comprehensive AWS service integration to monitor, optimize, and manage your AWS infrastructure and costs.
 
+## 🔧 AWS MCP Server Directory
+
+Monitor, optimize, and manage your AWS infrastructure and costs.
 
 | <div style="background-color: #000000; color: #ffffff; padding: 8px; font-weight: bold;">Server Name</div> | <div style="background-color: #000000; color: #ffffff; padding: 8px; font-weight: bold;">Description</div> | <div style="background-color: #000000; color: #ffffff; padding: 8px; font-weight: bold;">Install</div> |
 |-------------|-------------|---------|
-| [AWS Pricing MCP Server](https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server/) | AWS service pricing and cost estimates | <kbd>Install</kbd> [Cursor](https://marketplace.cursorapi.com/aws-pricing-mcp) <br><kbd>Install</kbd> [VS Code](https://marketplace.visualstudio.com/items?itemName=aws.aws-pricing-mcp) |
+| [AWS Pricing MCP Server](https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server/) | AWS service pricing and cost estimates | <kbd>Install</kbd> [Cursor](https://cursor.com/en/install-mcp?name=awslabs.aws-pricing-mcp-server&config=ewogICAgImNvbW1hbmQiOiAidXZ4IGF3c2xhYnMuYXdzLXByaWNpbmctbWNwLXNlcnZlckBsYXRlc3QiLAogICAgImVudiI6IHsKICAgICAgIkZBU1RNQ1BfTE9HX0xFVkVMIjogIkVSUk9SIiwKICAgICAgIkFXU19QUk9GSUxFIjogInlvdXItYXdzLXByb2ZpbGUiLAogICAgICAiQVdTX1JFR0lPTiI6ICJ1cy1lYXN0LTEiCiAgICB9LAogICAgImRpc2FibGVkIjogZmFsc2UsCiAgICAiYXV0b0FwcHJvdmUiOiBbXQogIH0K) <br><kbd>Install</kbd> [VS Code](https://insiders.vscode.dev/redirect/mcp/install?name=AWS%20Pricing%20MCP%20Server&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22awslabs.aws-pricing-mcp-server%40latest%22%5D%2C%22env%22%3A%7B%22FASTMCP_LOG_LEVEL%22%3A%22ERROR%22%2C%22AWS_PROFILE%22%3A%22your-aws-profile%22%2C%22AWS_REGION%22%3A%22us-east-1%22%7D%2C%22disabled%22%3Afalse%2C%22autoApprove%22%3A%5B%5D%7D) |
 | [AWS Cost Explorer MCP Server](https://awslabs.github.io/mcp/servers/aws-cost-explorer-mcp-server/) | Detailed cost analysis and reporting | <kbd>Install</kbd> [Cursor](https://marketplace.cursorapi.com/aws-cost-explorer-mcp) <br><kbd>Install</kbd> [VS Code](https://marketplace.visualstudio.com/items?itemName=aws.aws-cost-explorer-mcp) |
 | [Amazon CloudWatch MCP Server](https://awslabs.github.io/mcp/servers/aws-cloudwatch-mcp-server/) | Metrics, Alarms, and Logs analysis and operational troubleshooting | <kbd>Install</kbd> [Cursor](https://marketplace.cursorapi.com/aws-cloudwatch-mcp) <br><kbd>Install</kbd> [VS Code](https://marketplace.visualstudio.com/items?itemName=aws.aws-cloudwatch-mcp) |
 | [AWS Billing and Cost Management MCP Server](https://awslabs.github.io/mcp/servers/aws-billing-mcp-server/) | Comprehensive billing and cost management with optimization recommendations | <kbd>Install</kbd> [Cursor](https://marketplace.cursorapi.com/aws-billing-mcp) <br><kbd>Install</kbd> [VS Code](https://marketplace.visualstudio.com/items?itemName=aws.aws-billing-mcp) |
 | [CFM Tips - Cloud Optimization MCP Server](https://github.com/aws-samples/sample-cfm-tips-mcp) | AWS cost optimization playbooks and actionable savings recommendations | <kbd>Install</kbd> [Cursor](https://github.com/aws-samples/sample-cfm-tips-mcp#installation) <br><kbd>Install</kbd> [VS Code](https://github.com/aws-samples/sample-cfm-tips-mcp#installation) |
+
+---
 
 ---
 
