@@ -1,6 +1,6 @@
 **Download Cursor**: https://cursor.com/downloads
 
-** Download cursor for Ubuntu** : https://gist.github.com/evgenyneu/5c5c37ca68886bf1bea38026f60603b6
+**Download cursor for Ubuntu** : https://gist.github.com/evgenyneu/5c5c37ca68886bf1bea38026f60603b6
 
 Cursor is an AI-powered IDE that integrates MCP servers directly into your development environment, letting you call APIs, automate tasks, and test agents without leaving your coding/editor workflow.
 
