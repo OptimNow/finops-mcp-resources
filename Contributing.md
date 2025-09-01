@@ -60,30 +60,6 @@ Thank you for your interest in contributing to this FinOps MCP resources reposit
 - **Consistent Formatting**: Follow existing markdown styles and structure
 - **Up-to-Date**: Ensure information reflects current versions and practices
 
-### File Organization
-- **Follow existing structure**: Place content in appropriate folders
-- **Use descriptive filenames**: `aws-cost-optimization.md` not `server1.md`
-- **Update navigation**: Add new content to relevant index files
-- **Maintain consistency**: Match existing naming conventions
-
-### Testing Requirements
-- **Test installation steps** on a clean environment when possible
-- **Document your testing setup**: OS, client, versions used
-- **Note any prerequisites** or system requirements
-- **Verify links** and external references work
-
-## Review Process ✅
-
-### What We Check
-- **Technical accuracy** of installation and configuration steps
-- **Clarity and completeness** of documentation
-- **Consistency** with existing content structure
-- **Proper testing** and validation of any new servers
-
-### Review Timeline
-- **Initial review**: Within 1-2 weeks
-- **Feedback incorporation**: Ongoing collaboration
-- **Merge approval**: After successful review and testing
 
 ## Ideas and Suggestions 💡
 
@@ -93,11 +69,6 @@ Thank you for your interest in contributing to this FinOps MCP resources reposit
 - **Enterprise deployment** guides and best practices
 - **Cost optimization** case studies and examples
 
-### Future Enhancements
-- **Automated testing** for server installations
-- **Template repository** for common FinOps workflows
-- **Community showcases** of successful implementations
-- **Integration guides** for popular FinOps platforms
 
 ## Getting Started
 
@@ -106,12 +77,6 @@ Thank you for your interest in contributing to this FinOps MCP resources reposit
 2. **Check open issues** for contribution opportunities
 3. **Start small** with documentation improvements or corrections
 4. **Ask questions** in issues or discussions if you need clarification
-
-### Regular Contributors
-- **Consider becoming a maintainer** for specific sections
-- **Help review** other contributors' pull requests
-- **Share expertise** through detailed use cases and guides
-- **Suggest structural improvements** as the repository grows
 
 ## Questions or Need Help? 🆘
 
