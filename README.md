@@ -16,15 +16,16 @@
 
 ---
 
-## 📂 Repo Structure
-/docs → background notes, whitepapers, blog summaries
-/servers → registry of available MCP servers (pricing, tagging, governance)
-/clients → tested MCP clients (Claude, Cursor, VS Code, Q, etc.)
-/tutorials → runnable guides (step by step)
-/finops-use-cases → applied scenarios (budgeting, anomaly detection, tagging compliance)
-/tooling-governance → security checklists, threat models, deployment guidance
-/presentations → slides, abstracts, LinkedIn drafts
-/resources → external links (FinOps WG docs, repos, talks, videos)
+## 📂 Repository Structure
+
+- [/foundations](./foundations) → background notes, whitepapers, blog summaries  
+- [/servers](./servers) → registry of available MCP servers (pricing, tagging, governance)  
+- [/clients](./clients) → tested MCP clients (Claude, Cursor, VS Code, Q, etc.)  
+- [/tutorials](./tutorials) → runnable guides (step by step)  
+- [/finops-use-cases](./finops-use-cases) → applied scenarios (budgeting, anomaly detection, tagging compliance)  
+- [/tooling-governance](./tooling-governance) → security checklists, threat models, deployment guidance  
+- [/presentations](./presentations) → slides, abstracts, LinkedIn drafts  
+- [/resources](./resources) → external links (FinOps WG docs, repos, talks, videos)  
 
 
 ---
