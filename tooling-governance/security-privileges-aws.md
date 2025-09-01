@@ -81,20 +81,7 @@ Scope access only to the accounts/roles you truly need. All actions are **read-o
   ]
 }
 ```
-## 📝 Notes
 
-- **Billing & Cost Management MCP**: this policy uses **read APIs** (Cost Explorer, CUR, etc.) rather than console-only `aws-portal:*` actions, which are less portable and only work for IAM users in the payer account.  
-- **CFM Tips MCP**: requires additional service `Describe*` calls (EC2, RDS, Lambda, DynamoDB, etc.) to fetch optimization data.  
-- **CUR files**:  
-  If your workflows need to **read** CUR objects from S3, add:  
-  ```json
-  {
-    "Effect": "Allow",
-    "Action": [ "s3:GetObject" ],
-    "Resource": "arn:aws:s3:::<your-cur-bucket>/*"
-  }
-
-- For **multi-account setups**, prefer assuming a **read-only IAM role** in each linked account rather than widening permissions in a single account.
 
 ## 🚀 How to use
 
@@ -111,10 +98,17 @@ Scope access only to the accounts/roles you truly need. All actions are **read-o
    }
 
 
+## 📝 Notes
 
----
+- **Billing & Cost Management MCP**: this policy uses **read APIs** (Cost Explorer, CUR, etc.) rather than console-only `aws-portal:*` actions, which are less portable and only work for IAM users in the payer account.  
+- **CFM Tips MCP**: requires additional service `Describe*` calls (EC2, RDS, Lambda, DynamoDB, etc.) to fetch optimization data.  
+- **CUR files**:  
+  If your workflows need to **read** CUR objects from S3, add:  
+  ```json
+  {
+    "Effect": "Allow",
+    "Action": [ "s3:GetObject" ],
+    "Resource": "arn:aws:s3:::<your-cur-bucket>/*"
+  }
 
-👉 This file is now fully self-contained: it has the merged JSON policy, the notes, and clear usage instructions.  
-
-Do you also want me to prepare a **stricter variant** (scoping `Resource` to specific ARNs like `arn:aws:cloudwatch:region:account:alarm/*` or your CUR bucket ARN), or do you prefer to keep it broad (`Resource: "*"`) for now?
-
+- For **multi-account setups**, prefer assuming a **read-only IAM role** in each linked account rather than widening permissions in a single account.
