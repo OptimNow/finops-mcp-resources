@@ -1,7 +1,6 @@
 # Cloudflare MCP Server Portals: Securing AI-Powered FinOps 🔐
 
 **Source**: [Cloudflare Blog - MCP Server Portals](https://blog.cloudflare.com/zero-trust-mcp-server-portals/)  
-**Status**: ✅ Open Beta (January 2025)
 
 ## The Problem 🚨
 
