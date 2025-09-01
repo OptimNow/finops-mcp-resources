@@ -1,4 +1,4 @@
-# FinOps MCP Resources
+# Cloud FinOps MCP Resources
 
 > Practical **Model Context Protocol (MCP)** resources for **Cloud FinOps**: pricing, budgets, anomaly checks, automation — with security guardrails.
 
