@@ -21,22 +21,13 @@ The official AWS Labs MCP server collection provides comprehensive AWS service i
 
 ---
 
-#### Installation:
+#### Quick Installation:
 ```bash
 # Via npm
 npm install @aws/mcp-server-aws
 
 # Or use the individual servers from the src directory
 ```
-
-### Sample CFM Tips MCP
-**Repository**: [aws-samples/sample-cfm-tips-mcp](https://github.com/aws-samples/sample-cfm-tips-mcp)  
-**Status**: ✅ AWS Samples
-
-Official AWS sample demonstrating Cloud Financial Management (CFM) tips and best practices through MCP.
-
----
-
 
 
 #### Key Features:
