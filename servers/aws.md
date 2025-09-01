@@ -11,9 +11,7 @@ A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for Fi
 
 The official AWS Labs MCP server collection provides comprehensive AWS service integration to monitor, optimize, and manage your AWS infrastructure and costs.
 
-## 🔧 AWS MCP Server Directory
 
-Monitor, optimize, and manage your AWS infrastructure and costs.
 
 | <div style="background-color: #000000; color: #ffffff; padding: 8px; font-weight: bold;">Server Name</div> | <div style="background-color: #000000; color: #ffffff; padding: 8px; font-weight: bold;">Description</div> | <div style="background-color: #000000; color: #ffffff; padding: 8px; font-weight: bold;">Install</div> |
 |-------------|-------------|---------|
