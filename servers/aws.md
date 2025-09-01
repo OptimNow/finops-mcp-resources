@@ -109,27 +109,7 @@ npm install
 
 ---
 
-## 💡 FinOps Use Cases
 
-### Cost Analysis Workflows
-1. **Daily Cost Monitoring**: Automated daily cost reports
-2. **Anomaly Detection**: Identify unusual spending patterns
-3. **Budget Tracking**: Monitor budget vs. actual spending
-4. **Service-Level Costs**: Break down costs by AWS service
-
-### Optimization Scenarios
-1. **Right-Sizing Analysis**: Identify over-provisioned resources
-2. **Reserved Instance Planning**: Optimize RI coverage
-3. **Spot Instance Opportunities**: Find spot-eligible workloads
-4. **Storage Optimization**: Optimize S3 storage classes
-
-### Reporting & Governance
-1. **Executive Dashboards**: High-level cost summaries
-2. **Chargeback Reports**: Allocate costs to teams/projects
-3. **Compliance Reporting**: Cost governance and controls
-4. **Forecast Modeling**: Predict future spending
-
----
 
 ## 🔧 Integration Examples
 
