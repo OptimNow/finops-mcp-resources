@@ -16,4 +16,3 @@ Learn how to combine Amazon Q CLI with MCP for intelligent cost analysis.
 
 Official AWS sample demonstrating Cloud Financial Management (CFM) tips and best practices through MCP.
 
----
