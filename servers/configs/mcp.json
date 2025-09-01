@@ -1,1 +1,16 @@
+{
+  "mcpServers": {
+    "aws-pricing": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "aws-pricing-mcp"
+      ],
+      "env": {
+        "AWS_DEFAULT_REGION": "us-east-1",
+        "AWS_PROFILE": "default"
+      }
+    }
+  }
+}
 
