@@ -6,8 +6,13 @@ A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for Fi
 
 **Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)  
 **Documentation**: [awslabs.github.io/mcp](https://awslabs.github.io/mcp/)  
-Below is the list of AWS-maintained MCP servers you can run today.  
-Each entry links to the GitHub repo and includes quick-install buttons for Cursor and VS Code.
+Below is the list of AWS-maintained MCP servers you can run today: Monitor, optimize, and manage your AWS infrastructure and costs with official and sample MCP servers.
+
+---
+
+
+
+
 | **Server Name** | **Description** | **Install** |
 |:----------------|:----------------|:-------------|
 | [AWS Pricing MCP Server](https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server/) | AWS service pricing and cost estimates | [![Install Cursor](https://img.shields.io/badge/Install-Cursor-red?logo=cursor&logoColor=white)](https://cursor.com/en/install-mcp?name=awslabs.aws-pricing-mcp-server&config=ewogICAgImNvbW1hbmQiOiAidXZ4IGF3c2xhYnMuYXdzLXByaWNpbmctbWNwLXNlcnZlckBsYXRlc3QiLAogICAgImVudiI6IHsKICAgICAgIkZBU1RNQ1BfTE9HX0xFVkVMIjogIkVSUk9SIiwKICAgICAgIkFXU19QUk9GSUxFIjogInlvdXItYXdzLXByb2ZpbGUiLAogICAgICAiQVdTX1JFR0lPTiI6ICJ1cy1lYXN0LTEiCiAgICB9LAogICAgImRpc2FibGVkIjogZmFsc2UsCiAgICAiYXV0b0FwcHJvdmUiOiBbXQogIH0K) <br> [![Install VS Code](https://img.shields.io/badge/Install-VS%20Code-blue?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=AWS%20Pricing%20MCP%20Server&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22awslabs.aws-pricing-mcp-server%40latest%22%5D%2C%22env%22%3A%7B%22FASTMCP_LOG_LEVEL%22%3A%22ERROR%22%2C%22AWS_PROFILE%22%3A%22your-aws-profile%22%2C%22AWS_REGION%22%3A%22us-east-1%22%7D%2C%22disabled%22%3Afalse%2C%22autoApprove%22%3A%5B%5D%7D) |
