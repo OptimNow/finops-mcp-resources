@@ -1,6 +1,14 @@
 # AWS Pricing MCP Server Installation Tutorial
 
+## Introduction
+
+This tutorial is designed for everyone who wants to try out Model Context Protocol (MCP) servers, including non-technical users. In this tutorial, MCP servers extend Claude's capabilities by connecting it to external data sources and tools. The AWS Pricing MCP server specifically allows Claude to fetch real-time AWS pricing information and generate cost analysis reports.
+
+We've broken down the installation process into detailed, step-by-step instructions so that anyone can successfully set it up, regardless of their technical background. Each step includes explanations of what you're doing and why, along with troubleshooting tips for common issues.
+
 ## Step 0: Prerequisites
+
+Before installing the MCP server, we need to set up the basic tools and software that it depends on. These prerequisites ensure everything works smoothly during installation.RetryClaude can make mistakes. Please double-check responses.
 
 ### - Understanding PowerShell
 **Why PowerShell?**
