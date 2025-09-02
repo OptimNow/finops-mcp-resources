@@ -32,7 +32,8 @@
 ---
 
 ## 🧩 What is MCP?
-MCP is a protocol that lets **LLMs act as agents** by safely connecting to external tools (servers) like AWS Cost Explorer, Azure storage account storing your billing data, or 3rd party solutions like Vantage.  
+MCP is a protocol that lets **LLMs act as agents** by safely connecting to external tools (servers) like AWS Cost Explorer, a GCP BigQuery dataset with billing exports, an Azure storage account holding cost data, or 3rd-party cloud finops solutions like Vantage.
+
 In FinOps, MCP unlocks:
 - Faster cost simulations
 - Real-time tagging compliance 
