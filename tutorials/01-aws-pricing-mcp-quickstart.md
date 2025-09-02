@@ -6,7 +6,7 @@ This tutorial is designed for everyone who wants to try out Model Context Protoc
 
 We've broken down the installation process into detailed, step-by-step instructions so that anyone can successfully set it up, regardless of their technical background. Each step includes explanations of what you're doing and why, along with troubleshooting tips for common issues.
 
-## Step 0: Prerequisites
+## Step 1: Prerequisites
 
 Before installing the MCP server, we need to set up the basic tools and software that it depends on. These prerequisites ensure everything works smoothly during installation.RetryClaude can make mistakes. Please double-check responses.
 
@@ -67,35 +67,16 @@ uv --version
 ### e. Install Python 3.10+
 Install Python using uv:
 ```powershell
-powershelluv python install 3.10
+uv python install 3.10
 ```
 Verify Python installation:
 ```powershell
-powershelluv python list
+uv python list
 ```
 You should see Python 3.10 (or newer) in the list.
 
 ### f. Install Claude Desktop
 Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/2.%20claude.md
-
----
-
-## Step 1: Install AWS Pricing MCP Server
-In PowerShell, run
-```powershell
-npm install -g @aws/aws-pricing-mcp-server
-```
-
-**Success message should show:**
-- Package installation progress
-- Final message like "added 1 package in 2s"
-
-**If you get "npm is not recognized as an internal or external command":**
-- Node.js installation failed or PowerShell needs restart
-- Close PowerShell completely
-- Reopen PowerShell as Administrator
-- Try the npm command again
-- If still failing: https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server/
 
 ---
 
