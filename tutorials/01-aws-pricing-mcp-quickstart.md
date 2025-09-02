@@ -133,13 +133,15 @@ Add to json config:
 ```
 
 ### Option 2: Create Dedicated User (Recommended)
-For better security, create a dedicated AWS user instead of using your personal credentials. First, check your current configuration with `aws sts get-caller-identity` to see which user is currently configured. Then create a new IAM user specifically for MCP operations, attach the mcp policy, generate access keys for this user, and configure it using `aws configure --profile mcp-user`.
+For better security, create a dedicated AWS user instead of using your personal credentials. First, check your current configuration with `aws sts get-caller-identity` to see which user is currently configured. Then create a new IAM user specifically for MCP operations, attach the mcp policy, generate access keys for this user. For detailed instructions on creating users, creating and attaching the right policy, and configuring access keys, see: [AWS Security Privileges Guide](https://github.com/OptimNow/finops-mcp-resources/blob/main/tooling-governance/security-privileges-aws.md)
 
-Configure the dedicated user profile:
+Then configure the dedicated user profile:
 ```powershell
 aws configure --profile mcp-user
 ```
-Update JSON config to use the dedicated profile:
+it will ask you to enter the access keys that you have generated.
+
+Update the Claude JSON config to use the dedicated user:
 ```json
 {
   "mcpServers": {
