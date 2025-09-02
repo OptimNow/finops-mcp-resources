@@ -45,6 +45,8 @@ AWS CLI needs a user with proper permissions to access pricing data. You can use
 ### - Install Claude Desktop
 Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/2.%20claude.md
 
+---
+
 ## Step 1: Install AWS Pricing MCP Server
 In PowerShell, run
 ```powershell
@@ -62,6 +64,8 @@ npm install -g @aws/aws-pricing-mcp-server
 - Try the npm command again
 - If still failing: https://awslabs.github.io/mcp/servers/aws-pricing-mcp-server/
 
+---
+
 ## Step 2: Configure Claude Desktop
 
 **Navigate to MCP configuration:**
@@ -73,6 +77,8 @@ npm install -g @aws/aws-pricing-mcp-server
 
 **Understanding the config file:**
 The Claude Desktop config JSON file tells Claude which MCP servers to connect to. Each entry specifies a server name and how to run it.
+
+---
 
 ## Step 3: Configure AWS User (Choose One Option)
 
@@ -120,6 +126,7 @@ Update JSON config to use the dedicated profile:
 - Completely close Claude Desktop
 - Reopen Claude Desktop
 
+---
 ## Step 4: Verify MCP Server is enabled
 - Open Claude Desktop
 - Click your name/profile in bottom-left
@@ -127,6 +134,8 @@ Update JSON config to use the dedicated profile:
 - Look for "awslabs-aws-pricing-mcp-server" in the list
 - Ensure the toggle is enabled (blue/on position)
 - You should see "running" status next to it
+
+---
 
 ## Step 5: Test the MCP Server
 
