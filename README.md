@@ -2,7 +2,6 @@
 
 > Practical **Model Context Protocol (MCP)** resources for **Cloud FinOps**: pricing, budgets, anomaly checks, automation — with security guardrails.
 
-[![Build](https://img.shields.io/github/actions/workflow/status/OptimNow/finops-mcp-resources/ci.yml?branch=main)]()
 [![Links](https://img.shields.io/badge/links-checked-brightgreen)]()
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)]()
 [![Good First Issues](https://img.shields.io/github/issues/OptimNow/finops-mcp-resources/good%20first%20issue)]()
