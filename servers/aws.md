@@ -29,6 +29,8 @@ Below is the list of AWS-maintained MCP servers you can run today: Monitor, opti
 - Contributions are welcome via PRs to [AWS Labs MCP repo](https://github.com/awslabs/mcp). 
 ---
 
+
+
 ## 💰 AWS FinOps MCP Server (Community)
 
 **Repository**: [ravikiranvm/aws-finops-mcp-server](https://github.com/ravikiranvm/aws-finops-mcp-server)  
@@ -46,6 +48,8 @@ Specialised MCP server focused specifically on AWS financial operations and cost
 
 ---
 
+
+
 ## ⚙️ Configuration Requirements
 
 ### ✅ Prerequisites
@@ -55,6 +59,7 @@ Specialised MCP server focused specifically on AWS financial operations and cost
   - [Node.js 18+](https://nodejs.org) (needed to run the `uvx` commands in configs)  
   - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured with profiles  
   - A configured `~/.aws/credentials` file or environment variables (`AWS_PROFILE`, `AWS_REGION`)  
+
 
 
 ### 🔧 Integration Examples
@@ -81,7 +86,10 @@ Install the MCP extension and configure the AWS server in your workspace setting
 
 ---
 
+
+
 ### 🔐 Required AWS Permissions
+
 All AWS MCP servers run in **read-only mode**.  
 For least privilege, create a **dedicated IAM user or role** and attach a minimal policy that grants only the actions needed (Pricing, Cost Explorer, CloudWatch, Billing, and CFM Tips services).  
 
@@ -91,6 +99,7 @@ For least privilege, create a **dedicated IAM user or role** and attach a minima
 > In short: Pricing requires `pricing:GetProducts`, Cost Explorer requires `ce:Get*` actions, CloudWatch uses `cloudwatch:Get*` and `logs:Get*`, Billing relies on Cost Explorer/CUR reads, and CFM Tips also needs `Describe*` access for EC2, RDS, Lambda, and optimization APIs.
 
 ---
+
 
 
 ## 🛠️ Testing & Validation
@@ -118,5 +127,4 @@ For least privilege, create a **dedicated IAM user or role** and attach a minima
 - **GitHub Issues**: For community servers
 - **AWS FinOps Community**: Join discussions and share experiences
 - **MCP Discord**: General MCP support and discussions
-
 
