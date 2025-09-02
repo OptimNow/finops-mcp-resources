@@ -19,6 +19,7 @@ PowerShell is Windows' built-in command-line tool for installing software and ru
 - Select "Windows PowerShell" or "Terminal"
 - You'll see a window with white text on blue/black background
 
+
 ### b. Install Node.js
 **What is Node.js?**
 Node.js lets your computer run JavaScript programs outside web browsers. The MCP server is built with Node.js.
@@ -33,6 +34,7 @@ node --version
 - Download from https://nodejs.org (choose LTS version)
 - Run installer with default settings
 - Restart PowerShell and test again
+
 
 ### c. Install AWS CLI
 **What is AWS CLI?**
@@ -51,6 +53,7 @@ aws --version
 **Configure AWS user:**
 AWS CLI needs a user with proper permissions to access pricing data. You can use your own AWS user or create a dedicated one. For detailed instructions on creating users and configuring access keys, see: https://github.com/OptimNow/finops-mcp-resources/blob/main/tooling-governance/security-privileges-aws.md
 
+
 ### d. Install uv (Python Package Manager)
 **What is uv?**
 uv is a modern Python package manager from Astral. The AWS Pricing MCP server is Python-based and requires uv.
@@ -65,6 +68,8 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 ```powershell
 uv --version
 ```
+
+
 ### e. Install Python 3.10+
 Install Python using uv:
 ```powershell
@@ -75,6 +80,7 @@ Verify Python installation:
 uv python list
 ```
 You should see Python 3.10 (or newer) in the list.
+
 
 ### f. Install Claude Desktop
 Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/2.%20claude.md
