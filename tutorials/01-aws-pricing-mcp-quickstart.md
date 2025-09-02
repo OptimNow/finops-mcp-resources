@@ -133,7 +133,7 @@ Add to json config:
 ```
 
 ### Option 2: Create Dedicated User (Recommended)
-For better security, create a dedicated AWS user instead of using your personal credentials. First, check your current configuration with `aws sts get-caller-identity` to see which user is currently configured. Then create a new IAM user specifically for MCP operations, attach the pricing policy (already defined in this repository), generate access keys for this user, and configure it using `aws configure --profile mcp-user`.
+For better security, create a dedicated AWS user instead of using your personal credentials. First, check your current configuration with `aws sts get-caller-identity` to see which user is currently configured. Then create a new IAM user specifically for MCP operations, attach the mcp policy, generate access keys for this user, and configure it using `aws configure --profile mcp-user`.
 
 Configure the dedicated user profile:
 ```powershell
