@@ -28,6 +28,7 @@ In PowerShell, type:
 ```powershell
 node --version
 ```
+
 **If not installed:**
 - Download from https://nodejs.org (choose LTS version)
 - Run installer with default settings
