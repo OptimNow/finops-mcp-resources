@@ -100,9 +100,20 @@ Add to json config:
 ```json
 {
   "mcpServers": {
-    "aws-pricing": {
-      "command": "aws-pricing-mcp-server",
-      "args": []
+    "awslabs.aws-pricing-mcp-server": {
+      "command": "uvx",
+      "args": [
+         "--from",
+         "awslabs.aws-pricing-mcp-server@latest",
+         "awslabs.aws-pricing-mcp-server.exe"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_PROFILE": "your-aws-profile",
+        "AWS_REGION": "us-east-1"
+      },
+      "disabled": false,
+      "autoApprove": []
     }
   }
 }
@@ -119,12 +130,20 @@ Update JSON config to use the dedicated profile:
 ```json
 {
   "mcpServers": {
-    "aws-pricing": {
-      "command": "aws-pricing-mcp-server",
-      "args": [],
+    "awslabs.aws-pricing-mcp-server": {
+      "command": "uvx",
+      "args": [
+         "--from",
+         "awslabs.aws-pricing-mcp-server@latest",
+         "awslabs.aws-pricing-mcp-server.exe"
+      ],
       "env": {
-        "AWS_PROFILE": "mcp-user"
-      }
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_PROFILE": "your-aws-profile",
+        "AWS_REGION": "us-east-1"
+      },
+      "disabled": false,
+      "autoApprove": []
     }
   }
 }
