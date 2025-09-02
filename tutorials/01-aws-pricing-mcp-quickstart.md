@@ -87,7 +87,10 @@ Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-re
 
 ---
 
-## Step 2: Configure Claude Desktop
+## Step 2: Configuring the Claude Desktop json
+
+**Understanding the config file:**
+The Claude Desktop config JSON file tells Claude which MCP servers to connect to. Each entry specifies a server name and how to run it.
 
 **Navigate to MCP configuration:**
 - Open Claude Desktop
@@ -96,19 +99,19 @@ Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-re
 - Click "Developer" from the left menu
 - Click "Edit Config" button
 
-**Understanding the config file:**
-The Claude Desktop config JSON file tells Claude which MCP servers to connect to. Each entry specifies a server name and how to run it.
-
 ---
 
 ## Step 3: Configure AWS User (Choose One Option)
+You will need AWS credentials to access your AWS cost data, for that you have 2 options:
 
 ### Option 1: Use Your Personal AWS User
-Configure your existing credentials:
+Configure with your own credentials:
 In PowerShell, run
 ```powershell
 aws configure
 ```
+Add the access keys that belong to your user.
+
 Add to json config:
 ```json
 {
@@ -122,7 +125,7 @@ Add to json config:
       ],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR",
-        "AWS_PROFILE": "your-aws-profile",
+        "AWS_PROFILE": "<your-aws-user>",
         "AWS_REGION": "us-east-1"
       },
       "disabled": false,
@@ -139,7 +142,7 @@ Then configure the dedicated user profile:
 ```powershell
 aws configure --profile mcp-user
 ```
-it will ask you to enter the access keys that you have generated.
+it will ask you to enter the access keys that you have generated for the mcp user.
 
 Update the Claude JSON config to use the dedicated user:
 ```json
@@ -171,12 +174,10 @@ Update the Claude JSON config to use the dedicated user:
 ---
 ## Step 4: Verify MCP Server is enabled
 - Open Claude Desktop
-- Click your name/profile in bottom-left
-- Select "Settings"
+- Click on the 'Search and Tools' button next to the + button in the prompting area
 - Look for "awslabs-aws-pricing-mcp-server" in the list
 - Ensure the toggle is enabled (blue/on position)
-- You should see "running" status next to it
-
+- You can click on it to get more details on the APIs it calls
 ---
 
 ## Step 5: Test the MCP Server
