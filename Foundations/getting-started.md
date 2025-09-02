@@ -30,8 +30,8 @@ Each client has strengths and limitations. Pick the one that best fits your work
 
 ## 3. Review Governance & Security
 Before scaling further, check out the **security and permissions** guidance:  
-- [AWS privileges for pricing](./tooling-governance/security-privileges-aws.md)  
-- [General governance guidelines](./tooling-governance/)  
+- [AWS privileges for pricing](/tooling-governance/security-privileges-aws.md)  
+- [General governance guidelines](/tooling-governance/)  
 
 This will help you set up safe, scoped credentials and avoid giving MCP servers unnecessary permissions.
 
