@@ -158,7 +158,6 @@ Try these prompts in Claude to verify everything works:
 *Expected: Side-by-side pricing comparison for both regions*
 
 **Service analysis:**
-
 ``` Generate a cost report for RDS MySQL db.t3.micro instances ```
 *Expected: Comprehensive cost analysis with recommendations*
 
