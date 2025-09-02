@@ -50,7 +50,32 @@ aws --version
 **Configure AWS user:**
 AWS CLI needs a user with proper permissions to access pricing data. You can use your own AWS user or create a dedicated one. For detailed instructions on creating users and configuring access keys, see: https://github.com/OptimNow/finops-mcp-resources/blob/main/tooling-governance/security-privileges-aws.md
 
-### d. Install Claude Desktop
+### d. Install uv (Python Package Manager)
+**What is uv?**
+uv is a modern Python package manager from Astral. The AWS Pricing MCP server is Python-based and requires uv.
+
+**Install uv:**
+- Download from https://docs.astral.sh/uv/getting-started/installation/ or https://github.com/astral-sh/uv#installation
+- For Windows, use PowerShell:
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+**Verify installation:**
+```powershell
+uv --version
+```
+### e. Install Python 3.10+
+Install Python using uv:
+```powershell
+powershelluv python install 3.10
+```
+Verify Python installation:
+```powershell
+powershelluv python list
+```
+You should see Python 3.10 (or newer) in the list.
+
+### f. Install Claude Desktop
 Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/2.%20claude.md
 
 ---
@@ -103,9 +128,9 @@ Add to json config:
     "awslabs.aws-pricing-mcp-server": {
       "command": "uvx",
       "args": [
-         "--from",
-         "awslabs.aws-pricing-mcp-server@latest",
-         "awslabs.aws-pricing-mcp-server.exe"
+        "--from",
+        "awslabs.aws-pricing-mcp-server@latest",
+        "awslabs.aws-pricing-mcp-server.exe"
       ],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR",
@@ -139,7 +164,7 @@ Update JSON config to use the dedicated profile:
       ],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR",
-        "AWS_PROFILE": "your-aws-profile",
+        "AWS_PROFILE": "<your finops mcp profile>",
         "AWS_REGION": "us-east-1"
       },
       "disabled": false,
