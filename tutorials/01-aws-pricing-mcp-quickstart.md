@@ -8,6 +8,7 @@ We've broken down the installation process into detailed, step-by-step instructi
 
 <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/1ebf9a8de67e4a489e9b15af29dfc4f4?sid=dc919c95-af54-494b-b096-81b095bd3ea9" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+
 *Note: This tutorial is specifically for Windows users and uses PowerShell commands.*
 
 ## Step 1: Prerequisites
