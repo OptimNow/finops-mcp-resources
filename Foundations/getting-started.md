@@ -20,7 +20,7 @@ This is the easiest way to see MCP in action for FinOps.
 ## 2. Set Up an MCP Client
 Once you’ve tried AWS Pricing, explore how to use different MCP **clients**.  
 We provide guides for:
-- [Cursor](./clients/4.%20cursor.md)
+- [Cursor](./clients/4. cursor.md)
 - [Claude](./clients/2.%20claude.md)
 - [VS Code](./clients/1.%20vscode.md)  
 - [Amazon Q](./clients/3.%20amazon-q.md)  
