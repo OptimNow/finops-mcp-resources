@@ -223,6 +223,8 @@ If queries return pricing and cost data, your MCP server is working correctly.
 
 
 
+---
+
 **Here’s a diagram of what you’ve just set up — Claude Desktop running locally with the AWS Pricing MCP server, securely connecting to AWS through your IAM profile to fetch real-time pricing data.**
 
 ```mermaid
