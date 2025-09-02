@@ -2,7 +2,7 @@
 
 ## Step 0: Prerequisites
 
-### Understanding PowerShell
+### - Understanding PowerShell
 **Why PowerShell?**
 PowerShell is Windows' built-in command-line tool for installing software and running system commands. We need it to install the AWS Pricing MCP server using Node.js package manager.
 
@@ -11,7 +11,7 @@ PowerShell is Windows' built-in command-line tool for installing software and ru
 - Select "Windows PowerShell" or "Terminal"
 - You'll see a window with white text on blue/black background
 
-### Install Node.js
+### - Install Node.js
 **What is Node.js?**
 Node.js lets your computer run JavaScript programs outside web browsers. The MCP server is built with Node.js.
 
@@ -25,7 +25,7 @@ node --version
 - Run installer with default settings
 - Restart PowerShell and test again
 
-### Install AWS CLI
+### - Install AWS CLI
 **What is AWS CLI?**
 AWS CLI is Amazon's command-line tool that lets your computer connect to AWS services. The MCP server needs it to fetch pricing data.
 
@@ -42,10 +42,10 @@ aws --version
 **Configure AWS user:**
 AWS CLI needs a user with proper permissions to access pricing data. You can use your own AWS user or create a dedicated one. For detailed instructions on creating users and configuring access keys, see: https://github.com/OptimNow/finops-mcp-resources/blob/main/tooling-governance/security-privileges-aws.md
 
-### Install Claude Desktop
+### - Install Claude Desktop
 Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/2.%20claude.md
 
-Step 1: Install AWS Pricing MCP Server
+## Step 1: Install AWS Pricing MCP Server
 In PowerShell, run
 ```powershell
 npm install -g @aws/aws-pricing-mcp-server
@@ -120,7 +120,7 @@ Update JSON config to use the dedicated profile:
 - Completely close Claude Desktop
 - Reopen Claude Desktop
 
-## Step 4: Verify MCP Server is Running
+## Step 4: Verify MCP Server is enabled
 - Open Claude Desktop
 - Click your name/profile in bottom-left
 - Select "Settings"
@@ -143,4 +143,5 @@ Try these prompts in Claude to verify everything works:
 **Service analysis:**
 *Expected: Comprehensive cost analysis with recommendations*
 ``` Generate a cost report for RDS MySQL db.t3.micro instances ```
+
 If queries return pricing data, your MCP server is working correctly.
