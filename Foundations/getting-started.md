@@ -7,8 +7,7 @@ If you’re new here, here’s the best path to get started:
 ---
 
 ## 1. Start with the AWS Pricing MCP Tutorial
-Your first stop should be the [AWS Pricing MCP Quickstart](./tutorials/01-aws-pricing-mcp-quickstart.md).
-It’s a step-by-step guide that walks you through:
+Your first stop should be the [AWS Pricing MCP Quickstart](./tutorials/01-aws-pricing-mcp-quickstart.md). It’s a step-by-step guide that walks you through:
 - Installing the AWS Pricing MCP server  
 - Connecting it to a client  
 - Running your first real-time cloud pricing queries  
