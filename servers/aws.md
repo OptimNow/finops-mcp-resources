@@ -54,7 +54,7 @@ Specialised MCP server focused specifically on AWS financial operations and cost
 
 ### ✅ Prerequisites
 - **MCP Client**: one of [Cursor](https://cursor.com), [Claude Desktop](https://modelcontextprotocol.io/clients/claude), [VS Code MCP Extension](https://marketplace.visualstudio.com/items?itemName=aws), or another MCP-compatible client.  
-- **MCP Server Configs**: install the [AWS MCP servers](#-aws-mcp-servers) of your choice (Pricing, Cost Explorer, CloudWatch, Billing, or CFM Tips).  
+- **MCP Server Configs**: install the MCP server of your choice (Pricing, Cost Explorer, CloudWatch, Billing, or CFM Tips).  
 - **Local Setup**:
   - [Node.js 18+](https://nodejs.org) (needed to run the `uvx` commands in configs)  
   - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured with profiles  
