@@ -13,7 +13,7 @@
 - ✅ [Download a client](clients/Comparison.md) 
 - ✅ [Run your first MCP](tutorials/01-aws-pricing-mcp-quickstart.md)  
 - ✅ [Explore the FinOps MCPs and pick the one that best fits your use case](servers/)  
- 
+
 
 ---
 
@@ -57,7 +57,6 @@ New to MCP or FinOps? Start with issues labeled **good first issue**.
 
 ## 🔐 Governance
 - [Code of Conduct](CODE_OF_CONDUCT.md)  
-- [Security Policy](SECURITY.md)  
 - [License](LICENSE)  
 
 ---
