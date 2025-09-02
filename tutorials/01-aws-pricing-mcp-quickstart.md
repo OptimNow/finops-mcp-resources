@@ -201,9 +201,9 @@ Try these prompts in Claude to verify everything works:
 
 **Basic pricing query:**
 ```json
-What's the current pricing for EC2 t3.micro instances in us-east-1?
+What's the current pricing for EC2 m7g.large instances in us-east-1?
 ```
-*Expected: Detailed pricing breakdown with hourly/monthly costs*
+*Expected: Detailed pricing of EC2 instance*
 
 **Regional comparison:**
 ```json
@@ -212,7 +212,44 @@ Compare S3 standard storage pricing between us-east-1 and eu-west-1
 *Expected: Side-by-side pricing comparison for both regions*
 
 **Service analysis:**
-```json Generate a cost report for RDS MySQL db.t3.micro instances ```
-*Expected: Comprehensive cost analysis with recommendations*
 
-If queries return pricing data, your MCP server is working correctly.
+```json
+Generate a cost report for my AWS amortized costs over the past 30 days, with a breakdown per service and region. Generate an html report with trend analysis and a forecast for the next quarter.
+```
+
+*Expected: Comprehensive cost analysis and forecast.*
+
+If queries return pricing and cost data, your MCP server is working correctly.
+
+
+
+**Here’s a diagram of what you’ve just set up — Claude Desktop running locally with the AWS Pricing MCP server, securely connecting to AWS through your IAM profile to fetch real-time pricing data.**
+
+```mermaid
+flowchart TB
+    subgraph User["User's Computer (Windows)"]
+        Claude["Claude Desktop"]
+        Config["Claude Config JSON"]
+        PowerShell["PowerShell (Node.js, AWS CLI, Python, uv)"]
+        Profile["AWS Profile (IAM credentials)"]
+        MCPExe["AWS Pricing MCP Server (local)"]
+    end
+
+    subgraph AWS["AWS Cloud ☁️"]
+        API["AWS Pricing API"]
+        IAM["IAM User/Role with MCP Policy"]
+    end
+
+    Claude -- reads settings --> Config
+    Claude -- invokes --> MCPExe
+    MCPExe -- requires tools --> PowerShell
+    MCPExe -- uses creds --> Profile
+    Profile -- authenticates --> IAM
+    MCPExe -- fetches data --> API
+    API -- returns pricing --> MCPExe
+    MCPExe -- sends response --> Claude
+
+    %% style definitions (note the colons)
+    classDef orange fill:#FF9900,stroke:#000,color:#fff
+    class API,IAM orange
+```
