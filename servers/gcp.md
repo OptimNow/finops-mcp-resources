@@ -83,17 +83,17 @@ Update your MCP client config (e.g., in ~/.mcp/servers.json):
     "google-cloud-mcp": {
       "command": "node",
       "args": [
-        "/Users/<your-user>/code/google-cloud-mcp/dist/index.js" ## your path to the json
+        "/Users/<your-user>/code/google-cloud-mcp/dist/index.js" 
       ],
       "env": {
-        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/<your-user>/.config/gcloud/application_default_credentials.json"  ## your credenials
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/<your-user>/.config/gcloud/application_default_credentials.json"  
       }
     }
   }
 }
 ```
 
-
+---
 📝 **Notes**
 
 - This is a **community MCP** (not yet officially supported by Google).
