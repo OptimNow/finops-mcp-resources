@@ -158,7 +158,8 @@ Try these prompts in Claude to verify everything works:
 *Expected: Side-by-side pricing comparison for both regions*
 
 **Service analysis:**
-*Expected: Comprehensive cost analysis with recommendations*
+
 ``` Generate a cost report for RDS MySQL db.t3.micro instances ```
+*Expected: Comprehensive cost analysis with recommendations*
 
 If queries return pricing data, your MCP server is working correctly.
