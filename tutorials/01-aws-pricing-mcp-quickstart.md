@@ -6,10 +6,12 @@ This tutorial is designed for everyone who wants to try out Model Context Protoc
 
 We've broken down the installation process into detailed, step-by-step instructions so that anyone can successfully set it up, regardless of their technical background. Each step includes explanations of what you're doing and why, along with troubleshooting tips for common issues.
 
+This first tutorial involves several prerequisites (Python tools, AWS CLI, etc.), but once you complete this setup, installing additional MCP servers will be much simpler since you'll already have the foundational tools configured.
+
 *Note: This tutorial is specifically for Windows users and uses PowerShell commands.*
 
 
-## What You'll Be Able to Do
+## See it in action
 
 Once everything is installed, you'll be able to use natural language to get AWS pricing information and cost analysis. Here's a demo of what's possible:
 
