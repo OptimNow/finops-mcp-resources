@@ -2,6 +2,8 @@
 
 The **Model Context Protocol (MCP)** is an emerging open standard that connects Large Language Models (LLMs) to external tools and data sources. Think of it as a **USB key for LLMs**: instead of operating in isolation, the model can securely “plug in” to systems like AWS Pricing APIs, budget reports, or cost optimization scripts.
 
+<img src="C:\Users\jlati\Downloads\MCP USB.jpeg" alt="MCP USB" style="zoom:33%;" />
+
 For **FinOps practitioners**, MCP opens up exciting possibilities:
 
 - 🔍 **Real-time cost analysis**: query cloud pricing and usage data directly through your LLM, without static exports.  
@@ -9,8 +11,12 @@ For **FinOps practitioners**, MCP opens up exciting possibilities:
 - ☁️ **Multi-cloud management**: connect the same workflow across AWS, Azure, and GCP MCP servers.  
 - 🛡️ **Governance potential**: manage access and visibility centrally, with scope-limited credentials.
 
+
+
 **Where it shines today:**  
 MCP is especially powerful for **simulation and scenario analysis** — testing what-if cases, comparing regional costs, or generating forecasts on demand.
+
+
 
 **Where to be cautious:**  
 LLMs can still **hallucinate** or misinterpret cost data. And while MCP can connect to APIs that could take actions (e.g., shutting down resources), it’s not yet advisable to let it act autonomously without human validation.
