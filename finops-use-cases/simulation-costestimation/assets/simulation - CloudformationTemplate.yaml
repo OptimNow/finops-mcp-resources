@@ -1,0 +1,256 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Simple IoT Sensor Dashboard - EC2 + RDS + S3 for demo purposes'
+
+Parameters:
+  KeyPairName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of an existing EC2 KeyPair to enable SSH access
+    Default: my-key-pair
+  
+  DBUsername:
+    Type: String
+    Default: iotuser
+    Description: Database admin username
+  
+  DBPassword:
+    Type: String
+    NoEcho: true
+    MinLength: 8
+    Default: IoTDemo123!
+    Description: Database admin password
+
+Resources:
+  # VPC and Security Groups
+  IoTVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: IoT-Demo-VPC
+
+  IoTSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref IoTVPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: IoT-Demo-Subnet
+
+  IoTSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref IoTVPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: !Select [1, !GetAZs '']
+      Tags:
+        - Key: Name
+          Value: IoT-Demo-Subnet-2
+
+  IoTInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: IoT-Demo-IGW
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref IoTVPC
+      InternetGatewayId: !Ref IoTInternetGateway
+
+  IoTRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref IoTVPC
+
+  IoTRoute:
+    Type: AWS::EC2::Route
+    DependsOn: AttachGateway
+    Properties:
+      RouteTableId: !Ref IoTRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref IoTInternetGateway
+
+  SubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref IoTSubnet
+      RouteTableId: !Ref IoTRouteTable
+
+  # Security Groups
+  WebServerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for IoT web server
+      VpcId: !Ref IoTVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 3000
+          ToPort: 3000
+          CidrIp: 0.0.0.0/0
+
+  DatabaseSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for RDS database
+      VpcId: !Ref IoTVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId: !Ref WebServerSecurityGroup
+
+  # RDS Subnet Group
+  DBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnet group for RDS database
+      SubnetIds:
+        - !Ref IoTSubnet
+        - !Ref IoTSubnet2
+
+  # RDS Database
+  IoTDatabase:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: iot-sensor-db
+      DBInstanceClass: db.t3.micro
+      Engine: mysql
+      EngineVersion: '8.0'
+      AllocatedStorage: 20
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      VPCSecurityGroups:
+        - !Ref DatabaseSecurityGroup
+      DBSubnetGroupName: !Ref DBSubnetGroup
+      BackupRetentionPeriod: 0
+      DeleteAutomatedBackups: true
+      DeletionProtection: false
+
+  # S3 Bucket for static assets
+  IoTAssetsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'iot-demo-assets-${AWS::AccountId}'
+
+  # EC2 Instance
+  IoTWebServer:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      KeyName: !Ref KeyPairName
+      SecurityGroupIds:
+        - !Ref WebServerSecurityGroup
+      SubnetId: !Ref IoTSubnet
+      ImageId: ami-0c02fb55956c7d316  # Amazon Linux 2 AMI
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          yum install -y nodejs npm mysql git
+          
+          # Create app directory
+          mkdir -p /opt/iot-dashboard
+          cd /opt/iot-dashboard
+          
+          # Create package.json
+          cat > package.json << 'EOF'
+          {
+            "name": "iot-dashboard",
+            "version": "1.0.0",
+            "main": "app.js",
+            "dependencies": {
+              "express": "^4.18.0",
+              "mysql2": "^3.6.0",
+              "ejs": "^3.1.8"
+            }
+          }
+          EOF
+          
+          npm install
+          
+          # Create basic Node.js app
+          cat > app.js << 'EOF'
+          const express = require('express');
+          const mysql = require('mysql2');
+          const app = express();
+          
+          app.set('view engine', 'ejs');
+          app.use(express.json());
+          
+          const db = mysql.createConnection({
+            host: '${IoTDatabase.Endpoint.Address}',
+            user: '${DBUsername}',
+            password: '${DBPassword}',
+            database: 'iot_sensors'
+          });
+          
+          app.get('/', (req, res) => {
+            db.query('SELECT * FROM sensor_data ORDER BY timestamp DESC LIMIT 10', (err, results) => {
+              if (err) {
+                res.render('index', { data: [], error: err.message });
+              } else {
+                res.render('index', { data: results, error: null });
+              }
+            });
+          });
+          
+          app.post('/sensor-data', (req, res) => {
+            const { sensor_id, temperature, humidity } = req.body;
+            db.query('INSERT INTO sensor_data (sensor_id, temperature, humidity) VALUES (?, ?, ?)', 
+              [sensor_id, temperature, humidity], (err) => {
+                if (err) res.status(500).json({ error: err.message });
+                else res.json({ success: true });
+              });
+          });
+          
+          app.listen(3000, () => {
+            console.log('IoT Dashboard running on port 3000');
+          });
+          EOF
+          
+          # Create views directory and template
+          mkdir views
+          cat > views/index.ejs << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head><title>IoT Sensor Dashboard</title></head>
+          <body>
+            <h1>IoT Sensor Dashboard</h1>
+            <% if (error) { %><p>Error: <%= error %></p><% } %>
+            <table border="1">
+              <tr><th>Sensor ID</th><th>Temperature</th><th>Humidity</th><th>Timestamp</th></tr>
+              <% data.forEach(row => { %>
+                <tr><td><%= row.sensor_id %></td><td><%= row.temperature %></td><td><%= row.humidity %></td><td><%= row.timestamp %></td></tr>
+              <% }); %>
+            </table>
+          </body>
+          </html>
+          EOF
+          
+          # Start the application
+          node app.js &
+
+Outputs:
+  WebServerURL:
+    Description: URL of the IoT Dashboard
+    Value: !Sub 'http://${IoTWebServer.PublicDnsName}:3000'
+  
+  DatabaseEndpoint:
+    Description: RDS Database endpoint
+    Value: !GetAtt IoTDatabase.Endpoint.Address
+  
+  S3BucketName:
+    Description: S3 bucket for assets
+    Value: !Ref IoTAssetsBucket
