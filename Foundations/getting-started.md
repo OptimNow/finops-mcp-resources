@@ -49,10 +49,34 @@ This repo is a sandbox — test, prototype, and see how MCP can accelerate your 
 
 ---
 
+## 5. Discover More MCP Servers
+
+The MCP ecosystem has grown to **10,000+ active servers** as of December 2025. Here's how to discover FinOps-relevant servers:
+
+### Official MCP Registry
+- **URL**: [MCP Registry](https://modelcontextprotocol.io/registry) (check modelcontextprotocol.io)
+- **What it is**: Official server directory launched by the MCP community
+- **Growth**: 407% increase from initial batch, with servers for AWS, Azure, GCP, and third-party FinOps tools
+
+### Community Directories
+- **MCPdb**: Claims 10,000+ servers and clients - [mcpdb.org](https://mcpdb.org)
+- **Awesome MCP Servers**: Curated GitHub list - [github.com/punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)
+- **Official MCP Servers**: Anthropic's reference implementations - [github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+
+### What to Look For
+When discovering MCP servers for FinOps:
+- **Cloud provider integrations**: AWS Cost Explorer, Azure Cost Management, GCP BigQuery billing
+- **Third-party platforms**: Vantage, CloudHealth, Cloudability, Apptio
+- **Governance tools**: Tagging compliance, policy enforcement, security scanning
+- **Data sources**: Billing exports, usage metrics, reservation/savings plan data
+
+---
+
 ## Next Steps
-- Try additional MCP servers beyond AWS Pricing (Azure, GCP, Vantage, etc.)  
-- Share feedback or new use cases in Issues/PRs  
-- Join the wider conversation at [modelcontextprotocol.io](https://modelcontextprotocol.io/)  
+- Try additional MCP servers beyond AWS Pricing (Azure, GCP, Vantage, etc.)
+- Browse the MCP Registry to discover new FinOps-relevant servers
+- Share feedback or new use cases in Issues/PRs
+- Join the wider conversation at [modelcontextprotocol.io](https://modelcontextprotocol.io/)
 
 ---
 

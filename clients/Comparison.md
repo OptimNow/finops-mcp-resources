@@ -20,13 +20,63 @@ The client is responsible for:
 ---
 
 ## Clients Compared
-For Cloud FinOps professionals, especially in multi-cloud or enterprise settings:
-- **VS Code + Github CoPilot** – Best primary cockpit: all-in-one environment, extensible, familiar for engineers, integrates MCPs cleanly.
-- **Claude** – Excellent companion for demos, quick explorations, and making FinOps data accessible to non-technical stakeholders.
-- **Amazon Q** – Great for AWS-native teams; handy in-console assistant, but limited to single-cloud and adds lock-in.
-- **Cursor** – Interesting for experimentation, but feels too dev-oriented and immature for FinOps production needs.
+
+As of December 2025, MCP is supported by all major AI platforms. Here's how they compare for Cloud FinOps professionals:
+
+### **For Technical FinOps Teams (DevOps/Platform Engineering)**
+- **Claude Code** – Best for infrastructure-as-code workflows, with remote MCP support, task workflows, and enterprise controls. Requires developer skills.
+- **Kiro** – Agentic IDE with native MCP, spec-driven development, and agent hooks. Ideal for AWS-focused teams integrating FinOps into IaC workflows. Still in public preview.
+- **VS Code + Extensions** – Flexible, extensible, familiar for engineers. Supports multiple MCP-enabled extensions.
+- **Cursor** – Developer-focused IDE with MCP support. Good for experimentation but less mature for production FinOps.
+
+### **For Business/Finance Stakeholders**
+- **ChatGPT** – Most accessible to non-technical users. Massive user base, conversational interface, good for demos and quick analyses.
+- **Claude Desktop** – Excellent for demos, explorations, and making FinOps data accessible. Native MCP support from Anthropic.
+- **Microsoft Copilot** – Best for Microsoft 365 organizations; share insights via Teams, Excel, PowerPoint. Requires Copilot Studio for full MCP.
+- **Google Gemini** – Ideal for GCP-centric teams using BigQuery billing exports. Strong multi-modal capabilities.
+
+### **For Cloud-Specific Use Cases**
+- **Amazon Q** – Great for AWS-native teams; handy in-console assistant, but limited to AWS and adds vendor lock-in.
+- **Kiro** – Strong AWS integration (backed by AWS), ideal for AWS-centric DevOps teams managing infrastructure as code.
+- **Microsoft Copilot** – Best for Azure-first organizations with existing Microsoft 365 investments.
+- **Google Gemini** – Best for GCP-centric FinOps teams wanting to keep data in Google Cloud.
+
+### **Quick Comparison Table**
+
+| Client | Best For | MCP Support | Pros | Cons |
+|--------|----------|-------------|------|------|
+| **Claude Code** | DevOps/IaC teams | Native, remote servers | Developer-first, task workflows, enterprise controls | Requires technical skills |
+| **Kiro** | AWS DevOps/IaC teams | Native, remote servers | Spec-driven, agent hooks, AWS integration, free preview | Early stage, AWS bias, technical barrier |
+| **ChatGPT** | Business users | Native (March 2025) | Accessible, huge user base, API access | Data privacy concerns, subscription costs |
+| **Claude Desktop** | Demos & exploration | Native | Fast prototyping, conversational | Token limits, Pro subscription |
+| **Gemini** | GCP teams | Native (April 2025) | GCP integration, Vertex AI | GCP bias, API-focused |
+| **Copilot** | Microsoft 365 orgs | GA in Copilot Studio | Azure/M365 integration, governance | Complex licensing, setup overhead |
+| **VS Code** | Engineers | Via extensions | Extensible, familiar | Requires configuration |
+| **Amazon Q** | AWS teams | Native | AWS integration | AWS-only, vendor lock-in |
+| **Cursor** | Developers | Native | Modern IDE features | Less mature for FinOps |
 
 ---
 
 ## Recommendations & Final Take
-👉 Final take: Use VS Code + Gihub CoPilot as your daily FinOps + MCP cockpit, complement with Claude for business-facing queries and demos, and keep Q/Cursor in the toolbox for specific contexts.
+
+**2025 Updated Recommendations:**
+
+For **multi-cloud FinOps teams**:
+1. **Primary cockpit**: Claude Code or VS Code for technical work (IaC, CI/CD, cost optimization)
+2. **Business layer**: ChatGPT or Claude Desktop for executive reports, demos, stakeholder communication
+3. **Cloud-specific**: Use Amazon Q (AWS), Copilot (Azure), or Gemini (GCP) when deep cloud-native integration is needed
+
+For **cloud-specific teams**:
+- **AWS-first**: Kiro (for DevOps/IaC) or Amazon Q (for general AWS work) + Claude Code
+- **Azure-first**: Microsoft Copilot + Claude Code
+- **GCP-first**: Google Gemini + Claude Code
+
+For **teams exploring agentic workflows**:
+- **Kiro** – If you want spec-driven development, agent hooks, and AWS integration (preview stage)
+- **Claude Code** – If you need production-ready stability with remote MCP support
+
+For **non-technical FinOps practitioners**:
+- Start with **ChatGPT** (easiest, most accessible) or **Claude Desktop** (best MCP support)
+- Add cloud-specific tools (Q/Copilot/Gemini) based on primary cloud provider
+
+👉 **Bottom line**: MCP has matured from a niche protocol to industry-standard infrastructure. Choose clients based on your team's technical skills, cloud environment, and whether you need developer tools or business-friendly interfaces.
