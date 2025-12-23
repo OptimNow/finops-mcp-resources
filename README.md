@@ -33,10 +33,10 @@
 ## 🧩 What is MCP?
 MCP is an **open standard protocol** that lets **LLMs act as agents** by safely connecting to external tools (servers) like AWS Cost Explorer, a GCP BigQuery dataset with billing exports, an Azure storage account holding cost data, or 3rd-party cloud finops solutions like Vantage.
 
-**Industry Adoption (2025)**:
+**Industry Adoption (January 2026)**:
 In December 2025, Anthropic donated MCP to the **Agentic AI Foundation** (Linux Foundation), with founding support from Anthropic, Block, and OpenAI, plus backing from Google, Microsoft, AWS, Cloudflare, and Bloomberg. This ensures MCP remains open, neutral, and community-driven as critical AI infrastructure.
 
-The ecosystem has grown to **10,000+ active MCP servers** and is now supported by major AI platforms including ChatGPT, Claude, Gemini, Microsoft Copilot, VS Code, Cursor, and Amazon Q.
+As of January 2026, the ecosystem has grown to **10,000+ active MCP servers** and is now supported by major AI platforms including ChatGPT, Claude, Gemini, Microsoft Copilot, VS Code, Cursor, Kiro, and Amazon Q.
 
 In FinOps, MCP unlocks:
 - Faster cost simulations

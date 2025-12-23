@@ -17,14 +17,26 @@ This is the easiest way to see MCP in action for FinOps.
 ---
 
 ## 2. Set Up an MCP Client
-Once you’ve tried AWS Pricing, explore how to use different MCP **clients**.  
-We provide guides for:
-- [Cursor](/clients/4.%20cursor.md)
-- [Claude](/clients/2.%20claude.md)
-- [VS Code](/clients/1.%20vscode.md)  
-- [Amazon Q](/clients/3.%20amazon-q.md)  
+Once you've tried AWS Pricing, explore how to use different MCP **clients**.
 
-Each client has strengths and limitations. Pick the one that best fits your workflow.
+As of January 2026, we provide comprehensive guides for **9 major MCP clients**:
+
+### **For Developers & Technical Teams**
+- [Claude Code](/clients/8.%20claude-code.md) - Remote MCP, task workflows, enterprise controls
+- [Kiro](/clients/9.%20kiro.md) - Agentic IDE with spec-driven development (AWS-focused, preview)
+- [VS Code](/clients/1.%20vscode.md) - Flexible, extensible, familiar to engineers
+- [Cursor](/clients/4.%20cursor.md) - Modern IDE with MCP support
+
+### **For Business & Finance Stakeholders**
+- [ChatGPT](/clients/5.%20chatgpt.md) - Most accessible, huge user base (added March 2025)
+- [Claude Desktop](/clients/2.%20claude.md) - Fast prototyping, conversational
+- [Microsoft Copilot](/clients/7.%20copilot.md) - Microsoft 365 integration
+- [Google Gemini](/clients/6.%20gemini.md) - GCP integration, Vertex AI (added April 2025)
+
+### **For Cloud-Specific Use Cases**
+- [Amazon Q](/clients/3.%20amazonQ.md) - AWS-native assistant
+
+**Not sure which to choose?** Check our [Client Comparison Guide](/clients/Comparison.md) with detailed pros/cons for FinOps professionals.
 
 ---
 
@@ -51,7 +63,7 @@ This repo is a sandbox — test, prototype, and see how MCP can accelerate your 
 
 ## 5. Discover More MCP Servers
 
-The MCP ecosystem has grown to **10,000+ active servers** as of December 2025. Here's how to discover FinOps-relevant servers:
+The MCP ecosystem has grown to **10,000+ active servers** as of January 2026. Here's how to discover FinOps-relevant servers:
 
 ### Official MCP Registry
 - **URL**: [MCP Registry](https://modelcontextprotocol.io/registry) (check modelcontextprotocol.io)

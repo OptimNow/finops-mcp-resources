@@ -21,7 +21,9 @@ The client is responsible for:
 
 ## Clients Compared
 
-As of December 2025, MCP is supported by all major AI platforms. Here's how they compare for Cloud FinOps professionals:
+**Last Updated: January 2026**
+
+As of January 2026, MCP is supported by all major AI platforms. Here's how they compare for Cloud FinOps professionals:
 
 ### **For Technical FinOps Teams (DevOps/Platform Engineering)**
 - **Claude Code** – Best for infrastructure-as-code workflows, with remote MCP support, task workflows, and enterprise controls. Requires developer skills.
@@ -59,7 +61,7 @@ As of December 2025, MCP is supported by all major AI platforms. Here's how they
 
 ## Recommendations & Final Take
 
-**2025 Updated Recommendations:**
+**January 2026 Recommendations:**
 
 For **multi-cloud FinOps teams**:
 1. **Primary cockpit**: Claude Code or VS Code for technical work (IaC, CI/CD, cost optimization)
@@ -79,4 +81,4 @@ For **non-technical FinOps practitioners**:
 - Start with **ChatGPT** (easiest, most accessible) or **Claude Desktop** (best MCP support)
 - Add cloud-specific tools (Q/Copilot/Gemini) based on primary cloud provider
 
-👉 **Bottom line**: MCP has matured from a niche protocol to industry-standard infrastructure. Choose clients based on your team's technical skills, cloud environment, and whether you need developer tools or business-friendly interfaces.
+👉 **Bottom line** (January 2026): MCP has matured from a niche protocol to industry-standard infrastructure. Choose clients based on your team's technical skills, cloud environment, and whether you need developer tools or business-friendly interfaces.

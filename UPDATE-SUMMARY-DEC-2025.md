@@ -1,7 +1,8 @@
-# Repository Update Summary - December 2025
+# Repository Update Summary - January 2026
 
-**Date**: December 22, 2025
-**Purpose**: Bring finops-mcp-resources repository up to date with latest MCP announcements from the past 2 months (Nov-Dec 2025)
+**Date**: December 22-23, 2025
+**Last Updated**: January 2026
+**Purpose**: Bring finops-mcp-resources repository up to date with latest MCP announcements from the past 2 months (Nov-Dec 2025) and January 2026 additions
 
 ---
 
