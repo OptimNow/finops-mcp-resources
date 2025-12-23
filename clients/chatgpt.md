@@ -1,3 +1,7 @@
+← [Back to Clients](./INDEX.md) | [Home](../README.md) | [Comparison Guide](./comparison.md)
+
+---
+
 # ChatGPT (OpenAI)
 
 **Download ChatGPT**: https://openai.com/chatgpt/download
@@ -56,3 +60,16 @@ Refer to [OpenAI's MCP documentation](https://platform.openai.com) for setup det
 ---
 
 👉 **In short**: ChatGPT + MCP makes cloud cost data conversational and accessible to business users, but requires careful evaluation of data governance, subscription costs, and hallucination risks before enterprise rollout.
+
+---
+
+## Related Resources
+- [All MCP Clients](./INDEX.md) - Overview of 9 clients
+- [Client Comparison Guide](./comparison.md) - Detailed pros/cons
+- [ChatGPT Official Website](https://openai.com/chatgpt)
+- [Security Best Practices](../governance/security-best-practices-2025.md)
+- [Getting Started Guide](../foundations/getting-started.md)
+
+---
+
+← [Previous: Claude Desktop](./claude-desktop.md) | [Next: Google Gemini](./gemini.md) →
