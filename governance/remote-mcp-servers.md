@@ -1,6 +1,6 @@
 # Remote MCP Servers for FinOps
 
-**Last Updated**: December 2025
+**Last Updated**: January 2026
 
 Remote MCP servers are cloud-hosted or network-accessible MCP servers that clients connect to over HTTP/HTTPS or Server-Sent Events (SSE), as opposed to local servers running on the same machine as the MCP client.
 
@@ -9,6 +9,30 @@ Remote MCP support became mainstream in 2025, with Claude Code adding native sup
 ---
 
 ## 🌐 What Are Remote MCP Servers?
+
+### Architecture Comparison: Local vs Remote
+
+```mermaid
+graph LR
+    subgraph Local["Local MCP (Traditional)"]
+        L1[MCP Client]
+        L2[MCP Server Process]
+        L3[Cloud APIs]
+        L1 -->|STDIO| L2
+        L2 --> L3
+    end
+
+    subgraph Remote["Remote MCP (Modern)"]
+        R1[MCP Client]
+        R2[Cloud-Hosted<br/>MCP Server]
+        R3[Cloud APIs]
+        R1 -->|HTTPS/SSE<br/>OAuth| R2
+        R2 --> R3
+    end
+
+    style Local fill:#f9f9f9
+    style Remote fill:#e8f5e9
+```
 
 ### Local MCP Servers (Traditional)
 - Run as processes on the same machine as the MCP client
@@ -57,38 +81,36 @@ Remote MCP support became mainstream in 2025, with Claude Code adding native sup
 
 ### Pattern 1: Cloud-Hosted MCP Server (Recommended for Enterprises)
 
-```
-┌─────────────────────────────────────────────────────┐
-│ MCP Clients (Claude Code, ChatGPT, VS Code, etc.)  │
-│ - Developer workstations                           │
-│ - CI/CD pipelines                                  │
-│ - FinOps dashboards                                │
-└──────────────────┬──────────────────────────────────┘
-                   │ HTTPS / SSE
-                   │ (OAuth 2.0 + PKCE)
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│ Load Balancer (ALB / Azure LB / GCP LB)            │
-│ - TLS termination                                  │
-│ - WAF protection                                   │
-│ - IP allowlisting                                  │
-└──────────────────┬──────────────────────────────────┘
-                   │
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│ MCP Server Cluster (Auto-scaling)                  │
-│ - AWS: ECS Fargate / Lambda                        │
-│ - Azure: Container Apps / Functions                │
-│ - GCP: Cloud Run / Cloud Functions                 │
-└──────────────────┬──────────────────────────────────┘
-                   │
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│ Cloud Provider APIs                                 │
-│ - AWS Cost Explorer, Pricing API                   │
-│ - Azure Cost Management                            │
-│ - GCP BigQuery (billing exports)                   │
-└─────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Clients["MCP Clients"]
+        A1[Claude Code]
+        A2[ChatGPT]
+        A3[VS Code]
+        A4[CI/CD Pipelines]
+    end
+
+    subgraph Security["Security Layer"]
+        B[Load Balancer<br/>TLS + WAF + IP Allowlist]
+    end
+
+    subgraph Compute["MCP Server Cluster"]
+        C1[ECS Fargate/Lambda]
+        C2[Azure Container Apps]
+        C3[GCP Cloud Run]
+    end
+
+    subgraph APIs["Cloud Provider APIs"]
+        D1[AWS Cost Explorer<br/>AWS Pricing API]
+        D2[Azure Cost Management]
+        D3[GCP BigQuery Billing]
+    end
+
+    A1 & A2 & A3 & A4 -->|HTTPS/SSE<br/>OAuth 2.0 + PKCE| B
+    B --> C1 & C2 & C3
+    C1 --> D1
+    C2 --> D2
+    C3 --> D3
 ```
 
 **Best for**:
@@ -100,24 +122,26 @@ Remote MCP support became mainstream in 2025, with Claude Code adding native sup
 
 ### Pattern 2: Shared Team Server (Mid-sized Teams)
 
-```
-┌─────────────────────────────────────────────────────┐
-│ FinOps Team (5-10 users)                           │
-│ - Claude Code, ChatGPT, VS Code clients            │
-└──────────────────┬──────────────────────────────────┘
-                   │ HTTPS
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│ Single Cloud Instance (t3.medium / Standard_D2s_v3)│
-│ - Docker container running MCP server              │
-│ - Nginx reverse proxy with basic auth             │
-│ - Let's Encrypt TLS certificate                    │
-└──────────────────┬──────────────────────────────────┘
-                   │ IAM role / Service principal
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│ Cloud Provider Billing APIs                        │
-└─────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Team["FinOps Team (5-10 users)"]
+        U1[Claude Code]
+        U2[ChatGPT]
+        U3[VS Code]
+    end
+
+    subgraph Server["Cloud Instance (t3.medium)"]
+        S1[Docker Container<br/>MCP Server]
+        S2[Nginx Reverse Proxy<br/>Let's Encrypt TLS]
+    end
+
+    subgraph Cloud["Cloud Provider"]
+        C[Billing APIs<br/>IAM/Service Principal]
+    end
+
+    U1 & U2 & U3 -->|HTTPS<br/>Basic Auth| S2
+    S2 --> S1
+    S1 -->|IAM Role| C
 ```
 
 **Best for**:
@@ -129,16 +153,25 @@ Remote MCP support became mainstream in 2025, with Claude Code adding native sup
 
 ### Pattern 3: Hybrid Local + Remote (Flexible)
 
-```
-Developer 1 (local server)        FinOps Team (remote server)
-       │                                    │
-       │                                    │
-       └──────────┬───────────────────────┘
-                  │
-                  ▼
-          MCP Client Configuration
-          - Local server for dev/test
-          - Remote server for production queries
+```mermaid
+graph TB
+    subgraph Local["Development (Local)"]
+        Dev[Developer Workstation]
+        L[Local MCP Server<br/>STDIO]
+    end
+
+    subgraph Remote["Production (Remote)"]
+        Team[FinOps Team]
+        R[Remote MCP Server<br/>HTTPS/SSE]
+    end
+
+    subgraph Config["MCP Client Configuration"]
+        C[Multi-Server Setup<br/>Local for dev/test<br/>Remote for production]
+    end
+
+    Dev --> L
+    Team --> R
+    L & R --> C
 ```
 
 **Best for**:

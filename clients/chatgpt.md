@@ -36,11 +36,33 @@ ChatGPT is OpenAI's conversational AI assistant that added native MCP support in
 
 ChatGPT supports MCP servers through its desktop application and API:
 
-1. **Desktop App**: Configure MCP servers in Settings → Integrations
+### Desktop App Configuration
+
+1. **Open ChatGPT Settings → Integrations**
+   ![ChatGPT Integrations Menu](../images/clients/chatgpt/integrations-menu.png)
+   *Navigate to Settings and select the Integrations tab*
+
+2. **Add MCP Server Configuration**
+   ![MCP Server Configuration Panel](../images/clients/chatgpt/mcp-config-panel.png)
+   *Configure your MCP server connection (AWS Pricing, Cost Explorer, etc.)*
+
+3. **Verify Connection**
+   ![Connected MCP Servers](../images/clients/chatgpt/available-tools-indicator.png)
+   *ChatGPT shows available MCP tools when successfully connected*
+
+### Using MCP Tools
+
+Once configured, you can query MCP servers directly in your ChatGPT conversations:
+
+![ChatGPT Using AWS Pricing MCP](../images/clients/chatgpt/mcp-tool-usage.png)
+*Example: ChatGPT querying AWS Pricing API through MCP*
+
+### API Configuration
+
 2. **Agents SDK**: Programmatically connect MCP servers to custom agents
 3. **Responses API**: Use MCP tools in API responses for automation workflows
 
-Refer to [OpenAI's MCP documentation](https://platform.openai.com) for setup details.
+Refer to [OpenAI's MCP documentation](https://platform.openai.com) for detailed setup instructions.
 
 ---
 
