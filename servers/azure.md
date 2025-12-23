@@ -26,7 +26,7 @@ Before installing, make sure you have:
 - Assign the **Cost Management Reader** role on the subscription to allow cost and usage queries.  
 - For deeper resource-level insights, you may also need the **Reader** role on selected resource groups or services.  
 
-👉 See [full Azure MCP IAM/RBAC guidance](../tooling-governance/security-privileges-azure.md) for details.  
+👉 See [full Azure MCP IAM/RBAC guidance](../governance/security-privileges-azure.md) for details.  
 
 ---
 

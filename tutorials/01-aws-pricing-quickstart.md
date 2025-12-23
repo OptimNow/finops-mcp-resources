@@ -66,7 +66,7 @@ aws --version
 ```
 
 **Configure AWS user:**
-AWS CLI needs a user with proper permissions to access pricing data. You can use your own AWS user or create a dedicated one. For detailed instructions on creating users and configuring access keys, see: https://github.com/OptimNow/finops-mcp-resources/blob/main/tooling-governance/security-privileges-aws.md
+AWS CLI needs a user with proper permissions to access pricing data. You can use your own AWS user or create a dedicated one. For detailed instructions on creating users and configuring access keys, see: https://github.com/OptimNow/finops-mcp-resources/blob/main/governance/security-aws-iam-policies.md
 
 
 ### d. Install uv (Python Package Manager)
@@ -98,7 +98,7 @@ You should see Python 3.10 (or newer) in the list.
 
 
 ### f. Install Claude Desktop
-Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/2.%20claude.md
+Reference the Claude Desktop setup at: https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/claude-desktop.md
 
 ---
 
@@ -151,7 +151,7 @@ Add to json config:
 ```
 
 ### Option 2: Create Dedicated User (Recommended)
-For better security, create a dedicated AWS user instead of using your personal credentials. First, check your current configuration with `aws sts get-caller-identity` to see which user is currently configured. Then create a new IAM user specifically for MCP operations, attach the mcp policy, generate access keys for this user. For detailed instructions on creating users, creating and attaching the right policy, and configuring access keys, see: [AWS Security Privileges Guide](https://github.com/OptimNow/finops-mcp-resources/blob/main/tooling-governance/security-privileges-aws.md)
+For better security, create a dedicated AWS user instead of using your personal credentials. First, check your current configuration with `aws sts get-caller-identity` to see which user is currently configured. Then create a new IAM user specifically for MCP operations, attach the mcp policy, generate access keys for this user. For detailed instructions on creating users, creating and attaching the right policy, and configuring access keys, see: [AWS Security Privileges Guide](https://github.com/OptimNow/finops-mcp-resources/blob/main/governance/security-aws-iam-policies.md)
 
 Then configure the dedicated user profile:
 ```powershell

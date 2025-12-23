@@ -41,7 +41,7 @@ Quick reference for all 9 supported MCP clients (as of January 2026).
 - **Cloud-Specific**: [Amazon Q](./3. amazonQ.md) (AWS), [Copilot](./7. copilot.md) (Azure), [Gemini](./6. gemini.md) (GCP)
 
 ## Choosing a Client
-See our [Comparison Guide](./Comparison.md) for detailed pros/cons.
+See our [Comparison Guide](./comparison.md) for detailed pros/cons.
 ```
 
 **tutorials/INDEX.md**
@@ -51,9 +51,9 @@ See our [Comparison Guide](./Comparison.md) for detailed pros/cons.
 Step-by-step guides for getting started with MCP for FinOps.
 
 ## Learning Path
-1. [AWS Pricing MCP Quickstart](./01-aws-pricing-mcp-quickstart.md) - Start here
+1. [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) - Start here
 2. [Cost Analysis with Amazon Q](./02. cost-analysis-with-AmazonQ.md)
-3. [FinOps Multi-Agent with Nova](./03.finops_multi_agent_with_nova/guidelines.md)
+3. [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md)
 4. [Azure MCP Quick Start](./04. Azure MCP quick Start.md)
 5. [GCP BigQuery MCP Quick Start](./05. GCP BigQuery MCP Quick Start.md)
 
@@ -99,7 +99,7 @@ Foundations/                        foundations/ (lowercase)
 finops-use-cases/                   use-cases/ (shorter, consistent)
 tooling-governance/                 governance/ (shorter, clearer)
 
-01-aws-pricing-mcp-quickstart.md    01-aws-pricing-quickstart.md
+01-aws-pricing-quickstart.md    01-aws-pricing-quickstart.md
 02. cost-analysis-with-AmazonQ.md   02-amazon-q-cost-analysis.md
 03.finops_multi_agent_with_nova/    03-finops-multi-agent-nova.md (flatten)
 04. Azure MCP quick Start.md        04-azure-mcp-quickstart.md
@@ -162,7 +162,7 @@ Add related links at bottom of each file:
 ## Related Resources
 - [Client Comparison](./comparison.md)
 - [ChatGPT Official Docs](https://openai.com/chatgpt)
-- [Security Best Practices](../governance/mcp-security-2025.md)
+- [Security Best Practices](../governance/security-best-practices-2025.md)
 
 ← [Previous: Claude Desktop](./claude-desktop.md) | [Next: Google Gemini](./gemini.md) →
 ```

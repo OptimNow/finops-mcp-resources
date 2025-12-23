@@ -60,7 +60,7 @@ Quick reference guide for all 9 supported MCP clients and how to choose the righ
 
 For a comprehensive side-by-side comparison with pros/cons for FinOps professionals, see:
 
-**→ [Client Comparison Guide](./Comparison.md)**
+**→ [Client Comparison Guide](./comparison.md)**
 
 This guide includes:
 - Detailed pros and cons for each client
@@ -74,9 +74,9 @@ This guide includes:
 ## 🚀 Getting Started
 
 ### First Time with MCP?
-1. Read [What is MCP?](../Foundations/what-is-mcp.md) to understand the basics
-2. Follow the [Getting Started Guide](../Foundations/getting-started.md)
-3. Try the [AWS Pricing MCP Quickstart](../tutorials/01-aws-pricing-mcp-quickstart.md)
+1. Read [What is MCP?](../foundations/what-is-mcp.md) to understand the basics
+2. Follow the [Getting Started Guide](../foundations/getting-started.md)
+3. Try the [AWS Pricing MCP Quickstart](../tutorials/01-aws-pricing-quickstart.md)
 4. Choose a client from this page based on your needs
 5. Configure your first MCP server
 
@@ -123,9 +123,9 @@ Jump directly to the client guide:
 
 ## 📚 Additional Resources
 
-- [MCP Architecture Overview](../Foundations/mcp-architecture.md) - Understand how MCP works
-- [Security Best Practices](../tooling-governance/mcp-security-2025.md) - Enterprise security guidance
-- [Remote MCP Servers](../tooling-governance/remote-mcp-servers.md) - Cloud-hosted MCP deployment
+- [MCP Architecture Overview](../foundations/mcp-architecture.md) - Understand how MCP works
+- [Security Best Practices](../governance/security-best-practices-2025.md) - Enterprise security guidance
+- [Remote MCP Servers](../governance/remote-mcp-servers.md) - Cloud-hosted MCP deployment
 - [All Tutorials](../tutorials/) - Step-by-step guides
 
 ---

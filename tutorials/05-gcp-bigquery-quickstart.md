@@ -18,7 +18,7 @@ This tutorial walks you through setting up the BigQuery MCP server using the Too
 Before starting, ensure you have:
 
 - **GCP Billing Export to BigQuery** enabled ([Setup Guide](https://cloud.google.com/billing/docs/how-to/export-data-bigquery))
-- **Claude Desktop** installed ([Installation Guide](https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/2.%20claude.md))
+- **Claude Desktop** installed ([Installation Guide](https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/claude-desktop.md))
 - **A GCP Service Account** with appropriate permissions (see below)
 - **Toolbox binary** for your platform (provided or compiled from [source](https://github.com/stacklok/toolbox))
 
@@ -295,7 +295,7 @@ Compare my GCP costs across all regions for the last month. Which region is most
 4. **Audit Access**: Regularly review service account usage in GCP audit logs
 5. **Use Separate Accounts**: Create dedicated service accounts for different purposes
 
-For more details, see our [GCP Security Guide](../tooling-governance/security-privileges-gcp.md) (if available).
+For more details, see our [GCP Security Guide](../governance/security-privileges-gcp.md) (if available).
 
 ---
 
@@ -349,5 +349,5 @@ For more GCP MCP server details, see the [GCP MCP Server Documentation](../serve
 - [GCP Billing Export Setup](https://cloud.google.com/billing/docs/how-to/export-data-bigquery)
 - [GCP Service Account Best Practices](https://cloud.google.com/iam/docs/best-practices-service-accounts)
 - [BigQuery Cost Optimization](https://cloud.google.com/bigquery/docs/best-practices-costs)
-- [MCP Architecture Overview](../Foundations/mcp-architecture.md)
+- [MCP Architecture Overview](../foundations/mcp-architecture.md)
 

@@ -7,7 +7,7 @@ If you’re new here, here’s the best path to get started:
 ---
 
 ## 1. Start with the AWS Pricing MCP Tutorial
-Your first stop should be the [AWS Pricing MCP Quickstart](/tutorials/01-aws-pricing-mcp-quickstart.md). It’s a step-by-step guide that walks you through:
+Your first stop should be the [AWS Pricing MCP Quickstart](/tutorials/01-aws-pricing-quickstart.md). It’s a step-by-step guide that walks you through:
 - Installing the AWS Pricing MCP server  
 - Connecting it to a client  
 - Running your first real-time cloud pricing queries  
@@ -22,28 +22,28 @@ Once you've tried AWS Pricing, explore how to use different MCP **clients**.
 As of January 2026, we provide comprehensive guides for **9 major MCP clients**:
 
 ### **For Developers & Technical Teams**
-- [Claude Code](/clients/8.%20claude-code.md) - Remote MCP, task workflows, enterprise controls
-- [Kiro](/clients/9.%20kiro.md) - Agentic IDE with spec-driven development (AWS-focused, preview)
-- [VS Code](/clients/1.%20vscode.md) - Flexible, extensible, familiar to engineers
-- [Cursor](/clients/4.%20cursor.md) - Modern IDE with MCP support
+- [Claude Code](/clients/claude-code.md) - Remote MCP, task workflows, enterprise controls
+- [Kiro](/clients/kiro.md) - Agentic IDE with spec-driven development (AWS-focused, preview)
+- [VS Code](/clients/vscode.md) - Flexible, extensible, familiar to engineers
+- [Cursor](/clients/cursor.md) - Modern IDE with MCP support
 
 ### **For Business & Finance Stakeholders**
-- [ChatGPT](/clients/5.%20chatgpt.md) - Most accessible, huge user base (added March 2025)
-- [Claude Desktop](/clients/2.%20claude.md) - Fast prototyping, conversational
-- [Microsoft Copilot](/clients/7.%20copilot.md) - Microsoft 365 integration
-- [Google Gemini](/clients/6.%20gemini.md) - GCP integration, Vertex AI (added April 2025)
+- [ChatGPT](/clients/chatgpt.md) - Most accessible, huge user base (added March 2025)
+- [Claude Desktop](/clients/claude-desktop.md) - Fast prototyping, conversational
+- [Microsoft Copilot](/clients/copilot.md) - Microsoft 365 integration
+- [Google Gemini](/clients/gemini.md) - GCP integration, Vertex AI (added April 2025)
 
 ### **For Cloud-Specific Use Cases**
-- [Amazon Q](/clients/3.%20amazonQ.md) - AWS-native assistant
+- [Amazon Q](/clients/amazon-q.md) - AWS-native assistant
 
-**Not sure which to choose?** Check our [Client Comparison Guide](/clients/Comparison.md) with detailed pros/cons for FinOps professionals.
+**Not sure which to choose?** Check our [Client Comparison Guide](/clients/comparison.md) with detailed pros/cons for FinOps professionals.
 
 ---
 
 ## 3. Review Governance & Security
 Before scaling further, check out the **security and permissions** guidance:  
-- [AWS privileges for pricing](/tooling-governance/security-privileges-aws.md)  
-- [General governance guidelines](/tooling-governance/)  
+- [AWS privileges for pricing](/governance/security-aws-iam-policies.md)  
+- [General governance guidelines](/governance/)  
 
 This will help you set up safe, scoped credentials and avoid giving MCP servers unnecessary permissions.
 

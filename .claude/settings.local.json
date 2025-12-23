@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git add:*)",
       "Bash(git merge:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(git mv:*)"
     ],
     "deny": [],
     "ask": []

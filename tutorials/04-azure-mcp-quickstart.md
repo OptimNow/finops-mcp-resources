@@ -75,7 +75,7 @@ You should get this:
 
 ## 6. Next steps
 
-- Review role requirements: [Azure MCP IAM guidance](../tooling-governance/security-privileges-azure.md)
+- Review role requirements: [Azure MCP IAM guidance](../governance/security-privileges-azure.md)
 - Explore FinOps Hub queries in the Data Explorer
 - Extend with tagging, budgets, and anomaly detection
 

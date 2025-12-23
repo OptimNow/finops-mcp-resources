@@ -9,22 +9,22 @@
 ---
 
 ## 🚀 Start Here
-- ✅ [Download a client](clients/Comparison.md) 
-- ✅ [Run your first MCP](tutorials/01-aws-pricing-mcp-quickstart.md)  
-- ✅ [Explore the FinOps MCPs and pick the one that best fits your use case](servers/)  
+- ✅ [Download a client](clients/comparison.md)
+- ✅ [Run your first MCP](tutorials/01-aws-pricing-quickstart.md)
+- ✅ [Explore the FinOps MCPs and pick the one that best fits your use case](servers/)
 
 
 ---
 
 ## 📂 Repository Structure
 
-- [/foundations](./foundations) → background notes, whitepapers, blog summaries  
-- [/servers](./servers) → registry of available MCP servers (pricing, tagging, governance)  
-- [/clients](./clients) → tested MCP clients (Claude, Cursor, VS Code, Q, etc.)  
-- [/tutorials](./tutorials) → runnable guides (step by step)  
-- [/finops-use-cases](./finops-use-cases) → applied scenarios (budgeting, anomaly detection, tagging compliance)  
-- [/tooling-governance](./tooling-governance) → security checklists, threat models, deployment guidance  
-- [/presentations](./presentations) → slides, abstracts, LinkedIn drafts  
+- [/foundations](./foundations) → background notes, whitepapers, blog summaries
+- [/servers](./servers) → registry of available MCP servers (pricing, tagging, governance)
+- [/clients](./clients) → tested MCP clients (Claude, Cursor, VS Code, Q, etc.)
+- [/tutorials](./tutorials) → runnable guides (step by step)
+- [/use-cases](./use-cases) → applied scenarios (budgeting, anomaly detection, tagging compliance)
+- [/governance](./governance) → security checklists, threat models, deployment guidance
+- [/presentations](./presentations) → slides, abstracts, LinkedIn drafts
 - [/resources](./resources) → external links (FinOps WG docs, repos, talks, videos)  
 
 
