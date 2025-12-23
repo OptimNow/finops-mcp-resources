@@ -8,6 +8,19 @@
 
 ---
 
+## 🎉 Recent Updates (January 2026)
+
+This repository is **up-to-date as of January 2026** with the latest MCP developments:
+
+- **AWS MCP Server Unified Architecture** - New consolidated server announced November 2025 with access to 15,000+ AWS APIs, Agent SOPs, and AWS's first remote MCP server ([learn more](./servers/aws.md))
+- **MCP Specification 2025-11-25** - Task workflows, enhanced OAuth PKCE, client credentials, and cross-app authorization ([architecture guide](./foundations/mcp-architecture.md))
+- **Linux Foundation Donation** - MCP donated to Agentic AI Foundation (December 2025) with support from Anthropic, OpenAI, Google, Microsoft, AWS, and others ([details](./foundations/what-is-mcp.md))
+- **New Client Documentation** - Added guides for ChatGPT, Gemini, Copilot, Claude Code, and Kiro - now covering all 9 major MCP clients ([view all clients](./clients/))
+- **Enhanced Security** - Updated security best practices for MCP 2025-11-25 spec with remote MCP deployment guidance ([security docs](./governance/))
+- **Improved Navigation** - Reorganized repository structure with INDEX files for better discoverability ([see CHANGELOG](./CHANGELOG.md))
+
+---
+
 ## 🚀 Start Here
 - ✅ [Download a client](clients/comparison.md)
 - ✅ [Run your first MCP](tutorials/01-aws-pricing-quickstart.md)
