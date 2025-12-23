@@ -1,12 +1,70 @@
+← [Back to Servers](./INDEX.md) | [Home](../README.md) | [Azure Servers](./azure.md) | [GCP Servers](./gcp.md)
+
+---
+
 # AWS MCP Servers
+
+**Last Updated**: January 2026
 
 A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for FinOps and cloud management.
 
-## ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Official Labs MCP Collection
+---
 
-**Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)  
-**Documentation**: [awslabs.github.io/mcp](https://awslabs.github.io/mcp/)  
-Below is the list of AWS-maintained MCP servers you can run today: Monitor, optimize, and manage your AWS infrastructure and costs with official and sample MCP servers.
+## 🚀 AWS MCP Server (Unified Architecture) - Preview
+
+**Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)
+**Announcement**: November 2025
+**Status**: Preview (Generally Available Soon)
+
+AWS has introduced a **unified AWS MCP Server** that consolidates multiple AWS MCP capabilities into a single, powerful interface. This represents the future of AWS MCP integration, orchestrating access to AWS services through a streamlined architecture.
+
+### What's New in the Unified AWS MCP Server
+
+**🎯 Consolidated Architecture**
+- **Single server** combines AWS API MCP and AWS Knowledge servers
+- Access to **15,000+ AWS APIs** through one unified interface
+- Simplified configuration and deployment
+- Built-in orchestration across AWS services
+
+**📚 Agent Standard Operating Procedures (SOPs)**
+- Pre-built workflows for common AWS tasks
+- Best practices codified into reusable patterns
+- Accelerates FinOps automation and cost optimization
+- Reduces time from idea to implementation
+
+**☁️ Remote MCP Server Support**
+- AWS Knowledge MCP server is now **Generally Available** (GA)
+- AWS's **first remote MCP server** (vs local STDIO)
+- Cloud-hosted, scalable infrastructure
+- Enhanced security and enterprise controls
+
+### Key Benefits for FinOps
+
+1. **Unified Cost Management**: Access pricing, billing, and optimization APIs through one server
+2. **Simplified Setup**: Replace multiple server configurations with a single unified deployment
+3. **Enhanced Reliability**: AWS-managed infrastructure with enterprise SLAs
+4. **Better Performance**: Optimized for AWS API interactions and data retrieval
+5. **Task Workflows**: Leverage MCP Specification 2025-11-25 tasks for long-running cost analyses
+
+### Migration Path
+
+The unified AWS MCP Server is designed to work alongside existing individual servers:
+- **Current users**: Continue using individual servers (Pricing, Cost Explorer, CloudWatch, etc.)
+- **New users**: Consider starting with the unified AWS MCP Server for simplified setup
+- **Enterprise teams**: Evaluate remote MCP deployment for centralized management
+
+👉 **Learn more**: [AWS MCP Server Documentation](https://awslabs.github.io/mcp/)
+
+---
+
+## ![AWS Logo](https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg) Individual AWS MCP Servers
+
+**Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)
+**Documentation**: [awslabs.github.io/mcp](https://awslabs.github.io/mcp/)
+
+These **individual MCP servers** provide granular access to specific AWS services. They continue to be supported and are ideal for teams that need fine-grained control over specific AWS APIs. The unified AWS MCP Server (above) is designed to work alongside these servers, not replace them.
+
+**Available Individual Servers:**
 
 ---
 
@@ -127,4 +185,27 @@ For least privilege, create a **dedicated IAM user or role** and attach a minima
 - **GitHub Issues**: For community servers
 - **AWS FinOps Community**: Join discussions and share experiences
 - **MCP Discord**: General MCP support and discussions
+
+---
+
+## 🔗 Related Resources
+
+### Getting Started
+- [AWS Pricing Quickstart Tutorial](../tutorials/01-aws-pricing-quickstart.md)
+- [Cost Analysis with Amazon Q](../tutorials/02-amazon-q-cost-analysis.md)
+- [FinOps Multi-Agent with Nova](../tutorials/03-finops-multi-agent-nova.md)
+
+### Security & Deployment
+- [AWS IAM Policies for MCP Servers](../governance/security-aws-iam-policies.md)
+- [Remote MCP Servers Guide](../governance/remote-mcp-servers.md)
+- [MCP Security Best Practices 2025](../governance/security-best-practices-2025.md)
+
+### MCP Clients
+- [All MCP Clients](../clients/INDEX.md)
+- [Amazon Q for FinOps](../clients/amazon-q.md)
+- [Claude Code](../clients/claude-code.md) - Remote MCP support
+
+---
+
+← [Back to Servers](./INDEX.md) | [Home](../README.md) | [Next: Azure Servers](./azure.md)
 
