@@ -24,6 +24,8 @@ ChatGPT is OpenAI's conversational AI assistant that added native MCP support in
 
 ⚠️ **Cons for a Cloud FinOps professional**
 - **Subscription costs**: MCP features require ChatGPT Plus ($20/month) or Enterprise tier.
+- **Only in Developper Mode**: as of now,ChatGPT can only connect to external MCP servers when Developer mode is enabled.
+- **Only connectes to remote MCP servers over SSE or streaming HTTP**: So you must pick an AWS MCP that is already exposed as HTTPS streaming HTTP, or you must deploy one yourself.
 - **Token/rate limits**: Large billing exports or multi-cloud queries can hit usage caps.
 - **Data privacy concerns**: Sending cost data to OpenAI requires careful compliance review.
 - **Limited audit trails**: Not designed as a governance or approval layer for FinOps decisions.
@@ -34,13 +36,13 @@ ChatGPT is OpenAI's conversational AI assistant that added native MCP support in
 
 ## MCP Configuration
 
-ChatGPT supports MCP servers through its desktop application and API:
+ChatGPT supports MCP servers through the ChatGPT Developper Mode. The key point: ChatGPT Developer mode only connects to remote MCP servers over SSE or streaming HTTP.
 
 ### Desktop App Configuration
 
-1. **Open ChatGPT Settings → Integrations**
+1. **Open ChatGPT Settings → Apps → Advanced Settings → Developer mode**
    ![ChatGPT Integrations Menu](../images/clients/chatgpt/integrations-menu.png)
-   *Navigate to Settings and select the Integrations tab*
+   *Navigate to Settings, Apps, Advanced Settings and select the Integrations tab*
 
 2. **Add MCP Server Configuration**
    ![MCP Server Configuration Panel](../images/clients/chatgpt/mcp-config-panel.png)
