@@ -42,21 +42,28 @@ ChatGPT supports MCP servers through the ChatGPT Developper Mode. The key point:
 
 1. **Open ChatGPT Settings → Apps → Advanced Settings → Developer mode**
    ![ChatGPT Integrations Menu](../images/clients/chatgpt/integrations-menu.png)
+   
    *Navigate to Settings, Apps, Advanced Settings and select the Integrations tab*
+   
 
-2. **Add MCP Server Configuration**
+3. **Add MCP Server Configuration**
    ![MCP Server Configuration Panel](../images/clients/chatgpt/mcp-config-panel.png)
+   
    *Configure your MCP server connection (AWS Pricing, Cost Explorer, etc.)*
+   
 
-3. **Verify Connection**
+5. **Verify Connection**
    ![Connected MCP Servers](../images/clients/chatgpt/available-tools-indicator.png)
+   
    *ChatGPT shows available MCP tools when successfully connected*
+   
 
 ### Using MCP Tools
 
 Once configured, you can query MCP servers directly in your ChatGPT conversations:
 
 ![ChatGPT Using AWS Pricing MCP](../images/clients/chatgpt/mcp-tool-usage.png)
+
 *Example: ChatGPT querying AWS Pricing API through MCP*
 
 ### API Configuration
