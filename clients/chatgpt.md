@@ -36,23 +36,26 @@ ChatGPT is OpenAI's conversational AI assistant that added native MCP support in
 
 ## MCP Configuration
 
-ChatGPT supports MCP servers through the ChatGPT Developper Mode. The key point: ChatGPT Developer mode only connects to remote MCP servers over SSE or streaming HTTP.
+ChatGPT supports MCP servers through the ChatGPT Developper Mode. The key point: ChatGPT Developer mode only connects to remote MCP servers over SSE or streaming HTTP. For our configuration we will use the [AWS Knowledge MCP Server](https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server), which uses HTTP transport and does not require authentication (rate-limited).  
 
 ### Desktop App Configuration
 
 1. **Open ChatGPT Settings → Apps → Advanced Settings → Developer mode**
+   
    ![ChatGPT Integrations Menu](../images/clients/chatgpt/integrations-menu.png)
    
    *Navigate to Settings, Apps, Advanced Settings and select the Integrations tab*
    
 
-3. **Add MCP Server Configuration**
+2. **Add MCP Server Configuration**
+   
    ![MCP Server Configuration Panel](../images/clients/chatgpt/mcp-config-panel.png)
    
-   *Configure your MCP server connection (AWS Pricing, Cost Explorer, etc.)*
+   *Configure your MCP server connection using the API endpoint [AWS Knowledge MCP Server](https://knowledge-mcp.global.api.aws)*
    
 
-5. **Verify Connection**
+3. **Verify Connection**
+   
    ![Connected MCP Servers](../images/clients/chatgpt/available-tools-indicator.png)
    
    *ChatGPT shows available MCP tools when successfully connected*
@@ -60,7 +63,8 @@ ChatGPT supports MCP servers through the ChatGPT Developper Mode. The key point:
 
 ### Using MCP Tools
 
-Once configured, you can query MCP servers directly in your ChatGPT conversations:
+Once configured, you can query MCP servers directly in your ChatGPT conversations and test with a prompt that forces tool usage, for example:
+“Use the AWS Knowledge app. In which regions are the Graviton 5 instances deployed?”
 
 ![ChatGPT Using AWS Pricing MCP](../images/clients/chatgpt/mcp-tool-usage.png)
 
@@ -68,10 +72,11 @@ Once configured, you can query MCP servers directly in your ChatGPT conversation
 
 ### API Configuration
 
-2. **Agents SDK**: Programmatically connect MCP servers to custom agents
-3. **Responses API**: Use MCP tools in API responses for automation workflows
+1. **Agents SDK**: Programmatically connect MCP servers to custom agents. It’s the right choice if you want a richer agent runtime (state, orchestration, tool policies), and not just “one request → one response.”
+   
+2. **Responses API**: Use MCP tools in API responses for automation workflows: the Responses API can call remote MCP servers directly, as part of a single response “agentic loop.” It supports remote MCP servers over Streamable HTTP or HTTP/SSE only. Conceptually, you pass an MCP server in tools, the API imports the tool list from that server, then the model can invoke those tools; you’ll see outputs like mcp_list_tools and tool call items in the response.
 
-Refer to [OpenAI's MCP documentation](https://platform.openai.com) for detailed setup instructions.
+Refer to [OpenAI's MCP documentation](https://platform.openai.com/docs/guides/tools-connectors-mcp) for detailed setup instructions.
 
 ---
 
