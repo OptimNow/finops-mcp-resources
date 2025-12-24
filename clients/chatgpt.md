@@ -41,7 +41,7 @@ ChatGPT supports MCP servers through the ChatGPT Developper Mode. The key point:
 ### Desktop App Configuration
 
 1. **Open ChatGPT Settings → Apps → Advanced Settings → Developer mode**
-   ![ChatGPT Integrations Menu](../images/clients/chatgpt/integrations-menu.mp4)
+   ![ChatGPT Integrations Menu](../images/clients/chatgpt/integrations-menu.png)
    *Navigate to Settings, Apps, Advanced Settings and select the Integrations tab*
 
 2. **Add MCP Server Configuration**
