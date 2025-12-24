@@ -27,6 +27,7 @@ Specifically:
 Many MCP servers (including several in awslabs/mcp) are `stdio`-only by default and **cannot be used directly with ChatGPT** without deploying an HTTP wrapper or proxy.
 
 ---
+## ChatGPT Pros and Cons with MCPs
 
 ✅ **Pros for a Cloud FinOps professional**
 - **Massive user base**: ChatGPT's popularity makes FinOps insights accessible to non-technical stakeholders.
@@ -47,7 +48,6 @@ Many MCP servers (including several in awslabs/mcp) are `stdio`-only by default 
 **Model Risk**
 - Model variability across GPT versions
 - Hallucination risk requires validation against source data
-
 
 ---
 
