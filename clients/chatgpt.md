@@ -14,6 +14,20 @@ ChatGPT is OpenAI's conversational AI assistant that added native MCP support in
 
 ---
 
+## Compatibility & Transport Requirements (Important)
+
+ChatGPT can connect to MCP servers **only if they are exposed as remote HTTP services**.
+
+Specifically:
+- ChatGPT does **not** support local `stdio` MCP servers
+- MCP servers must support **Streamable HTTP** or **HTTP/SSE**
+- The MCP server must be reachable over **public HTTPS**
+- Authentication must match ChatGPT workspace policy (OAuth or None)
+
+Many MCP servers (including several in awslabs/mcp) are `stdio`-only by default and **cannot be used directly with ChatGPT** without deploying an HTTP wrapper or proxy.
+
+---
+
 ✅ **Pros for a Cloud FinOps professional**
 - **Massive user base**: ChatGPT's popularity makes FinOps insights accessible to non-technical stakeholders.
 - **MCP-native**: Direct integration with AWS, Azure, GCP pricing servers, cost explorers, and custom FinOps tools.
@@ -23,31 +37,42 @@ ChatGPT is OpenAI's conversational AI assistant that added native MCP support in
 - **Fast prototyping**: Quick "what if" scenarios for cost simulations and forecasting.
 
 ⚠️ **Cons for a Cloud FinOps professional**
-- **Subscription costs**: MCP features require ChatGPT Plus ($20/month) or Enterprise tier.
-- **Only in Developper Mode**: as of now,ChatGPT can only connect to external MCP servers when Developer mode is enabled.
-- **Only connectes to remote MCP servers over SSE or streaming HTTP**: So you must pick an AWS MCP that is already exposed as HTTPS streaming HTTP, or you must deploy one yourself.
-- **Token/rate limits**: Large billing exports or multi-cloud queries can hit usage caps.
-- **Data privacy concerns**: Sending cost data to OpenAI requires careful compliance review.
-- **Limited audit trails**: Not designed as a governance or approval layer for FinOps decisions.
-- **Model variability**: GPT-4 vs GPT-4o vs o1 — different models have different MCP capabilities and costs.
-- **Hallucination risk**: Outputs feel authoritative but need validation against source billing data.
+**Technical**
+- Remote MCP only (no local stdio)
+- Token and rate limits on large billing datasets
+- Not designed for audit trails or approvals
+**Cost & Governance**
+- MCP requires Plus or Enterprise tiers
+- Data privacy and residency must be assessed
+**Model Risk**
+- Model variability across GPT versions
+- Hallucination risk requires validation against source data
+
 
 ---
 
-## MCP Configuration
+### MCP Access Modes
 
-ChatGPT supports MCP servers through the ChatGPT Developper Mode. The key point: ChatGPT Developer mode only connects to remote MCP servers over SSE or streaming HTTP. For our configuration we will use the [AWS Knowledge MCP Server](https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server), which uses HTTP transport and does not require authentication (rate-limited).  
+- **ChatGPT UI**: MCP connections are available only in **Developer Mode**
+- **OpenAI API**: MCP can be used programmatically via the **Responses API** or **Agents SDK**, without ChatGPT Developer Mode
+
+---
 
 ### Desktop App Configuration
+
+For our configuration we will use the [AWS Knowledge MCP Server](https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server), which uses HTTP transport and does not require authentication (rate-limited).  
+
 
 1. **Open ChatGPT Settings → Apps → Advanced Settings → Developer mode**
    
    ![ChatGPT Integrations Menu](../images/clients/chatgpt/integrations-menu.png)
    
    *Navigate to Settings, Apps, Advanced Settings and select the Integrations tab*
+
    
 
 2. **Add MCP Server Configuration**
+
    
    ![MCP Server Configuration Panel](../images/clients/chatgpt/mcp-config-panel.png)
    
@@ -59,16 +84,18 @@ ChatGPT supports MCP servers through the ChatGPT Developper Mode. The key point:
    ![Connected MCP Servers](../images/clients/chatgpt/available-tools-indicator.png)
    
    *ChatGPT shows available MCP tools when successfully connected*
-   
+
+---   
 
 ### Using MCP Tools
 
-Once configured, you can query MCP servers directly in your ChatGPT conversations and test with a prompt that forces tool usage, for example:
-“Use the AWS Knowledge app. In which regions are the Graviton 5 instances deployed?”
+Once configured, you can query MCP servers directly in your ChatGPT conversations and test with a prompt that forces tool usage.
 
-![ChatGPT Using AWS Pricing MCP](../images/clients/chatgpt/mcp-tool-usage.png)
+![ChatGPT Using AWS Knowledge MCP](../images/clients/chatgpt/mcp-tool-usage.png)
 
-*Example: ChatGPT querying AWS Pricing API through MCP*
+*Example: In which regions are the Graviton 5 instances deployed?*
+
+--- 
 
 ### API Configuration
 
@@ -95,7 +122,38 @@ Refer to [OpenAI's MCP documentation](https://platform.openai.com/docs/guides/to
 
 ---
 
-👉 **In short**: ChatGPT + MCP makes cloud cost data conversational and accessible to business users, but requires careful evaluation of data governance, subscription costs, and hallucination risks before enterprise rollout.
+## MCP Transport Types Explained
+
+ChatGPT and the OpenAI API can only connect to MCP servers that expose **remote HTTP transports**. Two variants are supported.
+
+### Streamable HTTP (Recommended)
+
+Streamable HTTP is the modern MCP transport for remote servers.
+
+- MCP messages are exchanged over standard HTTPS requests
+- The server may stream responses incrementally
+- Works well with load balancers, serverless platforms, and cloud deployments
+- Easier to secure, observe, and scale
+
+This is the **preferred transport** for production MCP servers.
+
+### HTTP/SSE (Legacy but supported)
+
+HTTP/SSE uses Server-Sent Events:
+
+- The client sends requests via HTTP
+- The server keeps a long-lived SSE connection open to stream responses
+- Some older MCP servers still use this model
+
+This transport is still supported but may be harder to operate behind corporate proxies or firewalls.
+
+### What is not supported by ChatGPT
+
+- Local `stdio` MCP servers
+- CLI-based MCP execution (`npx`, `uvx`, Docker)
+- File-based or socket-based transports
+
+If your MCP server is `stdio`-only, you must deploy a remote HTTP wrapper to use it with ChatGPT.
 
 ---
 
