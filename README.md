@@ -44,6 +44,10 @@ This repository is **up-to-date as of January 2026** with the latest MCP develop
 ---
 
 ## 🧩 What is MCP?
+
+![MCP Architecture - Hub & Spoke Model](./images/MCP_USB.jpeg)
+*MCP connects AI clients to multiple data sources and services through a standardized protocol*
+
 MCP is an **open standard protocol** that lets **LLMs act as agents** by safely connecting to external tools (servers) like AWS Cost Explorer, a GCP BigQuery dataset with billing exports, an Azure storage account holding cost data, or 3rd-party cloud finops solutions like Vantage.
 
 **Industry Adoption (January 2026)**:

@@ -35,13 +35,90 @@ Claude Code is Anthropic's official CLI and IDE integration for Claude, designed
 
 Claude Code supports multiple MCP configuration methods:
 
-1. **Plugin MCP Servers**: Pre-packaged servers with automatic setup (no manual config)
-2. **Project-level config**: `.claude/mcp.json` for project-specific MCP servers
-3. **User-level config**: `~/Library/Application Support/Claude/mcp.json` (macOS) or `%APPDATA%\Claude\mcp.json` (Windows)
-4. **Enterprise config**: `managed-mcp.json` for centralized IT control with allowlists/denylists
-5. **Remote servers**: Connect to cloud-hosted MCP servers via SSE or HTTP transports
+### 1. Local MCP Servers (STDIO)
 
-Refer to [Claude Code MCP Documentation](https://code.claude.com/docs/en/mcp) for detailed setup.
+Create a configuration file at one of these locations:
+- **Project-level**: `.claude/mcp.json` (project-specific servers)
+- **User-level**:
+  - macOS: `~/Library/Application Support/Claude/mcp.json`
+  - Windows: `%APPDATA%\Claude\mcp.json`
+  - Linux: `~/.config/Claude/mcp.json`
+
+**Example configuration for AWS Pricing MCP Server:**
+
+```json
+{
+  "mcpServers": {
+    "aws-pricing": {
+      "command": "uvx",
+      "args": ["awslabs.aws-pricing-mcp-server@latest"],
+      "env": {
+        "AWS_PROFILE": "your-aws-profile",
+        "AWS_REGION": "us-east-1",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "aws-cost-explorer": {
+      "command": "uvx",
+      "args": ["awslabs.cost-explorer-mcp-server@latest"],
+      "env": {
+        "AWS_PROFILE": "your-aws-profile",
+        "AWS_REGION": "us-east-1"
+      }
+    }
+  }
+}
+```
+
+### 2. Remote MCP Servers (SSE/HTTP)
+
+For cloud-hosted MCP servers (available since June 2025):
+
+```json
+{
+  "mcpServers": {
+    "remote-finops-server": {
+      "url": "https://mcp.finops-corp.example.com/sse",
+      "transport": "sse",
+      "headers": {
+        "Authorization": "Bearer ${MCP_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+### 3. Plugin MCP Servers
+
+Install pre-packaged servers with one command:
+
+```bash
+# Install AWS pricing MCP plugin
+claude mcp install awslabs/aws-pricing-mcp-server
+
+# Install from MCP Registry
+claude mcp install <server-name>
+```
+
+### 4. Enterprise Configuration
+
+For managed environments with centralized control:
+
+```json
+{
+  "managedMcp": {
+    "allowlist": [
+      "awslabs.aws-pricing-mcp-server",
+      "awslabs.cost-explorer-mcp-server"
+    ],
+    "denylist": [
+      "untrusted-server"
+    ]
+  }
+}
+```
+
+Refer to [Claude Code MCP Documentation](https://docs.claude.ai/docs/model-context-protocol) for detailed setup instructions.
 
 ---
 
