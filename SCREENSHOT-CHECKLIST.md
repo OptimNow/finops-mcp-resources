@@ -27,10 +27,10 @@ This checklist helps you capture the screenshots needed to complete the visual d
 ### High Priority (Most Impact)
 
 #### ChatGPT (`images/clients/chatgpt/`)
-- [ ] `integrations-menu.png` - Settings → Integrations menu
-- [ ] `mcp-config-panel.png` - MCP server configuration interface
-- [ ] `mcp-tool-usage.png` - ChatGPT querying AWS pricing via MCP
-- [ ] `available-tools-indicator.png` - UI showing connected servers
+- [xx ] `integrations-menu.png` - Settings → Integrations menu
+- [x ] `mcp-config-panel.png` - MCP server configuration interface
+- [x ] `mcp-tool-usage.png` - ChatGPT querying AWS pricing via MCP
+- [x ] `available-tools-indicator.png` - UI showing connected servers
 
 #### Kiro (`images/clients/kiro/`)
 - [ ] `workspace-config.png` - Workspace-level MCP configuration
