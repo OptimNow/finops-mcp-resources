@@ -36,7 +36,7 @@ Gemini supports MCP through multiple access points:
 2. **Vertex AI**: Use MCP-enabled Gemini models in Vertex AI for enterprise deployments
 3. **Google Cloud SDK**: Integrate MCP servers into Google Cloud workflows
 
-Refer to [Google Cloud's Gemini documentation](https://cloud.google.com/vertex-ai/docs/generative-ai/gemini) for setup details.
+Refer to [Google Cloud's Gemini documentation](https://docs.cloud.google.com/mcp/overview)) for setup details.
 
 ---
 
