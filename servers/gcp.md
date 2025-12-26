@@ -44,8 +44,32 @@ In addition to Google's official servers, the community has developed MCP server
 
 **Documentation**: [GCP Compute MCP Reference](https://docs.cloud.google.com/compute/docs/reference/mcp)
 **Package**: `@google/mcp-server-compute`
+**Status**: ⚠️ **Not Yet Available** - Package not found in npm registry as of January 2026
 
-The Google Compute Engine MCP allows Gemini (and other MCP clients) to manage GCE resources, query instance pricing, and optimize VM costs.
+The Google Compute Engine MCP is referenced in Google Cloud documentation but the npm package `@google/mcp-server-compute` **does not currently exist** in the public registry.
+
+### Current Status
+
+As of January 2026:
+- ✅ **Official Google MCP Servers** (BigQuery, GKE, GCE, Google Maps) are available at [github.com/Google/mcp](https://github.com/Google/mcp)
+- ❌ **Standalone `@google/mcp-server-compute` package** is not yet published to npm
+- 🔄 **Google Compute Engine MCP** may be part of the official Google MCP servers repository instead
+
+### Alternative: Use Official Google MCP Servers
+
+Instead of the standalone package, try using the **official Google Compute Engine (GCE) server** from Google's MCP repository:
+
+**Repository**: [https://github.com/Google/mcp](https://github.com/Google/mcp)
+
+Check the repository for installation instructions for the GCE MCP server.
+
+---
+
+### Installation Guide (When Available)
+
+The following instructions are for **when the package becomes available**:
+
+The Google Compute Engine MCP would allow Gemini (and other MCP clients) to manage GCE resources, query instance pricing, and optimize VM costs.
 
 ### Prerequisites
 
@@ -138,12 +162,31 @@ Press `Ctrl+Shift+P` → "Reload Window" or restart VS Code.
 
 ### Troubleshooting
 
-If the GCE MCP server doesn't connect:
+**First: Verify Package Exists**
+
+```bash
+npm view @google/mcp-server-compute
+```
+
+If you get `404 Not Found`, the package is not yet available. Check:
+1. [Google/mcp GitHub repository](https://github.com/Google/mcp) for official servers
+2. [Google Cloud MCP documentation](https://docs.cloud.google.com/mcp/overview) for updates
+3. Google Cloud blog for announcements about new MCP servers
+
+**If the package exists and the GCE MCP server doesn't connect:**
 
 1. **Check API Enablement:**
+
+   **Linux/Mac:**
    ```bash
    gcloud services list --enabled | grep compute
    gcloud services list --enabled | grep aiplatform
+   ```
+
+   **Windows PowerShell:**
+   ```powershell
+   gcloud services list --enabled | Select-String compute
+   gcloud services list --enabled | Select-String aiplatform
    ```
 
 2. **Verify Authentication:**
