@@ -96,7 +96,7 @@ Integrate MCP servers into Google Cloud workflows, Cloud Functions, and Cloud Ru
 }
 ```
 
-Refer to [Google Cloud's Gemini MCP documentation](https://cloud.google.com/vertex-ai/docs/generative-ai/gemini) for detailed setup instructions.
+Refer to [Google Cloud's MCP documentation](https://docs.cloud.google.com/mcp/overview) for detailed setup instructions.
 
 ---
 
