@@ -36,7 +36,154 @@ In addition to Google's official servers, the community has developed MCP server
 | **Server Name** | **Description** | **Install** |
 |:----------------|:----------------|:-------------|
 | [GCP MCP Server](https://github.com/krzko/google-cloud-mcp) | Query cost and usage data from **GCP Billing Export in BigQuery** | Manual install (see below) |
-| [GCP Compute MCP](https://docs.cloud.google.com/compute/docs/reference/mcp) | Extended Compute Engine capabilities beyond official GCE server | See Google Cloud documentation |
+| [GCP Compute MCP](https://docs.cloud.google.com/compute/docs/reference/mcp) | Google Compute Engine management via MCP | See installation guide below |
+
+---
+
+## 🔧 Google Compute Engine MCP Installation
+
+**Documentation**: [GCP Compute MCP Reference](https://docs.cloud.google.com/compute/docs/reference/mcp)
+**Package**: `@google/mcp-server-compute`
+
+The Google Compute Engine MCP allows Gemini (and other MCP clients) to manage GCE resources, query instance pricing, and optimize VM costs.
+
+### Prerequisites
+
+Before configuring the connection, ensure your environment is ready:
+
+1. **Google Cloud Project**: Have a project ID ready where you want to manage Compute Engine resources
+2. **Enable Required APIs**: In Google Cloud Console, enable:
+   - Compute Engine API
+   - Gemini for Google Cloud API
+3. **Permissions**: Your user account (or service account) must have:
+   - `Compute Admin` role (or similar) to perform resource management actions
+   - Billing permissions for cost analysis
+4. **Authentication**: Run `gcloud auth application-default login` to authenticate
+
+### Installation Options
+
+You can use the GCE MCP in two main ways:
+
+#### Option A: Gemini CLI (Terminal)
+
+The Gemini CLI is an open-source agent that supports MCP natively.
+
+**1. Install the Gemini CLI:**
+
+```bash
+npm install -g @google/gemini-cli
+```
+
+**2. Authenticate:**
+
+```bash
+gcloud auth application-default login
+```
+
+**3. Configure the MCP Server:**
+
+Create or edit `~/.gemini/settings.json` and add:
+
+```json
+{
+  "mcpServers": {
+    "google-compute": {
+      "url": "https://compute.googleapis.com/mcp",
+      "transport": "http",
+      "env": {
+        "GOOGLE_CLOUD_PROJECT": "YOUR_PROJECT_ID"
+      }
+    }
+  }
+}
+```
+
+**Note**: The exact URL might vary based on region or preview version. Check the [official reference](https://docs.cloud.google.com/compute/docs/reference/mcp) for the latest endpoint.
+
+**4. Run Gemini:**
+
+```bash
+gemini
+```
+
+Verify the server is active by typing `/mcp list` in the CLI.
+
+---
+
+#### Option B: Gemini Code Assist (VS Code)
+
+**1. Open VS Code Settings:**
+
+Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) and type "Open User Settings (JSON)"
+
+**2. Add MCP Configuration:**
+
+Add this to your `settings.json`:
+
+```json
+"geminicodeassist.mcpServers": {
+  "gce": {
+    "command": "npx",
+    "args": ["-y", "@google/mcp-server-compute"],
+    "env": {
+      "GOOGLE_CLOUD_PROJECT": "YOUR_PROJECT_ID"
+    }
+  }
+}
+```
+
+**3. Reload VS Code:**
+
+Press `Ctrl+Shift+P` → "Reload Window" or restart VS Code.
+
+### Troubleshooting
+
+If the GCE MCP server doesn't connect:
+
+1. **Check API Enablement:**
+   ```bash
+   gcloud services list --enabled | grep compute
+   gcloud services list --enabled | grep aiplatform
+   ```
+
+2. **Verify Authentication:**
+   ```bash
+   gcloud auth application-default print-access-token
+   ```
+   Should return a valid access token.
+
+3. **Check Project ID:**
+   ```bash
+   gcloud config get-value project
+   ```
+   Ensure it matches `YOUR_PROJECT_ID` in your configuration.
+
+4. **View VS Code Extension Logs:**
+   - Open Output panel (`Ctrl+Shift+U` or `Cmd+Shift+U`)
+   - Select "Gemini Code Assist" from dropdown
+   - Look for MCP connection errors
+
+5. **Verify Package Installation:**
+   ```bash
+   npm list -g @google/mcp-server-compute
+   ```
+
+6. **Check Permissions:**
+   ```bash
+   gcloud projects get-iam-policy YOUR_PROJECT_ID \
+     --flatten="bindings[].members" \
+     --filter="bindings.members:user:YOUR_EMAIL"
+   ```
+
+### Common Issues
+
+| **Issue** | **Solution** |
+|:----------|:------------|
+| `Error: compute.googleapis.com API not enabled` | Run `gcloud services enable compute.googleapis.com` |
+| `Error: PERMISSION_DENIED` | Add `Compute Admin` role: `gcloud projects add-iam-policy-binding YOUR_PROJECT_ID --member="user:YOUR_EMAIL" --role="roles/compute.admin"` |
+| `Error: Application Default Credentials not found` | Run `gcloud auth application-default login` |
+| `npx: command not found` | Install Node.js and npm first |
+| VS Code extension doesn't show MCP | Ensure Gemini Code Assist extension is installed and updated |
 
 ---
 
