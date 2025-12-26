@@ -1,16 +1,50 @@
-# ![GCP Logo](https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg) GCP MCP Server
+# ![GCP Logo](https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg) GCP MCP Servers
 
-The **community GCP MCP server** lets you query **Google Cloud Billing Export** data for FinOps use cases such as cost analysis, anomaly detection, and optimization.  
+**Last Updated**: January 2026
 
-| **Server Name** | **Description** | **Install** |
-|:----------------|:----------------|:-------------|
-| [GCP MCP Server](https://github.com/krzko/google-cloud-mcp) | Query cost and usage data from **GCP Billing Export in BigQuery**. | Manual install (see below) |
+A comprehensive guide to Google Cloud Platform (GCP) MCP servers for FinOps and cloud management.
 
 ---
 
+## 🚀 Official Google MCP Servers
 
+**Repository**: [Google/mcp](https://github.com/Google/mcp)
+**Status**: Officially maintained by Google
+**Announcement**: 2025
 
-## ⚙️ Prerequisites
+Google provides **4 official remote MCP servers** that work seamlessly with Gemini and other MCP clients:
+
+| **MCP Server** | **Description** | **FinOps Use Cases** | **Transport** |
+|:---------------|:----------------|:---------------------|:--------------|
+| **[Google Maps (Grounding Lite)](https://github.com/Google/mcp)** | Location-based queries and geocoding | Regional cost analysis, data center location optimization | Remote (SSE/HTTP) |
+| **[BigQuery](https://github.com/Google/mcp)** | Query BigQuery datasets including billing exports | Cost analysis, spend trends, FinOps reporting | Remote (SSE/HTTP) |
+| **[Google Kubernetes Engine (GKE)](https://github.com/Google/mcp)** | GKE cluster management and monitoring | Container cost optimization, cluster rightsizing | Remote (SSE/HTTP) |
+| **[Google Compute Engine (GCE)](https://github.com/Google/mcp)** | Compute instance management and cost data | VM rightsizing, instance cost optimization | Remote (SSE/HTTP) |
+
+**Key Benefits:**
+- ✅ **Remote-first architecture** - No local installation required
+- ✅ **Official Google support** - Maintained by Google Cloud team
+- ✅ **Native Gemini integration** - Optimized for Google's AI platform
+- ✅ **Enterprise-ready** - Built on Google Cloud infrastructure with security controls
+
+---
+
+## 💰 Community GCP MCP Servers
+
+In addition to Google's official servers, the community has developed MCP servers for GCP FinOps:
+
+| **Server Name** | **Description** | **Install** |
+|:----------------|:----------------|:-------------|
+| [GCP MCP Server](https://github.com/krzko/google-cloud-mcp) | Query cost and usage data from **GCP Billing Export in BigQuery** | Manual install (see below) |
+| [GCP Compute MCP](https://docs.cloud.google.com/compute/docs/reference/mcp) | Extended Compute Engine capabilities beyond official GCE server | See Google Cloud documentation |
+
+---
+
+## 🛠️ Community Server Installation: GCP Billing Export MCP
+
+The following installation guide is for the **community GCP MCP server** by krzko, which provides access to GCP Billing Export data in BigQuery.
+
+### ⚙️ Prerequisites
 
 Before installing, ensure:  
 - **Billing Export to BigQuery** is enabled in your GCP project ([guide](https://cloud.google.com/billing/docs/how-to/export-data-bigquery)).  

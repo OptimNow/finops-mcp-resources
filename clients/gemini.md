@@ -28,15 +28,75 @@ Google Gemini is Google's conversational AI platform that added native MCP suppo
 
 ---
 
+## Official Google MCP Servers
+
+**Repository**: [Google/mcp](https://github.com/Google/mcp)
+**Status**: Officially maintained by Google
+
+Google provides **4 official remote MCP servers** that work seamlessly with Gemini:
+
+| **MCP Server** | **Description** | **Use Cases** |
+|:---------------|:----------------|:--------------|
+| **[Google Maps (Grounding Lite)](https://github.com/Google/mcp)** | Location-based queries and geocoding | Regional cost analysis, data center location optimization |
+| **[BigQuery](https://github.com/Google/mcp)** | Query BigQuery datasets including billing exports | Cost analysis, spend trends, FinOps reporting |
+| **[Google Kubernetes Engine (GKE)](https://github.com/Google/mcp)** | GKE cluster management and monitoring | Container cost optimization, cluster rightsizing |
+| **[Google Compute Engine (GCE)](https://github.com/Google/mcp)** | Compute instance management and cost data | VM rightsizing, instance cost optimization |
+
+All official Google MCP servers are **remote-first** (SSE/HTTP transports), eliminating the need for local installation.
+
+---
+
+## Community MCP Servers for GCP
+
+In addition to Google's official servers, the community has developed MCP servers for GCP services:
+
+### GCP Compute MCP
+**Documentation**: [GCP Compute MCP Reference](https://docs.cloud.google.com/compute/docs/reference/mcp)
+
+Community-built MCP server for Google Compute Engine with extended capabilities beyond the official GCE server.
+
+**For a complete list of community GCP MCP servers**, see the [MCP Registry](https://registry.mcp.run/) or [servers/gcp.md](../servers/gcp.md).
+
+---
+
 ## MCP Configuration
 
 Gemini supports MCP through multiple access points:
 
-1. **Gemini API**: Configure MCP servers programmatically via Gemini 2.5 Pro API
-2. **Vertex AI**: Use MCP-enabled Gemini models in Vertex AI for enterprise deployments
-3. **Google Cloud SDK**: Integrate MCP servers into Google Cloud workflows
+### 1. Gemini API (Programmatic)
+Configure MCP servers via the Gemini 2.5 Pro API for automation workflows.
 
-Refer to [Google Cloud's Gemini documentation](https://cloud.google.com/vertex-ai/docs/generative-ai/gemini) for setup details.
+### 2. Vertex AI (Enterprise)
+Use MCP-enabled Gemini models in Vertex AI for production-grade FinOps agents with enterprise controls.
+
+### 3. Google Cloud SDK Integration
+Integrate MCP servers into Google Cloud workflows, Cloud Functions, and Cloud Run.
+
+### Configuration Example
+
+```json
+{
+  "mcpServers": {
+    "bigquery-billing": {
+      "url": "https://mcp.googleapis.com/bigquery",
+      "transport": "sse",
+      "env": {
+        "GOOGLE_CLOUD_PROJECT": "your-project-id",
+        "GOOGLE_APPLICATION_CREDENTIALS": "/path/to/credentials.json"
+      }
+    },
+    "gce-cost-optimization": {
+      "url": "https://mcp.googleapis.com/compute",
+      "transport": "sse",
+      "env": {
+        "GOOGLE_CLOUD_PROJECT": "your-project-id"
+      }
+    }
+  }
+}
+```
+
+Refer to [Google Cloud's Gemini MCP documentation](https://cloud.google.com/vertex-ai/docs/generative-ai/gemini) for detailed setup instructions.
 
 ---
 
