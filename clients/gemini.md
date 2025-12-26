@@ -72,6 +72,37 @@ Use MCP-enabled Gemini models in Vertex AI for production-grade FinOps agents wi
 ### 3. Google Cloud SDK Integration
 Integrate MCP servers into Google Cloud workflows, Cloud Functions, and Cloud Run.
 
+### Prerequisites for GCP MCP Setup
+
+Before configuring Gemini with GCP MCP servers, ensure:
+
+1. **GCP Project with proper permissions**:
+   - Use a project where you have `Owner` or `Editor` role
+   - Or use a Gemini-specific project (e.g., "Default Gemini Project")
+
+2. **Set active GCP project**:
+   ```bash
+   # List your projects
+   gcloud projects list
+
+   # Set your project (choose one with sufficient permissions)
+   gcloud config set project YOUR_PROJECT_ID
+   ```
+
+3. **Authenticate**:
+   ```bash
+   gcloud auth application-default login
+   ```
+
+4. **Enable required APIs**:
+   ```bash
+   # For BigQuery billing MCP
+   gcloud services enable bigquery.googleapis.com
+
+   # For Compute Engine MCP
+   gcloud services enable compute.googleapis.com
+   ```
+
 ### Configuration Example
 
 ```json
@@ -95,6 +126,8 @@ Integrate MCP servers into Google Cloud workflows, Cloud Functions, and Cloud Ru
   }
 }
 ```
+
+**Important**: Replace `your-project-id` with a GCP project where you have sufficient permissions (Owner, Editor, or specific API permissions).
 
 Refer to [Google Cloud's MCP documentation](https://docs.cloud.google.com/mcp/overview) for detailed setup instructions.
 

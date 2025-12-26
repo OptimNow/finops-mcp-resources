@@ -55,6 +55,16 @@ Follow these tutorials in order for the best learning experience:
   - Analyze GCP billing at scale
 - **Best for**: GCP users, data-heavy FinOps workflows
 
+### 6️⃣ **Multi-Cloud** → [GCP Billing Export MCP Setup](./Tutorial-GCP-Billing-MCP.md)
+- **Time**: 35-45 minutes
+- **Prerequisites**: GCP account with Billing Export enabled
+- **What you'll learn**:
+  - Install and build community GCP Billing MCP server
+  - Configure with VS Code (Gemini Code Assist)
+  - Configure with Google Gemini CLI
+  - Query billing data from BigQuery using AI
+- **Best for**: GCP FinOps teams, VS Code users, hands-on learners
+
 ---
 
 ## 📚 Tutorials by Cloud Provider
@@ -69,6 +79,7 @@ Follow these tutorials in order for the best learning experience:
 
 ### GCP
 5. [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md) - BigQuery billing exports
+6. [GCP Billing Export MCP Setup](./Tutorial-GCP-Billing-MCP.md) - Community server with VS Code & Gemini
 
 ---
 
@@ -81,6 +92,7 @@ Follow these tutorials in order for the best learning experience:
 
 ### Intermediate
 - [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md)
+- [GCP Billing Export MCP Setup](./Tutorial-GCP-Billing-MCP.md)
 
 ### Advanced
 - [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md)
@@ -153,10 +165,10 @@ Want to contribute a tutorial? See [CONTRIBUTING.md](../CONTRIBUTING.md)!
 
 ## 📊 Tutorial Statistics
 
-**Total Tutorials**: 5
-**Cloud Providers Covered**: AWS (3), Azure (1), GCP (1)
-**Difficulty Levels**: Beginner (3), Intermediate (1), Advanced (1)
-**Average Completion Time**: 25-35 minutes per tutorial
+**Total Tutorials**: 6
+**Cloud Providers Covered**: AWS (3), Azure (1), GCP (2)
+**Difficulty Levels**: Beginner (3), Intermediate (2), Advanced (1)
+**Average Completion Time**: 25-40 minutes per tutorial
 
 ---
 
