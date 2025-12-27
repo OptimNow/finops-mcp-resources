@@ -55,7 +55,7 @@ Follow these tutorials in order for the best learning experience:
   - Analyze GCP billing at scale
 - **Best for**: GCP users, data-heavy FinOps workflows
 
-### 6️⃣ **Multi-Cloud** → [GCP Billing Export MCP Setup](./Tutorial-GCP-Billing-MCP.md)
+### 6️⃣ **Multi-Cloud** → [GCP Billing Export MCP Setup](./06-Tutorial-GCP-Billing-MCP.md)
 - **Time**: 35-45 minutes
 - **Prerequisites**: GCP account with Billing Export enabled
 - **What you'll learn**:
