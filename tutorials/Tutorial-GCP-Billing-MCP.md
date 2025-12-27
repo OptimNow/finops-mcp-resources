@@ -38,7 +38,7 @@ GCP Billing Export automatically sends your billing data to a BigQuery dataset, 
 **If not enabled, follow this guide:**
 - [Enable Billing Export to BigQuery](https://cloud.google.com/billing/docs/how-to/export-data-bigquery)
 
-**Screenshot placeholder:**
+
 ![GCP Billing Export Settings](../images/tutorials/gcp-billing-mcp/01-billing-export-settings.png)
 
 *Expected: Billing Export configured with a BigQuery dataset*
@@ -67,7 +67,7 @@ gcloud --version
 - Run installer with default settings
 - Restart your terminal after installation
 
-**Screenshot placeholder:**
+
 ![gcloud CLI installation](../images/tutorials/gcp-billing-mcp/02-gcloud-install.png)
 
 ---
@@ -93,7 +93,7 @@ gcloud auth application-default print-access-token
 
 **Expected:** A valid access token is printed.
 
-**Screenshot placeholder:**
+
 ![gcloud authentication browser flow](../images/tutorials/gcp-billing-mcp/03-gcloud-auth.png)
 
 ---
@@ -121,7 +121,7 @@ gcloud config set project YOUR_PROJECT_ID
 - Try using your "Default Gemini Project" (often named `gen-lang-client-*`)
 - Or create a dedicated project for MCP operations
 
-**Screenshot placeholder:**
+
 ![gcloud project list and selection](../images/tutorials/gcp-billing-mcp/04-gcloud-project-set.png)
 
 ---
@@ -145,7 +145,7 @@ gcloud services list --enabled | Select-String bigquery
 gcloud services list --enabled | grep bigquery
 ```
 
-**Screenshot placeholder:**
+
 ![BigQuery API enabled](../images/tutorials/gcp-billing-mcp/05-api-enabled.png)
 
 ---
@@ -179,7 +179,7 @@ npm install -g pnpm
 pnpm -v
 ```
 
-**Screenshot placeholder:**
+
 ![Node.js and pnpm version check](../images/tutorials/gcp-billing-mcp/06-node-pnpm-install.png)
 
 ---
@@ -197,7 +197,7 @@ git clone https://github.com/krzko/google-cloud-mcp.git
 cd google-cloud-mcp
 ```
 
-**Screenshot placeholder:**
+
 ![Git clone google-cloud-mcp](../images/tutorials/gcp-billing-mcp/07-git-clone.png)
 
 ---
@@ -211,7 +211,7 @@ pnpm install
 
 **Expected:** Dependencies are installed without errors.
 
-**Screenshot placeholder:**
+
 ![pnpm install output](../images/tutorials/gcp-billing-mcp/08-pnpm-install.png)
 
 ---
@@ -239,7 +239,7 @@ ls -la dist
 
 You should see `index.js` and other compiled files.
 
-**Screenshot placeholder:**
+
 ![pnpm build success](../images/tutorials/gcp-billing-mcp/09-pnpm-build.png)
 
 ---
@@ -256,7 +256,7 @@ Gemini Code Assist is a VS Code extension that integrates Google Gemini into you
 3. Search for **"Gemini Code Assist"**
 4. Click **Install**
 
-**Screenshot placeholder:**
+
 ![VS Code Gemini Code Assist extension](../images/tutorials/gcp-billing-mcp/10-vscode-gemini-extension.png)
 
 ---
@@ -268,7 +268,7 @@ Gemini Code Assist is a VS Code extension that integrates Google Gemini into you
 2. Type **"Open User Settings (JSON)"**
 3. Press Enter
 
-**Screenshot placeholder:**
+
 ![VS Code command palette open settings](../images/tutorials/gcp-billing-mcp/11-vscode-open-settings.png)
 
 ---
@@ -316,7 +316,7 @@ Replace `<your-user>` with your actual username (the path where you cloned the r
 }
 ```
 
-**Screenshot placeholder:**
+
 ![VS Code settings.json with MCP configuration](../images/tutorials/gcp-billing-mcp/12-vscode-settings-json.png)
 
 ---
@@ -330,7 +330,7 @@ Replace `<your-user>` with your actual username (the path where you cloned the r
 
 Or simply restart VS Code.
 
-**Screenshot placeholder:**
+
 ![VS Code reload window](../images/tutorials/gcp-billing-mcp/13-vscode-reload.png)
 
 ---
@@ -344,7 +344,7 @@ Or simply restart VS Code.
 
 **Expected:** You should see logs about `google-cloud-mcp` initialization.
 
-**Screenshot placeholder:**
+
 ![VS Code output panel showing MCP connection](../images/tutorials/gcp-billing-mcp/14-vscode-output-mcp.png)
 
 ---
@@ -360,7 +360,7 @@ What are my top 5 GCP services by cost over the past 30 days?
 
 **Expected:** Gemini queries your BigQuery billing export and returns cost data.
 
-**Screenshot placeholder:**
+
 ![VS Code Gemini querying GCP billing data](../images/tutorials/gcp-billing-mcp/15-vscode-gemini-query.png)
 
 ---
@@ -391,7 +391,7 @@ npm install -g @google/gemini-cli
 gemini --version
 ```
 
-**Screenshot placeholder:**
+
 ![Gemini CLI installation](../images/tutorials/gcp-billing-mcp/16-gemini-cli-install.png)
 
 ---
@@ -422,7 +422,7 @@ notepad $env:USERPROFILE\.gemini\settings.json
 nano ~/.gemini/settings.json
 ```
 
-**Screenshot placeholder:**
+
 ![Creating Gemini settings directory](../images/tutorials/gcp-billing-mcp/17-gemini-settings-dir.png)
 
 ---
@@ -469,7 +469,7 @@ Replace `<your-user>` with your actual username.
 
 **Save the file.**
 
-**Screenshot placeholder:**
+
 ![Gemini settings.json configuration](../images/tutorials/gcp-billing-mcp/18-gemini-settings-json.png)
 
 ---
@@ -490,7 +490,7 @@ gemini
 
 You should see `google-cloud-mcp` in the list of available MCP servers.
 
-**Screenshot placeholder:**
+
 ![Gemini CLI startup with MCP server](../images/tutorials/gcp-billing-mcp/19-gemini-cli-mcp-list.png)
 
 ---
