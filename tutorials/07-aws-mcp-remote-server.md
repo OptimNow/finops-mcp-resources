@@ -219,7 +219,7 @@ Edit your Claude Desktop config:
 **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
 **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
 
-Add this configuration:
+Add the `aws-mcp` server to your existing `mcpServers` object. If you already have other MCP servers configured, add this as a new entry:
 
 ```json
 {
@@ -235,6 +235,35 @@ Add this configuration:
       "env": {
         "AWS_PROFILE": "mcp-aws"
       }
+    }
+  }
+}
+```
+
+**If you have existing MCP servers**, your config should look like this:
+
+```json
+{
+  "mcpServers": {
+    "existing-server-1": {
+      "command": "...",
+      "env": {}
+    },
+    "aws-mcp": {
+      "command": "uvx",
+      "args": [
+        "mcp-proxy-for-aws@latest",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--metadata",
+        "AWS_REGION=us-east-1"
+      ],
+      "env": {
+        "AWS_PROFILE": "mcp-aws"
+      }
+    },
+    "existing-server-2": {
+      "command": "...",
+      "env": {}
     }
   }
 }
