@@ -21,32 +21,23 @@
 
 ## 🌟 Why This MCP Server Changes Everything
 
-The **AWS MCP Server** is AWS's first **remote, managed MCP server** - a game-changer for cloud operations:
+The **AWS MCP Remote Server** is AWS's first remote, managed MCP server - a fundamental shift in how you interact with AWS services through AI.
 
-### Remote & Managed Architecture
-- **No local installation required** - AWS hosts and manages the infrastructure
-- **Always up-to-date** - AWS maintains the latest API support and documentation
-- **Enterprise-grade reliability** - Built on AWS's scalable infrastructure
-- **Zero maintenance burden** - No version updates, no dependency management
+### One Server Replaces Dozens
 
-### Comprehensive AWS Coverage
-- **15,000+ AWS APIs** - Access all AWS services through one unified interface
-- **Latest documentation** - Real-time access to AWS docs, API references, and What's New posts
-- **Getting Started guides** - Built-in tutorials and best practices for AWS services
-- **Complete resource access** - Query, manage, and analyze your AWS infrastructure
+Previously, you needed to install and maintain separate MCP servers for each AWS service: one for Pricing, another for Cost Explorer, another for CloudWatch, and so on. The AWS MCP Remote Server replaces all of them. It intelligently orchestrates access to 15,000+ AWS APIs, automatically selecting the right tools and services based on your natural language requests. Ask about EC2 costs, and it knows to query the Pricing API. Request billing analysis, and it coordinates between Cost Explorer and your usage data. No more juggling multiple server installations.
 
-### Agent Standard Operating Procedures (SOPs)
-- **Pre-built workflows** - Codified best practices for common AWS tasks
-- **Accelerated automation** - Reduce time from idea to implementation
-- **FinOps optimization** - Cost analysis, resource optimization, and savings recommendations
-- **Accurate execution** - Command validation and security controls built-in
+### Remote & Managed by AWS
+
+AWS hosts and maintains the entire infrastructure. There's no local installation, no version updates to manage, no dependency conflicts to resolve. The server is always current with the latest AWS APIs, documentation, and best practices. You configure it once in your MCP client and AWS handles everything else - updates, scaling, and reliability.
+
+### Built-in Intelligence with Agent SOPs
+
+The server includes Agent Standard Operating Procedures (SOPs) - pre-built workflows that encode AWS best practices. When you ask for cost optimization recommendations, the server doesn't just fetch raw data. It applies proven FinOps methodologies, validates commands for accuracy, and structures responses following AWS's recommended patterns. This intelligence accelerates your work from idea to implementation while maintaining security controls and compliance standards.
 
 ### Why It Matters for FinOps
-Traditional MCP servers require local installation, version management, and manual updates. The AWS MCP remote server eliminates this overhead while providing:
-- **Unified cost management** - Pricing, billing, and optimization in one place
-- **Enhanced security** - IAM-based access control with AWS's enterprise security model
-- **Better performance** - Optimized for AWS API interactions and large-scale data retrieval
-- **Simplified compliance** - Centralized audit logs and governance controls
+
+Traditional local MCP servers required you to know which specific server to query for pricing data versus billing data versus optimization recommendations. The AWS MCP Remote Server handles this orchestration automatically. It unifies cost management, pricing, billing, and optimization insights into a single natural language interface. IAM-based access control provides enterprise-grade security, centralized audit logs simplify compliance, and AWS's infrastructure ensures the performance needed for large-scale data retrieval across your entire cloud environment.
 
 ---
 
