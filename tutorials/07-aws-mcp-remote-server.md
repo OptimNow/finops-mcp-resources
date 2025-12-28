@@ -147,6 +147,8 @@ Set up your AWS credentials for the MCP server to use:
 
 1. **Create AWS CLI profile**:
 
+Open PowerShell (or Terminal on macOS/Linux) - you can run this from any directory:
+
 ```bash
 aws configure --profile mcp-aws
 ```
@@ -156,6 +158,8 @@ Enter when prompted:
 - AWS Secret Access Key: `[your secret from Step 1]`
 - Default region: `us-east-1` (North Virginia)
 - Default output format: `json`
+
+**Note**: No need to navigate to a specific folder - this command creates your AWS profile configuration in your home directory (`~/.aws/`) automatically.
 
 2. **Verify profile**:
 
