@@ -180,11 +180,21 @@ Expected output:
 
 Alternatively, set environment variables:
 
+**Windows PowerShell**:
+```powershell
+$env:AWS_ACCESS_KEY_ID="your-access-key"
+$env:AWS_SECRET_ACCESS_KEY="your-secret-key"
+$env:AWS_REGION="us-east-1"
+```
+
+**macOS/Linux (bash/zsh)**:
 ```bash
 export AWS_ACCESS_KEY_ID="your-access-key"
 export AWS_SECRET_ACCESS_KEY="your-secret-key"
 export AWS_REGION="us-east-1"
 ```
+
+**Note**: Environment variables set this way are temporary and only last for the current PowerShell/terminal session. For persistent credentials, use Option A (AWS Profile) instead.
 
 ### Step 4: Install and Configure MCP Client
 
