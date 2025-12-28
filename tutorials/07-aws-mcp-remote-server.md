@@ -59,7 +59,7 @@ Traditional MCP servers require local installation, version management, and manu
 
 ### Recommended
 - Basic familiarity with AWS IAM
-- Understanding of AWS regions (we'll use `us-west-2` in examples)
+- Understanding of AWS regions (we'll use `us-east-1` / North Virginia in this tutorial)
 
 ---
 
@@ -73,17 +73,34 @@ Traditional MCP servers require local installation, version management, and manu
 
 2. **Create User**:
    - User name: `mcp-aws-user` (or your preferred name)
-   - Access type: **Programmatic access**
    - Click **Next**
 
-3. **Skip group assignment** (we'll attach policy directly)
+3. **Set permissions**:
+   - Select **Attach policies directly**
+   - For now, skip selecting policies (we'll add the specific MCP policy in Step 2)
    - Click **Next** → **Create user**
 
-4. **Save credentials**:
-   - Download the CSV or copy:
+4. **Create Access Key**:
+   - After creating the user, click on the user name to view details
+   - Go to the **Security credentials** tab
+   - Scroll down to **Access keys** section
+   - Click **Create access key**
+
+5. **Select Use Case**:
+   - Choose **Command Line Interface (CLI)**
+   - Check the confirmation box: "I understand the above recommendation..."
+   - Click **Next**
+
+6. **Set Description Tag** (Optional):
+   - Description: `MCP Server Access` (optional but recommended)
+   - Click **Create access key**
+
+7. **Save Credentials**:
+   - **Copy** or **Download .csv file** with:
      - Access Key ID
      - Secret Access Key
-   - ⚠️ **Store securely** - you won't see the secret key again
+   - ⚠️ **IMPORTANT**: Store these credentials securely - you won't be able to see the secret key again
+   - Click **Done**
 
 ### Step 2: Attach Required IAM Policy
 
@@ -146,7 +163,7 @@ aws configure --profile mcp-aws
 Enter when prompted:
 - AWS Access Key ID: `[your key from Step 1]`
 - AWS Secret Access Key: `[your secret from Step 1]`
-- Default region: `us-west-2` (or your preferred region)
+- Default region: `us-east-1` (North Virginia)
 - Default output format: `json`
 
 2. **Verify profile**:
@@ -171,7 +188,7 @@ Alternatively, set environment variables:
 ```bash
 export AWS_ACCESS_KEY_ID="your-access-key"
 export AWS_SECRET_ACCESS_KEY="your-secret-key"
-export AWS_REGION="us-west-2"
+export AWS_REGION="us-east-1"
 ```
 
 ### Step 4: Install and Configure MCP Client
@@ -208,7 +225,7 @@ Add this configuration:
         "mcp-proxy-for-aws@latest",
         "https://aws-mcp.us-east-1.api.aws/mcp",
         "--metadata",
-        "AWS_REGION=us-west-2"
+        "AWS_REGION=us-east-1"
       ],
       "env": {
         "AWS_PROFILE": "mcp-aws"
@@ -219,8 +236,8 @@ Add this configuration:
 ```
 
 **Notes**:
-- Replace `us-west-2` with your preferred AWS region
-- Replace `mcp-aws` with your AWS profile name
+- This tutorial uses `us-east-1` (North Virginia). You can change to your preferred AWS region
+- Replace `mcp-aws` with your AWS profile name if different
 - The server endpoint is always `https://aws-mcp.us-east-1.api.aws/mcp` (hosted in us-east-1)
 
 3. **Restart Claude Desktop**
@@ -242,7 +259,7 @@ Add this configuration:
         "mcp-proxy-for-aws@latest",
         "https://aws-mcp.us-east-1.api.aws/mcp",
         "--metadata",
-        "AWS_REGION=us-west-2"
+        "AWS_REGION=us-east-1"
       ],
       "env": {
         "AWS_PROFILE": "mcp-aws"
@@ -262,7 +279,7 @@ Claude Code has built-in support for remote MCP servers:
 # In your project directory
 claude-code config mcp add aws-mcp \
   --command uvx \
-  --args "mcp-proxy-for-aws@latest,https://aws-mcp.us-east-1.api.aws/mcp,--metadata,AWS_REGION=us-west-2" \
+  --args "mcp-proxy-for-aws@latest,https://aws-mcp.us-east-1.api.aws/mcp,--metadata,AWS_REGION=us-east-1" \
   --env "AWS_PROFILE=mcp-aws"
 ```
 
@@ -296,7 +313,7 @@ Show me the latest features for Amazon S3
 
 **Prompt**:
 ```
-List my EC2 instances in us-west-2
+List my EC2 instances in us-east-1
 ```
 
 **Expected**: List of your EC2 instances (or empty list if none exist)
@@ -318,7 +335,7 @@ What are the pricing options for t3.medium EC2 instances?
 
 **Prompt**:
 ```
-Analyze my AWS resources in us-west-2 and suggest cost optimization opportunities
+Analyze my AWS resources in us-east-1 and suggest cost optimization opportunities
 ```
 
 The AI will:
