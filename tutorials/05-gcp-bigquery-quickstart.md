@@ -20,7 +20,7 @@ Before starting, ensure you have:
 - **GCP Billing Export to BigQuery** enabled ([Setup Guide](https://cloud.google.com/billing/docs/how-to/export-data-bigquery))
 - **Claude Desktop** installed ([Installation Guide](https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/claude-desktop.md))
 - **A GCP Service Account** with appropriate permissions (see below)
-- **Toolbox binary** for your platform (provided or compiled from ([Google's official MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)))
+- **Toolbox binary** for your platform (provided or compiled from [Google's official MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)
 
 ### Required GCP Permissions
 
