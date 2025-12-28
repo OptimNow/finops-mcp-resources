@@ -35,45 +35,36 @@ graph LR
 ```
 
 ### Local MCP Servers (Traditional)
-- Run as processes on the same machine as the MCP client
-- Typically launched via STDIO (standard input/output)
-- Example: `npx @modelcontextprotocol/server-aws-pricing`
-- **Pros**: No network latency, simpler auth, no hosting costs
-- **Cons**: Must install/manage on every client machine, can't share across teams
+
+Local MCP servers run as processes on the same machine as your MCP client, typically launched via STDIO (standard input/output). When you run `npx @modelcontextprotocol/server-aws-pricing`, you're spinning up a local server that lives and dies with your session.
+
+The advantages are clear: no network latency, simpler authentication, and zero hosting costs. But the tradeoffs are significant for teams. Every developer needs to install and manage their own instance, configuration drifts across machines, and there's no way to share cached data or centralized policies across your organization.
 
 ### Remote MCP Servers (Modern)
-- Run as cloud-hosted services accessible over the network
-- Connect via HTTP/HTTPS or Server-Sent Events (SSE)
-- Example: `https://mcp.finops-corp.example.com/aws-pricing`
-- **Pros**: Centralized management, shared across teams, no local installation
-- **Cons**: Requires hosting infrastructure, network latency, more complex auth
+
+Remote MCP servers flip this model by running as cloud-hosted services accessible over the network. Instead of launching a local process, your MCP client connects to something like `https://mcp.finops-corp.example.com/aws-pricing` via HTTP/HTTPS or Server-Sent Events (SSE).
+
+The benefits are transformative for enterprises: centralized management, shared infrastructure across teams, and zero local installation requirements. The tradeoffs are infrastructure complexity and network latency, but for FinOps teams managing multi-cloud environments, the centralization benefits far outweigh the costs.
 
 ---
 
 ## ✅ Benefits of Remote MCP Servers for FinOps
 
 ### 1. Centralized Management
-- **Single source of truth**: One MCP server instance serves entire organization
-- **Easier updates**: Update server once instead of updating every client machine
-- **Consistent behavior**: All users get same data, calculations, and tool versions
-- **Cost efficiency**: Run one powerful server instead of many local instances
+
+Remote MCP servers establish a single source of truth for your entire organization. Instead of maintaining dozens of local installations across developer machines, you update one server instance and everyone immediately benefits. This eliminates version skew, ensures consistent behavior across all users, and dramatically simplifies maintenance. From a cost perspective, running one powerful server is far more efficient than distributing compute across many local instances.
 
 ### 2. Enterprise Security
-- **Centralized credentials**: Store cloud credentials (AWS, Azure, GCP) in one secure location
-- **No credential distribution**: Users never need direct access to billing APIs
-- **Enhanced auditing**: All queries logged centrally for compliance
-- **Network controls**: IP allowlisting, VPCs, WAF protection
+
+Security teams love remote MCP servers because they centralize the attack surface. Cloud credentials for AWS, Azure, and GCP live in one secure location—typically a secrets manager like AWS Secrets Manager or Azure Key Vault—rather than scattered across developer laptops. Users never need direct access to billing APIs, which means fewer IAM policies to manage and audit. All queries flow through a central logging point, giving you complete visibility for compliance. Add IP allowlisting, VPC isolation, and WAF protection, and you've got defense in depth that's impossible with local servers.
 
 ### 3. Better Performance
-- **Caching**: Share cached pricing data, billing exports across all users
-- **Compute power**: Run complex cost analyses on powerful cloud instances
-- **Reduced API calls**: Batch requests, deduplicate queries, respect rate limits centrally
-- **Faster for remote teams**: Cloud-hosted servers often faster than local execution
+
+Remote servers enable performance optimizations that local instances can't match. Shared caching means that when one user queries AWS pricing data, everyone benefits from the cached results. Complex cost analyses run on powerful cloud instances rather than struggling on a developer's laptop. The server can batch requests, deduplicate queries, and centrally manage rate limits to avoid throttling. For distributed teams, a cloud-hosted server in a central region is often faster than running everything locally.
 
 ### 4. Team Collaboration
-- **Shared context**: Multiple FinOps team members query same live data
-- **Cross-app access**: Single sign-on across all MCP servers (2025-11-25 spec)
-- **Consistent results**: Everyone sees same cost data, eliminating discrepancies
+
+Remote MCP servers transform FinOps from a solo activity into a team sport. Multiple team members can query the same live data simultaneously, ensuring everyone works from identical cost figures. The 2025-11-25 MCP spec introduced cross-app access, enabling single sign-on across all your MCP servers—eliminating the authentication friction that plagued earlier implementations. Most importantly, consistent results across the team mean no more "it works on my machine" discrepancies during budget reviews.
 
 ---
 
@@ -113,10 +104,7 @@ graph TB
     C3 --> D3
 ```
 
-**Best for**:
-- Large FinOps teams (10+ users)
-- Multi-account/multi-cloud environments
-- Organizations with strict security/compliance requirements
+**Best for**: Large FinOps teams (10+ users) managing multi-account or multi-cloud environments, especially organizations with strict security and compliance requirements that demand centralized control and auditing.
 
 ---
 
@@ -144,10 +132,7 @@ graph TB
     S1 -->|IAM Role| C
 ```
 
-**Best for**:
-- Small to mid-sized teams
-- Teams starting remote MCP journey
-- Budget-conscious deployments
+**Best for**: Small to mid-sized teams (5-10 users) just starting their remote MCP journey, or budget-conscious deployments where a simple VM or container instance provides enough capacity without enterprise-grade infrastructure.
 
 ---
 
@@ -174,10 +159,7 @@ graph TB
     L & R --> C
 ```
 
-**Best for**:
-- Development teams needing offline access
-- Organizations transitioning from local to remote
-- Scenarios with mixed connectivity (on-prem + cloud)
+**Best for**: Development teams that need offline access for testing, organizations transitioning from local to remote MCP architectures, or scenarios with mixed connectivity like hybrid on-premises and cloud environments.
 
 ---
 
@@ -353,31 +335,27 @@ gcloud run deploy mcp-aws-pricing \
 
 ## 🔐 Security Best Practices
 
-1. **Always use HTTPS/TLS** - Never expose MCP servers over plain HTTP
-2. **Implement OAuth 2.0 with PKCE** - Required by MCP spec 2025-11-25
-3. **Use secrets managers** - Store credentials in AWS Secrets Manager, Azure Key Vault, GCP Secret Manager
-4. **Enable comprehensive logging** - CloudTrail, Azure Monitor, Cloud Logging
-5. **IP allowlisting** - Restrict access to known corporate IPs if possible
-6. **VPC/Private endpoints** - Keep MCP servers private, use VPN/bastion for access
-7. **Regular security audits** - Penetration testing, dependency scanning
-8. **Rate limiting** - Prevent abuse, protect cloud provider API quotas
+**Transport Security**: Always use HTTPS/TLS for remote MCP servers. Never expose servers over plain HTTP, even for internal development. The 2025-11-25 MCP specification mandates OAuth 2.0 with PKCE (Proof Key for Code Exchange) for all remote deployments, protecting against authorization code interception attacks.
+
+**Credential Management**: Store cloud credentials in dedicated secrets managers—AWS Secrets Manager, Azure Key Vault, or GCP Secret Manager—never in environment variables or configuration files. Enable comprehensive logging via CloudTrail, Azure Monitor, or Cloud Logging to track every query for compliance and forensics.
+
+**Network Isolation**: Implement IP allowlisting to restrict access to known corporate networks when possible. For maximum security, keep MCP servers on private VPC endpoints and require VPN or bastion access. This prevents exposure to the public internet while still enabling remote access for authorized users.
+
+**Operational Security**: Conduct regular security audits including penetration testing and dependency scanning. Implement rate limiting to prevent abuse and protect your cloud provider API quotas from accidental or malicious overuse. These safeguards ensure your remote MCP infrastructure remains resilient against both external threats and internal misconfigurations.
 
 ---
 
 ## 💰 Cost Considerations
 
 ### Remote Server Hosting Costs
-- **Serverless** (Lambda, Cloud Functions): $0.20-$1.00 per million requests
-- **Container platforms** (Cloud Run, Container Apps): $0.05-$0.15 per hour
-- **Always-on VMs**: $20-$100 per month depending on size
-- **Load balancers**: $15-$25 per month
+
+The infrastructure costs for remote MCP servers vary by deployment model. Serverless options like Lambda or Cloud Functions run $0.20-$1.00 per million requests, making them cost-effective for intermittent use. Container platforms like Cloud Run or Azure Container Apps charge $0.05-$0.15 per hour, balancing cost and performance for moderate traffic. Always-on VMs range from $20-$100 per month depending on instance size, while load balancers add $15-$25 monthly to ensure high availability.
 
 ### Cost Savings from Remote Servers
-- **Reduced API calls**: Caching and deduplication save 30-50% on cloud provider API costs
-- **Shared compute**: One powerful server cheaper than many local instances
-- **Efficiency**: Centralized optimization reduces overall cloud spend
 
-**ROI estimate**: For teams of 10+ users, remote MCP servers typically pay for themselves within 1-2 months through reduced API costs and improved efficiency.
+The real financial win comes from operational efficiencies. Caching and query deduplication typically reduce cloud provider API costs by 30-50%, as the server batches requests and shares results across users. Running one powerful centralized server is dramatically cheaper than provisioning equivalent compute across dozens of developer machines. Centralized optimization—like intelligent rate limiting and request coalescing—compounds these savings by reducing overall cloud spend.
+
+**ROI estimate**: For teams of 10+ users, remote MCP servers typically pay for themselves within 1-2 months through reduced API costs and improved efficiency. The larger your team and the more cloud APIs you query, the faster the payback.
 
 ---
 
