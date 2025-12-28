@@ -245,7 +245,11 @@ Show me my total GCP costs for the last 180 days
 
 *Expected: A breakdown of your GCP spending over the past 6 months*
 
-(https://github.com/OptimNow/finops-mcp-resources/images/tutorials/05-gcp-bigquery-quickstart/01-gcp-bigquery-quickstartC.mp4)
+https://github.com/user-attachments/assets/01-gcp-bigquery-quickstartC.mp4
+
+<video src="https://github.com/OptimNow/finops-mcp-resources/raw/main/images/tutorials/05-gcp-bigquery-quickstart/01-gcp-bigquery-quickstartC.mp4" controls width="800">
+  Your browser does not support the video tag.
+</video>
 
 ### Service Breakdown
 
