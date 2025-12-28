@@ -4,18 +4,9 @@
 
 ## Why do we need a client?
 
-MCP (Model Context Protocol) servers expose capabilities — like querying AWS pricing data, running tagging checks, or doing cost simulations — but they cannot be used directly.
-They need a **client** (Claude, Cursor, VS Code, Kiro CLI, etc.) that acts as the interface between:
-- **You / the LLM** (where you type prompts)  
-- **MCP servers** (tools that provide data or actions)  
+MCP (Model Context Protocol) servers expose powerful capabilities — like querying AWS pricing data, running tagging checks, or doing cost simulations — but they cannot be used directly. They need a **client** (Claude, Cursor, VS Code, Kiro CLI, etc.) that acts as the interface between you (where you type prompts) and the MCP servers (tools that provide data or actions).
 
-The client is responsible for:
-- **Launching and managing servers** (based on `mcp.json` configs)  
-- **Routing requests** from the LLM to the right MCP server  
-- **Handling security** (auth, permissions, logs)  
-- **Presenting results** in a human-friendly way (tables, charts, code blocks)  
-
-👉 Without a client, the MCP servers are just “idle executables.” The client is the **orchestrator** that makes them useful.
+The client serves as the orchestrator of the entire MCP ecosystem. It launches and manages servers based on `mcp.json` configurations, routes your requests from the LLM to the appropriate MCP server, handles security concerns like authentication and permissions, and presents results in human-friendly formats such as tables, charts, and code blocks. Without a client, MCP servers are just "idle executables" — the client is what transforms them into useful, accessible tools that augment your AI assistant's capabilities.
 
 ---
 
@@ -32,8 +23,8 @@ As of January 2026, MCP is supported by all major AI platforms. Here's how they 
 - **Cursor** – Developer-focused IDE with MCP support. Good for experimentation but less mature for production FinOps.
 
 ### **For Business/Finance Stakeholders**
-- **ChatGPT** – Most accessible to non-technical users. Massive user base, conversational interface, good for demos and quick analyses.
-- **Claude Desktop** – Excellent for demos, explorations, and making FinOps data accessible. Native MCP support from Anthropic.
+- **Claude Desktop** – Best-in-class for MCP-powered FinOps analysis. Native MCP support from Anthropic, excellent for demos, explorations, and making complex cost data accessible through natural language.
+- **ChatGPT** – Most accessible to non-technical users. Massive user base, conversational interface, good for quick analyses. MCP support arrived March 2025.
 - **Microsoft Copilot** – Best for Microsoft 365 organizations; share insights via Teams, Excel, PowerPoint. Requires Copilot Studio for full MCP.
 - **Google Gemini** – Ideal for GCP-centric teams using BigQuery billing exports. Strong multi-modal capabilities.
 
