@@ -240,10 +240,12 @@ Try these prompts in Claude to verify everything works:
 ### Basic Query Test
 
 ```
-Show me my total GCP costs for the last 30 days
+Show me my total GCP costs for the last 180 days
 ```
 
-*Expected: A breakdown of your GCP spending over the past month*
+*Expected: A breakdown of your GCP spending over the past 6 months*
+
+[outcome](https://github.com/OptimNow/finops-mcp-resources/images/turorials/GCP BigQuery MCP Server/GCP BigQuery MCP Server.mp4)
 
 ### Service Breakdown
 
