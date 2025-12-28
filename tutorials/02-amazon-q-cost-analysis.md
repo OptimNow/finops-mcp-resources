@@ -240,10 +240,12 @@ I'm running 10 t3.xlarge instances 24/7. Should I use Reserved Instances or Savi
 ### Amazon Q CLI not found after installation
 - **Solution**: Restart your terminal or run `source ~/.bashrc` (Linux/WSL) or `source ~/.zshrc` (macOS)
 
-### MCP server not loading
+### MCP server not loading ("connection closed: initialize response")
+- **Known Issue**: The AWS Pricing MCP server may have compatibility issues with Kiro CLI (formerly Amazon Q CLI)
+- **Correct package syntax**: Use `--from awslabs-aws-pricing-mcp-server awslabs.aws-pricing-mcp-server` in the args
+- **Alternative**: Use Claude Desktop with the AWS MCP servers instead (Tutorial 1) or the AWS Remote MCP Server (Tutorial 7)
 - **Check the config file**: Ensure `~/.aws/amazonq/mcp.json` has valid JSON syntax
 - **Verify uvx is installed**: Run `uvx --version`
-- **Check the server name**: Must be `mcp-server-aws-pricing` (not `awslabs-aws-pricing-mcp-server`)
 
 ### "Permission denied" when running commands
 - **WSL users**: Don't run commands with `sudo` unless specifically instructed
