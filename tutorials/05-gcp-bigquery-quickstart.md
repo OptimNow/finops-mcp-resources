@@ -11,6 +11,27 @@ The **GCP BigQuery MCP server** (via Toolbox) allows you to query **Google Cloud
 
 This tutorial walks you through setting up the BigQuery MCP server using the Toolbox binary with a dedicated GCP service account.
 
+### Choosing Between Official and Community GCP MCP Servers
+
+There are two approaches to accessing GCP billing data through MCP servers:
+
+**Official MCP Server (This Tutorial):** Uses Google's [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox) with the `--prebuilt bigquery` option. This is a production-ready, officially maintained solution that works with Claude Desktop and requires minimal setup. You install a single binary and configure it with your GCP credentials.
+
+**Community MCP Server:** Uses the [krzko/google-cloud-mcp](https://github.com/krzko/google-cloud-mcp) community project, which requires building from source with Node.js and pnpm. This approach offers more customization options and works with multiple AI clients (VS Code, Google Gemini) but requires more setup steps.
+
+| Feature | Official (Toolbox) | Community (krzko) |
+|---------|-------------------|-------------------|
+| **Maintenance** | Google-maintained | Community-maintained |
+| **Installation** | Single binary download | Build from source (Node.js) |
+| **Setup Complexity** | Low (3 steps) | Medium (5+ steps) |
+| **Production Ready** | ✅ Yes | ⚠️ Beta |
+| **Claude Desktop** | ✅ Native support | ✅ Supported |
+| **VS Code/Gemini** | ❌ Not applicable | ✅ Supported |
+| **Customization** | Pre-built tools | Full source access |
+| **Updates** | Automatic with new releases | Manual rebuild required |
+
+**Recommendation:** Start with the official Toolbox approach (this tutorial) for production use with Claude Desktop. Consider the community server if you need multi-client support or want to customize the implementation.
+
 ---
 
 ## 2. Prerequisites

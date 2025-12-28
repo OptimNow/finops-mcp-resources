@@ -6,6 +6,29 @@ This tutorial walks you through setting up the **krzko/google-cloud-mcp** commun
 
 Unlike Google's official MCP servers (BigQuery, GKE, GCE, Google Maps), this community server is specifically optimized for **FinOps use cases** — analyzing cloud costs, generating billing reports, and identifying optimization opportunities.
 
+### Choosing Between Official and Community GCP MCP Servers
+
+There are two approaches to accessing GCP billing data through MCP servers:
+
+**Official MCP Server:** Uses Google's [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox) with the `--prebuilt bigquery` option. This is a production-ready, officially maintained solution that works with Claude Desktop and requires minimal setup. You install a single binary and configure it with your GCP credentials. [See Tutorial 05](./05-gcp-bigquery-quickstart.md)
+
+**Community MCP Server (This Tutorial):** Uses the [krzko/google-cloud-mcp](https://github.com/krzko/google-cloud-mcp) community project, which requires building from source with Node.js and pnpm. This approach offers more customization options and works with multiple AI clients (VS Code, Google Gemini) but requires more setup steps.
+
+| Feature | Official (Toolbox) | Community (krzko) |
+|---------|-------------------|-------------------|
+| **Maintenance** | Google-maintained | Community-maintained |
+| **Installation** | Single binary download | Build from source (Node.js) |
+| **Setup Complexity** | Low (3 steps) | Medium (5+ steps) |
+| **Production Ready** | ✅ Yes | ⚠️ Beta |
+| **Claude Desktop** | ✅ Native support | ✅ Supported |
+| **VS Code/Gemini** | ❌ Not applicable | ✅ Supported |
+| **Customization** | Pre-built tools | Full source access |
+| **Updates** | Automatic with new releases | Manual rebuild required |
+
+**Recommendation:** Start with the official Toolbox approach ([Tutorial 05](./05-gcp-bigquery-quickstart.md)) for production use with Claude Desktop. Consider the community server (this tutorial) if you need multi-client support or want to customize the implementation.
+
+---
+
 **What you'll learn:**
 - How to install and build the GCP Billing Export MCP server
 - How to configure it with VS Code (Gemini Code Assist)
