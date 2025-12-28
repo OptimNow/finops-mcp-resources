@@ -22,11 +22,15 @@
 
 ## 1. Overview
 
-The Azure MCP server lets you query **FinOps Hub** and **Azure Cost Management** data directly in your MCP client (like VS Code). Use it for:
+The **official Azure MCP server** (`@azure/mcp`) is a **remote MCP server** that provides Azure resource management and monitoring capabilities. This means it runs via `npx` and automatically downloads the latest version from npm—no local installation needed.
 
-- Cost analysis
-- Optimization insights
-- FinOps workflow automation
+**⚠️ Important Limitation:** The official Azure MCP server **does NOT currently expose cost management or billing APIs**. For FinOps/cost analysis, see the comparison table in section 6 for community alternatives.
+
+**What the Azure MCP server DOES provide:**
+- Resource monitoring (logs, metrics, activity logs)
+- Resource management (subscriptions, resource groups, AKS, storage, etc.)
+- Diagnostics and health monitoring
+- Azure resource queries and inspection
 
 ------
 
@@ -34,30 +38,55 @@ The Azure MCP server lets you query **FinOps Hub** and **Azure Cost Management**
 
 ## 2. Prerequisites
 
-- An **Azure subscription** with a [FinOps Hub](https://learn.microsoft.com/en-us/cloud-computing/finops/toolkit/hubs/finops-hubs-overview?utm_source=chatgpt.com#create-a-new-hub) and **Data Explorer** enabled. *👉 For setup details, see the [Azure FinOps Hub guide](https://learn.microsoft.com/en-us/cloud-computing/finops/toolkit/hubs/finops-hubs-overview?utm_source=chatgpt.com#create-a-new-hub).*
-- **VS Code** installed and running. 
-- Azure permissions: assign yourself or your service principal the **Cost Management Reader** role (and optionally **Reader** at resource group level for more detail)
+- An **Azure subscription**
+- **VS Code** installed and running
+- **Cline extension** installed in VS Code (see step 3a below if you don't have it yet)
+- Azure permissions: **Reader** role at subscription or resource group level
 
 
 
 ------
 
-## 3. Installation (1-click in VS Code)
+## 3. Installation
 
-1. Open this repo in VS Code.
-2. Click the **Install in VS Code** badge : [![Install VS Code](https://img.shields.io/badge/Install-VS%20Code-blue?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=Azure+MCP+Server&config={"command":"npx","args":["-y","@azure%2Fmcp@latest","server","start"]}&utm_source=chatgpt.com)
+### 3a. Install Cline (MCP Client)
 
-That’s it — VS Code sets up the MCP server for you.
+If you don't have Cline installed yet:
+
+1. Open VS Code
+2. Go to Extensions (Ctrl+Shift+X)
+3. Search for "Cline"
+4. Click **Install** on the Cline extension
+5. After installation, you'll see a chat icon in the VS Code sidebar
+
+### 3b. Install Azure MCP Server (1-click)
+
+1. Open this repo in VS Code
+2. Click the **Install in VS Code** badge: [![Install VS Code](https://img.shields.io/badge/Install-VS%20Code-blue?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=Azure+MCP+Server&config={"command":"npx","args":["-y","@azure%2Fmcp@latest","server","start"]}&utm_source=chatgpt.com)
+
+That's it — VS Code sets up the MCP server for you.
 
 ------
 
 
 
-## 4. Minimal Config
+## 4. Verify Installation (Optional)
 
-If you want to check it manually, add this to your `mcp.json`:
+You can verify the installation by checking your MCP configuration file.
 
-```
+**Important:** If you're using **Cline**, the configuration is stored at:
+- `C:\Users\<YourUsername>\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\settings\cline_mcp_settings.json`
+
+**For other MCP clients**, check:
+- Press `Ctrl+P` in VS Code (Quick Open)
+- Paste this path: `C:\Users\<YourUsername>\AppData\Roaming\Code\User\mcp.json`
+- Replace `<YourUsername>` with your actual Windows username
+
+**Expected configuration:**
+
+The one-click install should have added this configuration:
+
+```json
 {
   "mcpServers": {
     "azure-mcp": {
@@ -71,30 +100,73 @@ If you want to check it manually, add this to your `mcp.json`:
 }
 ```
 
+**Note:** You can add your Azure subscription ID to the `env` section for better functionality.
+
 ------
 
 
 
 ## 5. Test it
 
-In your MCP client, try:
+**Where to test:** Open the **Cline chat panel** in VS Code (click the chat icon in the left sidebar).
+
+In the Cline chat, try this prompt:
 
 ```
-Give me an overview of my Azure FinOps setup: list my resource groups, storage accounts, and then dive into the <your storage account Id> storage account to show containers and any cost report files
+List my Azure subscriptions and resource groups, then show me the storage accounts in my primary resource group
 ```
 
-You should get this:
+**Example queries you can try:**
+- "Show me all resource groups in my subscription"
+- "List storage accounts and their containers"
+- "Get recent activity logs for my resources"
+- "Show metrics for my AKS clusters"
 
-[![img](https://cdn.loom.com/sessions/thumbnails/bcc9417c27cf448a94ca8718b0c66130-d6ba898b6e3b13f4-full-play.gif)](https://www.loom.com/share/bcc9417c27cf448a94ca8718b0c66130)
+**Note:** For cost and billing queries, the official Azure MCP server doesn't currently support these. See section 6 for community alternatives that provide FinOps capabilities.
 
 
 
 ---
 
-## 6. Next steps
+## 6. Comparison with other Azure MCP servers
+
+There are community-created Azure MCP servers that **DO provide FinOps/cost management features**, but they are **not official** and require **local installation**:
+
+| MCP Server | Official? | Type | Cost/Billing APIs? | Production Ready? | Installation |
+|------------|-----------|------|-------------------|-------------------|--------------|
+| **@azure/mcp** (this tutorial) | ✅ Yes (Microsoft) | Remote | ❌ No | ✅ Yes | `npx @azure/mcp@latest` |
+| **[julianobarbosa/azure-finops-mcp-server](https://github.com/julianobarbosa/azure-finops-mcp-server)** ⭐ **Recommended for FinOps** | ❌ No (Community) | Local | ✅ Yes | ✅ Yes | Python package (`uv pip install azure-finops-mcp-server`) |
+| **[mc5eamus/finopshub-mcp](https://github.com/mc5eamus/finopshub-mcp)** | ❌ No (Community) | Local | ✅ Yes | ❌ No (Proof-of-concept) | Clone repo + manual setup (Python, Docker) |
+
+**When to use each:**
+
+- **Use @azure/mcp (official)** for:
+  - Resource management and monitoring
+  - Official Microsoft support
+  - Easy remote installation
+  - Long-term maintenance guarantee
+
+- **Use julianobarbosa/azure-finops-mcp-server (⭐ recommended community option)** for:
+  - **Cost analysis and billing data**
+  - FinOps workflow automation
+  - Budget monitoring and cost optimization
+  - **Production-grade quality**: 97.7% test coverage, 100% architecture compliance, GitHub Actions CI/CD
+  - **Performance optimized**: 4.9x faster with parallel processing
+  - **Secure**: All credentials remain local via Azure CLI
+  - Features: `get_cost` (cost analysis with tag filtering) and `run_finops_audit` (unused resource detection)
+
+- **Avoid mc5eamus/finopshub-mcp** unless experimenting:
+  - Early proof-of-concept (only 4 commits, 2 stars)
+  - No test coverage or CI/CD pipeline
+  - Experimental features marked as WIP
+  - Not recommended for production use
+
+---
+
+## 7. Next steps
 
 - Review role requirements: [Azure MCP IAM guidance](../governance/security-privileges-azure.md)
-- Explore FinOps Hub queries in the Data Explorer
-- Extend with tagging, budgets, and anomaly detection
+- Explore Azure resource queries and monitoring capabilities
+- **For FinOps/cost analysis**: Set up [julianobarbosa/azure-finops-mcp-server](https://github.com/julianobarbosa/azure-finops-mcp-server) (recommended in section 6)
 
-  
+

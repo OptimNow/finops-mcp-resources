@@ -4,8 +4,8 @@
 
 ## Why do we need a client?
 
-MCP (Model Context Protocol) servers expose capabilities — like querying AWS pricing data, running tagging checks, or doing cost simulations — but they cannot be used directly.  
-They need a **client** (Claude, Cursor, VS Code, Amazon Q, etc.) that acts as the interface between:
+MCP (Model Context Protocol) servers expose capabilities — like querying AWS pricing data, running tagging checks, or doing cost simulations — but they cannot be used directly.
+They need a **client** (Claude, Cursor, VS Code, Kiro CLI, etc.) that acts as the interface between:
 - **You / the LLM** (where you type prompts)  
 - **MCP servers** (tools that provide data or actions)  
 
@@ -38,7 +38,7 @@ As of January 2026, MCP is supported by all major AI platforms. Here's how they 
 - **Google Gemini** – Ideal for GCP-centric teams using BigQuery billing exports. Strong multi-modal capabilities.
 
 ### **For Cloud-Specific Use Cases**
-- **Amazon Q** – Great for AWS-native teams; handy in-console assistant, but limited to AWS and adds vendor lock-in.
+- **Kiro CLI (formerly Amazon Q)** – Great for AWS-native teams; command-line interface perfect for scripting and automation, but limited to AWS and adds vendor lock-in.
 - **Kiro** – Strong AWS integration (backed by AWS), ideal for AWS-centric DevOps teams managing infrastructure as code.
 - **Microsoft Copilot** – Best for Azure-first organizations with existing Microsoft 365 investments.
 - **Google Gemini** – Best for GCP-centric FinOps teams wanting to keep data in Google Cloud.
@@ -54,7 +54,7 @@ As of January 2026, MCP is supported by all major AI platforms. Here's how they 
 | **Gemini** | GCP teams | Native (April 2025) | GCP integration, Vertex AI | GCP bias, API-focused |
 | **Copilot** | Microsoft 365 orgs | GA in Copilot Studio | Azure/M365 integration, governance | Complex licensing, setup overhead |
 | **VS Code** | Engineers | Via extensions | Extensible, familiar | Requires configuration |
-| **Amazon Q** | AWS teams | Native | AWS integration | AWS-only, vendor lock-in |
+| **Kiro CLI** | AWS CLI users | Native | AWS integration, scriptable | AWS-only, vendor lock-in |
 | **Cursor** | Developers | Native | Modern IDE features | Less mature for FinOps |
 
 ---
@@ -66,10 +66,10 @@ As of January 2026, MCP is supported by all major AI platforms. Here's how they 
 For **multi-cloud FinOps teams**:
 1. **Primary cockpit**: Claude Code or VS Code for technical work (IaC, CI/CD, cost optimization)
 2. **Business layer**: ChatGPT or Claude Desktop for executive reports, demos, stakeholder communication
-3. **Cloud-specific**: Use Amazon Q (AWS), Copilot (Azure), or Gemini (GCP) when deep cloud-native integration is needed
+3. **Cloud-specific**: Use Kiro CLI (AWS), Copilot (Azure), or Gemini (GCP) when deep cloud-native integration is needed
 
 For **cloud-specific teams**:
-- **AWS-first**: Kiro (for DevOps/IaC) or Amazon Q (for general AWS work) + Claude Code
+- **AWS-first**: Kiro (for DevOps/IaC) or Kiro CLI (for command-line/scripting) + Claude Code
 - **Azure-first**: Microsoft Copilot + Claude Code
 - **GCP-first**: Google Gemini + Claude Code
 
@@ -79,6 +79,6 @@ For **teams exploring agentic workflows**:
 
 For **non-technical FinOps practitioners**:
 - Start with **ChatGPT** (easiest, most accessible) or **Claude Desktop** (best MCP support)
-- Add cloud-specific tools (Q/Copilot/Gemini) based on primary cloud provider
+- Add cloud-specific tools (Kiro CLI/Copilot/Gemini) based on primary cloud provider
 
 👉 **Bottom line** (January 2026): MCP has matured from a niche protocol to industry-standard infrastructure. Choose clients based on your team's technical skills, cloud environment, and whether you need developer tools or business-friendly interfaces.
