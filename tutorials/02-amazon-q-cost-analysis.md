@@ -2,7 +2,7 @@
 
 ---
 
-# AWS Cost Analysis with Amazon Q
+# AWS Cost Analysis with Kiro CLI
 
 **Tutorial 2 of 7** | ⏱️ **Time**: 20-30 minutes | 💻 **Level**: Beginner
 
@@ -12,20 +12,21 @@
 
 ## 🎯 What You'll Learn
 
-- Use Amazon Q CLI for AWS cost analysis with MCP
-- Integrate Amazon Q with MCP servers for FinOps workflows
+- Use Kiro CLI (formerly Amazon Q CLI) for AWS cost analysis with MCP
+- Integrate Kiro CLI with the AWS Remote MCP server for FinOps workflows
 - Execute automated cost estimation queries using natural language
 - Apply AI-driven best practices for cloud cost management
-- Leverage AWS-native assistant capabilities for billing insights
+- Leverage AWS-native remote MCP server capabilities for billing insights
 
 ---
 
 ## Overview
 
-**Blog Post**: [AWS Costs Estimation using Amazon Q CLI and AWS Cost Analysis MCP](https://aws.amazon.com/fr/blogs/machine-learning/aws-costs-estimation-using-amazon-q-cli-and-aws-cost-analysis-mcp/)
-**Status**: ✅ Official AWS Blog
+**Official Resources**:
+- [AWS Remote MCP Server Documentation](https://docs.aws.amazon.com/mcp/)
+- [Kiro CLI Website](https://kiro.dev/)
 
-Learn how to combine Amazon Q CLI with MCP servers for intelligent, AI-driven cost analysis using natural language queries.
+Learn how to combine Kiro CLI with the AWS Remote MCP server for intelligent, AI-driven cost analysis using natural language queries. This tutorial uses the same remote MCP server from Tutorial 7, eliminating local installation complexity.
 
 ---
 
@@ -63,12 +64,15 @@ Learn how to combine Amazon Q CLI with MCP servers for intelligent, AI-driven co
 
 ---
 
-## Step 2: Install Amazon Q CLI
+## Step 2: Install Kiro CLI
+
+**Note**: Kiro CLI is the successor to Amazon Q CLI. If you already have Amazon Q CLI installed, you can update it to Kiro CLI.
 
 ### Option A: macOS (Homebrew)
 
 ```bash
 brew install --cask amazon-q
+# After installation, run: q update
 ```
 
 ### Option B: macOS (DMG)
@@ -77,7 +81,7 @@ Download directly: https://desktop-release.q.us-east-1.amazonaws.com/latest/Amaz
 
 ### Option C: Linux / WSL2
 
-1. **Download Amazon Q CLI**:
+1. **Download Kiro CLI (via Amazon Q installer)**:
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf "https://desktop-release.q.us-east-1.amazonaws.com/latest/q-x86_64-linux.zip" -o "q.zip"
    ```
@@ -93,14 +97,21 @@ Download directly: https://desktop-release.q.us-east-1.amazonaws.com/latest/Amaz
    ./install.sh
    ```
 
-4. **Restart your terminal** (or WSL2)
-
-5. **Verify installation**:
+4. **Update to Kiro CLI** (if prompted):
    ```bash
+   q update
+   ```
+
+5. **Restart your terminal** (or WSL2)
+
+6. **Verify installation**:
+   ```bash
+   kiro-cli --version
+   # Or if still using 'q' command:
    q --version
    ```
 
-   You should see output like: `Amazon Q Developer CLI v1.x.x`
+   You should see Kiro CLI version information
 
 ---
 
@@ -143,7 +154,11 @@ uvx --version
 
 ---
 
-## Step 5: Configure MCP Server for Amazon Q
+## Step 5: Configure AWS Remote MCP Server for Kiro CLI
+
+**Important**: Complete Tutorial 7 first to set up IAM permissions for the AWS Remote MCP server. You'll need:
+- IAM user with `aws-mcp:InvokeMcp` permission
+- AWS profile configured (Step 3 of Tutorial 7)
 
 1. **Create the MCP configuration directory**:
    ```bash
@@ -157,24 +172,31 @@ uvx --version
 
    Or use any text editor to create `~/.aws/amazonq/mcp.json`
 
-3. **Add the AWS Pricing MCP server configuration**:
+3. **Add the AWS Remote MCP server configuration**:
 
    ```json
    {
      "mcpServers": {
-       "aws-pricing": {
+       "aws-mcp": {
          "command": "uvx",
-         "args": ["mcp-server-aws-pricing"],
+         "args": [
+           "mcp-proxy-for-aws@latest",
+           "https://aws-mcp.us-east-1.api.aws/mcp",
+           "--metadata",
+           "AWS_REGION=us-east-1"
+         ],
          "env": {
-           "AWS_REGION": "us-east-1",
-           "AWS_PROFILE": "default"
+           "AWS_PROFILE": "mcp-aws"
          }
        }
      }
    }
    ```
 
-   **Note**: Replace `default` with your AWS CLI profile name if you use a different one (e.g., `finops`)
+   **Notes**:
+   - `mcp-aws` is the AWS profile name from Tutorial 7. Replace it if you used a different name
+   - This is the same remote MCP server configuration from Tutorial 7
+   - No local installation needed - the server is hosted by AWS!
 
 4. **Save and exit** (Ctrl+X, then Y, then Enter if using nano)
 
@@ -182,14 +204,23 @@ uvx --version
 
 ## Step 6: Test Your Setup
 
-1. **Start Amazon Q CLI chat**:
+1. **Start Kiro CLI chat**:
    ```bash
-   q chat
+   kiro-cli chat
+   # Or if still using the 'q' command:
+   # q chat
    ```
 
-2. **Verify MCP server loaded**: You should see a message indicating the AWS Pricing MCP server is loaded
+2. **Verify MCP server loaded**: You should see a message indicating the AWS Remote MCP server is loaded
 
 3. **Test with a cost analysis query**:
+   ```
+   What's the monthly cost of running a t3.large EC2 instance in us-east-1?
+   ```
+
+4. **Trust the MCP tool**: Kiro CLI will ask for permission to use the MCP tool. Type `t` to trust it.
+
+5. **Try a more complex query**:
    ```
    Please create a cost analysis for a simple web application with:
    - Application Load Balancer
@@ -199,9 +230,7 @@ uvx --version
    - Moderate traffic of about 100 GB data transfer
    ```
 
-4. **Trust the MCP tool**: Amazon Q will ask for permission to use the MCP tool. Type `t` to trust it.
-
-5. **Review the cost analysis**: Amazon Q should generate a detailed cost breakdown with real-time AWS pricing data
+6. **Review the cost analysis**: Kiro CLI should generate a detailed cost breakdown using the AWS Remote MCP server's access to 15,000+ AWS APIs
 
 ---
 
@@ -237,23 +266,25 @@ I'm running 10 t3.xlarge instances 24/7. Should I use Reserved Instances or Savi
 
 ## Troubleshooting
 
-### Amazon Q CLI not found after installation
+### Kiro CLI / Amazon Q CLI not found after installation
 - **Solution**: Restart your terminal or run `source ~/.bashrc` (Linux/WSL) or `source ~/.zshrc` (macOS)
+- **Update to Kiro**: Run `q update` to upgrade from Amazon Q CLI to Kiro CLI
 
 ### MCP server not loading ("connection closed: initialize response")
-- **Known Issue**: The AWS Pricing MCP server may have compatibility issues with Kiro CLI (formerly Amazon Q CLI)
-- **Correct package syntax**: Use `--from awslabs-aws-pricing-mcp-server awslabs.aws-pricing-mcp-server` in the args
-- **Alternative**: Use Claude Desktop with the AWS MCP servers instead (Tutorial 1) or the AWS Remote MCP Server (Tutorial 7)
+- **Check IAM permissions**: Ensure your IAM user has `aws-mcp:InvokeMcp` permission (see Tutorial 7, Step 2)
+- **Verify AWS profile**: Confirm the profile name in `mcp.json` matches your AWS CLI profile from Tutorial 7
 - **Check the config file**: Ensure `~/.aws/amazonq/mcp.json` has valid JSON syntax
 - **Verify uvx is installed**: Run `uvx --version`
+- **Test the remote server**: Try using the same config in Claude Desktop (Tutorial 7) to verify it works
 
 ### "Permission denied" when running commands
 - **WSL users**: Don't run commands with `sudo` unless specifically instructed
 - **Check file permissions**: Ensure your user owns the `~/.aws/amazonq/` directory
 
-### Cost analysis returns errors
-- **Verify AWS region**: Ensure your `AWS_REGION` in `mcp.json` is valid (e.g., `us-east-1`)
-- **Check AWS profile**: If using a specific AWS CLI profile, update the `AWS_PROFILE` value
+### Cost analysis returns authorization errors
+- **IAM Policy**: Verify your IAM user has the `aws-mcp:InvokeMcp` policy attached
+- **AWS Profile**: Ensure the profile name in `mcp.json` matches your configured AWS profile
+- **Credentials**: Run `aws configure list --profile mcp-aws` to verify credentials are set
 
 ---
 
@@ -266,9 +297,10 @@ I'm running 10 t3.xlarge instances 24/7. Should I use Reserved Instances or Savi
 
 ## Resources
 
-- [AWS Blog: Amazon Q CLI + MCP for Cost Analysis](https://aws.amazon.com/blogs/machine-learning/aws-costs-estimation-using-amazon-q-cli-and-aws-cost-analysis-mcp/)
-- [Amazon Q Developer CLI on GitHub](https://github.com/aws/amazon-q-developer-cli)
-- [AWS Pricing MCP Server Documentation](https://github.com/awslabs/mcp-server-aws-pricing)
-- [How to Install Amazon Q CLI on Windows](https://builder.aws.com/content/2ySpxVfiIsy46THpP6YdlYgQZpD/how-to-install-amazon-q-cli-on-windows)
+- [Kiro CLI Official Website](https://kiro.dev/)
+- [Kiro CLI License](https://kiro.dev/license)
+- [AWS Remote MCP Server Documentation](https://docs.aws.amazon.com/mcp/)
+- [Tutorial 7: AWS MCP Remote Server Setup](./07-aws-mcp-remote-server.md) - Complete IAM setup guide
+- [Amazon Q Developer CLI (Legacy)](https://github.com/aws/amazon-q-developer-cli)
 
 
