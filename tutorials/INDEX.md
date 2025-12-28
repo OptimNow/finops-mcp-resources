@@ -65,6 +65,16 @@ Follow these tutorials in order for the best learning experience:
   - Query billing data from BigQuery using AI
 - **Best for**: GCP FinOps teams, VS Code users, hands-on learners
 
+### 7️⃣ **AWS Remote MCP** → [AWS MCP Remote Server - Complete AWS Interactions](./07-aws-mcp-remote-server.md)
+- **Time**: 20-30 minutes
+- **Prerequisites**: AWS account, IAM permissions
+- **What you'll learn**:
+  - Connect to AWS's first remote, managed MCP server
+  - Access 15,000+ AWS APIs through natural language
+  - Use Agent Standard Operating Procedures (SOPs) for AWS tasks
+  - Query AWS documentation, pricing, and resources without local installation
+- **Best for**: All AWS users, enterprise teams, production deployments
+
 ---
 
 ## 📚 Tutorials by Cloud Provider
@@ -73,6 +83,7 @@ Follow these tutorials in order for the best learning experience:
 1. [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) - Real-time pricing queries
 2. [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md) - AWS-native assistant
 3. [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md) - Advanced workflows
+7. [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) - Complete AWS interactions (remote, managed)
 
 ### Azure
 4. [Azure MCP Quick Start](./04-azure-mcp-quickstart.md) - Azure Cost Management
@@ -87,6 +98,7 @@ Follow these tutorials in order for the best learning experience:
 
 ### Beginner
 - [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) ⭐ Start here
+- [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) - Comprehensive AWS access
 - [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md)
 - [Azure MCP Quick Start](./04-azure-mcp-quickstart.md)
 
@@ -165,9 +177,9 @@ Want to contribute a tutorial? See [CONTRIBUTING.md](../CONTRIBUTING.md)!
 
 ## 📊 Tutorial Statistics
 
-**Total Tutorials**: 6
-**Cloud Providers Covered**: AWS (3), Azure (1), GCP (2)
-**Difficulty Levels**: Beginner (3), Intermediate (2), Advanced (1)
+**Total Tutorials**: 7
+**Cloud Providers Covered**: AWS (4), Azure (1), GCP (2)
+**Difficulty Levels**: Beginner (4), Intermediate (2), Advanced (1)
 **Average Completion Time**: 25-40 minutes per tutorial
 
 ---
