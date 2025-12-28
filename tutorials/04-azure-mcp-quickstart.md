@@ -1,6 +1,24 @@
+← [Back to Tutorials](./INDEX.md) | [Home](../README.md)
+
+---
+
 # Azure MCP Server — Quickstart
 
+**Tutorial 4 of 7** | ⏱️ **Time**: 20-30 minutes | 💻 **Level**: Beginner
 
+**Last Updated**: January 2026
+
+---
+
+## 🎯 What You'll Learn
+
+- Set up the Azure MCP server for FinOps Hub integration
+- Configure Azure Cost Management API access in VS Code
+- Query Azure billing data using natural language
+- Analyze cost reports and optimization insights
+- Implement FinOps workflow automation for Azure
+
+---
 
 ## 1. Overview
 

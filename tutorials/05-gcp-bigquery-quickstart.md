@@ -1,4 +1,24 @@
+← [Back to Tutorials](./INDEX.md) | [Home](../README.md)
+
+---
+
 # GCP BigQuery MCP Server — Quick Start
+
+**Tutorial 5 of 7** | ⏱️ **Time**: 30-40 minutes | 💻 **Level**: Intermediate
+
+**Last Updated**: January 2026
+
+---
+
+## 🎯 What You'll Learn
+
+- Set up Google's official MCP Toolbox for BigQuery billing exports
+- Create and configure a GCP service account with proper permissions
+- Install the Toolbox binary for Claude Desktop integration
+- Query GCP billing data at scale using natural language
+- Analyze multi-cloud cost comparisons and optimization insights
+
+---
 
 ## 1. Overview
 

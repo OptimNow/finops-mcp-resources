@@ -12,67 +12,74 @@ Follow these tutorials in order for the best learning experience:
 
 ### 1️⃣ **Start Here** → [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md)
 - **Time**: 15-20 minutes
-- **Prerequisites**: None (beginner-friendly)
+- **Level**: Intermediate
+- **Prerequisites**: Node.js, AWS CLI, Python, uv
 - **What you'll learn**:
-  - Install your first MCP server
+  - Install your first local MCP server
   - Connect to a client (Claude Desktop)
   - Query real-time AWS pricing data
-- **Best for**: Complete beginners to MCP
+- **Best for**: Users comfortable with command-line tools
 
 ### 2️⃣ **Next** → [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md)
 - **Time**: 20-30 minutes
-- **Prerequisites**: AWS account, Tutorial 1 completed
+- **Level**: Beginner
+- **Prerequisites**: AWS account
 - **What you'll learn**:
-  - Use Amazon Q for FinOps workflows
+  - Use Amazon Q CLI for FinOps workflows
   - Analyze AWS cost data with natural language
   - AWS-native MCP integration
-- **Best for**: AWS-focused teams
+- **Best for**: AWS-focused teams new to AI assistants
 
 ### 3️⃣ **Advanced** → [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md)
 - **Time**: 45-60 minutes
-- **Prerequisites**: Tutorials 1 & 2 completed
+- **Level**: Advanced
+- **Prerequisites**: AWS Bedrock access, understanding of agent architectures
 - **What you'll learn**:
-  - Multi-agent MCP workflows
-  - Amazon Nova integration
-  - Complex FinOps orchestration
-- **Best for**: Advanced users, DevOps teams
+  - Build multi-agent FinOps systems
+  - Implement Amazon Nova supervisor patterns
+  - Design agent orchestration workflows
+- **Best for**: Advanced users, DevOps teams, architects
 
 ### 4️⃣ **Multi-Cloud** → [Azure MCP Quick Start](./04-azure-mcp-quickstart.md)
 - **Time**: 20-30 minutes
-- **Prerequisites**: Azure account, Tutorial 1 completed
+- **Level**: Beginner
+- **Prerequisites**: Azure account with FinOps Hub
 - **What you'll learn**:
-  - Set up MCP for Azure Cost Management
-  - Query Azure billing data
-  - Multi-cloud MCP setup
-- **Best for**: Azure users, multi-cloud teams
+  - Set up Azure MCP with 1-click VS Code install
+  - Query Azure Cost Management data
+  - Implement FinOps Hub integration
+- **Best for**: Azure users, multi-cloud teams, VS Code users
 
 ### 5️⃣ **Multi-Cloud** → [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md)
 - **Time**: 30-40 minutes
-- **Prerequisites**: GCP account, Tutorial 1 completed
+- **Level**: Intermediate
+- **Prerequisites**: GCP account with BigQuery billing export
 - **What you'll learn**:
-  - Connect MCP to BigQuery billing exports
-  - Query GCP cost data with SQL
-  - Analyze GCP billing at scale
-- **Best for**: GCP users, data-heavy FinOps workflows
+  - Set up Google's official MCP Toolbox for BigQuery
+  - Configure GCP service account with proper permissions
+  - Query GCP billing data at scale
+- **Best for**: GCP users, Claude Desktop users, production deployments
 
 ### 6️⃣ **Multi-Cloud** → [GCP Billing Export MCP Setup](./06-Tutorial-GCP-Billing-MCP.md)
 - **Time**: 35-45 minutes
-- **Prerequisites**: GCP account with Billing Export enabled
+- **Level**: Intermediate
+- **Prerequisites**: GCP account, Node.js, pnpm
 - **What you'll learn**:
-  - Install and build community GCP Billing MCP server
+  - Build community GCP Billing MCP server from source
   - Configure with VS Code (Gemini Code Assist)
-  - Configure with Google Gemini CLI
-  - Query billing data from BigQuery using AI
-- **Best for**: GCP FinOps teams, VS Code users, hands-on learners
+  - Set up with Google Gemini CLI
+  - Customize server for specific workflows
+- **Best for**: GCP FinOps teams, developers wanting multi-client support
 
 ### 7️⃣ **AWS Remote MCP** → [AWS MCP Remote Server - Complete AWS Interactions](./07-aws-mcp-remote-server.md)
 - **Time**: 20-30 minutes
+- **Level**: Beginner
 - **Prerequisites**: AWS account, IAM permissions
 - **What you'll learn**:
   - Connect to AWS's first remote, managed MCP server
   - Access 15,000+ AWS APIs through natural language
-  - Use Agent Standard Operating Procedures (SOPs) for AWS tasks
-  - Query AWS documentation, pricing, and resources without local installation
+  - Use Agent SOPs for AWS tasks
+  - Zero installation - AWS-hosted infrastructure
 - **Best for**: All AWS users, enterprise teams, production deployments
 
 ---
@@ -97,14 +104,14 @@ Follow these tutorials in order for the best learning experience:
 ## 🎓 Tutorials by Skill Level
 
 ### Beginner
-- [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) ⭐ Start here
-- [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) - Comprehensive AWS access
-- [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md)
-- [Azure MCP Quick Start](./04-azure-mcp-quickstart.md)
+- [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) ⭐ **Easiest start** - Remote/managed
+- [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md) - AWS-native assistant
+- [Azure MCP Quick Start](./04-azure-mcp-quickstart.md) - 1-click VS Code install
 
 ### Intermediate
-- [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md)
-- [GCP Billing Export MCP Setup](./Tutorial-GCP-Billing-MCP.md)
+- [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) - Local server setup
+- [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md) - Official Toolbox
+- [GCP Billing Export MCP Setup](./06-Tutorial-GCP-Billing-MCP.md) - Community server
 
 ### Advanced
 - [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md)
@@ -179,7 +186,7 @@ Want to contribute a tutorial? See [CONTRIBUTING.md](../CONTRIBUTING.md)!
 
 **Total Tutorials**: 7
 **Cloud Providers Covered**: AWS (4), Azure (1), GCP (2)
-**Difficulty Levels**: Beginner (4), Intermediate (2), Advanced (1)
+**Difficulty Levels**: Beginner (3), Intermediate (3), Advanced (1)
 **Average Completion Time**: 25-40 minutes per tutorial
 
 ---
