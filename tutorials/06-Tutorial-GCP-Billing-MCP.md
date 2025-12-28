@@ -1,4 +1,24 @@
+← [Back to Tutorials](./INDEX.md) | [Home](../README.md)
+
+---
+
 # GCP Billing Export MCP Server Installation Tutorial
+
+**Tutorial 6 of 7** | ⏱️ **Time**: 35-45 minutes | 💻 **Level**: Intermediate
+
+**Last Updated**: January 2026
+
+---
+
+## 🎯 What You'll Learn
+
+- Build and install the community GCP Billing Export MCP server from source
+- Configure the server with VS Code (Gemini Code Assist)
+- Set up the server with Google Gemini CLI
+- Query BigQuery billing data using natural language across multiple AI clients
+- Customize MCP server implementation for specific FinOps workflows
+
+---
 
 ## Introduction
 

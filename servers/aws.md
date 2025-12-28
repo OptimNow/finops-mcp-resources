@@ -10,6 +10,56 @@ A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for Fi
 
 ---
 
+## ⭐ AWS MCP Remote Server - Generally Available
+
+**Official AWS Documentation**: [AWS MCP User Guide](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html)
+**Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)
+**Status**: Generally Available (GA)
+
+### 🎯 Start Here for Complete AWS Interactions!
+
+AWS's **first remote, managed MCP server** is now Generally Available. This hosted solution eliminates local installation complexity while providing comprehensive access to all AWS services, documentation, and best practices.
+
+#### Why Choose the Remote Server?
+
+**Zero Installation Overhead**
+- No local dependencies or version management
+- AWS hosts and maintains the infrastructure
+- Always up-to-date with latest AWS APIs and documentation
+- Works with any MCP-compatible client
+
+**Comprehensive AWS Coverage**
+- **15,000+ AWS APIs** through one unified interface
+- Real-time access to AWS documentation, API references, What's New posts
+- Getting Started guides and best practices built-in
+- Complete resource management across all AWS services
+
+**Agent Standard Operating Procedures (SOPs)**
+- Pre-built workflows for common AWS tasks
+- Codified best practices for FinOps automation
+- Command validation and security controls
+- Accelerated time from idea to implementation
+
+**Enterprise-Grade Reliability**
+- Built on AWS's scalable infrastructure
+- IAM-based security and access control
+- Centralized audit logging and compliance
+- Production-ready for enterprise deployments
+
+#### 📚 Step-by-Step Tutorial
+
+**New to the AWS MCP Remote Server?** Follow our complete tutorial:
+
+👉 **[Tutorial: AWS MCP Remote Server - Complete AWS Interactions](../tutorials/07-aws-mcp-remote-server.md)**
+
+Learn how to:
+- Set up IAM permissions for secure access
+- Configure the remote server in Claude Desktop, VS Code, or Claude Code
+- Query AWS APIs, documentation, and resources through natural language
+- Use Agent SOPs for FinOps workflows and cost optimization
+
+---
+
 ## 🚀 AWS MCP Server (Unified Architecture) - Preview
 
 **Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)

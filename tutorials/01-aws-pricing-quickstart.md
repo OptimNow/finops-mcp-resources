@@ -1,4 +1,24 @@
+← [Back to Tutorials](./INDEX.md) | [Home](../README.md)
+
+---
+
 # AWS Pricing MCP Server Installation Tutorial
+
+**Tutorial 1 of 7** | ⏱️ **Time**: 15-20 minutes | 💻 **Level**: Intermediate
+
+**Last Updated**: January 2026
+
+---
+
+## 🎯 What You'll Learn
+
+- Install and configure the AWS Pricing MCP server for local use
+- Set up required dependencies (Node.js, AWS CLI, Python, uv)
+- Connect the server to Claude Desktop
+- Query real-time AWS pricing data using natural language
+- Generate cost analysis reports for AWS services
+
+---
 
 ## Introduction
 
