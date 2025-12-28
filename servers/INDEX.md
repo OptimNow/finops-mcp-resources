@@ -10,6 +10,7 @@ Registry of available MCP servers for Cloud FinOps use cases.
 
 ### AWS
 - **[AWS MCP Servers](./aws.md)** - Comprehensive guide to AWS MCP servers
+  - **AWS MCP Remote Server** (NEW!) - Complete AWS interactions, hosted by AWS ([tutorial](../tutorials/07-aws-mcp-remote-server.md))
   - AWS Pricing API
   - AWS Cost Explorer
   - AWS CloudWatch
