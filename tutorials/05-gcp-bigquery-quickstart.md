@@ -20,14 +20,18 @@ Before starting, ensure you have:
 - **GCP Billing Export to BigQuery** enabled ([Setup Guide](https://cloud.google.com/billing/docs/how-to/export-data-bigquery))
 - **Claude Desktop** installed ([Installation Guide](https://github.com/OptimNow/finops-mcp-resources/blob/main/clients/claude-desktop.md))
 - **A GCP Service Account** with appropriate permissions (see below)
-- **Toolbox binary** for your platform (provided or compiled from [source](https://github.com/stacklok/toolbox))
+- **Toolbox binary** for your platform (provided or compiled from [source](https://github.com/googleapis/genai-toolbox))
 
 ### Required GCP Permissions
 
 Your service account needs these IAM roles:
 
-- **Billing Data Access**: `roles/billing.viewer` (assigned at the billing account level)
-- **BigQuery Data Access**: `roles/bigquery.dataViewer` (assigned to the dataset containing billing export)
+**Project Level:**
+- **BigQuery Data Viewer**: `roles/bigquery.dataViewer` - Read data from BigQuery datasets
+- **BigQuery Job User**: `roles/bigquery.jobUser` - Run queries (recommended)
+
+**Billing Account Level:**
+- **Billing Account Viewer**: `roles/billing.viewer` - Access billing metadata and currency information
 
 ---
 
@@ -43,25 +47,44 @@ Your service account needs these IAM roles:
    - **Description**: `Service account for MCP BigQuery cost analysis`
 5. Click **"CREATE AND CONTINUE"**
 
-### b. Grant Required Roles
+### b. Grant Required Roles (Project Level)
 
-On the next screen, add these roles:
-- `BigQuery Data Viewer` (for the billing export dataset)
-- `Billing Account Viewer` (optional, for billing account metadata)
+On the **"Grant this service account access to project"** screen, add these roles:
+- **`BigQuery Data Viewer`** - Allows reading data from BigQuery datasets
+- **`BigQuery Job User`** - Allows running queries (recommended)
+
+**Note:** Do NOT add "Viewer" or "Billing Account Viewer" here - these are either too broad or must be assigned at a different level.
 
 Click **"CONTINUE"** then **"DONE"**
 
-### c. Create and Download JSON Key
+### c. Grant Billing Account Viewer Role (Billing Account Level)
 
-1. Find your newly created service account in the list
-2. Click on it to open details
-3. Go to the **"KEYS"** tab
-4. Click **"ADD KEY"** > **"Create new key"**
-5. Choose **JSON** format
-6. Click **"CREATE"**
-7. The key file downloads automatically (e.g., `gcp-mcp-dataviewer.json`)
+**Important:** This role must be assigned at the Billing Account level, not at the project level.
 
-### d. Store the Key Securely
+1. Go to [GCP Console > Billing](https://console.cloud.google.com/billing)
+2. Select your **Billing Account** (the one linked to your billing export)
+3. Click **"Account Management"** in the left sidebar
+4. Click **"ADD PRINCIPAL"** (or "ADD MEMBER")
+5. In the **"New principals"** field, enter your service account email:
+   - Format: `gcp-mcp-dataviewer@YOUR-PROJECT-ID.iam.gserviceaccount.com`
+   - You can copy this from the Service Accounts page
+6. In **"Select a role"**, choose: **`Billing Account Viewer`**
+7. Click **"SAVE"**
+
+**Why this role?** The Billing Account Viewer role (`roles/billing.viewer`) allows the service account to access billing metadata and currency information required for comprehensive cost analysis.
+
+### d. Create and Download JSON Key
+
+1. Return to [GCP Console > IAM & Admin > Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)
+2. Find your newly created service account in the list
+3. Click on it to open details
+4. Go to the **"KEYS"** tab
+5. Click **"ADD KEY"** > **"Create new key"**
+6. Choose **JSON** format
+7. Click **"CREATE"**
+8. The key file downloads automatically (e.g., `gcp-mcp-dataviewer.json`)
+
+### e. Store the Key Securely
 
 Create a secure directory for keys:
 
