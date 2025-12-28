@@ -130,19 +130,20 @@ chmod +x ~/.local/bin/toolbox
 
 ### Windows Installation
 
-```powershell
-# Create local bin directory
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.local\bin"
+```bash
+# Download the latest version (v0.24.0) for Windows
+export VERSION=0.24.0
+curl -L -o toolbox.exe "https://storage.googleapis.com/genai-toolbox/v$VERSION/windows/amd64/toolbox.exe"
 
-# Copy toolbox executable
-Copy-Item "path\to\toolbox.exe" "$env:USERPROFILE\.local\bin\"
-
-# Add to PATH (if not already)
-$env:PATH += ";$env:USERPROFILE\.local\bin"
+# Create local bin directory and move toolbox
+mkdir -p ~/.local/bin
+mv toolbox.exe ~/.local/bin/
 
 # Verify installation
-toolbox --help
+~/.local/bin/toolbox.exe --help
 ```
+
+**Note:** The toolbox binary will be located at `C:\Users\<your-username>\.local\bin\toolbox.exe`
 
 ---
 
