@@ -241,8 +241,9 @@ Add this configuration:
 ```
 
 **Notes**:
+- `mcp-aws` is the AWS profile name you created in Step 3 with `aws configure --profile mcp-aws`
+- If you used a different profile name in Step 3, replace `mcp-aws` with your chosen profile name
 - This tutorial uses `us-east-1` (North Virginia). You can change to your preferred AWS region
-- Replace `mcp-aws` with your AWS profile name if different
 - The server endpoint is always `https://aws-mcp.us-east-1.api.aws/mcp` (hosted in us-east-1)
 
 3. **Restart Claude Desktop**
@@ -274,6 +275,8 @@ Add this configuration:
 }
 ```
 
+**Note**: `mcp-aws` is the AWS profile name from Step 3. If you used a different profile name, replace it here.
+
 3. **Reload VS Code**
 
 #### For Claude Code
@@ -287,6 +290,8 @@ claude-code config mcp add aws-mcp \
   --args "mcp-proxy-for-aws@latest,https://aws-mcp.us-east-1.api.aws/mcp,--metadata,AWS_REGION=us-east-1" \
   --env "AWS_PROFILE=mcp-aws"
 ```
+
+**Note**: `mcp-aws` is the AWS profile name from Step 3. If you used a different profile name, replace it in the `--env` parameter.
 
 ---
 
