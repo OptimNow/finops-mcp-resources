@@ -160,17 +160,19 @@ uvx --version
 - IAM user with `aws-mcp:InvokeMcp` permission
 - AWS profile configured (Step 3 of Tutorial 7)
 
+**Note**: Kiro CLI reads MCP configuration from `~/.kiro/settings/mcp.json`, not from `~/.aws/amazonq/mcp.json`.
+
 1. **Create the MCP configuration directory**:
    ```bash
-   mkdir -p ~/.aws/amazonq
+   mkdir -p ~/.kiro/settings
    ```
 
 2. **Create the MCP configuration file**:
    ```bash
-   nano ~/.aws/amazonq/mcp.json
+   nano ~/.kiro/settings/mcp.json
    ```
 
-   Or use any text editor to create `~/.aws/amazonq/mcp.json`
+   Or use any text editor to create `~/.kiro/settings/mcp.json`
 
 3. **Add the AWS Remote MCP server configuration**:
 
@@ -197,6 +199,7 @@ uvx --version
    - `mcp-aws` is the AWS profile name from Tutorial 7. Replace it if you used a different name
    - This is the same remote MCP server configuration from Tutorial 7
    - No local installation needed - the server is hosted by AWS!
+   - **Important**: Make sure the `AWS_PROFILE` value matches an AWS profile configured in your WSL environment
 
 4. **Save and exit** (Ctrl+X, then Y, then Enter if using nano)
 
@@ -271,11 +274,13 @@ I'm running 10 t3.xlarge instances 24/7. Should I use Reserved Instances or Savi
 - **Update to Kiro**: Run `q update` to upgrade from Amazon Q CLI to Kiro CLI
 
 ### MCP server not loading ("connection closed: initialize response")
+- **Check the correct config file**: Kiro CLI reads from `~/.kiro/settings/mcp.json`, NOT from `~/.aws/amazonq/mcp.json`
 - **Check IAM permissions**: Ensure your IAM user has `aws-mcp:InvokeMcp` permission (see Tutorial 7, Step 2)
-- **Verify AWS profile**: Confirm the profile name in `mcp.json` matches your AWS CLI profile from Tutorial 7
-- **Check the config file**: Ensure `~/.aws/amazonq/mcp.json` has valid JSON syntax
+- **Verify AWS profile**: Confirm the profile name in `~/.kiro/settings/mcp.json` matches your AWS CLI profile from Tutorial 7
+- **Check the config file**: Ensure `~/.kiro/settings/mcp.json` has valid JSON syntax
 - **Verify uvx is installed**: Run `uvx --version`
 - **Test the remote server**: Try using the same config in Claude Desktop (Tutorial 7) to verify it works
+- **Check AWS credentials in WSL**: Run `aws configure list --profile mcp-aws` to ensure the profile exists in your WSL environment
 
 ### "Permission denied" when running commands
 - **WSL users**: Don't run commands with `sudo` unless specifically instructed
