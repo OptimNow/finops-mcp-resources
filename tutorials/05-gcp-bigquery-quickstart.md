@@ -22,17 +22,6 @@ Before starting, ensure you have:
 - **A GCP Service Account** with appropriate permissions (see below)
 - **Toolbox binary** for your platform (provided or compiled from [Google's official MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)), set up is explained below after the Service Account set up.
 
-### Required GCP Permissions
-
-Your service account needs these IAM roles:
-
-**Project Level:**
-- **BigQuery Data Viewer**: `roles/bigquery.dataViewer` - Read data from BigQuery datasets
-- **BigQuery Job User**: `roles/bigquery.jobUser` - Run queries (recommended)
-
-**Billing Account Level:**
-- **Billing Account Viewer**: `roles/billing.viewer` - Access billing metadata and currency information
-
 ---
 
 ## 3. Step 1: Create and Configure GCP Service Account
@@ -233,12 +222,14 @@ Here's a complete example:
 
 1. Open **Claude Desktop**
 2. Click the **"🔌" icon** or **"Search and Tools"** button (next to the prompt input)
-3. Look for **"bigquery"** in the MCP servers list
+3. Look for **gcp-bigquery-billing** in the connectors list
 4. Ensure the toggle is **enabled** (blue/on position)
-5. You should see available tools like:
-   - `query_bigquery`
-   - `list_tables`
-   - `get_schema`
+5. Your setup includes 5 powerful tools:
+      query_gcp_billing - Flexible queries about GCP costs
+      get_gcp_cost_summary - Total cost summaries by time period
+      get_gcp_costs_by_service - Service-level cost breakdown
+      get_gcp_costs_by_project - Project-level cost breakdown
+      get_gcp_daily_costs - Daily cost trends for analysis
 
 ---
 
@@ -249,7 +240,7 @@ Try these prompts in Claude to verify everything works:
 ### Basic Query Test
 
 ```
-Query my BigQuery billing export to show my total GCP costs for the last 30 days
+Show me my total GCP costs for the last 30 days
 ```
 
 *Expected: A breakdown of your GCP spending over the past month*
@@ -257,10 +248,10 @@ Query my BigQuery billing export to show my total GCP costs for the last 30 days
 ### Service Breakdown
 
 ```
-Show me my GCP spending by service for the current month, sorted by cost from highest to lowest
+What are my top 5 most expensive GCP services this month?
 ```
 
-*Expected: A table showing costs per GCP service*
+*Expected: A table showing top 5 most exepensive per GCP service*
 
 ### Trend Analysis
 
