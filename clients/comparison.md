@@ -4,7 +4,7 @@
 
 ## Why do we need a client?
 
-MCP (Model Context Protocol) servers expose capabilities — like querying AWS pricing data, running tagging checks, or doing cost simulations — but they cannot be used directly.
+MCP (Model Context Protocol) servers expose capabilities like querying AWS pricing data, running tagging checks, or doing cost simulations — but they cannot be used directly.
 They need a **client** (Claude, Cursor, VS Code, Kiro CLI, etc.) that acts as the interface between:
 - **You / the LLM** (where you type prompts)  
 - **MCP servers** (tools that provide data or actions)  
@@ -28,7 +28,7 @@ As of January 2026, MCP is supported by all major AI platforms. Here's how they 
 ### **For Technical FinOps Teams (DevOps/Platform Engineering)**
 - **Claude Code** – Best for infrastructure-as-code workflows, with remote MCP support, task workflows, and enterprise controls. Requires developer skills.
 - **Kiro** – Agentic IDE with native MCP, spec-driven development, and agent hooks. Ideal for AWS-focused teams integrating FinOps into IaC workflows. Still in public preview.
-- **VS Code + Extensions** – Flexible, extensible, familiar for engineers. Supports multiple MCP-enabled extensions.
+- **VS Code + Extensions (Cline)** – Flexible, extensible, familiar for engineers. Supports multiple MCP-enabled extensions.
 - **Cursor** – Developer-focused IDE with MCP support. Good for experimentation but less mature for production FinOps.
 
 ### **For Business/Finance Stakeholders**
