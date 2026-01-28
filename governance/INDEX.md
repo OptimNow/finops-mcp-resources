@@ -15,6 +15,13 @@ Security checklists, IAM policies, and deployment guidance for enterprise MCP im
   - Enterprise deployment checklist
   - Data privacy and compliance
 
+### Vulnerability Awareness (2026)
+- **[MCP Authentication Vulnerabilities](./mcp-authentication-vulnerabilities-2026.md)** - Critical security risks and remediation
+  - Known CVEs (CVE-2025-49596, CVE-2025-6514, CVE-2025-52882)
+  - Attack patterns (tool poisoning, prompt injection, shadowing)
+  - Mandatory security controls
+  - Enterprise remediation checklist
+
 ### Cloud Provider Security
 - **[AWS IAM Policies](./security-aws-iam-policies.md)** - Least-privilege IAM policies for AWS MCP servers
   - Pricing API access
