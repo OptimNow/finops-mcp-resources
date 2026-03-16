@@ -6,7 +6,7 @@
 
 **Tutorial 1 of 7** | ⏱️ **Time**: 15-20 minutes | 💻 **Level**: Intermediate
 
-**Last Updated**: January 2026
+**Last Updated**: March 2026
 
 ---
 

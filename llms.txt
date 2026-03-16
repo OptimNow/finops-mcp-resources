@@ -1,0 +1,69 @@
+# FinOps MCP Resources
+
+> Practical Model Context Protocol (MCP) resources for Cloud FinOps — cloud cost optimization, AI cost management, FinOps automation, tagging governance, and security guardrails.
+
+This open-source repository provides tutorials, server documentation, client guides, and governance frameworks for implementing MCP in cloud financial operations across AWS, Azure, and GCP.
+
+## What is this repository?
+
+A comprehensive resource hub for FinOps practitioners, cloud engineers, and platform teams who want to use AI agents (via MCP) for cloud cost optimization, cost anomaly detection, budget monitoring, resource rightsizing, and tagging compliance. Covers all major cloud providers and 9 MCP clients.
+
+## Who is it for?
+
+- FinOps practitioners automating cost analysis and optimization
+- Cloud engineers building AI-powered cost management workflows
+- Platform teams deploying MCP servers for enterprise cost governance
+- Finance stakeholders exploring AI for cloud spend visibility
+
+## Key topics covered
+
+- Cloud cost optimization with AI agents
+- FinOps automation via Model Context Protocol
+- AWS, Azure, GCP cost management MCP servers
+- Tag compliance and cost allocation governance
+- Cost anomaly detection and alerting
+- MCP security, authentication, and enterprise deployment
+- Multi-cloud cost analysis and reporting
+
+## Documentation map
+
+- [Foundations: What is MCP?](foundations/what-is-mcp.md): Introduction to Model Context Protocol for FinOps
+- [Foundations: Getting Started](foundations/getting-started.md): Setup guide and learning path
+- [Foundations: MCP Architecture](foundations/mcp-architecture.md): Technical architecture and specification details
+
+### MCP Servers (Cloud Cost Tools)
+- [AWS MCP Servers](servers/aws.md): AWS Pricing, Cost Explorer, CloudWatch, Billing, Remote Server (15,000+ APIs)
+- [Azure MCP Servers](servers/azure.md): Azure Cost Management, Resource Graph, community FinOps servers
+- [GCP MCP Servers](servers/gcp.md): BigQuery billing exports, Compute Engine, GKE, Cloud Billing
+- [FinOps Tagging Compliance](servers/tagging.md): Tag compliance checking, drift detection, cost allocation
+- [JIRA for FinOps](servers/jira.md): Cost anomaly ticketing, optimization tracking workflows
+- [Slack for FinOps](servers/slack.md): Cost alerts, budget notifications, team collaboration
+- [Server Registry (YAML)](servers/configs/registry.yaml): Machine-readable registry of all 18 servers
+
+### MCP Clients (AI Interfaces)
+- [Client Comparison](clients/comparison.md): Which MCP client to choose for FinOps
+- [Claude Code](clients/claude-code.md): DevOps/IaC workflows with remote MCP
+- [Claude Desktop](clients/claude-desktop.md): Quick demos and prototyping
+- [ChatGPT](clients/chatgpt.md): Conversational cost analysis
+- [Google Gemini](clients/gemini.md): GCP-native cost management
+- [Microsoft Copilot](clients/copilot.md): Azure-native cost management
+- [Kiro](clients/kiro.md): AWS-focused agentic IDE
+- [Cursor](clients/cursor.md): AI-native development
+- [VS Code + Cline](clients/vscode-cline.md): Extensible IDE with MCP
+
+### Tutorials (Step-by-Step Guides)
+- [AWS Pricing MCP Quickstart](tutorials/01-aws-pricing-quickstart.md): Query real-time AWS pricing data
+- [Kiro CLI Cost Analysis](tutorials/02-amazon-kiro-cli-cost-analysis.md): AWS cost analysis workflows
+- [Multi-Agent FinOps with Nova](tutorials/03-finops-multi-agent-nova.md): Multi-agent cost optimization
+- [Azure MCP Quickstart](tutorials/04-azure-mcp-quickstart.md): Azure cost management setup
+- [GCP BigQuery Billing](tutorials/05-gcp-bigquery-quickstart.md): GCP billing exports analysis
+- [GCP Billing Export MCP](tutorials/06-Tutorial-GCP-Billing-MCP.md): Community GCP server setup
+- [AWS Remote MCP Server](tutorials/07-aws-mcp-remote-server.md): AWS-hosted MCP with 15,000+ APIs
+- [Cost Simulation](tutorials/08-cost-simulation/MCPforCostEstimation.md): Cost estimation patterns
+
+### Governance & Security
+- [MCP Security Best Practices](governance/security-best-practices-2025.md): Enterprise security for MCP deployments
+- [MCP Authentication Vulnerabilities](governance/mcp-authentication-vulnerabilities-2026.md): Known CVEs and remediation
+- [AWS IAM Policies](governance/security-aws-iam-policies.md): Least-privilege policies for AWS MCP servers
+- [Remote MCP Deployment](governance/remote-mcp-servers.md): Cloud-hosted MCP architecture
+- [Data Anonymisation](governance/anonymisation.md): Privacy and anonymization guidance

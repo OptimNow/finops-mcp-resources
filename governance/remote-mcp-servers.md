@@ -1,6 +1,6 @@
 # Remote MCP Servers for FinOps
 
-**Last Updated**: January 2026
+**Last Updated**: March 2026
 
 Remote MCP servers are cloud-hosted or network-accessible MCP servers that clients connect to over HTTP/HTTPS or Server-Sent Events (SSE), as opposed to local servers running on the same machine as the MCP client.
 

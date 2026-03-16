@@ -1,8 +1,12 @@
-# ![Azure Logo](https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg) Azure MCP Servers
+# Azure MCP Servers for Cloud Cost Management
 
-## ⚠️ Important: Official Azure MCP Lacks FinOps Capabilities
+**Last Updated**: March 2026
 
-The **official Azure MCP server** (`@azure/mcp`) is a **remote MCP server** that provides Azure resource management and monitoring, but **does NOT expose cost management or billing APIs**. If you need FinOps/cost analysis capabilities, see the community alternatives below.
+A guide to Azure MCP servers for FinOps, cloud cost management, and AI-powered cost analysis. Covers the official Azure MCP server and community alternatives for cost optimization and billing workflows.
+
+## Which Azure MCP server should I use for FinOps?
+
+The **official Azure MCP server** (`@azure/mcp`) provides Azure resource management and monitoring, but **does NOT expose cost management or billing APIs**. For FinOps and cost analysis, use the community alternatives below.
 
 ## Available Azure MCP Servers
 

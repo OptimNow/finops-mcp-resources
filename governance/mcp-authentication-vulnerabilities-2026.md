@@ -1,6 +1,6 @@
 # MCP Authentication Vulnerabilities & Remediation Guide
 
-**Last Updated**: January 2026
+**Last Updated**: March 2026
 
 The Model Context Protocol shipped without mandatory authentication. This document covers the known vulnerabilities, real-world incidents, and the security controls your organization must implement to protect MCP deployments.
 

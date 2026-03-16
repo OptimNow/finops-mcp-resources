@@ -2,6 +2,111 @@
 # Canonical list of MCP servers relevant to Cloud FinOps.
 # One list item per server. Keep entries alphabetically sorted by `name`.
 
+# ── AWS ──────────────────────────────────────────────────
+
+- name: aws-billing-cost-management-mcp
+  provider: AWS
+  repo: https://github.com/awslabs/mcp
+  homepage: https://awslabs.github.io/mcp/servers/billing-cost-management-mcp-server/
+  category: reporting
+  description: "Comprehensive billing and cost management with optimization recommendations."
+  capabilities:
+    - get-cost-and-usage
+    - get-cost-forecast
+    - get-savings-plans
+    - get-reservations
+    - get-recommendations
+  auth:
+    - "AWS credentials (env/SSO)"
+  maturity: ga
+  security_notes: "Read-only; requires ce:Get*, ce:List*, ce:Describe* permissions."
+  tags:
+    - finops
+    - aws
+    - billing
+    - cost-management
+
+- name: aws-cloudwatch-mcp
+  provider: AWS
+  repo: https://github.com/awslabs/mcp
+  homepage: https://awslabs.github.io/mcp/servers/aws-cloudwatch-mcp-server/
+  category: reporting
+  description: "Metrics, alarms, and logs analysis for cost-related monitoring."
+  capabilities:
+    - get-metrics
+    - get-alarms
+    - query-logs
+    - describe-log-groups
+  auth:
+    - "AWS credentials (env/SSO)"
+  maturity: ga
+  security_notes: "Read-only; requires cloudwatch:Get*, logs:Get* permissions."
+  tags:
+    - finops
+    - aws
+    - monitoring
+
+- name: aws-cost-explorer-mcp
+  provider: AWS
+  repo: https://github.com/awslabs/mcp
+  homepage: https://awslabs.github.io/mcp/servers/cost-explorer-mcp-server/
+  category: reporting
+  description: "Detailed cost analysis and reporting from AWS Cost Explorer."
+  capabilities:
+    - get-cost-and-usage
+    - get-cost-forecast
+    - get-dimension-values
+    - get-tags
+  auth:
+    - "AWS credentials (env/SSO)"
+  maturity: ga
+  security_notes: "Read-only; requires ce:Get* permissions."
+  tags:
+    - finops
+    - aws
+    - cost-analysis
+
+- name: aws-finops-mcp-server
+  provider: AWS
+  repo: https://github.com/ravikiranvm/aws-finops-mcp-server
+  category: reporting
+  description: "Community MCP server focused on AWS financial operations and cost management."
+  capabilities:
+    - cost-anomaly-detection
+    - budget-monitoring
+    - resource-utilization
+    - cost-allocation
+  auth:
+    - "AWS credentials (env/SSO)"
+  maturity: beta
+  security_notes: "Community project; review permissions before use."
+  tags:
+    - finops
+    - aws
+    - community
+
+- name: aws-mcp-remote-server
+  provider: AWS
+  repo: https://github.com/awslabs/mcp
+  homepage: https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html
+  category: other
+  description: "AWS-hosted remote MCP server with access to 15,000+ AWS APIs and Agent SOPs."
+  capabilities:
+    - call-aws-api
+    - search-documentation
+    - read-documentation
+    - agent-sops
+    - recommend
+  auth:
+    - "AWS IAM (SSO/credentials)"
+  maturity: ga
+  security_notes: "Remote server; IAM-scoped; audit logging available."
+  demo: tutorials/07-aws-mcp-remote-server.md
+  tags:
+    - finops
+    - aws
+    - remote
+
 - name: aws-pricing-mcp
   provider: AWS
   repo: https://github.com/awslabs/mcp
@@ -14,26 +119,222 @@
     - simulate-cost
   auth:
     - "AWS credentials (env/SSO)"
-  maturity: beta
+  maturity: ga
   security_notes: "Read-only; no resource mutations; validate data sources before decisions."
-  demo: tutorials/01-aws-pricing-mcp-quickstart.md
-  example_config: servers/configs/aws-pricing-mcp.json
+  demo: tutorials/01-aws-pricing-quickstart.md
   tags:
     - finops
     - aws
     - pricing
 
-# Add new entries below using the same keys.
-# - name: <kebab-case>
-#   provider: <AWS|Azure|GCP|Other>
-#   repo: <https URL to upstream repository>
-#   homepage: <optional project/product page>
-#   category: <pricing|tagging|governance|anomaly|allocation|reporting|other>
-#   description: "<1-2 line human description>"
-#   capabilities: [<verb-noun>, <verb-noun>, ...]
-#   auth: ["<how to auth>"]
-#   maturity: <alpha|beta|ga|archived>
-#   security_notes: "<risks, blast radius, permissions>"
-#   demo: tutorials/<doc>.md
-#   example_config: servers/configs/<file>.json
-#   tags: [<keyword>, <keyword>]
+- name: cfm-tips-mcp
+  provider: AWS
+  repo: https://github.com/aws-samples/sample-cfm-tips-mcp
+  category: governance
+  description: "Cost optimization playbooks and actionable savings recommendations."
+  capabilities:
+    - get-optimization-tips
+    - describe-resources
+    - get-savings-recommendations
+  auth:
+    - "AWS credentials (env/SSO)"
+  maturity: beta
+  security_notes: "Read-only; requires Describe* access for EC2, RDS, Lambda, and optimization APIs."
+  tags:
+    - finops
+    - aws
+    - optimization
+
+# ── Azure ────────────────────────────────────────────────
+
+- name: azure-finops-mcp-server
+  provider: Azure
+  repo: https://github.com/julianobarbosa/azure-finops-mcp-server
+  category: reporting
+  description: "Community Azure FinOps server with cost analysis and unused resource detection."
+  capabilities:
+    - get-cost
+    - run-finops-audit
+  auth:
+    - "Azure CLI credentials"
+  maturity: ga
+  security_notes: "Read-only; 97.7% test coverage; credentials stay local via Azure CLI."
+  tags:
+    - finops
+    - azure
+    - cost-analysis
+    - community
+
+- name: azure-mcp
+  provider: Azure
+  repo: https://github.com/Azure/azure-mcp
+  category: other
+  description: "Official Microsoft Azure MCP server for resource management and monitoring (no cost/billing APIs)."
+  capabilities:
+    - manage-resources
+    - query-resource-graph
+    - monitor-metrics
+    - manage-storage
+  auth:
+    - "Azure credentials (CLI/service principal)"
+  maturity: ga
+  security_notes: "Official Microsoft server; Reader role required; does NOT expose cost management APIs."
+  tags:
+    - azure
+    - resource-management
+
+- name: finopshub-mcp
+  provider: Azure
+  repo: https://github.com/mc5eamus/finopshub-mcp
+  category: reporting
+  description: "Proof-of-concept Azure FinOps Hub MCP integration."
+  capabilities:
+    - query-finops-hub
+  auth:
+    - "Azure credentials"
+  maturity: alpha
+  security_notes: "Proof-of-concept; no test coverage or CI/CD; not production-ready."
+  tags:
+    - finops
+    - azure
+    - community
+
+# ── GCP ──────────────────────────────────────────────────
+
+- name: gcp-bigquery-mcp
+  provider: GCP
+  repo: https://github.com/Google/mcp
+  category: reporting
+  description: "Official Google BigQuery MCP server for billing exports and cost analysis."
+  capabilities:
+    - query-datasets
+    - billing-exports
+    - spend-trends
+  auth:
+    - "Google Cloud credentials (gcloud auth)"
+  maturity: ga
+  security_notes: "Official Google server; remote-first; requires bigquery.dataViewer role."
+  tags:
+    - finops
+    - gcp
+    - bigquery
+    - billing
+
+- name: gcp-gce-mcp
+  provider: GCP
+  repo: https://github.com/Google/mcp
+  category: other
+  description: "Official Google Compute Engine MCP server for VM management and cost optimization."
+  capabilities:
+    - manage-instances
+    - query-pricing
+    - rightsizing
+  auth:
+    - "Google Cloud credentials (gcloud auth)"
+  maturity: ga
+  security_notes: "Official Google server; requires Compute Admin role."
+  tags:
+    - gcp
+    - compute
+    - optimization
+
+- name: gcp-gke-mcp
+  provider: GCP
+  repo: https://github.com/Google/mcp
+  category: other
+  description: "Official Google Kubernetes Engine MCP server for cluster management and cost optimization."
+  capabilities:
+    - manage-clusters
+    - monitor-workloads
+    - container-cost-optimization
+  auth:
+    - "Google Cloud credentials (gcloud auth)"
+  maturity: ga
+  security_notes: "Official Google server; requires GKE admin permissions."
+  tags:
+    - gcp
+    - kubernetes
+    - optimization
+
+- name: google-cloud-mcp
+  provider: GCP
+  repo: https://github.com/krzko/google-cloud-mcp
+  category: reporting
+  description: "Community GCP MCP server for querying billing export data in BigQuery."
+  capabilities:
+    - query-billing-export
+    - cost-analysis
+  auth:
+    - "Google Cloud credentials (application default)"
+  maturity: beta
+  security_notes: "Community project; requires billing.viewer and bigquery.dataViewer roles."
+  demo: tutorials/06-Tutorial-GCP-Billing-MCP.md
+  tags:
+    - finops
+    - gcp
+    - bigquery
+    - community
+
+# ── Workflow & Collaboration ─────────────────────────────
+
+- name: finops-tagging-mcp
+  provider: Other
+  repo: https://github.com/OptimNow/finops-tagging-mcp
+  category: tagging
+  description: "Tag compliance checking, drift detection, and remediation for FinOps governance."
+  capabilities:
+    - check-tag-compliance
+    - find-untagged-resources
+    - suggest-tags
+    - generate-compliance-report
+    - detect-tag-drift
+    - get-cost-attribution-gap
+  auth:
+    - "AWS credentials or cloud provider credentials"
+  maturity: beta
+  security_notes: "Read-only by default; policy generation produces files but does not deploy."
+  tags:
+    - finops
+    - tagging
+    - governance
+    - compliance
+
+- name: jira-mcp
+  provider: Other
+  repo: https://github.com/atlassian/mcp-server-jira
+  category: other
+  description: "JIRA integration for FinOps ticketing — cost anomaly tracking, optimization workflows."
+  capabilities:
+    - create-issue
+    - search-issues
+    - update-issue
+    - transition-issue
+  auth:
+    - "JIRA API token"
+  maturity: ga
+  security_notes: "Use dedicated service account with minimal project permissions; store tokens in secrets manager."
+  tags:
+    - finops
+    - workflow
+    - ticketing
+
+- name: slack-mcp
+  provider: Other
+  repo: https://github.com/modelcontextprotocol/servers
+  homepage: https://github.com/modelcontextprotocol/servers/tree/main/src/slack
+  category: other
+  description: "Slack integration for FinOps alerts — cost anomaly notifications, budget threshold alerts."
+  capabilities:
+    - send-message
+    - read-channel
+    - search-messages
+    - list-channels
+  auth:
+    - "Slack Bot Token (xoxb-)"
+  maturity: ga
+  security_notes: "Use dedicated bot with minimal channel permissions; prefer bot tokens over user tokens."
+  tags:
+    - finops
+    - workflow
+    - alerting
+    - collaboration

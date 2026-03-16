@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [March 2026] - 2026-03-16
+
+### Added
+- **New MCP Server Documentation**
+  - `servers/tagging.md` - FinOps Tagging Compliance MCP server (tag compliance, drift detection, remediation)
+  - `servers/jira.md` - JIRA MCP server for FinOps workflow integration (anomaly ticketing, optimization tracking)
+  - `servers/slack.md` - Slack MCP server for FinOps alerting (cost alerts, budget notifications)
+- **Registry Backfill** - `servers/configs/registry.yaml` now contains all 18 documented MCP servers (was 1)
+- **Cost Simulation Tutorial** - Moved from `use-cases/` to `tutorials/08-cost-simulation/`
+
+### Changed
+- **Repository Streamlined**
+  - Fixed broken links in `clients/INDEX.md` (old numbered filenames → current names)
+  - Removed phantom directory references (`/presentations`, `/resources`) from README
+  - Trimmed all INDEX files — removed repeated boilerplate (Getting Started, Contributing, Related Resources)
+  - Updated `servers/INDEX.md` with new "Workflow & Collaboration" section
+- **Date Updates** - All references updated from January 2026 to March 2026
+
+### Removed
+- `use-cases/` directory — content merged into `tutorials/08-cost-simulation/`
+
+---
+
 ## [January 2026] - 2026-01-XX
 
 ### Added

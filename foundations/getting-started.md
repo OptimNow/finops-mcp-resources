@@ -19,7 +19,7 @@ This is the easiest way to see MCP in action for FinOps.
 ## 2. Set Up an MCP Client
 Once you've tried AWS Pricing, explore how to use different MCP **clients**.
 
-As of January 2026, we provide comprehensive guides for **9 major MCP clients**:
+As of March 2026, we provide comprehensive guides for **9 major MCP clients**:
 
 ### **For Developers & Technical Teams**
 - [Claude Code](/clients/claude-code.md) - Remote MCP, task workflows, enterprise controls
@@ -34,7 +34,7 @@ As of January 2026, we provide comprehensive guides for **9 major MCP clients**:
 - [Google Gemini](/clients/gemini.md) - GCP integration, Vertex AI (added April 2025)
 
 ### **For Cloud-Specific Use Cases**
-- [Amazon Q](/clients/amazon-q.md) - AWS-native assistant
+- [Kiro](/clients/kiro.md) - AWS-focused agentic IDE
 
 **Not sure which to choose?** Check our [Client Comparison Guide](/clients/comparison.md) with detailed pros/cons for FinOps professionals.
 
@@ -63,7 +63,7 @@ This repo is a sandbox — test, prototype, and see how MCP can accelerate your 
 
 ## 5. Discover More MCP Servers
 
-The MCP ecosystem has grown to **10,000+ active servers** as of January 2026. Here's how to discover FinOps-relevant servers:
+The MCP ecosystem has grown to **10,000+ active servers** as of March 2026. Here's how to discover FinOps-relevant servers:
 
 ### Official MCP Registry
 - **URL**: [MCP Registry](https://modelcontextprotocol.io/registry) (check modelcontextprotocol.io)
