@@ -1,6 +1,6 @@
 # ![GCP Logo](https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg) GCP MCP Servers
 
-**Last Updated**: January 2026
+**Last Updated**: March 2026
 
 A comprehensive guide to Google Cloud Platform (GCP) MCP servers for FinOps and cloud management.
 
@@ -44,13 +44,13 @@ In addition to Google's official servers, the community has developed MCP server
 
 **Documentation**: [GCP Compute MCP Reference](https://docs.cloud.google.com/compute/docs/reference/mcp)
 **Package**: `@google/mcp-server-compute`
-**Status**: ⚠️ **Not Yet Available** - Package not found in npm registry as of January 2026
+**Status**: ⚠️ **Not Yet Available** - Package not found in npm registry as of March 2026
 
 The Google Compute Engine MCP is referenced in Google Cloud documentation but the npm package `@google/mcp-server-compute` **does not currently exist** in the public registry.
 
 ### Current Status
 
-As of January 2026:
+As of March 2026:
 - ✅ **Official Google MCP Servers** (BigQuery, GKE, GCE, Google Maps) are available at [github.com/Google/mcp](https://github.com/Google/mcp)
 - ❌ **Standalone `@google/mcp-server-compute` package** is not yet published to npm
 - 🔄 **Google Compute Engine MCP** may be part of the official Google MCP servers repository instead

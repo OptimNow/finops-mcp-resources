@@ -6,7 +6,7 @@
 
 **Tutorial 7 of 7** | ⏱️ **Time**: 20-30 minutes | 💻 **Level**: Beginner
 
-**Last Updated**: January 2026
+**Last Updated**: March 2026
 
 ---
 
@@ -569,7 +569,7 @@ aws cloudtrail create-trail \
 
 ### Related Tutorials
 - [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) - Local server alternative
-- [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md) - AWS-native AI assistant
+- [Cost Analysis with Kiro CLI](./02-amazon-kiro-cli-cost-analysis.md) - AWS-native FinOps workflows
 - [All Tutorials](./INDEX.md) - Complete tutorial index
 
 ### Community

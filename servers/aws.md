@@ -4,7 +4,7 @@
 
 # AWS MCP Servers
 
-**Last Updated**: January 2026
+**Last Updated**: March 2026
 
 A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for FinOps and cloud management.
 
@@ -242,7 +242,7 @@ For least privilege, create a **dedicated IAM user or role** and attach a minima
 
 ### Getting Started
 - [AWS Pricing Quickstart Tutorial](../tutorials/01-aws-pricing-quickstart.md)
-- [Cost Analysis with Amazon Q](../tutorials/02-amazon-q-cost-analysis.md)
+- [Cost Analysis with Kiro CLI](../tutorials/02-amazon-kiro-cli-cost-analysis.md)
 - [FinOps Multi-Agent with Nova](../tutorials/03-finops-multi-agent-nova.md)
 
 ### Security & Deployment
@@ -252,7 +252,7 @@ For least privilege, create a **dedicated IAM user or role** and attach a minima
 
 ### MCP Clients
 - [All MCP Clients](../clients/INDEX.md)
-- [Amazon Q for FinOps](../clients/amazon-q.md)
+- [Kiro](../clients/kiro.md) - AWS-focused agentic IDE
 - [Claude Code](../clients/claude-code.md) - Remote MCP support
 
 ---

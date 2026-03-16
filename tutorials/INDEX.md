@@ -1,194 +1,33 @@
 # FinOps MCP Tutorials
 
-**Last Updated**: January 2026
+**Last Updated**: March 2026
 
-Step-by-step guides for getting started with Model Context Protocol (MCP) for Cloud FinOps.
-
----
-
-## 🎯 Recommended Learning Path
-
-Follow these tutorials in order for the best learning experience:
-
-### 1️⃣ **Start Here** → [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md)
-- **Time**: 15-20 minutes
-- **Level**: Intermediate
-- **Prerequisites**: Node.js, AWS CLI, Python, uv
-- **What you'll learn**:
-  - Install your first local MCP server
-  - Connect to a client (Claude Desktop)
-  - Query real-time AWS pricing data
-- **Best for**: Users comfortable with command-line tools
-
-### 2️⃣ **Next** → [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md)
-- **Time**: 20-30 minutes
-- **Level**: Beginner
-- **Prerequisites**: AWS account
-- **What you'll learn**:
-  - Use Amazon Q CLI for FinOps workflows
-  - Analyze AWS cost data with natural language
-  - AWS-native MCP integration
-- **Best for**: AWS-focused teams new to AI assistants
-
-### 3️⃣ **Advanced** → [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md)
-- **Time**: 45-60 minutes
-- **Level**: Advanced
-- **Prerequisites**: AWS Bedrock access, understanding of agent architectures
-- **What you'll learn**:
-  - Build multi-agent FinOps systems
-  - Implement Amazon Nova supervisor patterns
-  - Design agent orchestration workflows
-- **Best for**: Advanced users, DevOps teams, architects
-
-### 4️⃣ **Multi-Cloud** → [Azure MCP Quick Start](./04-azure-mcp-quickstart.md)
-- **Time**: 20-30 minutes
-- **Level**: Beginner
-- **Prerequisites**: Azure account with FinOps Hub
-- **What you'll learn**:
-  - Set up Azure MCP with 1-click VS Code install
-  - Query Azure Cost Management data
-  - Implement FinOps Hub integration
-- **Best for**: Azure users, multi-cloud teams, VS Code users
-
-### 5️⃣ **Multi-Cloud** → [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md)
-- **Time**: 30-40 minutes
-- **Level**: Intermediate
-- **Prerequisites**: GCP account with BigQuery billing export
-- **What you'll learn**:
-  - Set up Google's official MCP Toolbox for BigQuery
-  - Configure GCP service account with proper permissions
-  - Query GCP billing data at scale
-- **Best for**: GCP users, Claude Desktop users, production deployments
-
-### 6️⃣ **Multi-Cloud** → [GCP Billing Export MCP Setup](./06-Tutorial-GCP-Billing-MCP.md)
-- **Time**: 35-45 minutes
-- **Level**: Intermediate
-- **Prerequisites**: GCP account, Node.js, pnpm
-- **What you'll learn**:
-  - Build community GCP Billing MCP server from source
-  - Configure with VS Code (Gemini Code Assist)
-  - Set up with Google Gemini CLI
-  - Customize server for specific workflows
-- **Best for**: GCP FinOps teams, developers wanting multi-client support
-
-### 7️⃣ **AWS Remote MCP** → [AWS MCP Remote Server - Complete AWS Interactions](./07-aws-mcp-remote-server.md)
-- **Time**: 20-30 minutes
-- **Level**: Beginner
-- **Prerequisites**: AWS account, IAM permissions
-- **What you'll learn**:
-  - Connect to AWS's first remote, managed MCP server
-  - Access 15,000+ AWS APIs through natural language
-  - Use Agent SOPs for AWS tasks
-  - Zero installation - AWS-hosted infrastructure
-- **Best for**: All AWS users, enterprise teams, production deployments
+Step-by-step guides for getting started with MCP for Cloud FinOps.
 
 ---
 
-## 📚 Tutorials by Cloud Provider
+## All Tutorials
 
-### AWS
-1. [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) - Real-time pricing queries
-2. [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md) - AWS-native assistant
-3. [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md) - Advanced workflows
-7. [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) - Complete AWS interactions (remote, managed)
-
-### Azure
-4. [Azure MCP Quick Start](./04-azure-mcp-quickstart.md) - Azure Cost Management
-
-### GCP
-5. [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md) - BigQuery billing exports
-6. [GCP Billing Export MCP Setup](./Tutorial-GCP-Billing-MCP.md) - Community server with VS Code & Gemini
+| # | Tutorial | Cloud | Level | Time |
+|---|----------|-------|-------|------|
+| 01 | [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) | AWS | Intermediate | 15-20 min |
+| 02 | [Cost Analysis with Kiro CLI](./02-amazon-kiro-cli-cost-analysis.md) | AWS | Beginner | 20-30 min |
+| 03 | [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md) | AWS | Advanced | 45-60 min |
+| 04 | [Azure MCP Quick Start](./04-azure-mcp-quickstart.md) | Azure | Beginner | 20-30 min |
+| 05 | [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md) | GCP | Intermediate | 30-40 min |
+| 06 | [GCP Billing Export MCP Setup](./06-Tutorial-GCP-Billing-MCP.md) | GCP | Intermediate | 35-45 min |
+| 07 | [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) | AWS | Beginner | 20-30 min |
+| 08 | [Cost Simulation & Estimation](./08-cost-simulation/MCPforCostEstimation.md) | Multi | Intermediate | 30-40 min |
 
 ---
 
-## 🎓 Tutorials by Skill Level
+## Recommended Start
 
-### Beginner
-- [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) ⭐ **Easiest start** - Remote/managed
-- [Cost Analysis with Amazon Q](./02-amazon-q-cost-analysis.md) - AWS-native assistant
-- [Azure MCP Quick Start](./04-azure-mcp-quickstart.md) - 1-click VS Code install
-
-### Intermediate
-- [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) - Local server setup
-- [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md) - Official Toolbox
-- [GCP Billing Export MCP Setup](./06-Tutorial-GCP-Billing-MCP.md) - Community server
-
-### Advanced
-- [FinOps Multi-Agent with Nova](./03-finops-multi-agent-nova.md)
+- **Easiest**: [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) — zero installation, AWS-hosted
+- **Most popular**: [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) — local server setup
+- **Azure**: [Azure MCP Quick Start](./04-azure-mcp-quickstart.md) — 1-click VS Code install
+- **GCP**: [GCP BigQuery MCP Quick Start](./05-gcp-bigquery-quickstart.md) — official toolbox
 
 ---
 
-## 🛠️ What You'll Need
-
-### General Prerequisites
-- **MCP Client**: Choose from [9 available clients](../clients/INDEX.md)
-  - Recommended for beginners: [Claude Desktop](../clients/claude-desktop.md) or [ChatGPT](../clients/chatgpt.md)
-  - Recommended for developers: [Claude Code](../clients/claude-code.md) or [VS Code](../clients/vscode.md)
-
-### Cloud Provider Prerequisites
-- **AWS Tutorials**: AWS account with IAM permissions ([see IAM guide](../governance/security-aws-iam-policies.md))
-- **Azure Tutorials**: Azure account with Cost Management access
-- **GCP Tutorials**: GCP account with BigQuery and billing export setup
-
-### Tools
-- Terminal/Command Line (for most tutorials)
-- Node.js/npm (for some MCP servers)
-- Python (optional, for some advanced tutorials)
-
----
-
-## 💡 After Completing Tutorials
-
-Once you've completed these tutorials, explore:
-
-### Next Steps
-1. **Choose your production client**: Review [Client Comparison](../clients/comparison.md)
-2. **Set up security**: Read [MCP Security Best Practices](../governance/security-best-practices-2025.md)
-3. **Deploy remote servers**: See [Remote MCP Servers Guide](../governance/remote-mcp-servers.md)
-4. **Explore use cases**: Check [FinOps Use Cases](../use-cases/)
-5. **Discover more servers**: Browse the [MCP Registry](https://modelcontextprotocol.io/registry)
-
-### Additional Learning Resources
-- [MCP Architecture](../foundations/mcp-architecture.md) - Deep dive into how MCP works
-- [MCP Specification 2025-11-25](../foundations/mcp-architecture.md#-mcp-specification-2025-11-25-updates) - Latest protocol features
-- [All MCP Servers](../servers/) - AWS, Azure, GCP server documentation
-
----
-
-## 🆘 Getting Help
-
-**Stuck on a tutorial?**
-- Check the [Getting Started Guide](../foundations/getting-started.md) for basics
-- Review the [Client Documentation](../clients/) for your specific client
-- Open an issue on [GitHub](https://github.com/OptimNow/finops-mcp-resources/issues)
-- Join the [FinOps Foundation Slack](https://www.finops.org/slack/)
-
-**Found an error?**
-- Please open a pull request with corrections
-- See [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines
-
----
-
-## 🔜 Upcoming Tutorials
-
-We're working on additional tutorials for:
-- **Kiro**: Agentic IDE with spec-driven development for FinOps
-- **Microsoft Copilot**: MCP integration with Copilot Studio
-- **Google Gemini**: Vertex AI integration for cost analysis
-- **Remote MCP deployment**: Cloud-hosted MCP servers on AWS/Azure/GCP
-- **Task-based workflows**: Using MCP 2025-11-25 async tasks for long-running cost analyses
-
-Want to contribute a tutorial? See [CONTRIBUTING.md](../CONTRIBUTING.md)!
-
----
-
-## 📊 Tutorial Statistics
-
-**Total Tutorials**: 7
-**Cloud Providers Covered**: AWS (4), Azure (1), GCP (2)
-**Difficulty Levels**: Beginner (3), Intermediate (3), Advanced (1)
-**Average Completion Time**: 25-40 minutes per tutorial
-
----
-
-← [Back to Home](../README.md) | [View All Clients](../clients/INDEX.md)
+← [Back to Home](../README.md)
