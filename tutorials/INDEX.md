@@ -1,12 +1,12 @@
-# FinOps MCP Tutorials
+# FinOps MCP Tutorials — Cloud Cost Optimization Step by Step
 
 **Last Updated**: March 2026
 
-Step-by-step guides for getting started with MCP for Cloud FinOps.
+Step-by-step guides for setting up MCP servers for cloud cost optimization, AI-powered cost analysis, and FinOps automation across AWS, Azure, and GCP. From first install to multi-agent workflows.
 
 ---
 
-## All Tutorials
+## How do I get started with FinOps MCP?
 
 | # | Tutorial | Cloud | Level | Time |
 |---|----------|-------|-------|------|
@@ -21,7 +21,7 @@ Step-by-step guides for getting started with MCP for Cloud FinOps.
 
 ---
 
-## Recommended Start
+## Which tutorial should I start with?
 
 - **Easiest**: [AWS MCP Remote Server](./07-aws-mcp-remote-server.md) — zero installation, AWS-hosted
 - **Most popular**: [AWS Pricing MCP Quickstart](./01-aws-pricing-quickstart.md) — local server setup

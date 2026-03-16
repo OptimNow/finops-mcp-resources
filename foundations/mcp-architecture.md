@@ -1,8 +1,14 @@
-# MCP Architecture
+# MCP Architecture: How Model Context Protocol Works
 
-## 🏗️ Core Architectural Components
+**Last Updated**: March 2026
 
-The **Model Context Protocol (MCP)** defines a modular, layered architecture that separates AI orchestration, data access, and interaction logic. This design enables flexibility, reusability, and observability — essential principles for scalable and governable AI systems.
+The **Model Context Protocol (MCP)** defines a modular, layered architecture for connecting AI agents to external tools and data sources — including cloud cost management APIs, billing exports, and FinOps automation workflows. This page explains how MCP's client-host-server architecture works and why it matters for enterprise cloud cost optimization.
+
+---
+
+## How is MCP architected?
+
+MCP separates AI orchestration, data access, and interaction logic into distinct layers. This design enables flexibility, reusability, and observability — essential principles for scalable and governable AI systems in FinOps.
 
 ### 1. MCP Client
 

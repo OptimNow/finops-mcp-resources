@@ -1,8 +1,8 @@
-# ![GCP Logo](https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg) GCP MCP Servers
+# GCP MCP Servers for Cloud Billing and Cost Analysis
 
 **Last Updated**: March 2026
 
-A comprehensive guide to Google Cloud Platform (GCP) MCP servers for FinOps and cloud management.
+A comprehensive guide to Google Cloud Platform (GCP) MCP servers for FinOps, cloud cost optimization, and AI-powered billing analysis. Covers official Google MCP servers (BigQuery, GKE, GCE) and community alternatives for BigQuery billing export queries.
 
 ---
 

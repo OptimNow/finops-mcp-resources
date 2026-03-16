@@ -1,12 +1,10 @@
-← [Back to Servers](./INDEX.md) | [Home](../README.md) | [Azure Servers](./azure.md) | [GCP Servers](./gcp.md)
-
----
-
-# AWS MCP Servers
+# AWS MCP Servers for Cloud Cost Optimization
 
 **Last Updated**: March 2026
 
-A comprehensive guide to AWS-related Model Context Protocol (MCP) servers for FinOps and cloud management.
+A comprehensive guide to AWS MCP servers for FinOps automation, cloud cost optimization, and AI-powered cost management. Covers the AWS Remote MCP Server (15,000+ APIs), Pricing API, Cost Explorer, CloudWatch, Billing & Cost Management, and community FinOps servers.
+
+← [Back to Servers](./INDEX.md) | [Home](../README.md) | [Azure Servers](./azure.md) | [GCP Servers](./gcp.md)
 
 ---
 

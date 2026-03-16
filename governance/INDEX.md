@@ -1,18 +1,18 @@
-# Governance & Security
+# MCP Security and Governance for Enterprise FinOps
 
 **Last Updated**: March 2026
 
-Security checklists, IAM policies, and deployment guidance for enterprise MCP implementations.
+Security checklists, IAM policies, vulnerability guides, and deployment architecture for enterprise MCP implementations. Covers authentication, authorization, data privacy, and cloud-hosted MCP deployment.
 
 ---
 
-## Security Guides
+## How do I secure my MCP deployment?
 
 - **[MCP Security Best Practices 2025](./security-best-practices-2025.md)** — Comprehensive enterprise security, OAuth 2.0 with PKCE, deployment checklist
 - **[MCP Authentication Vulnerabilities 2026](./mcp-authentication-vulnerabilities-2026.md)** — Known CVEs, attack patterns (tool poisoning, prompt injection, shadowing), remediation
 - **[AWS IAM Policies](./security-aws-iam-policies.md)** — Least-privilege IAM policies for AWS MCP servers
 
-## Deployment
+## How do I deploy MCP servers in the cloud?
 
 - **[Remote MCP Servers](./remote-mcp-servers.md)** — Cloud-hosted deployment architecture (AWS, Azure, GCP), authentication, cost considerations
 

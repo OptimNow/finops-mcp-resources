@@ -1,6 +1,6 @@
-# AI for FinOps - Cloud FinOps MCP Resources
+# AI for FinOps — Cloud Cost Optimization with MCP
 
-> Practical **Model Context Protocol (MCP)** resources for **Cloud FinOps**: pricing, budgets, anomaly checks, automation — with security guardrails.
+> Open-source **Model Context Protocol (MCP)** resources for **Cloud FinOps**: cloud cost optimization, AI cost management, FinOps automation, tagging governance, cost anomaly detection, and budget monitoring — across AWS, Azure, and GCP.
 
 [![Links](https://img.shields.io/badge/links-checked-brightgreen)]()
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)]()
@@ -8,77 +8,80 @@
 
 ---
 
+## What is this repository?
+
+A practical resource hub for FinOps practitioners, cloud engineers, and platform teams who want to use **AI agents** to automate cloud cost optimization. This repo provides tutorials, MCP server documentation, client guides, and security frameworks for implementing the Model Context Protocol across AWS, Azure, and GCP.
+
+**18 MCP servers documented** | **7 step-by-step tutorials** | **9 MCP clients compared** | **3 cloud providers covered**
+
+---
+
+## How do I get started?
+
+1. **[Choose an MCP client](clients/comparison.md)** — Claude, ChatGPT, Gemini, Copilot, Cursor, Kiro, VS Code
+2. **[Run your first MCP tutorial](tutorials/01-aws-pricing-quickstart.md)** — query real-time AWS pricing in 15 minutes
+3. **[Explore all FinOps MCP servers](servers/)** — AWS, Azure, GCP, Tagging, JIRA, Slack
+
+---
+
 ## Recent Updates (March 2026)
 
-- **New: Workflow & Collaboration Servers** — Added documentation for [FinOps Tagging Compliance](./servers/tagging.md), [JIRA](./servers/jira.md), and [Slack](./servers/slack.md) MCP servers
-- **Registry Backfill** — [`registry.yaml`](./servers/configs/registry.yaml) now contains all 18 documented MCP servers as the single source of truth
-- **Repository Streamlined** — Consolidated `use-cases/` into tutorials, trimmed INDEX files, fixed broken links, removed unused directory references
-- **MCP Authentication Vulnerabilities Guide** (January 2026) — Critical security risks and remediation for MCP deployments ([read more](./governance/mcp-authentication-vulnerabilities-2026.md))
-- **AWS MCP Remote Server** — GA with 15,000+ AWS APIs and Agent SOPs ([tutorial](./tutorials/07-aws-mcp-remote-server.md))
+- **New: Workflow & Collaboration Servers** — [FinOps Tagging Compliance](./servers/tagging.md), [JIRA](./servers/jira.md), and [Slack](./servers/slack.md) MCP servers for automated cost governance
+- **Registry Backfill** — [`registry.yaml`](./servers/configs/registry.yaml) now lists all 18 documented MCP servers
+- **MCP Authentication Vulnerabilities** (January 2026) — Critical security risks and remediation ([read more](./governance/mcp-authentication-vulnerabilities-2026.md))
+- **AWS MCP Remote Server** — GA with 15,000+ AWS APIs ([tutorial](./tutorials/07-aws-mcp-remote-server.md))
 
 ---
 
-## Start Here
-- [Download a client](clients/comparison.md)
-- [Run your first MCP](tutorials/01-aws-pricing-quickstart.md)
-- [Explore the FinOps MCPs](servers/)
+## What's inside?
+
+| Section | What you'll find |
+|---------|-----------------|
+| [/foundations](./foundations) | What is MCP, how it works, architecture deep-dive |
+| [/servers](./servers) | 18 MCP servers — AWS, Azure, GCP, Tagging, JIRA, Slack |
+| [/clients](./clients) | 9 MCP clients compared — Claude, ChatGPT, Gemini, Copilot, Cursor, Kiro |
+| [/tutorials](./tutorials) | 7 step-by-step guides for AWS, Azure, GCP cost analysis |
+| [/governance](./governance) | Security best practices, IAM policies, vulnerability guides |
 
 ---
 
-## Repository Structure
-
-- [/foundations](./foundations) — background notes, architecture, getting started
-- [/servers](./servers) — registry of MCP servers (AWS, Azure, GCP, Tagging, JIRA, Slack)
-- [/clients](./clients) — tested MCP clients (Claude, ChatGPT, Gemini, Copilot, Cursor, Kiro, etc.)
-- [/tutorials](./tutorials) — runnable step-by-step guides
-- [/governance](./governance) — security checklists, threat models, deployment guidance
-
----
-
-## What is MCP?
+## What is MCP and why does it matter for FinOps?
 
 <img src="./images/MCP_USB.jpeg" alt="MCP Architecture - Hub & Spoke Model" width="50%">
 
-*MCP connects AI clients to multiple data sources and services through a standardized protocol*
+*MCP connects AI clients to cloud cost management tools through a standardized protocol*
 
-MCP is an **open standard protocol** that lets **LLMs act as agents** by safely connecting to external tools (servers) like AWS Cost Explorer, a GCP BigQuery dataset with billing exports, an Azure storage account holding cost data, or 3rd-party cloud finops solutions like Vantage.
+The **Model Context Protocol (MCP)** is an open standard that lets AI agents securely connect to external tools — like AWS Cost Explorer, GCP BigQuery billing exports, Azure Cost Management, or third-party FinOps platforms like Vantage. It's the bridge between "ask a question about cloud spend" and "get a real answer from live data."
 
-**Industry Adoption (March 2026)**:
-In December 2025, Anthropic donated MCP to the **Agentic AI Foundation** (Linux Foundation), with founding support from Anthropic, Block, and OpenAI, plus backing from Google, Microsoft, AWS, Cloudflare, and Bloomberg. As of March 2026, the ecosystem has grown to **10,000+ active MCP servers** and is supported by all major AI platforms.
+**Industry Adoption (March 2026)**: MCP was donated to the **Linux Foundation** (December 2025) with backing from Anthropic, OpenAI, Google, Microsoft, and AWS. The ecosystem has grown to **10,000+ active MCP servers** and is supported by all major AI platforms.
 
-In FinOps, MCP unlocks:
-- Faster cost simulations
-- Real-time tagging compliance
-- Forecasting and Cost Simulations
-- Cost Optimization recommendations
+### What can MCP do for cloud cost optimization?
 
-But also raises **governance and security** challenges — this repo addresses both sides.
+- **Cost anomaly detection** — AI agents query Cost Explorer and alert on spend spikes
+- **Tagging compliance** — automated audits of tag coverage and drift detection
+- **Resource optimization** — rightsizing recommendations, idle resource identification
+- **Budget monitoring** — real-time threshold alerts via Slack, JIRA ticket creation
+- **Multi-cloud cost analysis** — unified queries across AWS, Azure, and GCP
+- **Cost simulation** — what-if scenarios for commitment purchases and architecture changes
+
+But MCP also raises **governance and security** challenges — this repo addresses both.
 
 ---
 
 ## Contributing
-We welcome contributions:
+
+We welcome contributions — new MCP servers, tutorials, use cases, and security guidance.
+
 1. Fork the repo and create a branch
-2. Add your MCP server, tutorial, or use case
+2. Add your content
 3. Open a PR with a clear description
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-New to MCP or FinOps? Start with issues labeled **good first issue**.
-
----
-
-## Governance
-- [Code of Conduct](CODE_OF_CONDUCT.md)
-- [License](LICENSE)
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details. New to MCP or FinOps? Start with issues labeled **good first issue**.
 
 ---
 
 ## Community
-- Join discussions in the [FinOps Foundation Slack](https://www.finops.org/slack/)
-- Follow updates on [LinkedIn](https://linkedin.com/in/jeanlatiere)
-- Share your use cases, raise issues, propose servers
 
----
-
-## License
-This project is licensed under the [Apache 2.0 License](LICENSE).
+- [FinOps Foundation Slack](https://www.finops.org/slack/)
+- [LinkedIn](https://linkedin.com/in/jeanlatiere)
+- [Code of Conduct](CODE_OF_CONDUCT.md) | [License (Apache 2.0)](LICENSE)

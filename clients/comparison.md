@@ -1,8 +1,12 @@
+# Which MCP Client Should I Use for FinOps? — Comparison Guide
 
+**Last Updated**: March 2026
 
-# MCP Clients Comparison
+A side-by-side comparison of all major MCP clients for cloud cost optimization, FinOps automation, and AI-powered cost management. Covers Claude, ChatGPT, Gemini, Copilot, Cursor, Kiro, VS Code, and more.
 
-## Why do we need a client?
+---
+
+## Why do I need an MCP client?
 
 MCP (Model Context Protocol) servers expose powerful capabilities — like querying AWS pricing data, running tagging checks, or doing cost simulations — but they cannot be used directly. They need a **client** (Claude, Cursor, VS Code, Kiro CLI, etc.) that acts as the interface between you (where you type prompts) and the MCP servers (tools that provide data or actions).
 

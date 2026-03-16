@@ -1,12 +1,12 @@
-# MCP Clients Overview
+# MCP Clients for FinOps — Which AI Tool Should I Use?
 
 **Last Updated**: March 2026
 
-Quick reference guide for all MCP clients and how to choose the right one for your FinOps needs.
+A quick reference guide comparing all major MCP clients for cloud cost optimization and FinOps workflows. Find the right AI client for your team, cloud provider, and skill level.
 
 ---
 
-## Quick Decision Guide
+## Which MCP client is right for me?
 
 **I'm a developer/engineer managing infrastructure as code**
 → Try [Claude Code](./claude-code.md) or [Kiro](./kiro.md) (AWS-focused)
