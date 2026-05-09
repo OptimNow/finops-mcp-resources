@@ -156,8 +156,8 @@ uvx --version
 
 ## Step 5: Configure AWS Remote MCP Server for Kiro CLI
 
-**Important**: Complete Tutorial 7 first to set up IAM permissions for the AWS Remote MCP server. You'll need:
-- IAM user with `aws-mcp:InvokeMcp` permission
+**Important**: Complete Tutorial 7 first to set up IAM permissions for the AWS MCP Server. You'll need:
+- IAM user with the policy from Tutorial 7, Step 2 (standard IAM permissions on the underlying AWS actions; the previous `aws-mcp:InvokeMcp` permission was removed at GA on May 6, 2026)
 - AWS profile configured (Step 3 of Tutorial 7)
 
 **Note**: Kiro CLI reads MCP configuration from `~/.kiro/settings/mcp.json`, not from `~/.aws/amazonq/mcp.json`.
@@ -275,7 +275,7 @@ I'm running 10 t3.xlarge instances 24/7. Should I use Reserved Instances or Savi
 
 ### MCP server not loading ("connection closed: initialize response")
 - **Check the correct config file**: Kiro CLI reads from `~/.kiro/settings/mcp.json`, NOT from `~/.aws/amazonq/mcp.json`
-- **Check IAM permissions**: Ensure your IAM user has `aws-mcp:InvokeMcp` permission (see Tutorial 7, Step 2)
+- **Check IAM permissions**: Ensure your IAM user has the policy from Tutorial 7, Step 2 (standard IAM permissions on the underlying AWS actions, e.g. `ce:GetCostAndUsage`, `pricing:GetProducts`)
 - **Verify AWS profile**: Confirm the profile name in `~/.kiro/settings/mcp.json` matches your AWS CLI profile from Tutorial 7
 - **Check the config file**: Ensure `~/.kiro/settings/mcp.json` has valid JSON syntax
 - **Verify uvx is installed**: Run `uvx --version`
@@ -287,7 +287,7 @@ I'm running 10 t3.xlarge instances 24/7. Should I use Reserved Instances or Savi
 - **Check file permissions**: Ensure your user owns the `~/.aws/amazonq/` directory
 
 ### Cost analysis returns authorization errors
-- **IAM Policy**: Verify your IAM user has the `aws-mcp:InvokeMcp` policy attached
+- **IAM Policy**: Verify your IAM user has the policy from Tutorial 7, Step 2 attached (standard IAM permissions on the AWS actions the agent will call)
 - **AWS Profile**: Ensure the profile name in `mcp.json` matches your configured AWS profile
 - **Credentials**: Run `aws configure list --profile mcp-aws` to verify credentials are set
 
