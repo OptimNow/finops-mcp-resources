@@ -6,6 +6,12 @@
 
 Kiro CLI integrates with MCP servers in the background, letting you query AWS data, get recommendations, and automate tasks directly from your terminal. While Amazon Q continues to exist as the web/IDE assistant, **Kiro CLI is the recommended tool for command-line MCP interactions**.
 
+## What's new (May 2026)
+
+- **Kiro CLI 2.2.0** (April 27, 2026): adaptive thinking support added for better multi-turn reasoning coherence on long-running cost analysis or commitment-review sessions.
+
+Reference: [Kiro CLI changelog](https://kiro.dev/changelog/cli/).
+
 ✅ **Pros for a Cloud FinOps professional**
 - **Terminal-native**: Works directly in your command line, perfect for scripting and automation workflows
 - **Native to AWS**: Seamlessly integrates with Cost Explorer, Trusted Advisor, and other AWS services through MCP connectors

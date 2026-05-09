@@ -4,6 +4,13 @@
 
 Kiro is an agentic AI IDE built on the Code OSS foundation (the same base as VS Code) that combines native MCP support with spec-driven development, agent hooks, and autonomous coding capabilities. Created with backing from AWS, Kiro targets developers who want AI assistance from prototype to production.
 
+## What's new (May 2026)
+
+- **Kiro joins the AWS Agent Toolkit** (May 6, 2026): Kiro is now officially supported alongside Claude Code, Cursor, Codex, Cline, and Windsurf, with native access to the AWS MCP Server. See the [AWS MCP Server GA announcement](https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available/).
+- **Kiro IDE 0.12.155** (May 6, 2026): parallel task execution. Independent tasks now run concurrently with built-in dependency analysis instead of sequentially.
+
+Reference: [Kiro changelog](https://kiro.dev/changelog/).
+
 ## MCP Support
 - **Native MCP integration**: First-class support for Model Context Protocol from launch
 - **Remote MCP servers**: Connect to cloud-hosted MCP servers without local installation

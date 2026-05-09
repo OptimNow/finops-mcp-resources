@@ -1,6 +1,6 @@
 # MCP Foundations — What is Model Context Protocol for FinOps?
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 Learn what MCP is, how it works, and why it matters for cloud cost optimization and FinOps automation.
 

@@ -1,6 +1,6 @@
 # MCP Clients for FinOps — Which AI Tool Should I Use?
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 A quick reference guide comparing all major MCP clients for cloud cost optimization and FinOps workflows. Find the right AI client for your team, cloud provider, and skill level.
 

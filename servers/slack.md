@@ -1,6 +1,6 @@
 # Slack MCP Server for FinOps Alerts and Collaboration
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 An MCP server for integrating Slack with FinOps workflows — enabling automated cost anomaly alerts, budget threshold notifications, and cross-team collaboration directly in the channels where your teams already work.
 

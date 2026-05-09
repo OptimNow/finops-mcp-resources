@@ -1,6 +1,6 @@
 # MCP Security and Governance for Enterprise FinOps
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 Security checklists, IAM policies, vulnerability guides, and deployment architecture for enterprise MCP implementations. Covers authentication, authorization, data privacy, and cloud-hosted MCP deployment.
 

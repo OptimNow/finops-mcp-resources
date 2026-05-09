@@ -6,7 +6,7 @@
 
 **Tutorial 6 of 7** | ⏱️ **Time**: 35-45 minutes | 💻 **Level**: Intermediate
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 ---
 
@@ -725,7 +725,7 @@ flowchart TB
 
 - [GCP MCP Servers Documentation](../servers/gcp.md)
 - [Google Gemini Client Guide](../clients/gemini.md)
-- [VS Code with Gemini Code Assist](../clients/vscode.md)
+- [VS Code with Gemini Code Assist](../clients/vscode-cline.md)
 - [MCP Security Best Practices](../governance/security-best-practices-2025.md)
 - [Getting Started with MCP](../foundations/getting-started.md)
 - [krzko/google-cloud-mcp GitHub Repository](https://github.com/krzko/google-cloud-mcp)

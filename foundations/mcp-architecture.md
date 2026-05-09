@@ -1,6 +1,6 @@
 # MCP Architecture: How Model Context Protocol Works
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 The **Model Context Protocol (MCP)** defines a modular, layered architecture for connecting AI agents to external tools and data sources — including cloud cost management APIs, billing exports, and FinOps automation workflows. This page explains how MCP's client-host-server architecture works and why it matters for enterprise cloud cost optimization.
 
@@ -89,6 +89,17 @@ The 2025-11-25 spec addresses two major FinOps pain points: production readiness
 **Enterprise Security**: Mandatory PKCE protects against authorization code interception, step-up authorization provides just-in-time privilege escalation, and CIMD simplifies client registration for IT teams. Your security team can approve MCP deployments with confidence.
 
 These updates move MCP from "prototype-friendly" to "enterprise-ready" for FinOps use cases. The protocol is now mature enough for production deployments at scale.
+
+---
+
+## 🏛️ Governance milestones (May 2026)
+
+At [MCP Dev Summit North America 2026](https://aaif.io/blog/mcp-is-now-enterprise-infrastructure-everything-that-happened-at-mcp-dev-summit-north-america-2026/), the Agentic AI Foundation announced two governance changes that affect anyone planning long-term MCP deployments:
+
+- **Formal project lifecycle policy** with three stages (Growth, Impact, Emeritus). External project submissions are open for the first time, giving enterprises a clearer path for contributing or sponsoring MCP-adjacent work.
+- **Leadership change**: Mazin Gilbert (Google AI veteran, Wharton MBA) replaces Jim Zemlin as AAIF Executive Director.
+
+For FinOps practitioners, the practical signal is that MCP has moved from "open-source experiment" to a foundation-governed protocol with formal project intake and a permanent executive function. This is what enterprise procurement teams want to see before approving production MCP deployments.
 
 ---
 

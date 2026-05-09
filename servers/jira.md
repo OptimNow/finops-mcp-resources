@@ -1,6 +1,6 @@
 # JIRA MCP Server for FinOps Workflow Automation
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 An MCP server for integrating Atlassian JIRA with FinOps workflows — enabling automated ticket creation for cost anomalies, optimization tracking, and remediation management. Close the loop between AI-driven cost insights and team action.
 

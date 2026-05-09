@@ -6,7 +6,7 @@
 
 **Tutorial 2 of 7** | ⏱️ **Time**: 20-30 minutes | 💻 **Level**: Beginner
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 ---
 

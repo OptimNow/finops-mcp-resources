@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **AWS MCP Server GA (May 6, 2026)** — Updated documentation to reflect general availability. The `aws-mcp:InvokeMcp`, `aws-mcp:CallReadOnlyTool`, and `aws-mcp:CallReadWriteTool` permissions are retired and have no effect; access is now controlled through standard IAM policies. The `aws:ViaAWSMCPService` (Boolean) and `aws:CalledViaAWSMCP` (service principal String) global condition context keys are added to every MCP-initiated request, intended for `Deny`-style scoping per the AWS-documented pattern.
 - **Skills replace Agent SOPs** — Agent SOPs are renamed to **Skills** and are now contributed and maintained by individual AWS service teams. Updated `servers/aws.md`, `tutorials/07-aws-mcp-remote-server.md`, and `servers/configs/registry.yaml`.
 - **Tutorials/Servers refresh** — `tutorials/07-aws-mcp-remote-server.md` and `servers/aws.md` updated to "May 2026" and rewritten around the GA model. The "Unified Architecture (Preview)" block in `servers/aws.md` is removed (superseded by GA).
+- **Date stamp refresh (March 2026 → May 2026)** in `README.md` (Industry Adoption header), `foundations/what-is-mcp.md`, `foundations/getting-started.md`, `clients/comparison.md`, `servers/gcp.md`, and `governance/mcp-authentication-vulnerabilities-2026.md`.
+- **Date-stamp-only sweep** on 16 otherwise-untouched files (`foundations/INDEX.md`, `foundations/mcp-architecture.md`, `servers/INDEX.md`, `servers/azure.md`, `servers/jira.md`, `servers/slack.md`, `servers/tagging.md`, `clients/INDEX.md`, `governance/INDEX.md`, `governance/remote-mcp-servers.md`, `tutorials/INDEX.md`, `tutorials/01-aws-pricing-quickstart.md`, `tutorials/02-amazon-kiro-cli-cost-analysis.md`, `tutorials/03-finops-multi-agent-nova.md`, `tutorials/04-azure-mcp-quickstart.md`, `tutorials/05-gcp-bigquery-quickstart.md`).
+- **Stat reframe** — the unsourced "10,000+ active MCP servers" claim is REPLACED across `README.md`, `foundations/what-is-mcp.md`, and `foundations/getting-started.md` with verified [AAIF stats from MCP Dev Summit NA 2026](https://aaif.io/blog/mcp-is-now-enterprise-infrastructure-everything-that-happened-at-mcp-dev-summit-north-america-2026/): 1,200 attendees (doubled from previous summit), 110+ million monthly SDK downloads, 170 member organizations in under 4 months. The "MCPdb" entry stays as a community directory listing in `foundations/getting-started.md`, correctly attributed to MCPdb itself.
+- **`servers/gcp.md`** — refreshed for Google's April 29, 2026 announcement of 50+ managed MCP servers GA / preview. Added a "What's new (May 2026)" section, updated the Official Servers table with Cloud Run, Apigee, AlloyDB / Spanner / Firestore / Cloud SQL rows. The standalone `@google/mcp-server-compute` and `@google-cloud/mcp` npm packages return 404 (verified `npm view`, 2026-05-09); the doc now points to the managed remote server as the recommended path.
+- **Update cadence** shifted from quarterly to monthly. Next review: June 2026.
 
 ### Added
 - **`run_script` tool** documented in `tutorials/07-aws-mcp-remote-server.md` and `servers/aws.md` — server-side Python sandbox that lets the agent chain multiple AWS calls in a single round-trip.
@@ -23,10 +28,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **GA note** in `governance/remote-mcp-servers.md` (one sentence) noting the May 6, 2026 GA and the unauthenticated documentation tools.
 - **Credential-method note** in `tutorials/07-aws-mcp-remote-server.md` — points readers to AWS-recommended `aws login` (auto-rotates credentials every 15 minutes) and `aws configure sso` as alternatives to static IAM access keys, while keeping the IAM-user path for users without SSO.
 - **MCP Proxy for AWS explanation** in `tutorials/07-aws-mcp-remote-server.md` and `servers/aws.md` — clarifies what `uvx mcp-proxy-for-aws@latest` actually invokes (the local STDIO-to-HTTPS bridge that handles SigV4 signing) and links to the [aws/mcp-proxy-for-aws](https://github.com/aws/mcp-proxy-for-aws) repository.
+- **AWS for SAP MCP Server row** added to `servers/aws.md` (GA May 1, 2026, sourced from the awslabs/mcp release).
+- **Recent Updates bullets** in `README.md` for the Google managed MCP servers GA (April 29, 2026) and the May 2026 governance refresh.
+- **`clients/cursor.md`** — "What's new (May 2026)" section covering Cursor 3.0 / 3.2 / 3.3 (parallel agents, async subagents, multi-root workspaces, PR review experience) and Security Review beta on Teams / Enterprise.
+- **`clients/kiro.md`** — Kiro joining the AWS Agent Toolkit (May 6, 2026) alongside Claude Code, Cursor, Codex, Cline, and Windsurf, plus Kiro IDE 0.12.155 parallel task execution.
+- **`clients/kiro-cli.md`** — Kiro CLI 2.2.0 adaptive thinking (April 27, 2026).
+- **`clients/claude-code.md`** — MCP Support Timeline updated with April 2026 enhancements (`/mcp` tool counts, retry logic, "needs auth" labels) and Claude Opus 4.7 GA (May 4, 2026) becoming the default model across Claude products.
+- **MCP Dev Summit NA 2026 references** added across `README.md` (Industry Adoption paragraph + Recent Updates bullet), `foundations/what-is-mcp.md` (Broad Adoption section), `foundations/getting-started.md` (Discover More intro), and `foundations/mcp-architecture.md` (new "Governance milestones (May 2026)" section covering the TSC three-stage lifecycle policy and Mazin Gilbert as new AAIF Executive Director).
+- **The Lethal Trifecta** new framing section in `governance/mcp-authentication-vulnerabilities-2026.md` (sourced from Amazon's James Hood, MCP Dev Summit NA 2026). Includes a FinOps-specific worked example.
+- **DNS Rebinding** added as a new attack pattern + timeline row in `governance/mcp-authentication-vulnerabilities-2026.md` (Jonathan Leitschuh / Braise disclosure at MCP Dev Summit NA 2026; 0-day in Google Database Toolbox after 90-day awareness).
+- **Enterprise patterns from MCP Dev Summit NA 2026** new section in `governance/remote-mcp-servers.md` covering MCP Gateway pattern (Alex Salazar / Arcade), Uber two-tier trust model, AND-gate authorization, Prime Video progressive tool discovery (100 to 3), and WorkOS context lazy-loading. The last two are flagged with explicit FinOps token-cost angles.
 
 ### Fixed
 - Stale references to `aws-mcp:InvokeMcp` removed from `tutorials/02-amazon-kiro-cli-cost-analysis.md`.
 - Stale "Agent SOPs" reference updated in `servers/configs/registry.yaml`.
+- Broken link to non-existent `clients/vscode.md` corrected to `clients/vscode-cline.md` in `foundations/getting-started.md` and `tutorials/06-Tutorial-GCP-Billing-MCP.md`.
+- Unverified "407% increase from initial batch" stat removed from `foundations/getting-started.md`.
+
+### Security
+- **CVE-2026-0621** (severity High) — MCP TypeScript SDK `UriTemplate` ReDoS, patched in v1.25.2 (2026-04-02). Documented in `governance/mcp-authentication-vulnerabilities-2026.md`.
+- **CVE-2026-40933** (severity Critical) — Flowise authenticated RCE via MCP Adapters, patched in 3.1.0 (April 2026). Documented in `governance/mcp-authentication-vulnerabilities-2026.md`.
 
 ---
 
@@ -159,9 +180,9 @@ This was a comprehensive update bringing the repository current with major MCP d
 **Version Scheme**: We use date-based versioning (YYYY-MM) for major updates.
 
 **Update Frequency**:
-- **Major updates**: Quarterly (recommended) to stay current with MCP ecosystem
+- **Major updates**: Monthly (recommended) to stay current with MCP ecosystem
 - **Minor updates**: As needed for corrections, new tutorials, or client updates
-- **Next review**: March 2026 (quarterly check)
+- **Next review**: June 2026 (monthly check)
 
 **What to watch for in future updates**:
 - New MCP specification releases
