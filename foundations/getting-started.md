@@ -19,12 +19,12 @@ This is the easiest way to see MCP in action for FinOps.
 ## 2. Set Up an MCP Client
 Once you've tried AWS Pricing, explore how to use different MCP **clients**.
 
-As of March 2026, we provide comprehensive guides for **9 major MCP clients**:
+As of May 2026, we provide comprehensive guides for **9 major MCP clients**:
 
 ### **For Developers & Technical Teams**
 - [Claude Code](/clients/claude-code.md) - Remote MCP, task workflows, enterprise controls
 - [Kiro](/clients/kiro.md) - Agentic IDE with spec-driven development (AWS-focused, preview)
-- [VS Code](/clients/vscode.md) - Flexible, extensible, familiar to engineers
+- [VS Code + Cline](/clients/vscode-cline.md) - Flexible, extensible, familiar to engineers
 - [Cursor](/clients/cursor.md) - Modern IDE with MCP support
 
 ### **For Business & Finance Stakeholders**
@@ -63,12 +63,12 @@ This repo is a sandbox — test, prototype, and see how MCP can accelerate your 
 
 ## 5. Discover More MCP Servers
 
-The MCP ecosystem has grown to **10,000+ active servers** as of March 2026. Here's how to discover FinOps-relevant servers:
+The MCP ecosystem is now **enterprise infrastructure**: at [MCP Dev Summit North America 2026](https://aaif.io/blog/mcp-is-now-enterprise-infrastructure-everything-that-happened-at-mcp-dev-summit-north-america-2026/), the Agentic AI Foundation reported 110+ million monthly SDK downloads and 170 member organizations. As of May 2026, here's how to discover FinOps-relevant servers:
 
 ### Official MCP Registry
 - **URL**: [MCP Registry](https://modelcontextprotocol.io/registry) (check modelcontextprotocol.io)
 - **What it is**: Official server directory launched by the MCP community
-- **Growth**: 407% increase from initial batch, with servers for AWS, Azure, GCP, and third-party FinOps tools
+- **Coverage**: servers for AWS, Azure, GCP, and third-party FinOps tools
 
 ### Community Directories
 - **MCPdb**: Claims 10,000+ servers and clients - [mcpdb.org](https://mcpdb.org)

@@ -1,6 +1,6 @@
 # FinOps Tagging Compliance MCP Server
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 An MCP server for enforcing and auditing cloud resource tagging policies — a core FinOps discipline for cost allocation, showback, and chargeback. Automate tag compliance checks, detect drift, and close your cost attribution gap using AI-powered cloud cost optimization workflows.
 

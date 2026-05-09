@@ -1,6 +1,6 @@
 # MCP Authentication Vulnerabilities & Remediation Guide
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 The Model Context Protocol shipped without mandatory authentication. This document covers the known vulnerabilities, real-world incidents, and the security controls your organization must implement to protect MCP deployments.
 
@@ -59,6 +59,42 @@ Three critical vulnerabilities emerged in the six months following MCP's widespr
 
 ---
 
+### CVE-2026-0621 (severity High)
+**Component**: MCP TypeScript SDK (`@modelcontextprotocol/sdk`)
+
+**What happened**: A ReDoS (regular-expression denial of service) vulnerability in the `UriTemplate` parser. Crafted RFC 6570 exploded-array patterns trigger catastrophic backtracking, freezing the MCP server's event loop on a single malicious URI.
+
+**Impact**: Any MCP server built on the TypeScript SDK below v1.25.2 can be frozen by untrusted input. Severity scales with how exposed the server is to user-supplied URIs.
+
+**Remediation**: Upgrade `@modelcontextprotocol/sdk` to **v1.25.2** or later (patched 2026-04-02). See the [v1.25.2 release notes](https://github.com/modelcontextprotocol/typescript-sdk/releases/tag/v1.25.2) and the [GHSA advisory](https://github.com/advisories/GHSA-8r9q-7v3j-jr4g).
+
+---
+
+### CVE-2026-40933 (severity Critical)
+**Component**: Flowise (AI workflow builder) — `MCP Adapters` integration
+
+**What happened**: Authenticated remote code execution via Flowise's MCP Adapters. The adapter unsafely serialized stdio commands, letting an authenticated attacker register an arbitrary MCP stdio server whose command would be executed by the Flowise process.
+
+**Impact**: Authenticated RCE on Flowise instances ≤ 3.0.13. Any user with edit rights on a Flowise flow could pivot to host code execution.
+
+**Remediation**: Upgrade Flowise to **3.1.0** or later (patched April 2026). Audit Flowise instances for unauthorised MCP Adapter configurations. See the [GHSA advisory](https://github.com/advisories/GHSA-c9gw-hvqq-f33r).
+
+---
+
+## The Lethal Trifecta
+
+At [MCP Dev Summit North America 2026](https://aaif.io/blog/mcp-is-now-enterprise-infrastructure-everything-that-happened-at-mcp-dev-summit-north-america-2026/), Amazon's James Hood (Senior Principal Engineer, internal builder tools) described the security framing Amazon applies across its internal MCP registry. The **lethal trifecta** is the combination of three capabilities in a single agent that turns recoverable mistakes into compromise:
+
+1. **Access to private data** (billing records, customer data, source code, secrets)
+2. **Exposure to untrusted content** (web pages, documents, third-party tool output)
+3. **External communication channels** (email, Slack, outbound HTTP, DNS lookups)
+
+Any one of the three is acceptable. Any two is risky. All three is the trifecta. Amazon scans every agent configuration submitted to its internal registry for this combination and blocks deployment when it occurs.
+
+**FinOps relevance**: a typical cost-optimisation agent reads billing data, ingests vendor pricing pages, and posts findings to Slack. That ticks all 3 boxes. Mitigations: split read and post phases into separate agents with separate credentials, apply output filtering before any external channel, and require human approval for any outbound message that includes data sourced from billing.
+
+---
+
 ## Attack Patterns
 
 Security researchers have documented several attack patterns that exploit MCP's architectural weaknesses.
@@ -75,6 +111,14 @@ An attacker embeds instructions in a document the AI agent processes. The agent 
 
 ### Cross-Server Tool Shadowing
 A malicious MCP server intercepts calls intended for a trusted server by registering tools with similar names. The agent routes requests to the attacker's server instead of the legitimate one.
+
+### DNS Rebinding
+
+Disclosed at [MCP Dev Summit North America 2026](https://aaif.io/blog/mcp-is-now-enterprise-infrastructure-everything-that-happened-at-mcp-dev-summit-north-america-2026/) by Jonathan Leitschuh (Braise; ex-Human Security Dan Kaminsky Fellow). DNS rebinding is a long-standing browser-based attack class that the MCP ecosystem inherited because most local MCP servers expose HTTP endpoints on localhost without strict `Host` header validation. The MCP specification already warns about this class, but SDKs implement the fix inconsistently. Leitschuh disclosed a 0-day in Google Database Toolbox after a 90+ day awareness period.
+
+**Attack vector**: an attacker controls a DNS server and a malicious web page. The page resolves a hostname to the attacker's IP, the browser fetches the page, then DNS re-resolves the same hostname to `127.0.0.1` (or the victim's internal MCP endpoint). Same-origin policy is bypassed because the hostname stays the same. The malicious page now has scripted access to whatever the local MCP server exposes.
+
+**Mitigation**: enforce strict `Host` header validation on every MCP server (reject anything that is not `localhost` or a known internal hostname). Verify your SDK version applies the spec's DNS rebinding protections. Bind local MCP servers to `127.0.0.1` only, and use authenticated HTTPS for any non-localhost deployment.
 
 ---
 
@@ -229,6 +273,9 @@ Before your next security review, verify:
 | Jan 2026 | CVE-2025-6514 (mcp-remote) | RCE via malicious MCP server |
 | Jan 2026 | CVE-2025-52882 (Claude Code extensions) | Arbitrary file access on dev machines |
 | Jan 2026 | Clawdbot exposure discovered (1,862 servers) | Widespread unauthenticated exposure confirmed |
+| Apr 2026 | CVE-2026-0621 (MCP TypeScript SDK) | ReDoS via UriTemplate; servers freeze on crafted URIs (patched v1.25.2) |
+| Apr 2026 | CVE-2026-40933 (Flowise MCP Adapters) | Authenticated RCE via unsafe stdio command serialization (patched 3.1.0) |
+| Apr 2026 | DNS rebinding disclosure (J. Leitschuh, MCP Dev Summit NA 2026) | Browser-based attack class against MCP servers; SDK fixes inconsistent. 0-day in Google Database Toolbox |
 
 ---
 

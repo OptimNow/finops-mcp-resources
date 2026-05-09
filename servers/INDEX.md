@@ -1,6 +1,6 @@
 # MCP Servers for Cloud FinOps and Cost Optimization
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 A curated registry of 18 MCP servers for cloud cost optimization, FinOps automation, and AI-powered cost management across AWS, Azure, and GCP. Includes cloud provider billing servers, tagging governance tools, and workflow integrations (JIRA, Slack).
 

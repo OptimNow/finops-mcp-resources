@@ -1,6 +1,6 @@
 # Remote MCP Servers for FinOps
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 Remote MCP servers are cloud-hosted or network-accessible MCP servers that clients connect to over HTTP/HTTPS or Server-Sent Events (SSE), as opposed to local servers running on the same machine as the MCP client.
 
@@ -356,6 +356,32 @@ The infrastructure costs for remote MCP servers vary by deployment model. Server
 The real financial win comes from operational efficiencies. Caching and query deduplication typically reduce cloud provider API costs by 30-50%, as the server batches requests and shares results across users. Running one powerful centralized server is dramatically cheaper than provisioning equivalent compute across dozens of developer machines. Centralized optimization—like intelligent rate limiting and request coalescing—compounds these savings by reducing overall cloud spend.
 
 **ROI estimate**: For teams of 10+ users, remote MCP servers typically pay for themselves within 1-2 months through reduced API costs and improved efficiency. The larger your team and the more cloud APIs you query, the faster the payback.
+
+---
+
+## 🏢 Enterprise patterns from MCP Dev Summit NA 2026
+
+At [MCP Dev Summit North America 2026](https://aaif.io/blog/mcp-is-now-enterprise-infrastructure-everything-that-happened-at-mcp-dev-summit-north-america-2026/), several enterprise teams shared the patterns they use to keep remote MCP deployments safe and affordable. The 5 below are the most directly applicable to FinOps:
+
+### MCP Gateway pattern
+
+Alex Salazar (Founder/CEO, Arcade) framed the MCP gateway as the **control plane for agentic integration**: every agent call routes through a gateway that handles authentication, authorization, observability, rate limiting, and audit logging. Without a gateway you re-implement the same controls in every server. With a gateway the controls are centralised and the servers can stay simple. For FinOps deployments this is the natural location to enforce per-team budget limits and per-tool cost ceilings.
+
+### Two-tier trust model (Uber)
+
+Uber separates **internal** MCP servers (built by their own teams, trusted) from **third-party** servers (everything else). The two tiers get different network policies, different credential scopes, and different review workflows. The same split fits FinOps: AWS, Azure, and GCP cost APIs you operate yourself are tier 1; third-party MCP integrations from unknown vendors are tier 2 and need additional sandboxing.
+
+### Authorization AND-gate (Arcade)
+
+The authorization rule is `agent_permissions ∩ user_permissions`, not the union. The agent only gets to do things the user is also allowed to do, AND that the agent itself is scoped for. This blocks the confused-deputy pattern where an over-privileged agent acts on behalf of an under-privileged user.
+
+### Progressive tool discovery (Prime Video)
+
+Prime Video's team narrowed an agent's working tool set from **100 tools down to 3 active per session** by using progressive discovery: list the categories first, expose the tools inside one category only after the agent commits to that category. This is a direct **FinOps lever**: every tool description that ships in the system prompt costs tokens. Cutting the active tool count from 100 to 3 typically reduces per-call token cost by an order of magnitude.
+
+### Context lazy-loading (WorkOS)
+
+Ryan Cooke (WorkOS) presented a context engine that loads tool instructions **only when the agent is about to invoke that tool**, instead of preloading every tool's instructions up front. Same FinOps logic as progressive discovery: lazy-loaded context means smaller prompts, lower token cost, and faster responses. Worth pricing into model selection for any production FinOps agent.
 
 ---
 

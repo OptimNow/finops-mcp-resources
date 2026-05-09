@@ -8,6 +8,8 @@ Claude Code is Anthropic's official CLI and IDE integration for Claude, designed
 - **Initial release**: Native MCP support from launch (Anthropic created MCP)
 - **June 2025**: Remote MCP server support added, eliminating need for local server management
 - **December 2025**: Enhanced with task workflows and advanced authorization from MCP spec 2025-11-25
+- **April 2026**: `/mcp` tool now shows per-server tool counts; retry logic added for failed `tools/list` calls; unauthorised connectors labelled "needs auth" instead of "failed"; PostToolUse hooks support `updatedToolOutput` for all tools.
+- **May 4, 2026**: Claude Opus 4.7 GA. Becomes the default model on Claude Code, the Anthropic API, Amazon Bedrock, Google Vertex AI, and Microsoft Foundry. Pricing unchanged from Opus 4.6.
 
 ---
 

@@ -49,3 +49,6 @@ yarn-error.log*
 *.temp
 .cache/
 
+# Local Claude Code prompts (kept locally for replay, not committed)
+.claude/prompts/
+

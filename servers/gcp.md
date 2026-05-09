@@ -1,25 +1,34 @@
 # GCP MCP Servers for Cloud Billing and Cost Analysis
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
-A comprehensive guide to Google Cloud Platform (GCP) MCP servers for FinOps, cloud cost optimization, and AI-powered billing analysis. Covers official Google MCP servers (BigQuery, GKE, GCE) and community alternatives for BigQuery billing export queries.
+A comprehensive guide to Google Cloud Platform (GCP) MCP servers for FinOps, cloud cost optimization, and AI-powered billing analysis. Covers official Google MCP servers (BigQuery, GKE, GCE, Cloud Run, Apigee, plus 45+ more) and community alternatives for BigQuery billing export queries.
+
+---
+
+## What's new (May 2026)
+
+On April 29, 2026, Google announced general availability of **more than 50 official managed MCP servers** spanning GCP infrastructure, databases, analytics, storage, services, and Workspace APIs. The announcement is documented at [cloud.google.com/blog: Google-managed MCP servers are available for everyone](https://cloud.google.com/blog/products/ai-machine-learning/google-managed-mcp-servers-are-available-for-everyone). FinOps-relevant additions include Cloud Run, Apigee, AlloyDB, Spanner, Firestore, and Cloud SQL alongside the existing BigQuery, GKE, and GCE servers. These are managed remote servers, not npm packages.
 
 ---
 
 ## 🚀 Official Google MCP Servers
 
 **Repository**: [Google/mcp](https://github.com/Google/mcp)
-**Status**: Officially maintained by Google
-**Announcement**: 2025
+**Status**: Officially maintained by Google. Major refresh April 29, 2026 (more than 50 managed servers GA / preview).
+**Announcement**: 2025; expanded to 50+ servers on April 29, 2026.
 
-Google provides **4 official remote MCP servers** that work seamlessly with Gemini and other MCP clients:
+The illustrative table below lists the FinOps-relevant servers. The full catalogue (50+) is on the [Google MCP repository](https://github.com/Google/mcp) and the [April 29, 2026 announcement post](https://cloud.google.com/blog/products/ai-machine-learning/google-managed-mcp-servers-are-available-for-everyone).
 
-| **MCP Server** | **Description** | **FinOps Use Cases** | **Transport** |
-|:---------------|:----------------|:---------------------|:--------------|
-| **[Google Maps (Grounding Lite)](https://github.com/Google/mcp)** | Location-based queries and geocoding | Regional cost analysis, data center location optimization | Remote (SSE/HTTP) |
-| **[BigQuery](https://github.com/Google/mcp)** | Query BigQuery datasets including billing exports | Cost analysis, spend trends, FinOps reporting | Remote (SSE/HTTP) |
-| **[Google Kubernetes Engine (GKE)](https://github.com/Google/mcp)** | GKE cluster management and monitoring | Container cost optimization, cluster rightsizing | Remote (SSE/HTTP) |
-| **[Google Compute Engine (GCE)](https://github.com/Google/mcp)** | Compute instance management and cost data | VM rightsizing, instance cost optimization | Remote (SSE/HTTP) |
+| **MCP Server** | **Description** | **FinOps Use Cases** | **Status** | **Transport** |
+|:---------------|:----------------|:---------------------|:-----------|:--------------|
+| **[BigQuery](https://github.com/Google/mcp)** | Query BigQuery datasets including billing exports | Cost analysis, spend trends, FinOps reporting | GA | Remote (SSE/HTTP) |
+| **[Google Kubernetes Engine (GKE)](https://github.com/Google/mcp)** | GKE cluster management and monitoring | Container cost optimization, cluster rightsizing | GA | Remote (SSE/HTTP) |
+| **[Google Compute Engine (GCE)](https://github.com/Google/mcp)** | Compute instance management and cost data | VM rightsizing, instance cost optimization | GA (April 29, 2026) | Remote (SSE/HTTP) |
+| **[Cloud Run](https://github.com/Google/mcp)** | Cloud Run app deployment and management | Serverless workload cost attribution, container rightsizing | GA (April 29, 2026) | Remote (SSE/HTTP) |
+| **[Apigee](https://github.com/Google/mcp)** | API management; turns OpenAPI specs into AI-ready tools | API gateway cost attribution, no local server required | GA (April 29, 2026) | Remote (SSE/HTTP) |
+| **[AlloyDB / Spanner / Firestore / Cloud SQL](https://github.com/Google/mcp)** | Database access via MCP | Query billing-export and FinOps databases natively | GA (April 29, 2026) | Remote (SSE/HTTP) |
+| **[Google Maps (Grounding Lite)](https://github.com/Google/mcp)** | Location-based queries and geocoding | Regional cost analysis, data center location optimization | GA | Remote (SSE/HTTP) |
 
 **Key Benefits:**
 - ✅ **Remote-first architecture** - No local installation required
@@ -44,24 +53,22 @@ In addition to Google's official servers, the community has developed MCP server
 
 **Documentation**: [GCP Compute MCP Reference](https://docs.cloud.google.com/compute/docs/reference/mcp)
 **Package**: `@google/mcp-server-compute`
-**Status**: ⚠️ **Not Yet Available** - Package not found in npm registry as of March 2026
-
-The Google Compute Engine MCP is referenced in Google Cloud documentation but the npm package `@google/mcp-server-compute` **does not currently exist** in the public registry.
+**Status**: GCE coverage is officially GA via the [Google MCP repository](https://github.com/Google/mcp) as the managed remote server (April 29, 2026 announcement). The standalone `@google/mcp-server-compute` npm package returns 404 (verified 2026-05-09); use the managed remote server instead.
 
 ### Current Status
 
-As of March 2026:
-- ✅ **Official Google MCP Servers** (BigQuery, GKE, GCE, Google Maps) are available at [github.com/Google/mcp](https://github.com/Google/mcp)
-- ❌ **Standalone `@google/mcp-server-compute` package** is not yet published to npm
-- 🔄 **Google Compute Engine MCP** may be part of the official Google MCP servers repository instead
+As of May 2026:
+- ✅ **Official Google managed MCP servers** (BigQuery, GKE, GCE, Cloud Run, Apigee, Google Maps, plus 45+ others) are GA at [github.com/Google/mcp](https://github.com/Google/mcp).
+- ❌ **Standalone `@google/mcp-server-compute` npm package**: 404 in the npm registry (`npm view @google/mcp-server-compute` returns Not Found, verified 2026-05-09). Same for `@google-cloud/mcp`.
+- ✅ **Recommended path**: use the managed remote GCE MCP server from the official Google catalogue, not a standalone npm package.
 
 ### Alternative: Use Official Google MCP Servers
 
-Instead of the standalone package, try using the **official Google Compute Engine (GCE) server** from Google's MCP repository:
+Use the **official Google Compute Engine (GCE) managed MCP server** from Google's MCP repository:
 
 **Repository**: [https://github.com/Google/mcp](https://github.com/Google/mcp)
 
-Check the repository for installation instructions for the GCE MCP server.
+Check the repository for installation instructions for the managed GCE MCP server.
 
 ---
 

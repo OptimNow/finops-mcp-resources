@@ -1,6 +1,6 @@
 # Azure MCP Servers for Cloud Cost Management
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 A guide to Azure MCP servers for FinOps, cloud cost management, and AI-powered cost analysis. Covers the official Azure MCP server and community alternatives for cost optimization and billing workflows.
 

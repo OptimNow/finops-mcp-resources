@@ -23,7 +23,7 @@ LLMs can still **hallucinate** or misinterpret cost data. And while MCP can conn
 
 ---
 
-## MCP's Evolution into Industry Standard (March 2026)
+## MCP's Evolution into Industry Standard (May 2026)
 
 **Open Governance:**
 In December 2025, Anthropic donated MCP to the **Agentic AI Foundation** (AAIF) under the Linux Foundation. This foundation is co-founded by Anthropic, Block, and OpenAI, with platinum membership from Google, Microsoft, AWS, Cloudflare, and Bloomberg.
@@ -33,8 +33,8 @@ This move ensures MCP remains:
 - **Community-driven** — developers and enterprises shape its evolution
 - **Production-ready** — backed by major cloud providers and AI companies
 
-**Broad Adoption (as of March 2026):**
-MCP is now supported by all major AI platforms including ChatGPT (March 2025), Google Gemini (April 2025), Microsoft Copilot, Claude, VS Code, Cursor, Kiro, and Amazon Q. The ecosystem has grown to over **10,000 active MCP servers**, with a robust registry and discovery tools.
+**Broad Adoption (as of May 2026):**
+MCP is now supported by all major AI platforms including ChatGPT (March 2025), Google Gemini (April 2025), Microsoft Copilot, Claude, VS Code, Cursor, Kiro, and Amazon Q. At [MCP Dev Summit North America 2026](https://aaif.io/blog/mcp-is-now-enterprise-infrastructure-everything-that-happened-at-mcp-dev-summit-north-america-2026/), the Agentic AI Foundation reported **110+ million monthly SDK downloads**, **170 member organizations** in under 4 months, and **1,200 attendees** (doubled from the previous summit). Mazin Gilbert (Google AI veteran, Wharton MBA) was confirmed as the new Executive Director, replacing Jim Zemlin.
 
 ---
 
