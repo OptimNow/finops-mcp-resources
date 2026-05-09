@@ -24,12 +24,12 @@ A practical resource hub for FinOps practitioners, cloud engineers, and platform
 
 ---
 
-## Recent Updates (March 2026)
+## Recent Updates (May 2026)
 
+- **AWS MCP Server GA** (May 6, 2026) — Now part of the broader Agent Toolkit for AWS. The previous `aws-mcp:InvokeMcp` permission is replaced by standard IAM policies using the `aws:ViaAWSMCPService` and `aws:CalledViaAWSMCP` context keys. New `run_script` tool runs short Python scripts in a server-side sandbox for multi-step workflows. Frankfurt (`eu-central-1`) endpoint added alongside `us-east-1`. Updated: [tutorial](./tutorials/07-aws-mcp-remote-server.md), [server doc](./servers/aws.md).
 - **New: Workflow & Collaboration Servers** — [FinOps Tagging Compliance](./servers/tagging.md), [JIRA](./servers/jira.md), and [Slack](./servers/slack.md) MCP servers for automated cost governance
 - **Registry Backfill** — [`registry.yaml`](./servers/configs/registry.yaml) now lists all 18 documented MCP servers
 - **MCP Authentication Vulnerabilities** (January 2026) — Critical security risks and remediation ([read more](./governance/mcp-authentication-vulnerabilities-2026.md))
-- **AWS MCP Remote Server** — GA with 15,000+ AWS APIs ([tutorial](./tutorials/07-aws-mcp-remote-server.md))
 
 ---
 

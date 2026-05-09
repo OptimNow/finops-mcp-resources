@@ -1,107 +1,74 @@
 # AWS MCP Servers for Cloud Cost Optimization
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
-A comprehensive guide to AWS MCP servers for FinOps automation, cloud cost optimization, and AI-powered cost management. Covers the AWS Remote MCP Server (15,000+ APIs), Pricing API, Cost Explorer, CloudWatch, Billing & Cost Management, and community FinOps servers.
+A comprehensive guide to AWS MCP servers for FinOps automation, cloud cost optimization, and AI-powered cost management. Covers the AWS MCP Server (15,000+ APIs, GA on May 6, 2026), Pricing API, Cost Explorer, CloudWatch, Billing & Cost Management, and community FinOps servers.
 
 ← [Back to Servers](./INDEX.md) | [Home](../README.md) | [Azure Servers](./azure.md) | [GCP Servers](./gcp.md)
 
 ---
 
-## ⭐ AWS MCP Remote Server - Generally Available
+## ⭐ AWS MCP Server — Generally Available (May 6, 2026)
 
-**Official AWS Documentation**: [AWS MCP User Guide](https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html)
-**Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)
+**Official AWS Documentation**: [Agent Toolkit for AWS — User Guide](https://docs.aws.amazon.com/agent-toolkit/latest/userguide/mcp-server.html)
+**Announcement**: [The AWS MCP Server is now generally available](https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available/)
+**Local proxy** (used by MCP clients): [aws/mcp-proxy-for-aws](https://github.com/aws/mcp-proxy-for-aws) — a small open-source helper that bridges STDIO to the remote HTTPS endpoint and signs requests with SigV4 using your local AWS credentials. Distributed via `uvx mcp-proxy-for-aws@latest`; no manual install.
 **Status**: Generally Available (GA)
 
-### 🎯 Start Here for Complete AWS Interactions!
+### 🎯 Start Here for Complete AWS Interactions
 
-AWS's **first remote, managed MCP server** is now Generally Available. This hosted solution eliminates local installation complexity while providing comprehensive access to all AWS services, documentation, and best practices.
+The AWS MCP Server is the managed, remote MCP entry point for AWS — one endpoint, 15,000+ AWS APIs, no local server installation. As of GA, it ships inside the broader **Agent Toolkit for AWS**, which bundles the MCP Server, **Skills**, **Plugins**, and project-level **Rules files**.
 
-#### Why Choose the Remote Server?
+#### What changed at GA
 
-**Zero Installation Overhead**
-- No local dependencies or version management
-- AWS hosts and maintains the infrastructure
-- Always up-to-date with latest AWS APIs and documentation
-- Works with any MCP-compatible client
+For FinOps users, three changes matter most:
 
-**Comprehensive AWS Coverage**
-- **15,000+ AWS APIs** through one unified interface
-- Real-time access to AWS documentation, API references, What's New posts
-- Getting Started guides and best practices built-in
-- Complete resource management across all AWS services
+1. **Simpler IAM model.** The previous `aws-mcp:InvokeMcp`, `aws-mcp:CallReadOnlyTool`, and `aws-mcp:CallReadWriteTool` permissions are gone — they no longer have any effect, and AWS recommends removing them. Access is now expressed through standard IAM policies on the underlying AWS actions (`ce:GetCostAndUsage`, `pricing:GetProducts`, etc.). Two global condition context keys are automatically added to every MCP-initiated request: `aws:ViaAWSMCPService` (Boolean, `true` for any AWS managed MCP server) and `aws:CalledViaAWSMCP` (String, the specific MCP service principal — e.g. `aws-mcp.amazonaws.com`). The AWS-documented pattern is to use them in `Deny` statements when the same IAM identity is shared between human and agent use, so the agent stays narrower than the human.
+2. **`run_script` tool.** A short Python script runs server-side in an isolated sandbox, inherits the caller's IAM permissions, has no network egress outside AWS, and lets the agent chain multiple AWS calls in a single round-trip. For multi-step FinOps work — month-over-month growth analysis, commitment portfolio reviews, multi-account aggregation — this avoids the round-trip overhead of issuing one `call_aws` per API operation.
+3. **Documentation tools require no authentication.** `search_documentation` and `read_documentation` work without IAM credentials. Only `call_aws` and `run_script` need IAM.
 
-**Agent Standard Operating Procedures (SOPs)**
-- Pre-built workflows for common AWS tasks
-- Codified best practices for FinOps automation
-- Command validation and security controls
-- Accelerated time from idea to implementation
+`call_aws` itself also now supports file uploads and long-running operations, which makes it usable for tasks that previously needed bespoke tooling.
 
-**Enterprise-Grade Reliability**
-- Built on AWS's scalable infrastructure
-- IAM-based security and access control
-- Centralized audit logging and compliance
-- Production-ready for enterprise deployments
+#### Capabilities
+
+**One endpoint, 15,000+ AWS APIs**
+- `call_aws` — executes any AWS API operation with the caller's IAM credentials; supports file uploads and long-running operations
+- `run_script` — runs a short Python script in a server-side sandbox; no network access outside AWS; inherits IAM permissions; ideal for chaining multiple API calls
+- `search_documentation` and `read_documentation` — retrieve current AWS documentation; no authentication required
+- `retrieve_skill` — loads a specific Skill on demand so the agent only consumes context it actually needs
+
+When listed by an MCP client, these tools appear with an `aws___` prefix (e.g. `aws___call_aws`).
+
+**Skills** (replacing the previous Agent SOPs)
+- Curated packages of instructions, scripts, and reference material for specific AWS tasks
+- Loaded on demand so they do not consume unnecessary context
+- **Contributed and maintained by the individual AWS service teams** that own each domain — meaning the guidance reflects current best practice for each service rather than a generic template
+
+**Regional endpoints** (pick the one closest to your users)
+- `https://aws-mcp.us-east-1.api.aws/mcp` — US East / N. Virginia
+- `https://aws-mcp.eu-central-1.api.aws/mcp` — Europe / Frankfurt
+
+Both endpoints can call APIs in any AWS region.
+
+**Observability and audit**
+- CloudWatch metrics published under the `AWS-MCP` namespace — separate visibility on agent traffic
+- CloudTrail captures all API calls; combined with the `aws:ViaAWSMCPService` context key, you can cleanly distinguish human and agent activity in audit data
+
+**Pricing**
+- No charge for the AWS MCP Server itself. You pay only for the AWS resources used and any data transfer.
 
 #### 📚 Step-by-Step Tutorial
 
-**New to the AWS MCP Remote Server?** Follow our complete tutorial:
+**New to the AWS MCP Server?** Follow our tutorial:
 
-👉 **[Tutorial: AWS MCP Remote Server - Complete AWS Interactions](../tutorials/07-aws-mcp-remote-server.md)**
+👉 **[Tutorial: AWS MCP Remote Server — Complete AWS Interactions](../tutorials/07-aws-mcp-remote-server.md)**
 
 Learn how to:
-- Set up IAM permissions for secure access
-- Configure the remote server in Claude Desktop, VS Code, or Claude Code
+- Set up an IAM policy that uses the new context keys
+- Configure the server in Claude Desktop, VS Code, or Claude Code (us-east-1 or eu-central-1)
 - Query AWS APIs, documentation, and resources through natural language
-- Use Agent SOPs for FinOps workflows and cost optimization
-
----
-
-## 🚀 AWS MCP Server (Unified Architecture) - Preview
-
-**Repository**: [awslabs/mcp](https://github.com/awslabs/mcp)
-**Announcement**: November 2025
-**Status**: Preview (Generally Available Soon)
-
-AWS has introduced a **unified AWS MCP Server** that consolidates multiple AWS MCP capabilities into a single, powerful interface. This represents the future of AWS MCP integration, orchestrating access to AWS services through a streamlined architecture.
-
-### What's New in the Unified AWS MCP Server
-
-**🎯 Consolidated Architecture**
-- **Single server** combines AWS API MCP and AWS Knowledge servers
-- Access to **15,000+ AWS APIs** through one unified interface
-- Simplified configuration and deployment
-- Built-in orchestration across AWS services
-
-**📚 Agent Standard Operating Procedures (SOPs)**
-- Pre-built workflows for common AWS tasks
-- Best practices codified into reusable patterns
-- Accelerates FinOps automation and cost optimization
-- Reduces time from idea to implementation
-
-**☁️ Remote MCP Server Support**
-- AWS Knowledge MCP server is now **Generally Available** (GA)
-- AWS's **first remote MCP server** (vs local STDIO)
-- Cloud-hosted, scalable infrastructure
-- Enhanced security and enterprise controls
-
-### Key Benefits for FinOps
-
-1. **Unified Cost Management**: Access pricing, billing, and optimization APIs through one server
-2. **Simplified Setup**: Replace multiple server configurations with a single unified deployment
-3. **Enhanced Reliability**: AWS-managed infrastructure with enterprise SLAs
-4. **Better Performance**: Optimized for AWS API interactions and data retrieval
-5. **Task Workflows**: Leverage MCP Specification 2025-11-25 tasks for long-running cost analyses
-
-### Migration Path
-
-The unified AWS MCP Server is designed to work alongside existing individual servers:
-- **Current users**: Continue using individual servers (Pricing, Cost Explorer, CloudWatch, etc.)
-- **New users**: Consider starting with the unified AWS MCP Server for simplified setup
-- **Enterprise teams**: Evaluate remote MCP deployment for centralized management
-
-👉 **Learn more**: [AWS MCP Server Documentation](https://awslabs.github.io/mcp/)
+- Use `run_script` for multi-step FinOps workflows
+- Use Skills for cost optimization and other AWS tasks
 
 ---
 

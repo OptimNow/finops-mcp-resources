@@ -4,7 +4,7 @@
 
 Remote MCP servers are cloud-hosted or network-accessible MCP servers that clients connect to over HTTP/HTTPS or Server-Sent Events (SSE), as opposed to local servers running on the same machine as the MCP client.
 
-Remote MCP support became mainstream in 2025, with Claude Code adding native support in June 2025 and other major clients following suit.
+Remote MCP support became mainstream in 2025, with Claude Code adding native support in June 2025 and other major clients following suit. The AWS MCP Server reached general availability on May 6, 2026, and its documentation tools (`search_documentation`, `read_documentation`) no longer require authentication — only `call_aws` and `run_script` use IAM credentials.
 
 ---
 

@@ -85,17 +85,18 @@
     - aws
     - community
 
-- name: aws-mcp-remote-server
+- name: aws-mcp-server
   provider: AWS
-  repo: https://github.com/awslabs/mcp
-  homepage: https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html
+  repo: https://github.com/aws/mcp-proxy-for-aws
+  homepage: https://docs.aws.amazon.com/agent-toolkit/latest/userguide/mcp-server.html
   category: other
-  description: "AWS-hosted remote MCP server with access to 15,000+ AWS APIs and Agent SOPs."
+  description: "AWS-hosted MCP server (GA May 6, 2026); 15,000+ AWS APIs via call_aws, server-side Python sandbox via run_script, and on-demand Skills maintained by AWS service teams."
   capabilities:
     - call-aws-api
+    - run-script
     - search-documentation
     - read-documentation
-    - agent-sops
+    - skills
     - recommend
   auth:
     - "AWS IAM (SSO/credentials)"

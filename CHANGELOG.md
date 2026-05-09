@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [May 2026] - 2026-05-09
+
+### Changed
+- **AWS MCP Server GA (May 6, 2026)** — Updated documentation to reflect general availability. The `aws-mcp:InvokeMcp`, `aws-mcp:CallReadOnlyTool`, and `aws-mcp:CallReadWriteTool` permissions are retired and have no effect; access is now controlled through standard IAM policies. The `aws:ViaAWSMCPService` (Boolean) and `aws:CalledViaAWSMCP` (service principal String) global condition context keys are added to every MCP-initiated request, intended for `Deny`-style scoping per the AWS-documented pattern.
+- **Skills replace Agent SOPs** — Agent SOPs are renamed to **Skills** and are now contributed and maintained by individual AWS service teams. Updated `servers/aws.md`, `tutorials/07-aws-mcp-remote-server.md`, and `servers/configs/registry.yaml`.
+- **Tutorials/Servers refresh** — `tutorials/07-aws-mcp-remote-server.md` and `servers/aws.md` updated to "May 2026" and rewritten around the GA model. The "Unified Architecture (Preview)" block in `servers/aws.md` is removed (superseded by GA).
+
+### Added
+- **`run_script` tool** documented in `tutorials/07-aws-mcp-remote-server.md` and `servers/aws.md` — server-side Python sandbox that lets the agent chain multiple AWS calls in a single round-trip.
+- **`retrieve_skill` tool** documented in `tutorials/07-aws-mcp-remote-server.md` and `servers/aws.md` — loads a specific Skill on demand. Both files also note the `aws___` prefix used by MCP clients when listing tools.
+- **Frankfurt (`eu-central-1`) endpoint** documented alongside `us-east-1`: `https://aws-mcp.eu-central-1.api.aws/mcp`.
+- **Observability narrative** — CloudWatch metrics under the `AWS-MCP` namespace and CloudTrail audit visibility, with the new context keys used to separate human and agent traffic.
+- **Pricing line** in `servers/aws.md`: no charge for the server itself; pay only for AWS resources used and data transfer.
+- **GA note** in `governance/remote-mcp-servers.md` (one sentence) noting the May 6, 2026 GA and the unauthenticated documentation tools.
+- **Credential-method note** in `tutorials/07-aws-mcp-remote-server.md` — points readers to AWS-recommended `aws login` (auto-rotates credentials every 15 minutes) and `aws configure sso` as alternatives to static IAM access keys, while keeping the IAM-user path for users without SSO.
+- **MCP Proxy for AWS explanation** in `tutorials/07-aws-mcp-remote-server.md` and `servers/aws.md` — clarifies what `uvx mcp-proxy-for-aws@latest` actually invokes (the local STDIO-to-HTTPS bridge that handles SigV4 signing) and links to the [aws/mcp-proxy-for-aws](https://github.com/aws/mcp-proxy-for-aws) repository.
+
+### Fixed
+- Stale references to `aws-mcp:InvokeMcp` removed from `tutorials/02-amazon-kiro-cli-cost-analysis.md`.
+- Stale "Agent SOPs" reference updated in `servers/configs/registry.yaml`.
+
+---
+
 ## [March 2026] - 2026-03-16
 
 ### Added

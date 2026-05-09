@@ -6,16 +6,17 @@
 
 **Tutorial 7 of 7** | ⏱️ **Time**: 20-30 minutes | 💻 **Level**: Beginner
 
-**Last Updated**: March 2026
+**Last Updated**: May 2026
 
 ---
 
 ## 🎯 What You'll Learn
 
 - Set up the official AWS MCP remote server (hosted by AWS)
-- Configure IAM permissions for secure remote access
+- Configure IAM permissions for secure remote access using standard IAM context keys
 - Query AWS APIs, documentation, and resources through natural language
-- Leverage Agent Standard Operating Procedures (SOPs) for AWS tasks
+- Use the `run_script` tool to chain multiple AWS API calls in a single round-trip
+- Leverage Skills for AWS tasks (curated, service-team-maintained guidance)
 
 ---
 
@@ -31,9 +32,11 @@ Previously, you needed to install and maintain separate MCP servers for each AWS
 
 AWS hosts and maintains the entire infrastructure. There's no local installation, no version updates to manage, no dependency conflicts to resolve. The server is always current with the latest AWS APIs, documentation, and best practices. You configure it once in your MCP client and AWS handles everything else - updates, scaling, and reliability.
 
-### Built-in Intelligence with Agent SOPs
+### Built-in Intelligence with Skills
 
-The server includes Agent Standard Operating Procedures (SOPs) - pre-built workflows that encode AWS best practices. When you ask for cost optimization recommendations, the server doesn't just fetch raw data. It applies proven FinOps methodologies, validates commands for accuracy, and structures responses following AWS's recommended patterns. This intelligence accelerates your work from idea to implementation while maintaining security controls and compliance standards.
+The server exposes **Skills** — curated packages of instructions, scripts, and reference material that guide an agent through specific AWS tasks. Skills are contributed and maintained by the individual AWS service teams that own each domain, so the guidance reflects current best practice for that service rather than a generic template. When you ask for cost optimization recommendations, the server can pull the relevant Skill on demand via the `retrieve_skill` tool, which keeps the agent focused on the right APIs and steps without consuming unnecessary context. (When listed by your MCP client, the tools appear with an `aws___` prefix — e.g. `aws___retrieve_skill`, `aws___call_aws`, `aws___run_script`.)
+
+The AWS MCP Server is part of a broader **Agent Toolkit for AWS** — an umbrella that bundles the MCP Server, Skills, Plugins (single-install packages for specific clients), and project-level Rules files.
 
 ### Why It Matters for FinOps
 
@@ -55,6 +58,15 @@ Traditional local MCP servers required you to know which specific server to quer
 ---
 
 ## 🚀 Quick Start
+
+### A note on credential methods
+
+This tutorial uses an **IAM user with static access keys** because they are universally available. AWS recommends two alternatives that auto-rotate credentials and avoid the 90-day key-rotation chore:
+
+- **`aws login`** (AWS CLI 2.32.0+) — for users with AWS Management Console credentials. The SDK rotates credentials every 15 minutes within a session of up to 12 hours.
+- **`aws configure sso`** — for users on AWS IAM Identity Center / SSO. Cached refresh tokens renew silently.
+
+If either is available to you, skip Step 1 below, run the relevant `aws ...` command in Step 3 instead of `aws configure`, and continue with Step 2 onward. Static IAM access keys (the path documented in Step 1 and Step 3) remain valid but will not auto-rotate.
 
 ### Step 1: Create IAM User for MCP Access
 
@@ -93,9 +105,11 @@ Traditional local MCP servers required you to know which specific server to quer
    - ⚠️ **IMPORTANT**: Store these credentials securely - you won't be able to see the secret key again
    - Click **Done**
 
-### Step 2: Attach Required IAM Policy
+### Step 2: Attach IAM Policy
 
-The AWS MCP server requires the `aws-mcp:InvokeMcp` permission to function.
+With the GA release, the AWS MCP Server uses **standard IAM permissions**. There is no separate `aws-mcp:*` action to grant — access is expressed through the same IAM policies you would write for any direct AWS API call. The previous permissions `aws-mcp:InvokeMcp`, `aws-mcp:CallReadOnlyTool`, and `aws-mcp:CallReadWriteTool` no longer have any effect; remove them from any policy where they still appear.
+
+Documentation tools (`search_documentation`, `read_documentation`) require **no authentication** at all. The IAM policy below only governs `call_aws` and `run_script`, which act on AWS resources on the user's behalf.
 
 #### Option A: Using AWS Console
 
@@ -108,9 +122,18 @@ The AWS MCP server requires the `aws-mcp:InvokeMcp` permission to function.
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Sid": "FinOpsReadOnly",
       "Effect": "Allow",
       "Action": [
-        "aws-mcp:InvokeMcp"
+        "ce:GetCostAndUsage",
+        "ce:GetCostForecast",
+        "ce:GetDimensionValues",
+        "ce:GetTags",
+        "pricing:GetProducts",
+        "ec2:Describe*",
+        "s3:List*",
+        "cloudwatch:Get*",
+        "cloudwatch:List*"
       ],
       "Resource": "*"
     }
@@ -120,6 +143,8 @@ The AWS MCP server requires the `aws-mcp:InvokeMcp` permission to function.
 
 4. Name the policy: `AWSMCPAccess`
 5. Click **Create policy**
+
+Because the user we created in Step 1 is dedicated to MCP, a plain `Allow` is enough. The same credentials can still be used with the AWS CLI (useful for the validation step in Step 3), and CloudTrail will record whether each call came through the MCP Server or directly.
 
 #### Option B: Using AWS CLI
 
@@ -131,13 +156,46 @@ aws iam put-user-policy \
     "Version": "2012-10-17",
     "Statement": [
       {
+        "Sid": "FinOpsReadOnly",
         "Effect": "Allow",
-        "Action": ["aws-mcp:InvokeMcp"],
+        "Action": [
+          "ce:GetCostAndUsage",
+          "ce:GetCostForecast",
+          "ce:GetDimensionValues",
+          "ce:GetTags",
+          "pricing:GetProducts",
+          "ec2:Describe*",
+          "s3:List*",
+          "cloudwatch:Get*",
+          "cloudwatch:List*"
+        ],
         "Resource": "*"
       }
     ]
   }'
 ```
+
+#### Optional: Telling MCP-initiated calls apart from direct API calls
+
+AWS adds two global condition context keys to every request the MCP Server makes for you:
+
+- `aws:ViaAWSMCPService` — **Boolean**, set to `true` for any request through an AWS managed MCP server.
+- `aws:CalledViaAWSMCP` — **String**, contains the service principal of the specific MCP server (for example, `aws-mcp.amazonaws.com`).
+
+If the IAM identity is shared between human and agent use, you can use these keys in `Deny` statements to keep the agent narrower than the human. For example, to block destructive S3 operations specifically when called through any AWS managed MCP server:
+
+```json
+{
+  "Effect": "Deny",
+  "Action": ["s3:DeleteBucket", "s3:DeleteObject"],
+  "Resource": "*",
+  "Condition": {
+    "Bool": {"aws:ViaAWSMCPService": "true"}
+  }
+}
+```
+
+CloudTrail captures both keys, so the same conditions can be used to filter MCP-initiated activity in audit logs.
 
 ### Step 3: Configure AWS Credentials
 
@@ -195,6 +253,10 @@ export AWS_REGION="us-east-1"
 ```
 
 **Note**: Environment variables set this way are temporary and only last for the current PowerShell/terminal session. For persistent credentials, use Option A (AWS Profile) instead.
+
+### About `mcp-proxy-for-aws`
+
+The configurations below all start with `uvx mcp-proxy-for-aws@latest`. That invokes the [MCP Proxy for AWS](https://github.com/aws/mcp-proxy-for-aws) — a small open-source program that runs locally on your machine. It bridges between the STDIO transport your MCP client speaks and the HTTPS endpoint where the AWS MCP Server lives, and it signs each request with SigV4 using the AWS profile from Step 3. You don't install it manually; `uvx` downloads and runs the latest version each time your MCP client starts. If you hit credential or signing errors, the proxy is the component handling that part of the flow.
 
 ### Step 4: Install and Configure MCP Client
 
@@ -273,7 +335,7 @@ Add the `aws-mcp` server to your existing `mcpServers` object. If you already ha
 - `mcp-aws` is the AWS profile name you created in Step 3 with `aws configure --profile mcp-aws`
 - If you used a different profile name in Step 3, replace `mcp-aws` with your chosen profile name
 - This tutorial uses `us-east-1` (North Virginia). You can change to your preferred AWS region
-- The server endpoint is always `https://aws-mcp.us-east-1.api.aws/mcp` (hosted in us-east-1)
+- Two regional endpoints are available at GA: `https://aws-mcp.us-east-1.api.aws/mcp` (US East / N. Virginia) and `https://aws-mcp.eu-central-1.api.aws/mcp` (Europe / Frankfurt). Pick the one closest to you for lower latency — both can call APIs in any region. EU-based teams will typically prefer the Frankfurt endpoint.
 
 3. **Restart Claude Desktop**
 
@@ -321,6 +383,26 @@ claude-code config mcp add aws-mcp \
 ```
 
 **Note**: `mcp-aws` is the AWS profile name from Step 3. If you used a different profile name, replace it in the `--env` parameter.
+
+---
+
+### Step 5: Multi-Step FinOps Workflows with `run_script`
+
+The GA release introduces a `run_script` tool that runs short Python scripts in a server-side sandbox. The script inherits the caller's IAM permissions, has no network access outside AWS, and lets the agent chain multiple AWS API calls in a single round-trip rather than making one MCP call per operation.
+
+For FinOps workflows that touch many APIs, this matters. A "top services by month-over-month growth" analysis would otherwise require many separate `call_aws` round-trips. With `run_script`, the agent generates one Python script that pulls the data, computes the deltas locally, and returns only the ranked result.
+
+**Example prompt**:
+
+```
+Pull Cost Explorer data for the last 30 days and the prior 30 days,
+then return the top 5 AWS services by month-over-month growth as a
+ranked list with absolute and percentage change.
+```
+
+In response, the agent writes a single script that calls `GetCostAndUsage` for both periods, aggregates by service, sorts by delta, and returns the top 5 — replacing what would otherwise be several turns of back-and-forth and reducing both latency and token usage.
+
+The script runs in an isolated sandbox: no network egress outside AWS, no persistent state between invocations, and only the IAM permissions you have granted to the user or role. For most FinOps work — cost aggregation, trend analysis, commitment portfolio reviews — `run_script` is more efficient than orchestrating dozens of individual API calls from the client side.
 
 ---
 
@@ -379,7 +461,7 @@ Analyze my AWS resources in us-east-1 and suggest cost optimization opportunitie
 
 The AI will:
 - Query your resources using AWS APIs
-- Access AWS optimization best practices (SOPs)
+- Pull the relevant Skills for cost optimization
 - Provide actionable recommendations
 - Estimate potential savings
 
@@ -406,7 +488,7 @@ Should I purchase Reserved Instances for my EC2 workloads?
 The AI will:
 - Analyze your EC2 usage patterns
 - Access AWS pricing documentation
-- Apply RI recommendation SOPs
+- Apply the relevant Reserved Instance Skill
 - Provide purchase recommendations with ROI calculations
 
 ---
@@ -429,23 +511,24 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 Then restart your terminal and MCP client.
 
-### Issue: "Not authorized to perform aws-mcp:InvokeMcp"
+### Issue: "AccessDenied" on `call_aws` or `run_script`
 
-**Solution**: Check IAM permissions:
+**Solution**: Check IAM permissions on the underlying AWS action — there is no separate `aws-mcp:*` permission to grant since GA.
 
-1. Verify policy is attached to your user:
+1. Verify the policy is attached to your user:
 ```bash
 aws iam list-user-policies --user-name mcp-aws-user
 ```
 
-2. Get policy document:
+2. Get the policy document:
 ```bash
 aws iam get-user-policy \
   --user-name mcp-aws-user \
   --policy-name AWSMCPAccess
 ```
 
-3. Ensure it includes `aws-mcp:InvokeMcp` action
+3. Confirm the `Action` list covers the AWS API the agent is calling (e.g. `ce:GetCostAndUsage`, `pricing:GetProducts`).
+4. If you used a `Condition` block with `aws:ViaAWSMCPService`, confirm the call is actually arriving through the MCP Server and not directly via the CLI/SDK.
 
 ### Issue: "Invalid credentials" or "Access Denied"
 
@@ -474,20 +557,14 @@ cat ~/.aws/config
 
 ### Principle of Least Privilege
 
-For production use, extend the IAM policy to grant only the specific AWS permissions needed:
+For production use, scope the IAM policy to the specific AWS actions your agent needs. If the same IAM identity is used for both human and agent activity, follow the AWS-documented pattern of an explicit `Deny` for actions you don't want the agent to perform, scoped via the `aws:ViaAWSMCPService` (or `aws:CalledViaAWSMCP`) context key:
 
 ```json
 {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Effect": "Allow",
-      "Action": [
-        "aws-mcp:InvokeMcp"
-      ],
-      "Resource": "*"
-    },
-    {
+      "Sid": "FinOpsReadOnlyAllow",
       "Effect": "Allow",
       "Action": [
         "ec2:Describe*",
@@ -500,6 +577,21 @@ For production use, extend the IAM policy to grant only the specific AWS permiss
         "cloudwatch:List*"
       ],
       "Resource": "*"
+    },
+    {
+      "Sid": "BlockDestructiveActionsViaMCP",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:Terminate*",
+        "ec2:Stop*",
+        "rds:Delete*",
+        "s3:DeleteBucket",
+        "s3:DeleteObject"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Bool": {"aws:ViaAWSMCPService": "true"}
+      }
     }
   ]
 }
@@ -590,11 +682,12 @@ Found a problem with this tutorial?
 ## ✨ Summary
 
 **What you accomplished**:
-- ✅ Set up AWS IAM user with MCP permissions
+- ✅ Set up an AWS IAM user with standard, least-privilege FinOps permissions
 - ✅ Configured AWS credentials securely
-- ✅ Connected to AWS's first remote MCP server
+- ✅ Connected to the AWS MCP Server (now generally available)
 - ✅ Accessed 15,000+ AWS APIs through natural language
-- ✅ Tested FinOps workflows with Agent SOPs
+- ✅ Used `run_script` to chain multiple AWS calls in a single round-trip
+- ✅ Tested FinOps workflows backed by service-team-maintained Skills
 
 **Key takeaway**: The AWS MCP remote server eliminates local installation complexity while providing comprehensive, managed access to all AWS services, documentation, and best practices - perfect for production FinOps workflows.
 
