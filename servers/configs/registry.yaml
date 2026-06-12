@@ -276,6 +276,33 @@
     - bigquery
     - community
 
+# ── Multi-cloud ──────────────────────────────────────────
+
+- name: nable-finops-mcp
+  provider: Multi-cloud
+  repo: https://github.com/chaandannn/finopsmcp
+  homepage: https://getnable.com
+  category: reporting
+  description: "Local-first FinOps server: cost queries, anomaly detection and rightsizing across AWS, Azure, GCP plus AI (OpenAI, Anthropic, Bedrock) and SaaS spend."
+  capabilities:
+    - get-cost-summary
+    - explain-cost-drivers
+    - detect-anomalies
+    - get-rightsizing-recommendations
+    - track-llm-spend-by-model
+    - get-commitment-recommendations
+  auth:
+    - "Cloud provider credentials (stored in OS keyring, never leave the machine)"
+  maturity: ga
+  security_notes: "Read-only cost APIs; credentials encrypted locally; no vendor backend, nothing leaves the user's machine."
+  tags:
+    - finops
+    - multi-cloud
+    - aws
+    - azure
+    - gcp
+    - ai-costs
+
 # ── Workflow & Collaboration ─────────────────────────────
 
 - name: finops-tagging-mcp
