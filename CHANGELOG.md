@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [July 2026] - 2026-07-13
+
+### Changed
+- **Azure FinOps MCP Server (public preview)** — Refreshed all Azure documentation for Microsoft's June 23, 2026 announcement ([From insight to action](https://azure.microsoft.com/en-us/blog/from-insight-to-action-the-next-phase-of-agentic-cloud-operations/)). The claim that "the official Azure MCP server does NOT expose cost management or billing APIs" is retired: (1) the **ARM MCP Server** (public preview since May 7, 2026, branded **Azure FinOps MCP Server** for cost workflows) gives agents natural-language Azure Resource Graph queries with cost and usage intelligence rolling out; (2) `@azure/mcp` gained a **retail pricing tool** (list prices, reservation and savings plan rates — cost estimation, not actual spend). Updated `servers/azure.md`, `tutorials/04-azure-mcp-quickstart.md`, `servers/INDEX.md`, and `servers/configs/registry.yaml`.
+- **Recommendation reframed** — julianobarbosa/azure-finops-mcp-server stays the most direct path to actual Cost Management (billing) data today; the official ARM/FinOps MCP Server is the one to watch (currently requires VS Code + GitHub Copilot; Claude support announced as next).
+- **Governance note added** — the ARM MCP Server is NOT read-only: it ships ARM template deployment tools alongside its query tools. Docs now recommend Reader + Resource Graph scoping and/or disabling deployment tools for FinOps-only use (Azure Policy can block MCP-initiated deployments).
+- **finopshub-mcp guidance** — now points to Microsoft's official [Configure AI agents for FinOps hubs](https://learn.microsoft.com/en-us/cloud-computing/finops/toolkit/hubs/configure-ai) path as the preferred alternative to the proof-of-concept server.
+- **Broken link fixed** — `servers/azure.md` and `tutorials/04-azure-mcp-quickstart.md` pointed to a non-existent `governance/security-privileges-azure.md`; both now link to the governance INDEX.
+
+### Added
+- **`arm-mcp-server` registry entry** in `servers/configs/registry.yaml` (maturity: preview, 6 tools: 3 ARG query + 3 ARM deployment) — registry now has 18 entries; documented server count bumped to 19 in README/INDEX.
+
 ## [May 2026] - 2026-05-09
 
 ### Changed

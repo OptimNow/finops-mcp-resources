@@ -148,6 +148,29 @@
 
 # ── Azure ────────────────────────────────────────────────
 
+- name: arm-mcp-server
+  provider: Azure
+  repo: https://github.com/Azure/Azure-Resource-Manager-MCP
+  category: governance
+  description: "Official Microsoft ARM MCP server (branded 'Azure FinOps MCP Server' for cost workflows, public preview): natural-language Azure Resource Graph queries plus ARM template deployment tools; cost and usage intelligence rolling out per the June 2026 Azure announcement."
+  capabilities:
+    - generate-query
+    - validate-query
+    - execute-query
+    - create-template-deployment
+    - get-deployment-status
+    - cancel-deployment
+  auth:
+    - "Signed-in Azure user (VS Code + GitHub Copilot; Claude support announced)"
+  maturity: preview
+  security_notes: "Official Microsoft server; runs under the signed-in user's RBAC. NOT read-only — includes ARM deployment tools; for FinOps-only use, scope identity to Reader + Resource Graph and disable deployment tools, or block deployments via Azure Policy."
+  tags:
+    - finops
+    - azure
+    - resource-graph
+    - governance
+    - preview
+
 - name: azure-finops-mcp-server
   provider: Azure
   repo: https://github.com/julianobarbosa/azure-finops-mcp-server
@@ -170,16 +193,17 @@
   provider: Azure
   repo: https://github.com/Azure/azure-mcp
   category: other
-  description: "Official Microsoft Azure MCP server for resource management and monitoring (no cost/billing APIs)."
+  description: "Official Microsoft Azure MCP server for resource management, monitoring, and retail pricing lookups (no actual cost/billing data)."
   capabilities:
     - manage-resources
     - query-resource-graph
     - monitor-metrics
     - manage-storage
+    - get-retail-pricing
   auth:
     - "Azure credentials (CLI/service principal)"
   maturity: ga
-  security_notes: "Official Microsoft server; Reader role required; does NOT expose cost management APIs."
+  security_notes: "Official Microsoft server; Reader role required; retail pricing tool covers list prices and savings plan rates only — does NOT expose Cost Management (actual spend) APIs."
   tags:
     - azure
     - resource-management
