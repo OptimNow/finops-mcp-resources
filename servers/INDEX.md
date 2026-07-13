@@ -1,8 +1,8 @@
 # MCP Servers for Cloud FinOps and Cost Optimization
 
-**Last Updated**: May 2026
+**Last Updated**: July 2026
 
-A curated registry of 18 MCP servers for cloud cost optimization, FinOps automation, and AI-powered cost management across AWS, Azure, and GCP. Includes cloud provider billing servers, tagging governance tools, and workflow integrations (JIRA, Slack).
+A curated registry of 19 MCP servers for cloud cost optimization, FinOps automation, and AI-powered cost management across AWS, Azure, and GCP. Includes cloud provider billing servers, tagging governance tools, and workflow integrations (JIRA, Slack).
 
 See [`configs/registry.yaml`](./configs/registry.yaml) for the machine-readable registry.
 
@@ -14,7 +14,7 @@ See [`configs/registry.yaml`](./configs/registry.yaml) for the machine-readable 
 - **[AWS MCP Servers](./aws.md)** — Remote server (15,000+ APIs), Pricing API, Cost Explorer, CloudWatch, Billing & Cost Management, CFM Tips
 
 ### Azure Cloud Cost Servers
-- **[Azure MCP Servers](./azure.md)** — Official @azure/mcp, community FinOps server (recommended for cost analysis)
+- **[Azure MCP Servers](./azure.md)** — 🆕 Official ARM / Azure FinOps MCP Server (public preview), @azure/mcp with retail pricing, community FinOps server for billing data
 
 ### GCP Cloud Cost Servers
 - **[GCP MCP Servers](./gcp.md)** — BigQuery billing exports, Compute Engine, GKE, community servers

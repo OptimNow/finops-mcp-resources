@@ -12,7 +12,7 @@
 
 A practical resource hub for FinOps practitioners, cloud engineers, and platform teams who want to use **AI agents** to automate cloud cost optimization. This repo provides tutorials, MCP server documentation, client guides, and security frameworks for implementing the Model Context Protocol across AWS, Azure, and GCP.
 
-**18 MCP servers documented** | **7 step-by-step tutorials** | **9 MCP clients compared** | **3 cloud providers covered**
+**19 MCP servers documented** | **7 step-by-step tutorials** | **9 MCP clients compared** | **3 cloud providers covered**
 
 ---
 
@@ -24,12 +24,13 @@ A practical resource hub for FinOps practitioners, cloud engineers, and platform
 
 ---
 
-## Recent Updates (May 2026)
+## Recent Updates (July 2026)
 
+- **Azure FinOps MCP Server (public preview)** (June 23, 2026) — Microsoft's first official FinOps-branded MCP server, the cost-and-usage packaging of the **ARM MCP Server** (preview since May 7). Natural-language Azure Resource Graph queries for estate-wide waste detection; the official `@azure/mcp` server also gained a retail pricing tool for pre-deployment cost estimation. Updated: [server doc](./servers/azure.md), [tutorial](./tutorials/04-azure-mcp-quickstart.md). Source: [Azure Blog](https://azure.microsoft.com/en-us/blog/from-insight-to-action-the-next-phase-of-agentic-cloud-operations/).
 - **AWS MCP Server GA** (May 6, 2026) — Now part of the broader Agent Toolkit for AWS. The previous `aws-mcp:InvokeMcp` permission is replaced by standard IAM policies using the `aws:ViaAWSMCPService` and `aws:CalledViaAWSMCP` context keys. New `run_script` tool runs short Python scripts in a server-side sandbox for multi-step workflows. Frankfurt (`eu-central-1`) endpoint added alongside `us-east-1`. Updated: [tutorial](./tutorials/07-aws-mcp-remote-server.md), [server doc](./servers/aws.md).
 - **Google managed MCP servers GA** (April 29, 2026): more than 50 official Google MCP servers across infrastructure, databases, analytics, storage, and Workspace APIs (BigQuery, Cloud Run, Apigee, AlloyDB, Spanner, Firestore, GKE). Updated: [server doc](./servers/gcp.md).
 - **New: Workflow & Collaboration Servers** — [FinOps Tagging Compliance](./servers/tagging.md), [JIRA](./servers/jira.md), and [Slack](./servers/slack.md) MCP servers for automated cost governance
-- **Registry Backfill** — [`registry.yaml`](./servers/configs/registry.yaml) now lists all 18 documented MCP servers
+- **Registry Backfill** — [`registry.yaml`](./servers/configs/registry.yaml) machine-readable registry, now at 18 entries with the ARM MCP Server addition
 - **MCP Authentication Vulnerabilities** (refreshed May 2026): critical security risks plus 2 new 2026 CVEs (CVE-2026-0621 in the TypeScript SDK, CVE-2026-40933 in Flowise) ([read more](./governance/mcp-authentication-vulnerabilities-2026.md))
 - **MCP Dev Summit North America 2026** (NYC): AAIF reported 1,200 attendees, 110+ million monthly SDK downloads, and 170 member organizations. Headline disclosures: a DNS rebinding attack class against MCP servers (Jonathan Leitschuh / Braise) and Amazon's "lethal trifecta" pattern for scanning agent configurations. Source: [AAIF blog](https://aaif.io/blog/mcp-is-now-enterprise-infrastructure-everything-that-happened-at-mcp-dev-summit-north-america-2026/)
 
@@ -40,7 +41,7 @@ A practical resource hub for FinOps practitioners, cloud engineers, and platform
 | Section | What you'll find |
 |---------|-----------------|
 | [/foundations](./foundations) | What is MCP, how it works, architecture deep-dive |
-| [/servers](./servers) | 18 MCP servers — AWS, Azure, GCP, Tagging, JIRA, Slack |
+| [/servers](./servers) | 19 MCP servers — AWS, Azure, GCP, Tagging, JIRA, Slack |
 | [/clients](./clients) | 9 MCP clients compared — Claude, ChatGPT, Gemini, Copilot, Cursor, Kiro |
 | [/tutorials](./tutorials) | 7 step-by-step guides for AWS, Azure, GCP cost analysis |
 | [/governance](./governance) | Security best practices, IAM policies, vulnerability guides |
