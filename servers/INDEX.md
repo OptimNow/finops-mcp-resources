@@ -2,7 +2,7 @@
 
 **Last Updated**: July 2026
 
-A curated registry of 19 MCP servers for cloud cost optimization, FinOps automation, and AI-powered cost management across AWS, Azure, and GCP. Includes cloud provider billing servers, tagging governance tools, and workflow integrations (JIRA, Slack).
+A curated registry of 20 MCP servers for cloud cost optimization, FinOps automation, and AI-powered cost management across AWS, Azure, and GCP. Includes cloud provider billing servers, tagging governance tools, and workflow integrations (JIRA, Slack).
 
 See [`configs/registry.yaml`](./configs/registry.yaml) for the machine-readable registry.
 
@@ -18,6 +18,9 @@ See [`configs/registry.yaml`](./configs/registry.yaml) for the machine-readable 
 
 ### GCP Cloud Cost Servers
 - **[GCP MCP Servers](./gcp.md)** — BigQuery billing exports, Compute Engine, GKE, community servers
+
+### Multi-cloud Cost Servers
+- **[nable (finops-mcp)](https://github.com/chaandannn/finopsmcp)** — Local-first server for AWS, Azure and GCP plus AI and SaaS spend: cost queries, anomaly detection, rightsizing, LLM token tracking
 
 ### Workflow & Collaboration
 - **[FinOps Tagging Compliance](./tagging.md)** — Tag compliance checking, drift detection, cost attribution gap analysis
