@@ -1,6 +1,6 @@
 # Remote MCP Servers for FinOps
 
-**Last Updated**: May 2026
+**Last Updated**: July 2026
 
 Remote MCP servers are cloud-hosted or network-accessible MCP servers that clients connect to over HTTP/HTTPS or Server-Sent Events (SSE), as opposed to local servers running on the same machine as the MCP client.
 
@@ -45,6 +45,20 @@ The advantages are clear: no network latency, simpler authentication, and zero h
 Remote MCP servers flip this model by running as cloud-hosted services accessible over the network. Instead of launching a local process, your MCP client connects to something like `https://mcp.finops-corp.example.com/aws-pricing` via HTTP/HTTPS or Server-Sent Events (SSE).
 
 The benefits are transformative for enterprises: centralized management, shared infrastructure across teams, and zero local installation requirements. The tradeoffs are infrastructure complexity and network latency, but for FinOps teams managing multi-cloud environments, the centralization benefits far outweigh the costs.
+
+---
+
+## 🆕 Stateless core (MCP 2026-07-28) and hosting cost
+
+The [2026-07-28 specification](https://blog.modelcontextprotocol.io/posts/2026-07-28/) changes the economics of running a remote MCP server. The protocol dropped its stateful session model — the `initialize`/`initialized` handshake and the `Mcp-Session-Id` header are gone — in favour of **stateless request/response**. Any server instance can now answer any request. For FinOps hosting budgets, three things follow:
+
+- **Serverless becomes the natural fit.** With no session pinning a user to one instance, a cost server drops cleanly onto AWS Lambda, Azure Functions, GCP Cloud Run, or Cloudflare Workers and **scales to zero** when idle. A tool queried a few times a day no longer needs an always-on VM ($20–100/month, see [Cost Considerations](#-cost-considerations) below) — you pay per request instead.
+- **No sticky-session load balancing.** Stateless requests remove the need for session-affinity ("sticky") routing at the load balancer, simplifying the security layer in the patterns below and removing one source of cost and operational failure.
+- **Plain HTTP over long-lived SSE.** The stateless model favours ordinary request/response HTTP. Long-lived Server-Sent Events (SSE) connections — used in the examples further down — still work but are no longer required, which suits pay-per-request platforms that would otherwise bill for idle connection time.
+
+Authorization also hardened in this release: it requires **RFC 9207 issuer validation**, binds client credentials to the issuer that minted them, and adds an **Enterprise Managed Authorization (EMA)** extension aligned with OAuth 2.0 / OIDC providers (Microsoft Entra, Okta). See [MCP Architecture](../foundations/mcp-architecture.md) for the full breakdown.
+
+> **Migration note**: the stateless shift is a breaking change for any server that relied on session IDs. The official SDKs ship migration guidance — review before upgrading a production FinOps server.
 
 ---
 
@@ -335,7 +349,7 @@ gcloud run deploy mcp-aws-pricing \
 
 ## 🔐 Security Best Practices
 
-**Transport Security**: Always use HTTPS/TLS for remote MCP servers. Never expose servers over plain HTTP, even for internal development. The 2025-11-25 MCP specification mandates OAuth 2.0 with PKCE (Proof Key for Code Exchange) for all remote deployments, protecting against authorization code interception attacks.
+**Transport Security**: Always use HTTPS/TLS for remote MCP servers. Never expose servers over plain HTTP, even for internal development. The MCP specification mandates OAuth 2.0 with PKCE (Proof Key for Code Exchange) for remote deployments, protecting against authorization code interception attacks; the 2026-07-28 release adds RFC 9207 issuer validation and binds client credentials to the issuer that minted them, closing credential-reuse gaps across authorization servers.
 
 **Credential Management**: Store cloud credentials in dedicated secrets managers—AWS Secrets Manager, Azure Key Vault, or GCP Secret Manager—never in environment variables or configuration files. Enable comprehensive logging via CloudTrail, Azure Monitor, or Cloud Logging to track every query for compliance and forensics.
 
@@ -389,6 +403,8 @@ Ryan Cooke (WorkOS) presented a context engine that loads tool instructions **on
 
 - [Claude Code Remote MCP Documentation](https://code.claude.com/docs/en/mcp)
 - [MCP SDK - SSE Server Transport](https://github.com/modelcontextprotocol/sdk)
+- [MCP Specification 2026-07-28 (stateless core)](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- [Bringing MCP 2026-07-28 to Claude (Anthropic)](https://claude.com/blog/bringing-mcp-2026-07-28-to-claude)
 - [MCP Specification 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25)
 - [OAuth 2.0 for MCP](https://den.dev/blog/mcp-november-authorization-spec/)
 - [Remote MCP Announcement](https://www.anthropic.com/news/claude-code-remote-mcp)

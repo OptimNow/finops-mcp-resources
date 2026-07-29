@@ -38,7 +38,7 @@ A comprehensive resource hub for FinOps practitioners, cloud engineers, and plat
 - [FinOps Tagging Compliance](servers/tagging.md): Tag compliance checking, drift detection, cost allocation
 - [JIRA for FinOps](servers/jira.md): Cost anomaly ticketing, optimization tracking workflows
 - [Slack for FinOps](servers/slack.md): Cost alerts, budget notifications, team collaboration
-- [Server Registry (YAML)](servers/configs/registry.yaml): Machine-readable registry of all 18 servers
+- [Server Registry (YAML)](servers/configs/registry.yaml): Machine-readable registry of documented servers
 
 ### MCP Clients (AI Interfaces)
 - [Client Comparison](clients/comparison.md): Which MCP client to choose for FinOps

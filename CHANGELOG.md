@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [July 2026] - 2026-07-29
+
+### Changed
+- **MCP Specification 2026-07-28** — Documented MCP's fifth specification release (the largest architectural change since launch), now rolling out across Claude products. Added a new "MCP Specification 2026-07-28 Updates" section to `foundations/mcp-architecture.md` covering: (1) the **stateless core** — the `initialize`/`initialized` handshake and `Mcp-Session-Id` header are retired in favour of stateless request/response, with protocol version and client identity carried in `_meta`; (2) the **versioned extensions framework** (`io.modelcontextprotocol/*`), into which **MCP Tasks** (now stable: poll-based `tasks/get` + `tasks/update`) and **MCP Apps** (interactive in-conversation UI) graduate; (3) **authorization hardening** — RFC 9207 issuer validation, issuer-bound client credentials, `application_type` in DCR, and the Enterprise Managed Authorization (EMA) extension aligned with OAuth 2.0 / OIDC (Microsoft Entra, Okta). The prior `2025-11-25` section is reframed as the previous release. Sources: [Anthropic](https://claude.com/blog/bringing-mcp-2026-07-28-to-claude), [MCP spec blog](https://blog.modelcontextprotocol.io/posts/2026-07-28/).
+- **Stateless hosting-cost angle** — `governance/remote-mcp-servers.md` gains a "Stateless core (MCP 2026-07-28) and hosting cost" section: serverless / scale-to-zero is now the natural fit for remote FinOps servers, sticky-session load balancing is no longer needed, and plain request/response HTTP is favoured over long-lived SSE. Transport-security note and Additional Resources refreshed for the new spec.
+- **`foundations/mcp-architecture.md` corrections** — the "dedicated connection" description and the "MCP doesn't standardize authentication" line are updated for the stateless core and standardized OAuth 2.0 / OIDC.
+- **Adoption stat refresh** — `README.md` and `foundations/what-is-mcp.md` updated with the figures Anthropic reported at the July 28, 2026 release: **400+ million monthly SDK downloads** (≈4× year-over-year) and **950+ servers** in Claude's connector directory (attributed to the connector directory specifically, not total ecosystem servers). The May 2026 AAIF summit figures are retained as the prior snapshot.
+- **Date-stamp refresh (May 2026 → July 2026)** on `foundations/mcp-architecture.md`, `foundations/what-is-mcp.md`, `governance/remote-mcp-servers.md`, and `governance/mcp-authentication-vulnerabilities-2026.md`.
+
+### Added
+- **Authorization note in `governance/mcp-authentication-vulnerabilities-2026.md`** — a "What the 2026-07-28 spec changes" subsection (RFC 9207 issuer validation, issuer-bound credentials, `application_type` DCR, EMA), a July 2026 timeline row, and RFC 9207 added to Related Standards — with a caveat that the spec does not fix deployment-hygiene issues (unauthenticated exposure, DNS rebinding).
+
+---
+
+## [July 2026] - 2026-07-13
+
+### Changed
+- **Azure FinOps MCP Server (public preview)** — Refreshed all Azure documentation for Microsoft's June 23, 2026 announcement ([From insight to action](https://azure.microsoft.com/en-us/blog/from-insight-to-action-the-next-phase-of-agentic-cloud-operations/)). The claim that "the official Azure MCP server does NOT expose cost management or billing APIs" is retired: (1) the **ARM MCP Server** (public preview since May 7, 2026, branded **Azure FinOps MCP Server** for cost workflows) gives agents natural-language Azure Resource Graph queries with cost and usage intelligence rolling out; (2) `@azure/mcp` gained a **retail pricing tool** (list prices, reservation and savings plan rates — cost estimation, not actual spend). Updated `servers/azure.md`, `tutorials/04-azure-mcp-quickstart.md`, `servers/INDEX.md`, and `servers/configs/registry.yaml`.
+- **Recommendation reframed** — julianobarbosa/azure-finops-mcp-server stays the most direct path to actual Cost Management (billing) data today; the official ARM/FinOps MCP Server is the one to watch (currently requires VS Code + GitHub Copilot; Claude support announced as next).
+- **Governance note added** — the ARM MCP Server is NOT read-only: it ships ARM template deployment tools alongside its query tools. Docs now recommend Reader + Resource Graph scoping and/or disabling deployment tools for FinOps-only use (Azure Policy can block MCP-initiated deployments).
+- **finopshub-mcp guidance** — now points to Microsoft's official [Configure AI agents for FinOps hubs](https://learn.microsoft.com/en-us/cloud-computing/finops/toolkit/hubs/configure-ai) path as the preferred alternative to the proof-of-concept server.
+- **Broken link fixed** — `servers/azure.md` and `tutorials/04-azure-mcp-quickstart.md` pointed to a non-existent `governance/security-privileges-azure.md`; both now link to the governance INDEX.
+
+### Added
+- **`arm-mcp-server` registry entry** in `servers/configs/registry.yaml` (maturity: preview, 6 tools: 3 ARG query + 3 ARM deployment) — registry now has 18 entries; documented server count bumped to 19 in README/INDEX.
+
 ## [May 2026] - 2026-05-09
 
 ### Changed

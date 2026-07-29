@@ -1,6 +1,6 @@
 # MCP Architecture: How Model Context Protocol Works
 
-**Last Updated**: May 2026
+**Last Updated**: July 2026
 
 The **Model Context Protocol (MCP)** defines a modular, layered architecture for connecting AI agents to external tools and data sources — including cloud cost management APIs, billing exports, and FinOps automation workflows. This page explains how MCP's client-host-server architecture works and why it matters for enterprise cloud cost optimization.
 
@@ -40,13 +40,13 @@ The true strength of MCP lies in how these components work together. When a clie
 
 ## 🔄 MCP Interaction Cycle
 
-Beyond the core components, MCP defines a standardized **interaction cycle** for communication between Clients, Hosts, and Servers. The client maintains a dedicated connection to the server, which acts as a bridge to external systems. When the model needs to take action, it invokes tools for structured operations. Contextual data (resources) is supplied to ground the LLM's tasks, and complex operations can be triggered via reusable prompts. The server can even adjust or influence inference through sampling control, while asynchronous updates flow back to the client via notifications. This cycle ensures consistent, auditable interactions across all MCP implementations.  
+Beyond the core components, MCP defines a standardized **interaction cycle** for communication between Clients, Hosts, and Servers. The client sends requests to the server, which acts as a bridge to external systems. (As of the 2026-07-28 specification these are stateless request/response exchanges rather than a persistent session — see the 2026-07-28 section below.) When the model needs to take action, it invokes tools for structured operations. Contextual data (resources) is supplied to ground the LLM's tasks, and complex operations can be triggered via reusable prompts. The server can even adjust or influence inference through sampling control, while asynchronous updates flow back to the client via notifications. This cycle ensures consistent, auditable interactions across all MCP implementations.  
 
 ---
 
 ## 🌐 Key Architectural Considerations
 
-**Security & Governance**: MCP doesn't standardize authentication, so implementations typically rely on OAuth, API keys, or enterprise SSO. Fine-grained RBAC (Role-Based Access Control) should be layered on top to avoid overexposing tools and resources to unauthorized users.
+**Security & Governance**: Early MCP left authentication to implementers, but the protocol has since standardized on OAuth 2.0 / OIDC — the 2026-07-28 specification adds issuer validation and an Enterprise Managed Authorization (EMA) extension that plugs into providers like Microsoft Entra and Okta (see below). Fine-grained RBAC (Role-Based Access Control) should still be layered on top to avoid overexposing tools and resources to unauthorized users.
 
 **FinOps & Observability**: MCP's modularity enables cost attribution at the level of prompts, tools, and resources. This aligns perfectly with FinOps practices by connecting usage patterns with cost accountability—you can see exactly which teams, projects, or prompts are driving your AI infrastructure costs.
 
@@ -54,7 +54,38 @@ Beyond the core components, MCP defines a standardized **interaction cycle** for
 
 ---
 
-## 🆕 MCP Specification 2025-11-25 Updates
+## 🆕 MCP Specification 2026-07-28 Updates
+
+On July 28, 2026, MCP shipped its **fifth specification release** (`2026-07-28`) — the largest architectural change since the protocol launched — and Anthropic began rolling out support across Claude products. Three changes matter most for FinOps deployments.
+
+### 1. Stateless Core
+
+MCP moves from a **bidirectional, stateful** protocol to a **stateless request/response** model. The `initialize`/`initialized` handshake and the `Mcp-Session-Id` header are retired; every request now carries the protocol version and client identity in its `_meta` field, so *any* server instance can answer *any* request. Servers that still need application state pass explicit handles as tool arguments instead of relying on a transport-level session.
+
+**Why this matters for FinOps**: stateless servers run cleanly on **serverless and edge infrastructure** (AWS Lambda, Azure Functions, GCP Cloud Run, Cloudflare Workers) and can **scale to zero** when idle. A cost-query server your team hits a few times a day no longer needs an always-on VM or sticky-session load balancing — the hosting bill for your own FinOps tooling can drop toward pay-per-request. See [Remote MCP Servers](../governance/remote-mcp-servers.md) for the cost breakdown.
+
+### 2. Versioned Extensions Framework
+
+Capabilities that used to be bolted onto the core now ship as **versioned extensions** with namespace identifiers (e.g. `io.modelcontextprotocol/tasks`). Two graduate with this release:
+
+- **MCP Tasks** — the long-running-operation abstraction (introduced experimentally in 2025-11-25) is now the stable `io.modelcontextprotocol/tasks` extension, using poll-based `tasks/get` and a new `tasks/update` method. This is the feature that lets a full-year, multi-cloud billing analysis run asynchronously while you do other work.
+- **MCP Apps** — servers can now render **interactive UI directly in the conversation** (a spend-breakdown table, an anomaly chart) instead of returning text only.
+
+### 3. Enterprise-Grade Authorization
+
+Authorization aligns with production OAuth 2.0 / OIDC and identity providers such as Microsoft Entra and Okta, via the **Enterprise Managed Authorization (EMA)** extension. Concrete hardening in this release: **RFC 9207 issuer validation** is required, clients set `application_type` during Dynamic Client Registration (so localhost redirects work correctly), and **client credentials are bound to the issuer that minted them** (no reuse across authorization servers). For FinOps, this is the change that lets a security admin authorize a cost-analysis connector **once** and let the whole team inherit access through existing corporate groups — the usual blocker for putting an agent near billing APIs.
+
+### Migration note for server maintainers
+
+The stateless shift is a **breaking change** for any custom server that depended on session identifiers. The official SDKs ship migration guidance, so budget a review before upgrading a server you operate. Platform teams also gain new **observability dashboards** in Claude covering connector usage, adoption, and errors.
+
+**Sources**: [Bringing MCP 2026-07-28 to Claude (Anthropic)](https://claude.com/blog/bringing-mcp-2026-07-28-to-claude) · [The 2026-07-28 Specification (MCP blog)](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+
+---
+
+## MCP Specification 2025-11-25 Updates (previous release)
+
+> Superseded by the 2026-07-28 release above for the core protocol and Tasks (Tasks is now the `io.modelcontextprotocol/tasks` extension rather than an experimental core feature). The concepts below still describe how asynchronous workflows and enterprise authentication first arrived in MCP.
 
 On November 25, 2025, MCP released a major specification update to mark the protocol's first anniversary. The update addressed key pain points for enterprise deployments, particularly around asynchronous operations and authentication.
 
@@ -104,6 +135,9 @@ For FinOps practitioners, the practical signal is that MCP has moved from "open-
 ---
 
 ## 📖 Additional Resources
+- [MCP Specification 2026-07-28](https://modelcontextprotocol.io/specification/2026-07-28)
+- [The 2026-07-28 Specification (MCP blog)](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- [Bringing MCP 2026-07-28 to Claude (Anthropic)](https://claude.com/blog/bringing-mcp-2026-07-28-to-claude)
 - [MCP Specification 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25)
 - [One Year of MCP Blog Post](https://blog.modelcontextprotocol.io/posts/2025-11-25-first-mcp-anniversary/)
 - [MCP Authorization Spec Details](https://den.dev/blog/mcp-november-authorization-spec/)  
