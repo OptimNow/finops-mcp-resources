@@ -317,7 +317,7 @@
     - get-commitment-recommendations
   auth:
     - "Cloud provider credentials (stored in OS keyring, never leave the machine)"
-  maturity: ga
+  maturity: beta
   security_notes: "Read-only cost APIs; credentials encrypted locally; no vendor backend, nothing leaves the user's machine."
   tags:
     - finops
