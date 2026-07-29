@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [July 2026] - 2026-07-29
+
+### Changed
+- **MCP Specification 2026-07-28** — Documented MCP's fifth specification release (the largest architectural change since launch), now rolling out across Claude products. Added a new "MCP Specification 2026-07-28 Updates" section to `foundations/mcp-architecture.md` covering: (1) the **stateless core** — the `initialize`/`initialized` handshake and `Mcp-Session-Id` header are retired in favour of stateless request/response, with protocol version and client identity carried in `_meta`; (2) the **versioned extensions framework** (`io.modelcontextprotocol/*`), into which **MCP Tasks** (now stable: poll-based `tasks/get` + `tasks/update`) and **MCP Apps** (interactive in-conversation UI) graduate; (3) **authorization hardening** — RFC 9207 issuer validation, issuer-bound client credentials, `application_type` in DCR, and the Enterprise Managed Authorization (EMA) extension aligned with OAuth 2.0 / OIDC (Microsoft Entra, Okta). The prior `2025-11-25` section is reframed as the previous release. Sources: [Anthropic](https://claude.com/blog/bringing-mcp-2026-07-28-to-claude), [MCP spec blog](https://blog.modelcontextprotocol.io/posts/2026-07-28/).
+- **Stateless hosting-cost angle** — `governance/remote-mcp-servers.md` gains a "Stateless core (MCP 2026-07-28) and hosting cost" section: serverless / scale-to-zero is now the natural fit for remote FinOps servers, sticky-session load balancing is no longer needed, and plain request/response HTTP is favoured over long-lived SSE. Transport-security note and Additional Resources refreshed for the new spec.
+- **`foundations/mcp-architecture.md` corrections** — the "dedicated connection" description and the "MCP doesn't standardize authentication" line are updated for the stateless core and standardized OAuth 2.0 / OIDC.
+- **Adoption stat refresh** — `README.md` and `foundations/what-is-mcp.md` updated with the figures Anthropic reported at the July 28, 2026 release: **400+ million monthly SDK downloads** (≈4× year-over-year) and **950+ servers** in Claude's connector directory (attributed to the connector directory specifically, not total ecosystem servers). The May 2026 AAIF summit figures are retained as the prior snapshot.
+- **Date-stamp refresh (May 2026 → July 2026)** on `foundations/mcp-architecture.md`, `foundations/what-is-mcp.md`, `governance/remote-mcp-servers.md`, and `governance/mcp-authentication-vulnerabilities-2026.md`.
+
+### Added
+- **Authorization note in `governance/mcp-authentication-vulnerabilities-2026.md`** — a "What the 2026-07-28 spec changes" subsection (RFC 9207 issuer validation, issuer-bound credentials, `application_type` DCR, EMA), a July 2026 timeline row, and RFC 9207 added to Related Standards — with a caveat that the spec does not fix deployment-hygiene issues (unauthenticated exposure, DNS rebinding).
+
+---
+
 ## [July 2026] - 2026-07-13
 
 ### Changed

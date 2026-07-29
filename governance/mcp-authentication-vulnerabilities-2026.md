@@ -1,6 +1,6 @@
 # MCP Authentication Vulnerabilities & Remediation Guide
 
-**Last Updated**: May 2026
+**Last Updated**: July 2026
 
 The Model Context Protocol shipped without mandatory authentication. This document covers the known vulnerabilities, real-world incidents, and the security controls your organization must implement to protect MCP deployments.
 
@@ -162,6 +162,17 @@ When a client connects to a protected MCP server:
 
 For MCP servers using **STDIO transport** (running locally), you can use environment-based credentials or credentials from third-party libraries embedded in the server. OAuth flows are primarily designed for **HTTP-based transports** where the MCP server is remotely hosted.
 
+### What the 2026-07-28 spec changes
+
+The [2026-07-28 specification](https://blog.modelcontextprotocol.io/posts/2026-07-28/) hardens the authorization model in ways that directly address several issues in this guide:
+
+- **RFC 9207 issuer validation is required** — clients must confirm which authorization server issued a token, mitigating mix-up attacks where a malicious server substitutes its own issuer.
+- **Client credentials are bound to the issuer that minted them** — no reuse across authorization servers, which narrows the blast radius of a leaked credential.
+- **`application_type` is set during Dynamic Client Registration** — tightening the DCR flow flagged as a pitfall below (unauthenticated DCR still remains something you must control).
+- **Enterprise Managed Authorization (EMA)** ships as a versioned extension aligned with OAuth 2.0 / OIDC providers (Microsoft Entra, Okta), so enterprises can manage MCP access through existing identity groups.
+
+**Caveat**: these changes tighten the *protocol*. They do **not** fix deployment hygiene — the unauthenticated-exposure, network-binding, and DNS-rebinding problems described above remain the operator's responsibility. A spec-compliant server deployed to the public internet with authentication disabled is exactly as exposed as before.
+
 ---
 
 ## Mandatory Security Controls
@@ -276,6 +287,7 @@ Before your next security review, verify:
 | Apr 2026 | CVE-2026-0621 (MCP TypeScript SDK) | ReDoS via UriTemplate; servers freeze on crafted URIs (patched v1.25.2) |
 | Apr 2026 | CVE-2026-40933 (Flowise MCP Adapters) | Authenticated RCE via unsafe stdio command serialization (patched 3.1.0) |
 | Apr 2026 | DNS rebinding disclosure (J. Leitschuh, MCP Dev Summit NA 2026) | Browser-based attack class against MCP servers; SDK fixes inconsistent. 0-day in Google Database Toolbox |
+| Jul 2026 | MCP 2026-07-28 spec: stateless core + hardened OAuth/OIDC | RFC 9207 issuer validation, issuer-bound credentials, and the EMA extension align auth with enterprise identity providers |
 
 ---
 
@@ -287,6 +299,7 @@ Before your next security review, verify:
 - [Red Hat: MCP Security Risks and Controls](https://www.redhat.com/en/blog/model-context-protocol-mcp-understanding-security-risks-and-controls)
 - [AuthZed: Timeline of MCP Security Breaches](https://authzed.com/blog/timeline-mcp-breaches)
 - [Strobes: MCP Critical Vulnerabilities](https://strobes.co/blog/mcp-model-context-protocol-and-its-critical-vulnerabilities/)
+- [MCP Specification 2026-07-28 (stateless core + auth hardening)](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
 - [MCP Specification 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25)
 - [MCP Security Best Practices (This Repository)](./security-best-practices-2025.md)
 
@@ -299,6 +312,7 @@ MCP authorization builds on these well-established standards:
 - [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) - Dynamic Client Registration
 - [RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728) - Protected Resource Metadata
 - [RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707) - Resource Indicators
+- [RFC 9207](https://datatracker.ietf.org/doc/html/rfc9207) - OAuth 2.0 Authorization Server Issuer Identification (required by the 2026-07-28 spec)
 
 ---
 
