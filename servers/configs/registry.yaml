@@ -302,6 +302,34 @@
 
 # ── Multi-cloud ──────────────────────────────────────────
 
+- name: costory-finops-mcp
+  provider: Multi-cloud
+  repo: https://github.com/costory-io/costory-finops-mcp-skills
+  homepage: https://docs.costory.io/features/mcp
+  category: reporting
+  description: "Hosted context layer over cloud and AI billing: allocated, correlated spend across AWS, GCP, Azure plus SaaS and LLM providers, with alerts, reports and dashboards created from chat."
+  capabilities:
+    - query-cost-and-usage
+    - run-cost-change-diff-tree
+    - correlate-cost-with-deploy-events
+    - query-unit-economics
+    - create-alert
+    - create-report
+    - create-dashboard
+  auth:
+    - "OAuth 2.1 with dynamic client registration (no cloud credentials given to the MCP client)"
+  maturity: ga
+  security_notes: "Commercial SaaS. Remote server, so billing data is ingested into the vendor workspace rather than queried live from the user's cloud accounts; scoping follows the caller's workspace role. Write tools (alerts, reports, dashboards, events) act only inside the Costory workspace."
+  tags:
+    - finops
+    - multi-cloud
+    - aws
+    - azure
+    - gcp
+    - ai-costs
+    - allocation
+    - hosted
+
 - name: nable-finops-mcp
   provider: Multi-cloud
   repo: https://github.com/chaandannn/finopsmcp
