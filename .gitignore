@@ -52,3 +52,6 @@ yarn-error.log*
 # Local Claude Code prompts (kept locally for replay, not committed)
 .claude/prompts/
 
+# Local Claude Code settings (may hold tokens; only covered by *.json above)
+.claude/settings.local.json
+
