@@ -25,7 +25,7 @@
       },
       "provider": {
         "type": "string",
-        "enum": ["AWS", "Azure", "GCP", "Other"]
+        "enum": ["AWS", "Azure", "GCP", "Multi-cloud", "Other"]
       },
       "repo": {
         "type": "string",
