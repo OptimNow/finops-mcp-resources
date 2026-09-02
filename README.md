@@ -12,7 +12,7 @@
 
 A practical resource hub for FinOps practitioners, cloud engineers, and platform teams who want to use **AI agents** to automate cloud cost optimization. This repo provides tutorials, MCP server documentation, client guides, and security frameworks for implementing the Model Context Protocol across AWS, Azure, and GCP.
 
-**19 MCP servers documented** | **7 step-by-step tutorials** | **9 MCP clients compared** | **3 cloud providers covered**
+**20 MCP servers documented** | **7 step-by-step tutorials** | **9 MCP clients compared** | **3 cloud providers covered**
 
 ---
 
@@ -42,7 +42,7 @@ A practical resource hub for FinOps practitioners, cloud engineers, and platform
 | Section | What you'll find |
 |---------|-----------------|
 | [/foundations](./foundations) | What is MCP, how it works, architecture deep-dive |
-| [/servers](./servers) | 19 MCP servers — AWS, Azure, GCP, Tagging, JIRA, Slack |
+| [/servers](./servers) | 20 MCP servers — AWS, Azure, GCP, Tagging, JIRA, Slack |
 | [/clients](./clients) | 9 MCP clients compared — Claude, ChatGPT, Gemini, Copilot, Cursor, Kiro |
 | [/tutorials](./tutorials) | 7 step-by-step guides for AWS, Azure, GCP cost analysis |
 | [/governance](./governance) | Security best practices, IAM policies, vulnerability guides |
