@@ -355,6 +355,86 @@
     - gcp
     - ai-costs
 
+# ── AI Cost & FinOps Knowledge ───────────────────────────
+
+- name: ai-pricing-hub-mcp
+  provider: Multi-cloud
+  repo: https://github.com/OptimNow/ai-pricing-hub-mcp
+  homepage: https://optimtoken.optimnow.io
+  category: pricing
+  description: "OptimToken MCP: live, dated LLM prices for 250+ models and compute instance rates across AWS, Azure, GCP, OCI, OVH, DigitalOcean and Alibaba. Cost per request and per month from your token shape, cache hit rate and batch eligibility."
+  capabilities:
+    - compare-llm-models
+    - recommend-llm-model
+    - compare-models-side-by-side
+    - estimate-llm-cost
+    - compare-compute-pricing
+  auth:
+    - "None (hosted streamable-HTTP endpoint, no credentials)"
+  maturity: beta
+  security_notes: "Read-only; takes no cloud or API credentials; nothing sent is stored. Hosted on Alpic. Prices come from the OptimToken catalogue with tiered fallback, and every answer carries a provenance flag saying whether prices were verified."
+  tags:
+    - finops
+    - ai-costs
+    - llm-pricing
+    - pricing
+    - multi-cloud
+    - hosted
+    - optimnow
+
+- name: ai-roi-calculator-mcp
+  provider: Other
+  repo: https://github.com/OptimNow/ai-roi-calculator-mcp
+  homepage: https://airoicalculator.optimnow.io
+  category: other
+  description: "AI business-case calculator: ROI, payback and break-even volume for an LLM use case, from live model prices, a 3-layer cost model (inference, harness, business value) and a sensitivity analysis. Every figure carries its price date."
+  capabilities:
+    - calculate-roi
+    - lookup-model-price
+    - load-preset
+    - sensitivity-analysis
+  auth:
+    - "None (hosted streamable-HTTP endpoint, no credentials)"
+  maturity: beta
+  security_notes: "Read-only; takes no credentials; nothing sent is stored. Hosted on Alpic. Formulas are synced verbatim from the open-source web calculator and pinned by golden tests, so the server and the web app return the same number."
+  tags:
+    - finops
+    - ai-costs
+    - roi
+    - llm-pricing
+    - hosted
+    - optimnow
+
+- name: cloud-finops-mcp
+  provider: Multi-cloud
+  repo: https://github.com/OptimNow/cloud-finops-skills
+  homepage: https://pypi.org/project/cloud-finops-mcp/
+  category: other
+  description: "FinOps knowledge server: curated references (AWS, Azure, GCP, OCI billing mechanics, commitments, allocation, chargeback, AI inference economics, Kubernetes, Databricks, Fabric, Snowflake, SaaS, GreenOps) and named-pattern waste-detection playbooks with tested detection queries. Same library ships as an agent skill."
+  capabilities:
+    - list-references
+    - find-references
+    - get-reference
+    - list-playbooks
+    - find-playbooks
+    - get-playbook
+  auth:
+    - "None (hosted streamable-HTTP endpoint, or local pip package; no credentials either way)"
+  maturity: ga
+  security_notes: "Read-only knowledge retrieval; cannot see or touch the user's cloud accounts. Hosted endpoint on Alpic, or run locally from PyPI so nothing leaves the machine. Content licensed CC BY-SA 4.0."
+  tags:
+    - finops
+    - multi-cloud
+    - aws
+    - azure
+    - gcp
+    - oci
+    - ai-costs
+    - knowledge
+    - playbooks
+    - hosted
+    - optimnow
+
 # ── Workflow & Collaboration ─────────────────────────────
 
 - name: finops-tagging-mcp

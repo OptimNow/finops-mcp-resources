@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [September 2026] - 2026-09-02
+
+### Added
+- **AI Cost & FinOps Knowledge section** in `servers/INDEX.md` and `servers/configs/registry.yaml` with three OptimNow servers: `cloud-finops-mcp` (FinOps knowledge references and waste-detection playbooks, hosted or `pip install cloud-finops-mcp`), `ai-pricing-hub-mcp` (OptimToken: live dated LLM and compute prices across seven clouds), and `ai-roi-calculator-mcp` (ROI, payback, break-even and sensitivity analysis for an LLM use case). All hosted, read-only, no credentials.
+- **`costory-finops-mcp` registry entry** under Multi-cloud (hosted allocation and correlation layer for AWS, GCP, Azure plus SaaS and LLM spend), contributed by Costory in [#15](https://github.com/OptimNow/finops-mcp-resources/pull/15).
+
+### Changed
+- **Server count** now 23 in `README.md` and `servers/INDEX.md`, matching `registry.yaml`. `INDEX.md` had been one ahead of the registry since July; reconciled in [#18](https://github.com/OptimNow/finops-mcp-resources/pull/18).
+- **`servers/configs/schema.json`** provider enum gains `Multi-cloud`, which the registry had been using since the nable entry.
+
+---
+
 ## [July 2026] - 2026-07-29
 
 ### Changed
