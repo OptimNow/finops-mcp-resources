@@ -332,7 +332,7 @@
 
 - name: nable-finops-mcp
   provider: Multi-cloud
-  repo: https://github.com/chaandannn/finopsmcp
+  repo: https://github.com/getnable/finopsmcp
   homepage: https://getnable.com
   category: reporting
   description: "Local-first FinOps server: cost queries, anomaly detection and rightsizing across AWS, Azure, GCP plus AI (OpenAI, Anthropic, Bedrock) and SaaS spend."

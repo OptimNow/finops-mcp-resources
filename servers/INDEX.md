@@ -21,7 +21,7 @@ See [`configs/registry.yaml`](./configs/registry.yaml) for the machine-readable 
 
 ### Multi-cloud Cost Servers
 - **[Costory FinOps MCP](https://docs.costory.io/features/mcp)** — Hosted server over an allocation and correlation layer for AWS, GCP, Azure plus SaaS and LLM spend: allocated cost queries, cost-change diffs against deploy events, unit economics, alerts and reports from chat
-- **[nable (finops-mcp)](https://github.com/chaandannn/finopsmcp)** — Local-first server for AWS, Azure and GCP plus AI and SaaS spend: cost queries, anomaly detection, rightsizing, LLM token tracking
+- **[nable (finops-mcp)](https://github.com/getnable/finopsmcp)** — Local-first, open-source server for AWS, Azure, GCP and Kubernetes plus AI and SaaS spend: cost queries, anomaly detection, rightsizing, LLM token tracking by model, and propose-only remediation that opens a pull request to fix waste. Nothing leaves the machine.
 
 ### AI Cost & FinOps Knowledge Servers
 Built by OptimNow, the maintainers of this repository. All three are hosted, read-only and take no credentials.
