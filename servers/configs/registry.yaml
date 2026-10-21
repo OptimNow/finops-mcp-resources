@@ -307,7 +307,7 @@
   repo: https://github.com/costory-io/costory-finops-mcp-skills
   homepage: https://docs.costory.io/features/mcp
   category: reporting
-  description: "Hosted context layer over cloud and AI billing: allocated, correlated spend across AWS, GCP, Azure plus SaaS and LLM providers, with alerts, reports and dashboards created from chat."
+  description: "FinOps agent MCP: one allocated view of cloud, AI and data costs across providers, shared by your whole team with SSO. Starter $300/mo, 30-day free trial."
   capabilities:
     - query-cost-and-usage
     - run-cost-change-diff-tree
