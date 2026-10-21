@@ -20,7 +20,7 @@ See [`configs/registry.yaml`](./configs/registry.yaml) for the machine-readable 
 - **[GCP MCP Servers](./gcp.md)** — BigQuery billing exports, Compute Engine, GKE, community servers
 
 ### Multi-cloud Cost Servers
-- **[Costory FinOps MCP](https://docs.costory.io/features/mcp)** — Hosted server over an allocation and correlation layer for AWS, GCP, Azure plus SaaS and LLM spend: allocated cost queries, cost-change diffs against deploy events, unit economics, alerts and reports from chat
+- **[Costory FinOps MCP](https://docs.costory.io/features/mcp)** — Hosted FinOps agent MCP: one allocated view of cloud, AI and data costs across providers (AWS, GCP, Azure, LLM APIs, data clouds), shared by your whole team with SSO; allocation from telemetry (Kubernetes, Datadog, dbt), cost-change explanations, alerts and reports from chat. Starter $300/mo, 30-day free trial
 - **[nable (finops-mcp)](https://github.com/getnable/finopsmcp)** — Local-first, open-source server for AWS, Azure, GCP and Kubernetes plus AI and SaaS spend: cost queries, anomaly detection, rightsizing, LLM token tracking by model, and propose-only remediation that opens a pull request to fix waste. Nothing leaves the machine.
 
 ### AI Cost & FinOps Knowledge Servers
